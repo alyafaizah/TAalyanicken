@@ -1,6 +1,8 @@
-@extends('layout.template.template-backend')
+@extends('layouts.template-backend')
+@extends('layouts.template-backend-sidebar')
 
 @section('main-content')
+
 <!--begin::Content-->
 <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
 						<!--begin::Subheader-->

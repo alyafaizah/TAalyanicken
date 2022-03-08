@@ -19,3 +19,17 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard',[DashboardController::class, 'dashboard']);
+Route::get('/ujicoba/{nama}', [DashboardController::class, 'dinamisroute']);
+
+
+Route::get('/template', function() {
+
+    return view('layouts.template-backend');
+});
+
+
+
+Route::get('pengujian', function() {
+
+    return view('modules.dashboard.index');
+});

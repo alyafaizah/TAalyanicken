@@ -10,4 +10,12 @@ class DashboardController extends Controller
     {
         return view('layout.template.template-backend');
     }
+
+
+
+    function dinamisroute( $name ) {
+
+
+        echo "<h1>Hello ". $name ."</h1>";
+    }
 }
