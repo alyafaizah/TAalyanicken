@@ -29,7 +29,12 @@ Route::get('/template', function() {
 
 
 
-Route::get('pengujian', function() {
+Route::get('/pengujian', function() {
 
     return view('modules.dashboard.index');
+});
+
+Route::get('/login', function() {
+
+    return view('modules.login.login');
 });
