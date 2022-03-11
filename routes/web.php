@@ -38,3 +38,13 @@ Route::get('/login', function() {
 
     return view('modules.login.login');
 });
+
+Route::get('/tiket', function() {
+
+    return view('modules.tiket.datatiket');
+});
+
+Route::get('/createtiket', function() {
+
+    return view('modules.tiket.createtiket');
+});
