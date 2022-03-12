@@ -8,7 +8,7 @@ class DashboardController extends Controller
 {
     public function dashboard()
     {
-        return view('layout.template.template-backend');
+        return view('modules.dashboard.index');
     }
 
 

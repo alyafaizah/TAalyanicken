@@ -26,8 +26,11 @@
 							<!--end::Item-->
 							<!--begin::Item-->
 							<li class="nav-item mb-5" data-toggle="tooltip" data-placement="right" data-container="body" data-boundary="window" title="Data Tiket">
-								<a href="#" class="nav-link btn btn-icon btn-icon-white btn-lg" data-toggle="tab" data-target="#kt_aside_tab_2" role="tab">
-								<i class="icon-l fas fa-ticket-alt"></i>
+								
+								
+
+								<a href="/tiket" class="nav-link btn btn-icon btn-icon-white btn-lg" role="tab">
+									<i class="icon-l fas fa-ticket-alt"></i>
 								</a>
 							</li>
 							<!--end::Item-->

@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\TicketController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,15 +36,24 @@ Route::get('/pengujian', function() {
     return view('modules.dashboard.index');
 });
 
-Route::get('/login', function() {
 
-    return view('modules.login.login');
-});
 
-Route::get('/tiket', function() {
 
-    return view('modules.tiket.datatiket');
-});
+
+
+// module login
+Route::get('/login', [LoginController::class, 'index']);
+Route::post('/login/proses', [LoginController::class, 'proses']);
+
+
+
+
+
+
+
+
+
+Route::get('/tiket', [TicketController::class, 'index']);
 
 Route::get('/createtiket', function() {
 
