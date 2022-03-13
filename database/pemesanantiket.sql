@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 26 Feb 2022 pada 08.37
+-- Waktu pembuatan: 13 Mar 2022 pada 05.09
 -- Versi server: 10.4.11-MariaDB
 -- Versi PHP: 7.4.2
 
@@ -29,13 +29,13 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `data_tiket` (
-  `kd_tiket` int(11) NOT NULL,
-  `jenis` varchar(50) NOT NULL,
+  `kd_tiket` varchar(50) NOT NULL,
+  `jenis` enum('weekdays','weekend','','') NOT NULL,
   `harga` int(15) NOT NULL,
   `stok` int(11) NOT NULL,
-  `keterangan` varchar(250) NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `keterangan` varchar(255) NOT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -45,17 +45,17 @@ CREATE TABLE `data_tiket` (
 --
 
 CREATE TABLE `diskon` (
-  `id_diskon` int(11) NOT NULL,
-  `kd_tiket` int(11) NOT NULL,
-  `nama` varchar(50) NOT NULL,
-  `deskripsi` varchar(250) NOT NULL,
-  `foto` varchar(100) NOT NULL,
-  `nilai` float(11,0) NOT NULL,
+  `id_diskon` varchar(70) NOT NULL,
+  `kd_tiket` varchar(70) NOT NULL,
+  `nama` varchar(100) NOT NULL,
+  `deskripsi` varchar(255) NOT NULL,
+  `foto` varchar(200) NOT NULL,
+  `nilai` varchar(100) NOT NULL,
   `tgl_awal` date NOT NULL,
   `tgl_akhir` date NOT NULL,
-  `status` varchar(50) NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `status` enum('aktif','nonaktif','','') NOT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -65,14 +65,15 @@ CREATE TABLE `diskon` (
 --
 
 CREATE TABLE `identitas` (
-  `id_profile` int(11) NOT NULL,
-  `nama_lengkap` varchar(100) NOT NULL,
-  `alamat` varchar(100) NOT NULL,
-  `telepon` varchar(20) NOT NULL,
-  `gender` varchar(20) NOT NULL,
-  `tempat_lahir` varchar(50) NOT NULL,
-  `tgl_lahir` varchar(50) NOT NULL,
-  `updated_at` timestamp NULL DEFAULT current_timestamp()
+  `id_profile` bigint(30) NOT NULL,
+  `nama_lengkap` varchar(80) NOT NULL,
+  `alamat` varchar(200) NOT NULL,
+  `telepon` varchar(15) NOT NULL,
+  `gender` enum('Laki-laki','Perempuan','','') NOT NULL,
+  `tempat_lahir` varchar(70) NOT NULL,
+  `tgl_lahir` varchar(30) NOT NULL,
+  `foto` varchar(100) NOT NULL,
+  `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -82,12 +83,12 @@ CREATE TABLE `identitas` (
 --
 
 CREATE TABLE `pembayaran` (
-  `id_pembayaran` int(11) NOT NULL,
-  `kd_order` int(11) NOT NULL,
+  `id_pembayaran` bigint(30) NOT NULL,
+  `kd_order` varchar(100) NOT NULL,
   `total_bayar` int(15) NOT NULL,
   `type` varchar(100) NOT NULL,
   `tanggal` datetime NOT NULL,
-  `file` varchar(50) NOT NULL
+  `file` varchar(225) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -97,15 +98,15 @@ CREATE TABLE `pembayaran` (
 --
 
 CREATE TABLE `pemesanan` (
-  `id_pemesanan` int(11) NOT NULL,
-  `kd_order` int(11) NOT NULL,
-  `kd_tiket` int(11) NOT NULL,
-  `id_profile` int(11) NOT NULL,
-  `tanggal_kunjungan` date NOT NULL,
+  `id_pemesanan` varchar(70) NOT NULL,
+  `kd_order` varchar(100) NOT NULL,
+  `kd_tiket` varchar(70) NOT NULL,
+  `id_profile` int(30) NOT NULL,
+  `tgl_kunjungan` datetime DEFAULT NULL,
   `jumlah` int(11) NOT NULL,
-  `status` varchar(100) NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `confirmed_at` timestamp NULL DEFAULT NULL
+  `status` enum('diproses','diterima','dibatalkan','berhasil') NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -115,13 +116,13 @@ CREATE TABLE `pemesanan` (
 --
 
 CREATE TABLE `profile` (
-  `id_profile` int(11) NOT NULL,
+  `id_profile` bigint(30) NOT NULL,
   `username` varchar(50) NOT NULL,
-  `password` varchar(20) NOT NULL,
-  `level` varchar(50) NOT NULL,
-  `email` varchar(50) NOT NULL,
-  `status_akun` varchar(50) NOT NULL,
-  `created_at` timestamp NULL DEFAULT current_timestamp()
+  `password` varchar(100) NOT NULL,
+  `level` enum('admin','petugas tiket','pengunjung','') NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `status_akun` enum('aktif','nonaktif','','') NOT NULL,
+  `created_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -131,11 +132,11 @@ CREATE TABLE `profile` (
 --
 
 CREATE TABLE `transaksi` (
-  `id_transaksi` int(11) NOT NULL,
-  `id_profile` int(11) NOT NULL,
-  `kd_order` int(11) NOT NULL,
-  `tanggal_kunjungan` datetime NOT NULL,
-  `jumlah` int(15) NOT NULL
+  `id_transaksi` varchar(70) NOT NULL,
+  `id_profile` bigint(30) NOT NULL,
+  `kd_order` varchar(100) NOT NULL,
+  `tgl_kunjungan` datetime DEFAULT NULL,
+  `jumlah` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -192,16 +193,16 @@ ALTER TABLE `transaksi`
 --
 
 --
--- AUTO_INCREMENT untuk tabel `pemesanan`
+-- AUTO_INCREMENT untuk tabel `pembayaran`
 --
-ALTER TABLE `pemesanan`
-  MODIFY `id_pemesanan` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `pembayaran`
+  MODIFY `id_pembayaran` bigint(30) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `profile`
 --
 ALTER TABLE `profile`
-  MODIFY `id_profile` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_profile` bigint(30) NOT NULL AUTO_INCREMENT;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
