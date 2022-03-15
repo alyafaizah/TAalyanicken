@@ -47,15 +47,12 @@ Route::post('/login/proses', [LoginController::class, 'proses']);
 
 
 
-
-
-
-
-
-
+//module tiket
 Route::get('/tiket', [TicketController::class, 'index']);
+Route::get('/createtiket', [TicketController::class, 'create']);
 
-Route::get('/createtiket', function() {
+//module data pemesanan tiket
+Route::get('/dtpemesanantiket', function() {
 
-    return view('modules.tiket.createtiket');
+    return view('modules.pemesanantiket.dtpemesanantiket');
 });

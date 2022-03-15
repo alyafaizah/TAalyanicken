@@ -17,4 +17,8 @@ class TicketController extends Controller
 
         return view('modules.tiket.datatiket', $data);
     }
+
+    function create(){ //halaman buat tiket
+        return view('modules.tiket.createtiket');
+    }
 }
