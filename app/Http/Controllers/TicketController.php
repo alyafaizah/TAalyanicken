@@ -21,4 +21,11 @@ class TicketController extends Controller
     function create(){ //halaman buat tiket
         return view('modules.tiket.createtiket');
     }
+
+    function dtpemesanantiket(){
+        $dt = array(
+            'dtpemesanantiket'=>DB::table('pemesanan')->get()
+        );
+        return view('modules.pemesanantiket.dtpemesanantiket', $dt);
+    }
 }
