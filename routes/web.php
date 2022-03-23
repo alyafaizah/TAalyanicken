@@ -56,3 +56,9 @@ Route::get('/dtpemesanantiket', function() {
 
     return view('modules.pemesanantiket.dtpemesanantiket');
 });
+
+//module petugas
+Route::get('/petugas', function() {
+
+    return view('modules.petugas.datapetugas');
+});
