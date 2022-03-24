@@ -13,10 +13,10 @@
                 <!--begin::Card-->
                 <div class="card card-custom gutter-b example example-compact">
                     <div class="card-header">
-                        <h3 class="card-title">Tambah Tiket</h3>
+                        <h3 class="card-title">Sunting Tiket #{{ $kd_tiket }}</h3>
                     </div>
                     <!--begin::Form-->
-                    <form action="{{ route('add-ticket') }}" method="POST">
+                    <form action="/edit-ticket/{{ $kd_tiket }}" method="POST">
 
 
                         @csrf
@@ -25,26 +25,26 @@
                             <div class="form-group">
                                 <label for="exampleSelect1">Jenis
                                     <span class="text-danger">*</span></label>
-                                    <input type="text" name="jenis" class="form-control" placeholder="" />
+                                    <input type="text" name="jenis" class="form-control" value="{{ $tiket->jenis }}" placeholder="" />
                             </div>
                             <div class="form-group">
                                 <label>Harga
                                     <span class="text-danger">*</span></label>
-                                <input type="number" name="harga" class="form-control" placeholder="" />
+                                <input type="number" name="harga" class="form-control" value="{{ $tiket->harga }}" placeholder="" />
                             </div>
                             <div class="form-group">
                                 <label>Stok
                                     <span class="text-danger">*</span></label>
-                                <input type="number" name="stok" class="form-control" placeholder="" />
+                                <input type="number" name="stok" class="form-control" value="{{ $tiket->stok }}" placeholder="" />
                             </div>
                             <div class="form-group mb-1">
                                 <label for="exampleTextarea">Keterangan</label>
-                                <textarea class="form-control" name="keterangan" id="exampleTextarea" rows="3"></textarea>
+                                <textarea class="form-control" name="keterangan" id="exampleTextarea" rows="3">{{ $tiket->keterangan }}</textarea>
                             </div>
                         </div>
                         <div class="card-footer">
-                            <button type="submit" class="btn btn-primary mr-2">Tambahkan dan Simpan</button>
-                            <button type="reset" class="btn btn-secondary">Cancel</button>
+                            <button type="submit" class="btn btn-warning mr-2">Simpan dan Perbarui</button>
+                            <a href="tiket" class="btn btn-secondary">Batal</a>
                         </div>
                     </form>
                     <!--end::Form-->

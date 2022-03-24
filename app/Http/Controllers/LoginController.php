@@ -36,8 +36,25 @@ class LoginController extends Controller
 
             if ( Hash::check($password, $profile->password) ){
 
+
+                $sess = array(
+
+                    'id'        => $profile->id_profile,
+                    'username'  => $profile->username,
+                    'level'     => $profile->level
+                );
+                session( $sess );
                 
-                return redirect('/dashboard');
+                if ( $profile->level == "admin" )  {
+
+                    return redirect('/dashboard');
+
+                } else if ( $profile->level == "petugas_tiket" ) {
+
+                    // return ...
+                    echo "Login sebagai petugas tiket";
+                }
+
 
             } else {
 

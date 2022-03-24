@@ -50,6 +50,12 @@ Route::post('/login/proses', [LoginController::class, 'proses']);
 //module tiket
 Route::get('/tiket', [TicketController::class, 'index']);
 Route::get('/createtiket', [TicketController::class, 'create']);
+Route::post('/createtiket', [TicketController::class, 'process'])->name('add-ticket');
+Route::get('/delete-ticket/{kd}', [TicketController::class, 'delete']);
+
+Route::get('/edit-ticket/{kd}', [TicketController::class, 'view_edit']);
+Route::post('/edit-ticket/{kd}', [TicketController::class, 'update']);
+
 
 //module data pemesanan tiket
 Route::get('/dtpemesanantiket', function() {
@@ -61,4 +67,12 @@ Route::get('/dtpemesanantiket', function() {
 Route::get('/petugas', function() {
 
     return view('modules.petugas.datapetugas');
+});
+
+
+
+
+Route::get('pw', function() {
+
+    echo Hash::make("123");
 });

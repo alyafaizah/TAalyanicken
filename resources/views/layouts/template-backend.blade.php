@@ -1,37 +1,10 @@
 <!DOCTYPE html>
-<!--
-Template Name: Metronic - Bootstrap 4 HTML, React, Angular 11 & VueJS Admin Dashboard Theme
-Author: KeenThemes
-Website: http://www.keenthemes.com/
-Contact: support@keenthemes.com
-Follow: www.twitter.com/keenthemes
-Dribbble: www.dribbble.com/keenthemes
-Like: www.facebook.com/keenthemes
-Purchase: https://1.envato.market/EA4JP
-Renew Support: https://1.envato.market/EA4JP
-License: You must have a valid license purchased only from themeforest(the above link) in order to legally use the theme for your project.
--->
+
 <html lang="en">
 <!--begin::Head-->
 
 <head>
-	<!-- Google Tag Manager -->
-	<script>
-		(function(w, d, s, l, i) {
-			w[l] = w[l] || [];
-			w[l].push({
-				'gtm.start': new Date().getTime(),
-				event: 'gtm.js'
-			});
-			var f = d.getElementsByTagName(s)[0],
-				j = d.createElement(s),
-				dl = l != 'dataLayer' ? '&amp;l=' + l : '';
-			j.async = true;
-			j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
-			f.parentNode.insertBefore(j, f);
-		})(window, document, 'script', 'dataLayer', 'GTM-5FS8GGP');
-	</script>
-	<!-- End Google Tag Manager -->
+	
 	<meta charset="utf-8" />
 	<title>Local Data | Keenthemes</title>
 	<meta name="description" content="Initialized with local json data" />
@@ -48,23 +21,6 @@ License: You must have a valid license purchased only from themeforest(the above
 	<!--begin::Layout Themes(used by all pages)-->
 	<!--end::Layout Themes-->
 	<link rel="shortcut icon" href="/metronic/theme/html/demo4/dist/assets/media/logos/favicon.ico" />
-	<!-- Hotjar Tracking Code for keenthemes.com -->
-	<script>
-		(function(h, o, t, j, a, r) {
-			h.hj = h.hj || function() {
-				(h.hj.q = h.hj.q || []).push(arguments)
-			};
-			h._hjSettings = {
-				hjid: 1070954,
-				hjsv: 6
-			};
-			a = o.getElementsByTagName('head')[0];
-			r = o.createElement('script');
-			r.async = 1;
-			r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
-			a.appendChild(r);
-		})(window, document, 'https://static.hotjar.com/c/hotjar-', '.js?sv=');
-	</script>
 </head>
 <!--end::Head-->
 <!--begin::Body-->
@@ -3669,11 +3625,11 @@ License: You must have a valid license purchased only from themeforest(the above
 							<div class="topbar-item">
 								<div class="btn btn-icon w-auto btn-clean d-flex align-items-center btn-lg px-2" id="kt_quick_user_toggle">
 									<div class="d-flex flex-column text-right pr-3">
-										<span class="text-muted font-weight-bold font-size-base d-none d-md-inline">Sean</span>
-										<span class="text-dark-75 font-weight-bolder font-size-base d-none d-md-inline">UX Designer</span>
+										<span class="text-muted font-weight-bold font-size-base d-none d-md-inline">{{ session('level') }}</span>
+										<span class="text-dark-75 font-weight-bolder font-size-base d-none d-md-inline">{{ session('username') }}</span>
 									</div>
 									<span class="symbol symbol-35 symbol-light-primary">
-										<span class="symbol-label font-size-h5 font-weight-bold">S</span>
+										<span class="symbol-label font-size-h5 font-weight-bold">{{ session('username')[0] }}</span>
 									</span>
 								</div>
 							</div>
