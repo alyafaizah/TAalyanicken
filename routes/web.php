@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\TicketController;
+use App\Http\Controllers\PemesananController;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,12 +57,8 @@ Route::get('/delete-ticket/{kd}', [TicketController::class, 'delete']);
 Route::get('/edit-ticket/{kd}', [TicketController::class, 'view_edit']);
 Route::post('/edit-ticket/{kd}', [TicketController::class, 'update']);
 
-
 //module data pemesanan tiket
-Route::get('/dtpemesanantiket', function() {
-
-    return view('modules.pemesanantiket.dtpemesanantiket');
-});
+Route::get('/dtpemesanantiket', [PemesananController::class, 'index']);
 
 //module petugas
 Route::get('/petugas', function() {
