@@ -5,6 +5,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\PemesananController;
+use App\Http\Controllers\PetugasController;
 
 /*
 |--------------------------------------------------------------------------
@@ -64,10 +65,12 @@ Route::post('/edit-dtpemesanan/{kd}', [PemesananController::class, 'update']);
 Route::get('/delete-dtpemesanan/{kd}', [PemesananController::class, 'delete']);
 
 //module petugas
-Route::get('/petugas', function() {
-
-    return view('modules.petugas.datapetugas');
-});
+Route::get('/petugas', [PetugasController::class, 'index']);
+Route::get('/createpetugas', [PetugasController::class, 'create']);
+Route::post('/createpetugas', [PetugasController::class, 'process'])->name('add-petugas');
+Route::get('/delete-petugas/{kd}', [PetugasController::class, 'delete']);
+Route::get('/edit-petugas/{kd}', [PetugasController::class, 'view_edit']);
+Route::post('/edit-petugas/{kd}', [PetugasController::class, 'update']);
 
 
 
