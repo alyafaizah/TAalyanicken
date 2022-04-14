@@ -59,6 +59,9 @@ Route::post('/edit-ticket/{kd}', [TicketController::class, 'update']);
 
 //module data pemesanan tiket
 Route::get('/dtpemesanantiket', [PemesananController::class, 'index']);
+Route::get('/edit-dtpemesanan/{kd}', [PemesananController::class, 'view_edit']);
+Route::post('/edit-dtpemesanan/{kd}', [PemesananController::class, 'update']);
+Route::get('/delete-dtpemesanan/{kd}', [PemesananController::class, 'delete']);
 
 //module petugas
 Route::get('/petugas', function() {

@@ -138,7 +138,7 @@
                                     </th>
                                     <th data-field="Country" class="datatable-cell datatable-cell-sort">
                                         <span style="width: 108px;text-align:center;">
-                                            Id Transaksi
+                                            Kode Tiket
                                         </span>
                                     </th>
                                     <th data-field="CompanyName" class="datatable-cell datatable-cell-sort">
@@ -181,7 +181,7 @@
                                         </span>
                                     </td>
                                     <td data-field="Country" aria-label="Philippines" class="datatable-cell"><span style="width: 108px;text-align:center;">
-                                            1931710115
+                                            {{ $p->kd_tiket }}
                                         </span>
                                     </td>
                                     <td data-field="ShipDate" aria-label="1/29/2017" class="datatable-cell">
@@ -203,7 +203,7 @@
                                     </td>
                                     <td data-field="Actions" data-autohide-disabled="false" aria-label="null" class="datatable-cell">
                                         <span style="overflow: visible; position: relative; width: 125px;">
-                                            <a href="javascript:;" class="btn btn-sm btn-clean btn-icon mr-2" title="Edit details">
+                                            <a href="edit-dtpemesanan/{{ $p->kd_order }}" class="btn btn-sm btn-clean btn-icon mr-2" title="Edit details">
                                                 <span class="svg-icon svg-icon-md">
                                                     <!-- edit -->
                                                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -215,7 +215,7 @@
                                                         </g>
 
                                                         <!-- delete -->
-                                                    </svg> </span> </a> <a href="delete-dtpemesanan/{{ $p->kd_order }}" onclick="return confirm('Apakah anda yakin ingin menghapus tiket dengan kode {{ $p->kd_order }} ? ')"class="btn btn-sm btn-clean btn-icon" title="Delete"> <span class="svg-icon svg-icon-md"> <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                    </svg> </span> </a> <a href="delete-dtpemesanan/{{ $p->kd_order }}" onclick="return confirm('Apakah anda yakin ingin menghapus tiket dengan kode {{ $p->kd_order }} ? ')" class="btn btn-sm btn-clean btn-icon" title="Delete"> <span class="svg-icon svg-icon-md"> <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                                         <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                                             <rect x="0" y="0" width="24" height="24"></rect>
                                                             <path d="M6,8 L6,20.5 C6,21.3284271 6.67157288,22 7.5,22 L16.5,22 C17.3284271,22 18,21.3284271 18,20.5 L18,8 L6,8 Z" fill="#000000" fill-rule="nonzero"></path>

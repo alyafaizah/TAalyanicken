@@ -10,12 +10,12 @@ class PemesananTiket extends Model
     use HasFactory;
 
     protected $table = "pemesanan";
-    protected $fillable = ["id_pemesanan", "kd_order","kd_tiket","id_profile", "tgl_kunjungan", "status"];
+    protected $fillable = ["kd_order","kd_tiket","id_profile", "tgl_kunjungan", "status"];
 
     public $timestamps = true;
     protected $primaryKey = 'id_pemesanan';
 
-    public function identitas(){
-        return $this->belongsTo(Identitas::class);
-    }
+    // public function identitas(){
+    //     return $this->belongsTo(Identitas::class);
+    // }
 }
