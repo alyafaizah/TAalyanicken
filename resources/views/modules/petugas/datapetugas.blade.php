@@ -1,5 +1,11 @@
 @extends('layouts.template-backend-sidebar')
 <!--begin::Content-->
+
+@section('main-content')
+
+
+<div class="d-flex flex-column-fluid"  id="kt_content">
+
 <!--begin::Container-->
 <div class="container">
     <!--begin::Notice-->
@@ -65,17 +71,33 @@
                         <th>ID</th>
                         <th>Username Petugas</th>
                         <th>Email</th>
-                        <th>Password</th>
+                        <th>Status Pegawai</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ( $petugas AS $p )
+                    @foreach ( $petugas AS $e => $p )
                     <tr>
-                        <td>{{ $p->id_profile }}</td>
+                        <td>{{ $e + 1 }}</td>
                         <td>{{ $p->username }}</td>
                         <td>{{ $p->email }}</td>
-                        <td>{{ $p->password }}</td>
+                        
+                        <td>
+                            @php 
+
+                                if ( $p->status_akun == "aktif" ) {
+
+                                    $color = "light-success";
+                                    $text = "Aktif";
+                                } else {
+
+                                    $color = "light-danger";
+                                    $text = "Nonaktif";
+                                }
+
+                            @endphp
+                            
+                            <span class="label label-{{ $color }} label-pill label-inline mr-2">{{ $text }}</span></td>
                         <td data-field="Actions" data-autohide-disabled="false" aria-label="null" class="datatable-cell"><span style="overflow: visible; position: relative; width: 125px;">
                                 <div class="dropdown dropdown-inline"></div>
                                 <a href="edit-petugas/{{ $p->id_profile }}" class="btn btn-sm btn-clean btn-icon mr-2" title="Edit details">
@@ -96,7 +118,8 @@
                                     </span>
                                 </a>
 
-                                <a href="delete-petugas/{{ $p->id_profile }}" onclick="return confirm('Apakah anda yakin ingin menghapus tiket dengan kode {{ $p->id_profile }} ? ')" class="btn btn-sm btn-clean btn-icon" title="Delete">
+
+                                <a href="javascript:;" data-toggle="modal" data-target="#hapus-{{ $p->id_profile }}" class="btn btn-sm btn-clean btn-icon">
                                     <span class="svg-icon svg-icon-md"> <svg xmlns="http://www.w3.org/2000/svg"
                                             xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"
                                             viewBox="0 0 24 24" version="1.1">
@@ -114,6 +137,33 @@
                                         </svg>
                                     </span>
                                 </a>
+
+                                    <!-- Modal-->
+                                    <div class="modal fade" id="hapus-{{ $p->id_profile }}" data-backdrop="static" tabindex="-1"
+                                        role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
+                                        <div class="modal-dialog modal-sm" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Hapus Petugas</h5>
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                        <i aria-hidden="true" class="ki ki-close"></i>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    Apakah anda yakin ingin menghapus data petugas 
+                                                    <h4>{{ $p->username }}</h4>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-light-danger font-weight-bold"
+                                                        data-dismiss="modal">Close</button>
+                                                    <a href="delete-petugas/{{ $p->id_profile }}" class="btn btn-danger font-weight-bold">Hapus Petugas</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                             
                             </span>
                         </td>
                     </tr>
@@ -126,4 +176,9 @@
     <!--end::Card-->
 </div>
 <!--end::Container-->
+
+
+
+</div>
+@endsection
 <!--end::Content-->

@@ -5,15 +5,17 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Petugas;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class PetugasController extends Controller
 {
     function index() //halaman tampil
     {
+        $tb_profile = DB::table('profile')->where('level', "petugas_tiket")->get();
 
         $data = array(
 
-            'petugas' => DB::table('profile')->get()
+            'petugas' => $tb_profile
         );
 
         return view('modules.petugas.datapetugas', $data);
@@ -31,11 +33,10 @@ class PetugasController extends Controller
         $ambilPassword  = $request->input('password'); 
 
         $data = array(
-
-            'id_profile'    => strtoupper(uniqid()),
             'username'      => $ambilUsername,
+            'password'      => Hash::make($ambilPassword),
+            'level' => "petugas_tiket",
             'email'         => $ambilEmail,
-            'password'      => $ambilPassword,
         );
 
         // insert
@@ -80,21 +81,20 @@ class PetugasController extends Controller
     // function proses update
     function update( Request $request, $kd ) {
 
-        $petugas = Petugas::where('id_profilet', $kd);
+        $petugas = Petugas::where('id_profile', $kd);
         
         if ( $petugas ) {
 
             $ambilUsername  = $request->input('username'); 
             $ambilEmail     = $request->input('email'); 
-            $ambilPassword  = $request->input('password'); 
+            $ambilStatus  = $request->input('status_akun'); 
             
 
             $data = array(
 
-                'id_profile'    => strtoupper(uniqid()),
                 'username'      => $ambilUsername,
                 'email'         => $ambilEmail,
-                'password'      => $ambilPassword,
+                'status_akun'      => $ambilStatus,
             );
 
 

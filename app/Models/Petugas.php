@@ -10,5 +10,8 @@ class Petugas extends Model
     use HasFactory;
 
     protected $table = "profile";
-    protected $fillable = ["id_profile", "username", "password", "email"];
+    protected $fillable = ["username", "password", "level", "email"];
+
+    public $timestamps = false;
+    // public $timestamps = [ "created_at", "updated_at" ];
 }

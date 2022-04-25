@@ -25,17 +25,17 @@
                             <div class="form-group">
                                 <label for="exampleSelect1">Username Petugas
                                     <span class="text-danger">*</span></label>
-                                    <input type="text" name="jenis" class="form-control" placeholder="" />
+                                    <input type="text" name="username" class="form-control" placeholder="" />
                             </div>
                             <div class="form-group">
                                 <label>Email
                                     <span class="text-danger">*</span></label>
-                                <input type="number" name="harga" class="form-control" placeholder="" />
+                                <input type="email" name="email" class="form-control" placeholder="" />
                             </div>
                             <div class="form-group">
                                 <label>Password
                                     <span class="text-danger">*</span></label>
-                                <input type="number" name="stok" class="form-control" placeholder="" />
+                                <input type="password" name="password" class="form-control" placeholder="" />
                             </div>
                         </div>
                         <div class="card-footer">

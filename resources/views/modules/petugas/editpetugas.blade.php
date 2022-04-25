@@ -1,4 +1,6 @@
 @extends('layouts.template-backend-sidebar')
+
+@section('main-content')
 <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
     <!--begin::Subheader-->
     <div class="subheader py-5 py-lg-10 gutter-b subheader-transparent" id="kt_subheader" style="background-color: #663259; background-position: right bottom; background-size: auto 100%; background-repeat: no-repeat; background-image: url(/metronic/theme/html/demo4/dist/assets/media/svg/patterns/taieri.svg)">
@@ -33,9 +35,21 @@
                                 <input type="text" name="email" class="form-control" value="{{ $petugas->email }}" placeholder="" />
                             </div>
                             <div class="form-group">
-                                <label>Password
-                                    <span class="text-danger">*</span></label>
-                                <input type="text" name="password" class="form-control" value="{{ $petugas->password }}" placeholder="" />
+                                <label>Status Akun</label>
+                                <div class="radio-inline">
+                                    <label class="radio">
+                                        <input type="radio" name="status_akun" value="aktif" @php if ( $petugas->status_akun == "aktif" ) echo 'checked'  @endphp />
+                                        <span></span>
+                                        Aktif
+                                    </label>
+                                    <label class="radio">
+                                        <input type="radio" name="status_akun" value="nonaktif" @php if ( $petugas->status_akun == "nonaktif" ) echo 'checked'  @endphp/>
+                                        <span></span>
+                                        Nonaktif
+                                    </label>
+                        
+                                </div>
+                                <span class="form-text text-muted">Status akun pegawai</span>
                             </div>
                         </div>
                         <div class="card-footer">
@@ -53,3 +67,4 @@
     </div>
     <!--end::Container-->
 </div>
+@endsection
