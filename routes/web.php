@@ -42,7 +42,6 @@ Route::get('/pengujian', function() {
 
 
 
-
 // module login
 Route::get('/login', [LoginController::class, 'index']);
 Route::post('/login/proses', [LoginController::class, 'proses']);
@@ -73,6 +72,10 @@ Route::get('/edit-petugas/{kd}', [PetugasController::class, 'view_edit']);
 Route::post('/edit-petugas/{kd}', [PetugasController::class, 'update']);
 
 
+Route::get('/riwayat', function() {
+
+    return view('modules.riwayat.riwayattransaksi');
+});
 
 
 Route::get('pw', function() {

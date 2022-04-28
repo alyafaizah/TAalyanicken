@@ -80,7 +80,7 @@ class PetugasController extends Controller
     // function proses update
     function update( Request $request, $kd ) {
 
-        $petugas = Petugas::where('id_profilet', $kd);
+        $petugas = Petugas::where('id_profile', $kd);
         
         if ( $petugas ) {
 
