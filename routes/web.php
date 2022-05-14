@@ -63,6 +63,21 @@ Route::get('/edit-dtpemesanan/{kd}', [PemesananController::class, 'view_edit']);
 Route::post('/edit-dtpemesanan/{kd}', [PemesananController::class, 'update']);
 Route::get('/delete-dtpemesanan/{kd}', [PemesananController::class, 'delete']);
 
+
+
+
+
+/**
+ * 
+ *  Pemesanan Baru 
+ * 
+ */
+
+Route::get('petugas/order', [PemesananController::class, 'form_orderoffline']);
+Route::get('petugas/payment', [PemesananController::class, 'form_orderoffline_pembayaran']);
+
+
+
 //module petugas
 Route::get('/petugas', [PetugasController::class, 'index']);
 Route::get('/createpetugas', [PetugasController::class, 'create']);

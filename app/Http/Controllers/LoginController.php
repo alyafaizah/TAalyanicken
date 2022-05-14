@@ -52,7 +52,7 @@ class LoginController extends Controller
                 } else if ( $profile->level == "petugas_tiket" ) {
 
                     // return ...
-                    echo "Login sebagai petugas tiket";
+                    return redirect('/dashboard');
                 }
 
 

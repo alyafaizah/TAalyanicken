@@ -75,4 +75,33 @@ class PemesananController extends Controller
             return redirect('dtpemesanantiket')->with('pesan', 'Hapus gagal, Kode Order ' . $kd . ' tidak ditemukan');
         }
     }
+
+
+
+
+
+
+
+
+
+
+
+
+    /**
+     * 
+     *  Pemesanan Tiket 
+     */
+    
+    // view form order
+    public function form_orderoffline() {
+
+        return view('modules.orderoffline.view_form_order');
+    }
+
+
+
+    public function form_orderoffline_pembayaran() {
+
+        return view('modules.orderoffline.view_form_orderpembayaran');
+    }
 }
