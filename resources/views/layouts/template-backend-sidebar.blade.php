@@ -6,11 +6,7 @@
 <div class="aside aside-left d-flex flex-column" id="kt_aside">
 	<!--begin::Brand-->
 	<div class="aside-brand d-flex flex-column align-items-center flex-column-auto py-4 py-lg-8">
-		<!--begin::Logo-->
-		<a href="index.html">
-			<img alt="Logo" src="assets/media/logos/logo-letter-9.png" class="max-h-30px" />
-		</a>
-		<!--end::Logo-->
+
 	</div>
 	<!--end::Brand-->
 	<!--begin::Nav Wrapper-->
@@ -50,7 +46,7 @@
 			<!--end::Item-->
 			<!--begin::Item-->
 			<li class="nav-item mb-5" data-toggle="tooltip" data-placement="right" data-container="body" data-boundary="window" title="Data pemesanan tiket">
-				<a href="/dtpemesanantiket" class="nav-link btn btn-icon btn-icon-white btn-lg" data-toggle="tab" data-target="#kt_aside_tab_4" role="tab">
+				<a href="/dtpemesanantiket" class="nav-link btn btn-icon btn-icon-white btn-lg" role="tab">
 					<i class="icon-l fas fa-fax"></i>
 				</a>
 			</li>

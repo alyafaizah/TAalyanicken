@@ -15,8 +15,6 @@ class LoginController extends Controller
         return view('modules.login.login');
     }
 
-
-
     // proses pencocokan akun 
     function proses( Request $request ) {
 
