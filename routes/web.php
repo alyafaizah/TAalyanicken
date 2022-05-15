@@ -25,6 +25,8 @@ Route::get('/', function () {
 Route::get('/dashboard',[DashboardController::class, 'dashboard']);
 Route::get('/ujicoba/{nama}', [DashboardController::class, 'dinamisroute']);
 
+Route::get('/dashboardpengunjung',[DashboardController::class, 'dashboardpengunjung']);
+
 
 Route::get('/template', function() {
 
