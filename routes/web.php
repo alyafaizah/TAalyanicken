@@ -78,6 +78,12 @@ Route::get('/checkout', function() {
     return view('modules.checkout.checkout');
 });
 
+Route::get('/struk', function() {
+
+    return view('modules.checkout.struk');
+});
+
+
 //module petugas
 Route::get('/petugas', [PetugasController::class, 'index']);
 Route::get('/createpetugas', [PetugasController::class, 'create']);

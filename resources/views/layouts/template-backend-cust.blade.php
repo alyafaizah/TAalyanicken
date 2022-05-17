@@ -37,8 +37,8 @@ License: You must have a valid license purchased only from themeforest(the above
     <link rel="shortcut icon" href="{{ asset('/demo7/distpengunjung/assets/media/logos/favicon.ico') }}" />
 </head>
 <!--end::Head-->
-<!--begin::Body-->
 
+<!--begin::Body-->
 <body id="kt_body" class="header-fixed header-mobile-fixed header-bottom-enabled page-loading">
     <!--begin::Main-->
     <!--begin::Header Mobile-->
