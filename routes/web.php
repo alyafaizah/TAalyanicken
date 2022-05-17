@@ -33,7 +33,10 @@ Route::get('/template', function() {
     return view('layouts.template-backend');
 });
 
+Route::get('/checkout', function() {
 
+    return view('modules.checkout.checkout');
+});
 
 Route::get('/pengujian', function() {
 
