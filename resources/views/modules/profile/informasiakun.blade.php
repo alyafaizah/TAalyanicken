@@ -209,7 +209,7 @@
 										<div class="spinner spinner-sm spinner-success spinner-right">
 											<input class="form-control form-control-lg form-control-solid" type="text" value="alya@gmail.com" />
 										</div>
-										<span class="form-text text-muted">Email tidak akan ditampilkan secara publik.
+										<span class="form-text text-muted">Email tidak akan ditampilkan secara publik .
 									</div>
 								</div>
 								<!--begin::Form Group-->
