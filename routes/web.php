@@ -6,6 +6,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\PemesananController;
 use App\Http\Controllers\PetugasController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,8 +26,6 @@ Route::get('/', function () {
 Route::get('/dashboard',[DashboardController::class, 'dashboard']);
 Route::get('/ujicoba/{nama}', [DashboardController::class, 'dinamisroute']);
 
-Route::get('/dashboardpengunjung',[DashboardController::class, 'dashboardpengunjung']);
-
 
 Route::get('/template', function() {
 
@@ -39,9 +38,6 @@ Route::get('/pengujian', function() {
 
     return view('modules.dashboard.index');
 });
-
-
-
 
 
 // module login
@@ -93,6 +89,16 @@ Route::get('/riwayat', function() {
 
     return view('modules.riwayat.riwayattransaksi');
 });
+
+/**
+ * 
+ *  Pengunjung
+ * 
+ */
+// profile
+Route::get('/dashboardprofile', [ProfileController::class, 'informasipribadi']);
+Route::get('/informasiakun', [ProfileController::class, 'informasiakun']);
+Route::get('/ubahkatasandi', [ProfileController::class, 'ubahkatasandi']);
 
 
 Route::get('pw', function() {

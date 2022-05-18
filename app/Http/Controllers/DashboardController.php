@@ -11,16 +11,11 @@ class DashboardController extends Controller
         return view('modules.dashboard.index');
     }
 
-    public function dashboardpengunjung()
+
+    function dinamisroute($name)
     {
-        return view('modules.dashboard.indexpengunjung');
-    }
 
 
-
-    function dinamisroute( $name ) {
-
-
-        echo "<h1>Hello ". $name ."</h1>";
+        echo "<h1>Hello " . $name . "</h1>";
     }
 }
