@@ -7,6 +7,8 @@ use App\Http\Controllers\TicketController;
 use App\Http\Controllers\PemesananController;
 use App\Http\Controllers\PetugasController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\RiwayatController;
 
 /*
 |--------------------------------------------------------------------------
@@ -101,6 +103,9 @@ Route::get('/ubahkatasandi', [ProfileController::class, 'ubahkatasandi']);
 Route::get('/checkout', [CheckoutController::class, 'checkout']);
 Route::get('/struk', [CheckoutController::class, 'struk']);
 
+//riwayat 
+Route::get('/riwayattransaksi', [RiwayatController::class, 'riwayattransaksi']);
+Route::get('/riwayatpembayaran', [RiwayatController::class, 'riwayatpembayaran']);
 
 Route::get('pw', function() {
 
