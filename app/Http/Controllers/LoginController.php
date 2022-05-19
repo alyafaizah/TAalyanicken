@@ -75,14 +75,17 @@ class LoginController extends Controller
             'password' => 'required'
         ]);
 
-        $user = DB::table('profile')::create([
-            // 'name' => trim($request->input('name')),
-            'email' => strtolower($request->input('email')),
-            'password' => bcrypt($request->input('password')),
-        ]);
+        $data = array(
+
+            'email'     => strtolower($request->input('email')),
+            'password'  => bcrypt($request->input('password')),
+            'level'     => "pengunjung"
+        );
+
+        $user = DB::table('profile')->insert($data);
 
         session()->flash('message', 'Akun Anda telah dibuat');
 
-        return redirect()->route('login');
+        return redirect('/login');
     }
 }

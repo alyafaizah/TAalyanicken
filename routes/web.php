@@ -95,7 +95,7 @@ Route::get('/riwayat', function() {
  */
 
 //regis
-Route::get('/register/proses', [LoginController::class, 'prosesregis']);
+Route::post('/register/proses', [LoginController::class, 'prosesregis']);
 
 // profile
 Route::get('/dashboardprofile', [ProfileController::class, 'informasipribadi']);
