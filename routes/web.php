@@ -94,9 +94,14 @@ Route::get('/riwayat', function() {
 
 /**
  * 
+ * 
  *  Pengunjung
  * 
  */
+
+//regis
+Route::get('/register/proses', [LoginController::class, 'prosesregis']);
+
 // profile
 Route::get('/dashboardprofile', [ProfileController::class, 'informasipribadi']);
 Route::get('/informasiakun', [ProfileController::class, 'informasiakun']);
