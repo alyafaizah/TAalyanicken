@@ -83,7 +83,7 @@ License: You must have a valid license purchased only from themeforest(the above
 								<a href="javascript:;" id="kt_login_forgot" class="text-white font-weight-bold">Lupa Kata Sandi ?</a>
 							</div>
 							<div class="form-group text-center mt-10">
-								<button id="kt_login_signin_submit" class="btn btn-pill btn-outline-white font-weight-bold opacity-90 px-15 py-3">Sign In</button>
+								<button type="submit" class="btn btn-pill btn-outline-white font-weight-bold opacity-90 px-15 py-3">Sign In</button>
 							</div>
 						</form>
 						<div class="mt-10">

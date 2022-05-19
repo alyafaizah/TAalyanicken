@@ -54,7 +54,7 @@ class LoginController extends Controller
                     return redirect('/dashboard');
                 } else if ($profile->level == "pengunjung") {
 
-                    return redirect('/dashboardprofile');
+                    return redirect('/informasipribadi');
                 }
             } else {
 
