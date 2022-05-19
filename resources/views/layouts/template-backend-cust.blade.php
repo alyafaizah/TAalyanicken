@@ -18,6 +18,7 @@ License: You must have a valid license purchased only from themeforest(the above
     <base href="">
     <meta charset="utf-8" />
     <title>Metronic Live preview | Keenthemes</title>
+    <meta name="description" content="Bootstrap datepicker examples" />
     <meta name="description" content="Updates and statistics" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <link rel="canonical" href="https://keenthemes.com/metronic" />
@@ -1745,6 +1746,7 @@ License: You must have a valid license purchased only from themeforest(the above
     <!--end::Page Vendors-->
     <!--begin::Page Scripts(used by this page)-->
     <script src="{{ asset('/demo7/distpengunjung/assets/js/pages/widgets.js') }}"></script>
+    <script src="{{ asset('/demo7/distpengunjung/assets/js/pages/crud/forms/widgets/bootstrap-datepicker.js?v=7.2.9') }}"></script>
     <!--end::Page Scripts-->
 </body>
 <!--end::Body-->
