@@ -1,8 +1,31 @@
 @extends('layouts.template-backend-navbar-cust')
 
+<!--begin::Head-->
+<head>
+    <base href="../../../">
+    <meta charset="utf-8" />
+    <title>Pemesanan | Keenthemes</title>
+    <meta name="description" content="ECommerceCheckout" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link rel="canonical" href="https://keenthemes.com/metronic" />
+    <!--begin::Fonts-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
+    <!--end::Fonts-->
+    <!--begin::Page Custom Styles(used by this page)-->
+    <link href="assets/css/pages/wizard/wizard-4.css" rel="stylesheet" type="text/css" />
+    <!--end::Page Custom Styles-->
+    <!--begin::Global Theme Styles(used by all pages)-->
+    <link href="assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
+    <link href="assets/plugins/custom/prismjs/prismjs.bundle.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
+    <!--end::Global Theme Styles-->
+    <!--begin::Layout Themes(used by all pages)-->
+    <!--end::Layout Themes-->
+    <link rel="shortcut icon" href="assets/media/logos/favicon.ico" />
+</head>
 <!--end::Head-->
-<!--begin::Body-->
 
+<!--begin::Body-->
 <body id="kt_body" class="header-fixed header-mobile-fixed header-bottom-enabled page-loading">
     <!--begin::Main-->
 
@@ -19,11 +42,6 @@
                         <div class="container">
                             <!--begin::Page Layout-->
                             <div class="d-flex flex-row">
-                                <!--begin::Aside-->
-                                <div class="flex-column offcanvas-mobile w-300px w-xl-325px" id="kt_profile_aside">
-
-                                </div>
-                                <!--end::Aside-->
                                 <!--begin::Layout-->
                                 <div class="flex-row-fluid ml-lg-8">
                                     <!--begin::Section-->
@@ -41,8 +59,8 @@
                                                             <div class="wizard-wrapper">
                                                                 <div class="wizard-number">1</div>
                                                                 <div class="wizard-label">
-                                                                    <div class="wizard-title">Delivery Address</div>
-                                                                    <div class="wizard-desc">Setup Your Address</div>
+                                                                    <div class="wizard-title">Pemesanan Tiket</div>
+                                                                    <div class="wizard-desc">emmm</div>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -52,7 +70,7 @@
                                                             <div class="wizard-wrapper">
                                                                 <div class="wizard-number">2</div>
                                                                 <div class="wizard-label">
-                                                                    <div class="wizard-title">Payment</div>
+                                                                    <div class="wizard-title">Rincian Pemesanan Tiket</div>
                                                                     <div class="wizard-desc">Payment Options</div>
                                                                 </div>
                                                             </div>
@@ -63,7 +81,7 @@
                                                             <div class="wizard-wrapper">
                                                                 <div class="wizard-number">3</div>
                                                                 <div class="wizard-label">
-                                                                    <div class="wizard-title">Purchase</div>
+                                                                    <div class="wizard-title">Pembayaran</div>
                                                                     <div class="wizard-desc">Review and Submit</div>
                                                                 </div>
                                                             </div>
@@ -83,8 +101,8 @@
                                                                     <!--begin: Wizard Step 1-->
                                                                     <div class="pb-5" data-wizard-type="step-content"
                                                                         data-wizard-state="current">
-                                                                        <h4 class="mb-10 font-weight-bold text-dark">
-                                                                            Pemesanan Tiket</h4>
+                                                                        <h2 class="mb-10 font-weight-bold text-dark">
+                                                                            Pemesanan Tiket</h2>
                                                                         <!--begin::Input-->
                                                                         <div class="row">
                                                                             <div class="col-xl-6">
@@ -144,13 +162,13 @@
                                                                     <!--begin: Wizard Step 2-->
                                                                     <div class="pb-5" data-wizard-type="step-content">
                                                                         <!--begin::Section-->
-                                                                        <h3 class="mb-10 font-weight-bold text-dark">
-                                                                            Rincian Pemesanan Tiket</h3>
+                                                                        <h2 class="mb-10 font-weight-bold text-dark">
+                                                                            Rincian Pemesanan Tiket</h2>
                                                                         <h6 class="font-weight-bolder">Kode Order:</h6>
                                                                         <div class="text-dark-50 line-height-lg mb-7">
                                                                             <div>#0huhftvggggg87</div>
                                                                         </div>
-                                                                        
+
                                                                         <h6 class="font-weight-bolder">Tanggal
                                                                             Berkunjung:</h6>
                                                                         <div class="text-dark-50 line-height-lg">
@@ -206,7 +224,8 @@
                                                                         <!--end::Section-->
                                                                         <!--begin::Section-->
                                                                         <div class="text-dark-50 line-height-lg">
-                                                                            <div>Klik lanjutkan untuk melanjutkan pembayaran</div>
+                                                                            <div>Klik lanjutkan untuk melanjutkan
+                                                                                pembayaran</div>
                                                                         </div>
                                                                         <!--end::Section-->
                                                                     </div>
@@ -215,7 +234,7 @@
                                                                     <!--begin: Wizard Step 3-->
                                                                     <div class="pb-5" data-wizard-type="step-content">
                                                                         <h4 class="mb-10 font-weight-bold text-dark">
-                                                                            Enter your Payment Details</h4>
+                                                                            Pembayaran</h4>
                                                                         <div class="row">
                                                                             <div class="col-xl-6">
                                                                                 <!--begin::Input-->

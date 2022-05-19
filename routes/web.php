@@ -72,11 +72,6 @@ Route::get('/delete-dtpemesanan/{kd}', [PemesananController::class, 'delete']);
 Route::get('petugas/order', [PemesananController::class, 'form_orderoffline']);
 Route::get('petugas/payment', [PemesananController::class, 'form_orderoffline_pembayaran']);
 
-//purchase customer
-Route::get('/checkout', function() {
-
-    return view('modules.checkout.checkout');
-});
 
 //module petugas
 Route::get('/petugas', [PetugasController::class, 'index']);
@@ -106,6 +101,10 @@ Route::get('/register/proses', [LoginController::class, 'prosesregis']);
 Route::get('/dashboardprofile', [ProfileController::class, 'informasipribadi']);
 Route::get('/informasiakun', [ProfileController::class, 'informasiakun']);
 Route::get('/ubahkatasandi', [ProfileController::class, 'ubahkatasandi']);
+
+// purchase pengunjung
+Route::get('/checkout', [CheckoutController::class, 'checkout']);
+Route::get('/struk', [CheckoutController::class, 'struk']);
 
 
 Route::get('pw', function() {
