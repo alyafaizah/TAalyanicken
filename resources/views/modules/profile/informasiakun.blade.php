@@ -100,7 +100,7 @@
 									</a>
 								</div>
 								<div class="navi-item mb-2">
-									<a href="/dashboardprofile" class="navi-link py-4">
+									<a href="/informasipribadi" class="navi-link py-4">
 										<span class="navi-icon mr-2">
 											<span class="svg-icon">
 												<!--begin::Svg Icon | path:/metronic/theme/html/demo7/dist/assets/media/svg/icons/General/User.svg-->

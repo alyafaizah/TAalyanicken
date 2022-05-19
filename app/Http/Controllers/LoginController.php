@@ -52,6 +52,9 @@ class LoginController extends Controller
 
                     // return ...
                     return redirect('/dashboard');
+                } else if ($profile->level == "pengunjung") {
+
+                    return redirect('/dashboardprofile');
                 }
             } else {
 
@@ -67,7 +70,7 @@ class LoginController extends Controller
     }
 
     //proses sign up
-    public function prosesregis (Request $request)
+    public function prosesregis(Request $request)
     {
         $request->validate([
             // 'name' => 'required',

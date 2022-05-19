@@ -8,7 +8,7 @@ class ProfileController extends Controller
 {
     public function informasipribadi()
     {
-        return view('modules.profile.dashboardprofile');
+        return view('modules.profile.informasipribadi');
     }
 
     public function informasiakun()
