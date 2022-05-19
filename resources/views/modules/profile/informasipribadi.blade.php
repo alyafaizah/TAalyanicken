@@ -16,23 +16,23 @@
 				<!--end::Mobile Toggle-->
 				<!--begin::Page Heading-->
 				<div class="d-flex align-items-baseline flex-wrap mr-5">
-                    <!--begin::Page Title-->
-                    <h5 class="text-dark font-weight-bold my-1 mr-5">Profile</h5>
-                    <!--end::Page Title-->
-                    <!--begin::Breadcrumb-->
-                    <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
-                        <li class="breadcrumb-item text-muted">
-                            <a href="" class="text-muted">Apps</a>
-                        </li>
-                        <li class="breadcrumb-item text-muted">
-                            <a href="" class="text-muted">Profile</a>
-                        </li>
-                        <li class="breadcrumb-item text-muted">
-                            <a href="" class="text-muted">Informasi Pribadi</a>
-                        </li>
-                    </ul>
-                    <!--end::Breadcrumb-->
-                </div>
+					<!--begin::Page Title-->
+					<h5 class="text-dark font-weight-bold my-1 mr-5">Profile</h5>
+					<!--end::Page Title-->
+					<!--begin::Breadcrumb-->
+					<ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
+						<li class="breadcrumb-item text-muted">
+							<a href="" class="text-muted">Apps</a>
+						</li>
+						<li class="breadcrumb-item text-muted">
+							<a href="" class="text-muted">Profile</a>
+						</li>
+						<li class="breadcrumb-item text-muted">
+							<a href="" class="text-muted">Informasi Pribadi</a>
+						</li>
+					</ul>
+					<!--end::Breadcrumb-->
+				</div>
 				<!--end::Page Heading-->
 			</div>
 			<!--end::Info-->
@@ -99,7 +99,7 @@
 									</a>
 								</div>
 								<div class="navi-item mb-2">
-									<a href="/dashboardprofile" class="navi-link py-4 active">
+									<a href="/informasipribadi" class="navi-link py-4 active">
 										<span class="navi-icon mr-2">
 											<span class="svg-icon">
 												<!--begin::Svg Icon | path:/metronic/theme/html/demo7/dist/assets/media/svg/icons/General/User.svg-->
@@ -208,15 +208,17 @@
 									</div>
 								</div>
 								<div class="form-group row">
-									<label class="col-xl-3 col-lg-3 col-form-label">Nama Depan</label>
+									<label class="col-xl-3 col-lg-3 col-form-label">Nama Lengkap</label>
 									<div class="col-lg-9 col-xl-6">
-										<input class="form-control form-control-lg form-control-solid" type="text" value="Alya" />
+										<input class="form-control form-control-lg form-control-solid" type="text" value="alya faizah" name="nama_lengkap" />
 									</div>
 								</div>
 								<div class="form-group row">
-									<label class="col-xl-3 col-lg-3 col-form-label">Nama Belakang</label>
+									<label class="col-xl-3 col-lg-3 col-form-label">Email</label>
 									<div class="col-lg-9 col-xl-6">
-										<input class="form-control form-control-lg form-control-solid" type="text" value="Faizah" />
+										<div class="input-group input-group-lg input-group-solid">
+											<input type="text" class="form-control form-control-lg form-control-solid" value="alya@gmail.com" placeholder="Email" name="email" />
+										</div>
 									</div>
 								</div>
 								<div class="form-group row">
@@ -228,22 +230,38 @@
 													<i class="la la-phone"></i>
 												</span>
 											</div>
-											<input type="text" class="form-control form-control-lg form-control-solid" value="0895618999201" placeholder="Phone" />
+											<input type="text" class="form-control form-control-lg form-control-solid" value="0895618999201" name="telepon" />
 										</div>
-										<span class="form-text text-muted">Kami tidak akan pernah membagikan informasi Anda kepada orang lain.</span>
 									</div>
 								</div>
 								<div class="form-group row">
-									<label class="col-xl-3 col-lg-3 col-form-label">Email</label>
+									<label class="col-xl-3 col-lg-3 col-form-label">Alamat</label>
 									<div class="col-lg-9 col-xl-6">
 										<div class="input-group input-group-lg input-group-solid">
-											<div class="input-group-prepend">
+											<input type="text" class="form-control form-control-lg form-control-solid" value="Malang" name="alamat" />
+										</div>
+									</div>
+								</div>
+								<div class="form-group row">
+									<label class="col-xl-3 col-lg-3 col-form-label">Tempat Lahir</label>
+									<div class="col-lg-9 col-xl-6">
+										<div class="input-group input-group-lg input-group-solid">
+											<input type="text" class="form-control form-control-lg form-control-solid" value="Surabaya" name="tempat_lahir" />
+										</div>
+									</div>
+								</div>
+								<div class="form-group row">
+									<label class="col-xl-3 col-lg-3 col-form-label">Tanggal Lahir</label>
+									<div class="col-lg-9 col-xl-6">
+										<div class="input-group date input-group-lg input-group-solid">
+											<input type="text" class="form-control" id="kt_datepicker_2" readonly="readonly" placeholder="Pilih Tanggal" />
+											<div class="input-group-append">
 												<span class="input-group-text">
-													<i class="la la-at"></i>
+													<i class="la la-calendar-check-o"></i>
 												</span>
 											</div>
-											<input type="text" class="form-control form-control-lg form-control-solid" value="alya@gmail.com" placeholder="Email" />
 										</div>
+										<span class="form-text text-muted">Kami tidak akan pernah membagikan informasi Anda kepada orang lain.</span>
 									</div>
 								</div>
 							</div>

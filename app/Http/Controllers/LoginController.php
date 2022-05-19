@@ -8,15 +8,17 @@ use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
-    
+
     // main utama
-    function index() {
+    function index()
+    {
 
         return view('modules.login.login');
     }
 
     // proses pencocokan akun 
-    function proses( Request $request ) {
+    function proses(Request $request)
+    {
 
         // $this->validate($request, 
 
@@ -30,9 +32,9 @@ class LoginController extends Controller
 
         $profile = DB::table('profile')->where('email', $email)->first();
 
-        if ( $profile ) {
+        if ($profile) {
 
-            if ( Hash::check($password, $profile->password) ){
+            if (Hash::check($password, $profile->password)) {
 
 
                 $sess = array(
@@ -41,25 +43,23 @@ class LoginController extends Controller
                     'username'  => $profile->username,
                     'level'     => $profile->level
                 );
-                session( $sess );
-                
-                if ( $profile->level == "admin" )  {
+                session($sess);
+
+                if ($profile->level == "admin") {
 
                     return redirect('/dashboard');
-
-                } else if ( $profile->level == "petugas_tiket" ) {
+                } else if ($profile->level == "petugas_tiket") {
 
                     // return ...
                     return redirect('/dashboard');
+                } else if ($profile->level == "pengunjung") {
+
+                    return redirect('/informasipribadi');
                 }
-
-
             } else {
 
                 return redirect('/login')->with('pesan', 'Kata sandi salah');
             }
-
-
         } else {
 
             return redirect('/login')->with('pesan', 'Email tidak terdaftar !');
@@ -69,4 +69,26 @@ class LoginController extends Controller
         // echo Hash::make('123');
     }
 
+    //proses sign up
+    public function prosesregis(Request $request)
+    {
+        $request->validate([
+            // 'name' => 'required',
+            'email' => 'required',
+            'password' => 'required'
+        ]);
+
+        $data = array(
+
+            'email'     => strtolower($request->input('email')),
+            'password'  => bcrypt($request->input('password')),
+            'level'     => "pengunjung"
+        );
+
+        $user = DB::table('profile')->insert($data);
+
+        session()->flash('message', 'Akun Anda telah dibuat');
+
+        return redirect('/login');
+    }
 }
