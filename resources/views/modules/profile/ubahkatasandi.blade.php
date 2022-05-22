@@ -69,13 +69,9 @@
                                     <span class="font-weight-bold mr-2">Email:</span>
                                     <a href="#" class="text-muted text-hover-primary">alya@gmail.com</a>
                                 </div>
-                                <div class="d-flex align-items-center justify-content-between mb-2">
-                                    <span class="font-weight-bold mr-2">Phone:</span>
-                                    <span class="text-muted">0895618999201</span>
-                                </div>
                                 <div class="d-flex align-items-center justify-content-between">
-                                    <span class="font-weight-bold mr-2">Lokasi:</span>
-                                    <span class="text-muted">Malang</span>
+                                    <span class="font-weight-bold mr-2">Username:</span>
+                                    <span class="text-muted">alya123</span>
                                 </div>
                             </div>
                             <!--end::Contact-->
@@ -118,24 +114,6 @@
                                     </a>
                                 </div>
                                 <div class="navi-item mb-2">
-                                    <a href="/informasiakun" class="navi-link py-4">
-                                        <span class="navi-icon mr-2">
-                                            <span class="svg-icon">
-                                                <!--begin::Svg Icon | path:/metronic/theme/html/demo7/dist/assets/media/svg/icons/Code/Compiling.svg-->
-                                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                        <rect x="0" y="0" width="24" height="24" />
-                                                        <path d="M2.56066017,10.6819805 L4.68198052,8.56066017 C5.26776695,7.97487373 6.21751442,7.97487373 6.80330086,8.56066017 L8.9246212,10.6819805 C9.51040764,11.267767 9.51040764,12.2175144 8.9246212,12.8033009 L6.80330086,14.9246212 C6.21751442,15.5104076 5.26776695,15.5104076 4.68198052,14.9246212 L2.56066017,12.8033009 C1.97487373,12.2175144 1.97487373,11.267767 2.56066017,10.6819805 Z M14.5606602,10.6819805 L16.6819805,8.56066017 C17.267767,7.97487373 18.2175144,7.97487373 18.8033009,8.56066017 L20.9246212,10.6819805 C21.5104076,11.267767 21.5104076,12.2175144 20.9246212,12.8033009 L18.8033009,14.9246212 C18.2175144,15.5104076 17.267767,15.5104076 16.6819805,14.9246212 L14.5606602,12.8033009 C13.9748737,12.2175144 13.9748737,11.267767 14.5606602,10.6819805 Z" fill="#000000" opacity="0.3" />
-                                                        <path d="M8.56066017,16.6819805 L10.6819805,14.5606602 C11.267767,13.9748737 12.2175144,13.9748737 12.8033009,14.5606602 L14.9246212,16.6819805 C15.5104076,17.267767 15.5104076,18.2175144 14.9246212,18.8033009 L12.8033009,20.9246212 C12.2175144,21.5104076 11.267767,21.5104076 10.6819805,20.9246212 L8.56066017,18.8033009 C7.97487373,18.2175144 7.97487373,17.267767 8.56066017,16.6819805 Z M8.56066017,4.68198052 L10.6819805,2.56066017 C11.267767,1.97487373 12.2175144,1.97487373 12.8033009,2.56066017 L14.9246212,4.68198052 C15.5104076,5.26776695 15.5104076,6.21751442 14.9246212,6.80330086 L12.8033009,8.9246212 C12.2175144,9.51040764 11.267767,9.51040764 10.6819805,8.9246212 L8.56066017,6.80330086 C7.97487373,6.21751442 7.97487373,5.26776695 8.56066017,4.68198052 Z" fill="#000000" />
-                                                    </g>
-                                                </svg>
-                                                <!--end::Svg Icon-->
-                                            </span>
-                                        </span>
-                                        <span class="navi-text font-size-lg">Informasi Akun</span>
-                                    </a>
-                                </div>
-                                <div class="navi-item mb-2">
                                     <a href="/ubahkatasandi" class="navi-link py-4 active">
                                         <span class="navi-icon mr-2">
                                             <span class="svg-icon">
@@ -173,31 +151,34 @@
                                 <span class="text-muted font-weight-bold font-size-sm mt-1">Ubah kata sandi akun Anda</span>
                             </div>
                             <div class="card-toolbar">
-                                <button type="reset" class="btn btn-success mr-2">Simpan Perubahan</button>
+                                <button type="submit" class="btn btn-success mr-2">Simpan Perubahan</button>
                                 <button type="reset" class="btn btn-secondary">Batal</button>
                             </div>
                         </div>
                         <!--end::Header-->
                         <!--begin::Form-->
-                        <form class="form">
+                        <form class="form" action="/updatepass" method="post">
+
+                            @csrf
+                            @method('PATCH')
+
                             <div class="card-body">
                                 <div class="form-group row">
                                     <label class="col-xl-3 col-lg-3 col-form-label text-alert">Kata Sandi Saat Ini</label>
                                     <div class="col-lg-9 col-xl-6">
-                                        <input type="password" class="form-control form-control-lg form-control-solid mb-2" value="" placeholder="Kata sandi saat ini" />
-                                        <a href="#" class="text-sm font-weight-bold">Lupa kata sandi ?</a>
+                                        <input type="password" class="form-control form-control-lg form-control-solid mb-2" value="" placeholder="Kata sandi saat ini" name="oldpassword"/>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-xl-3 col-lg-3 col-form-label text-alert">Kata Sandi Baru</label>
                                     <div class="col-lg-9 col-xl-6">
-                                        <input type="password" class="form-control form-control-lg form-control-solid" value="" placeholder="Kata sandi baru" />
+                                        <input type="password" class="form-control form-control-lg form-control-solid" value="" placeholder="Kata sandi baru" name="newpassword"/>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-xl-3 col-lg-3 col-form-label text-alert">Verifikasi Kata Sandi</label>
                                     <div class="col-lg-9 col-xl-6">
-                                        <input type="password" class="form-control form-control-lg form-control-solid" value="" placeholder="Verifikasi kata sandi" />
+                                        <input type="password" class="form-control form-control-lg form-control-solid" value="" placeholder="Verifikasi kata sandi" name="password_confirmation"/>
                                     </div>
                                 </div>
                             </div>

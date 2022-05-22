@@ -2,22 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Identitas;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProfileController extends Controller
 {
-    public function informasipribadi()
-    {
-        return view('modules.profile.informasipribadi');
-    }
-
-    public function informasiakun()
-    {
-        return view('modules.profile.informasiakun');
-    }
 
     public function ubahkatasandi()
     {
         return view('modules.profile.ubahkatasandi');
     }
+
+    //tampil informasi pribadi
+    function index() {
+
+        $identitas =Identitas::all();
+    return view('modules.profile.informasipribadi', compact('identitas'));
+    }
+
 }

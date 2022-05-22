@@ -98,9 +98,9 @@ Route::get('/riwayat', function() {
 Route::post('/register/proses', [LoginController::class, 'prosesregis']);
 
 // profile
-Route::get('/informasipribadi', [ProfileController::class, 'informasipribadi']);
-Route::get('/informasiakun', [ProfileController::class, 'informasiakun']);
+Route::get('/informasipribadi', [ProfileController::class, 'index']);
 Route::get('/ubahkatasandi', [ProfileController::class, 'ubahkatasandi']);
+Route::resource('/updatepass','ProfileController');
 
 // purchase pengunjung
 Route::get('/checkout', [CheckoutController::class, 'checkout']);
