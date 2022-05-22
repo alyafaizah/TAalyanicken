@@ -151,7 +151,7 @@
 								<span class="text-muted font-weight-bold font-size-lg mt-1">Jika Kolom Kosong, Segera Lengkapi informasi pribadi Anda</span>
 							</div>
 							<div class="card-toolbar">
-								<button type="reset" class="btn btn-success mr-2">Ubah Informasi</button>
+								<a class="btn btn-success mr-2"  href="/editinformasipribadi">Ubah Informasi</a>
 							</div>
 						</div>
 						<!--end::Header-->

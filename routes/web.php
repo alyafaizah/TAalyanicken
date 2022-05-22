@@ -103,6 +103,7 @@ Route::post('/register/proses', [LoginController::class, 'prosesregis']);
 Route::get('/informasipribadi', [ProfileController::class, 'index']);
 Route::get('/ubahkatasandi', [ProfileController::class, 'ubahkatasandi']);
 Route::resource('/updatepass','ProfileController');
+Route::get('/editinformasipribadi', [ProfileController::class, 'view_edit']);
 
 // purchase pengunjung
 Route::get('/checkout', [CheckoutController::class, 'checkout']);

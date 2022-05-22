@@ -64,16 +64,16 @@
 							<!--end::User-->
 							<!--begin::Contact-->
 							<!--begin::Contact-->
-                            <div class="py-9">
-                                <div class="d-flex align-items-center justify-content-between mb-2">
-                                    <span class="font-weight-bold mr-2">Email:</span>
-                                    <a href="#" class="text-muted text-hover-primary">alya@gmail.com</a>
-                                </div>
-                                <div class="d-flex align-items-center justify-content-between">
-                                    <span class="font-weight-bold mr-2">Username:</span>
-                                    <span class="text-muted">alya123</span>
-                                </div>
-                            </div>
+							<div class="py-9">
+								<div class="d-flex align-items-center justify-content-between mb-2">
+									<span class="font-weight-bold mr-2">Email:</span>
+									<a href="#" class="text-muted text-hover-primary">alya@gmail.com</a>
+								</div>
+								<div class="d-flex align-items-center justify-content-between">
+									<span class="font-weight-bold mr-2">Username:</span>
+									<span class="text-muted">alya123</span>
+								</div>
+							</div>
 							<!--end::Contact-->
 							<!--begin::Nav-->
 							<div class="navi navi-bold navi-hover navi-active navi-link-rounded">
@@ -151,14 +151,15 @@
 								<span class="text-muted font-weight-bold font-size-sm mt-1">Perbarui informasi pribadi Anda</span>
 							</div>
 							<div class="card-toolbar">
-								<button type="reset" class="btn btn-success mr-2">Simpan Perubahan</button>
-								<button type="reset" class="btn btn-secondary">Batal</button>
+								<button type="submit" class="btn btn-success mr-2">Simpan Perubahan</button>
+								<a href="editinformasipribadi" class="btn btn-secondary">Batal</a>
 							</div>
 						</div>
 						<!--end::Header-->
 						<!--begin::Form-->
-						<form class="form">
+						<form class="form" action="/edit-profile/{{ $id_profile }}" method="POST">
 							<!--begin::Body-->
+							@csrf
 							<div class="card-body">
 								<div class="row">
 									<label class="col-xl-3"></label>
@@ -187,10 +188,9 @@
 									</div>
 								</div>
 								<div class="form-group row">
-								@foreach ( $identitas AS $i)
 									<label class="col-xl-3 col-lg-3 col-form-label">Nama Lengkap</label>
 									<div class="col-lg-9 col-xl-6">
-										<input class="form-control form-control-lg form-control-solid" type="text" value="{{ $i->nama_lengkap }}" name="nama_lengkap" />
+										<input class="form-control form-control-lg form-control-solid" type="text" value="{{ $identitas->nama_lengkap }}" name="nama_lengkap" />
 									</div>
 								</div>
 								<div class="form-group row">
@@ -223,7 +223,7 @@
 													<i class="la la-phone"></i>
 												</span>
 											</div>
-											<input type="text" class="form-control form-control-lg form-control-solid" value="{{ $i->telepon }}" name="telepon" />
+											<input type="text" class="form-control form-control-lg form-control-solid" value="{{ $identitas->telepon }}" name="telepon" />
 										</div>
 									</div>
 								</div>
@@ -231,7 +231,7 @@
 									<label class="col-xl-3 col-lg-3 col-form-label">Alamat</label>
 									<div class="col-lg-9 col-xl-6">
 										<div class="input-group input-group-lg input-group-solid">
-											<input type="text" class="form-control form-control-lg form-control-solid" value="{{ $i->alamat }}" name="alamat" />
+											<input type="text" class="form-control form-control-lg form-control-solid" value="{{ $identitas->alamat }}" name="alamat" />
 										</div>
 									</div>
 								</div>
@@ -239,14 +239,14 @@
 									<label class="col-xl-3 col-lg-3 col-form-label">Tempat Lahir</label>
 									<div class="col-lg-9 col-xl-6">
 										<div class="input-group input-group-lg input-group-solid">
-											<input type="text" class="form-control form-control-lg form-control-solid" value="{{ $i->tempat_lahir }}" name="tempat_lahir" />
+											<input type="text" class="form-control form-control-lg form-control-solid" value="{{ $identitas->tempat_lahir }}" name="tempat_lahir" />
 										</div>
 									</div>
 								</div>
 								<div class="form-group row">
 									<label class="col-xl-3 col-lg-3 col-form-label">Tanggal Lahir</label>
 									<div class="col-lg-9 col-xl-6">
-										<div class="input-group date input-group-lg input-group-solid">
+										<div class="input-group date input-group-lg input-group-solid" value="{{ $identitas->tgl_lahir }}" name="tgl_lahir">
 											<input type="text" class="form-control" id="kt_datepicker_2" readonly="readonly" placeholder="Pilih Tanggal" />
 											<div class="input-group-append">
 												<span class="input-group-text">
