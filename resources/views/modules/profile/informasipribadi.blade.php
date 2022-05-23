@@ -150,8 +150,9 @@
 								<h1 class="card-label font-weight-bolder text-dark">Informasi Pribadi</h1>
 								<span class="text-muted font-weight-bold font-size-lg mt-1">Jika Kolom Kosong, Segera Lengkapi informasi pribadi Anda</span>
 							</div>
+							@foreach ( $identitas as $i )
 							<div class="card-toolbar">
-								<a class="btn btn-success mr-2"  href="/editinformasipribadi">Ubah Informasi</a>
+								<a class="btn btn-success mr-2"  href="/editinformasipribadi/{{ $i->$id_profile }}i">Ubah Informasi</a>
 							</div>
 						</div>
 						<!--end::Header-->
@@ -185,7 +186,7 @@
 										<span class="form-text text-muted">Jenis file yang diizinkan: png, jpg, jpeg.</span>
 									</div>
 								</div>
-								@foreach ( $identitas as $i )
+								
 								<div class="form-group row">
 									<label class="col-xl-3 col-lg-3 col-form-label">Nama Lengkap</label>
 									<div class="col-lg-9 col-xl-6">

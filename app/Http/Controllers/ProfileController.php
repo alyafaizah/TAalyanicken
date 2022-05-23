@@ -29,7 +29,7 @@ class ProfileController extends Controller
         $data['identitas'] = Identitas::where('id_profile', $kd)->first();
         $data['id_profile'] = $kd;
 
-        return view('modules.profile.editinformasiakun', $data);
+        return view('modules.profile.editinformasipribadi', $data);
     }
 
 

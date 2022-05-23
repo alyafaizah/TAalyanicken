@@ -157,7 +157,7 @@
 						</div>
 						<!--end::Header-->
 						<!--begin::Form-->
-						<form class="form" action="/edit-profile/{{ $id_profile }}" method="POST">
+						<form class="form" action="/editinformasipribadi/{{ $id_profile }}" method="POST">
 							<!--begin::Body-->
 							@csrf
 							<div class="card-body">
