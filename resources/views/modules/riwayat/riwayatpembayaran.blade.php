@@ -16,6 +16,7 @@
                         <!-- begin: Invoice-->
                         <!-- begin: Invoice header-->
                         <div class="row justify-content-center py-8 px-8 py-md-27 px-md-0">
+                            
                             <div class="col-md-10">
                                 <div class="d-flex justify-content-between pb-10 pb-md-20 flex-column flex-md-row">
                                     <h1 class="display-4 font-weight-boldest mb-10">Riwayat Pembayaran</h1>
@@ -90,13 +91,15 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                        @foreach ( $pembayaran AS $b )
                                             <tr class="font-weight-bolder">
-                                                <td>Credit Card</td>
+                                                <td>{{ $b->type }}</td>
                                                 <td>Success</td>
-                                                <td>Jan 07, 2020</td>
+                                                <td>{{ $b->tanggal }}</td>
                                                 <td class="text-primary font-size-h3 font-weight-boldest text-right">
-                                                    $180.00</td>
+                                                Rp {{ number_format($b->total_bayar) }}</td>
                                             </tr>
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>
