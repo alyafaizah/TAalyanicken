@@ -28,12 +28,6 @@
                 <!--end::Svg Icon-->
             </span>
         </div>
-        <div class="alert-text">Each column has an optional rendering control called columns.render which can be
-            used to process the content of each cell before the data is used. See official documentation
-            <a class="font-weight-bold" href="https://datatables.net/examples/advanced_init/column_render.html"
-                target="_blank">here
-            </a>
-        </div>
     </div>
     <!--end::Notice-->
     <!--begin::Card-->

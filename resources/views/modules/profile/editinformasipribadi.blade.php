@@ -2,7 +2,6 @@
 @extends('layouts.template-backend-navbar-cust')
 
 @section('main-content-cust')
-
 <!--begin::Content-->
 <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
 	<!--begin::Subheader-->
@@ -29,7 +28,7 @@
 							<a href="" class="text-muted">Profile</a>
 						</li>
 						<li class="breadcrumb-item text-muted">
-							<a href="" class="text-muted">Informasi Akun</a>
+							<a href="" class="text-muted">Informasi Pribadi</a>
 						</li>
 					</ul>
 					<!--end::Breadcrumb-->
@@ -44,7 +43,7 @@
 	<div class="d-flex flex-column-fluid">
 		<!--begin::Container-->
 		<div class="container">
-			<!--begin::Profile Account Information-->
+			<!--begin::Profile Personal Information-->
 			<div class="d-flex flex-row">
 				<!--begin::Aside-->
 				<div class="flex-row-auto offcanvas-mobile w-250px w-xxl-350px" id="kt_profile_aside">
@@ -64,25 +63,22 @@
 							</div>
 							<!--end::User-->
 							<!--begin::Contact-->
+							<!--begin::Contact-->
 							<div class="py-9">
 								<div class="d-flex align-items-center justify-content-between mb-2">
 									<span class="font-weight-bold mr-2">Email:</span>
 									<a href="#" class="text-muted text-hover-primary">alya@gmail.com</a>
 								</div>
-								<div class="d-flex align-items-center justify-content-between mb-2">
-									<span class="font-weight-bold mr-2">Phone:</span>
-									<span class="text-muted">0895618999201</span>
-								</div>
 								<div class="d-flex align-items-center justify-content-between">
-									<span class="font-weight-bold mr-2">Lokasi:</span>
-									<span class="text-muted">Malang</span>
+									<span class="font-weight-bold mr-2">Username:</span>
+									<span class="text-muted">alya123</span>
 								</div>
 							</div>
 							<!--end::Contact-->
 							<!--begin::Nav-->
 							<div class="navi navi-bold navi-hover navi-active navi-link-rounded">
 								<div class="navi-item mb-2">
-									<a href="/metronic/demo7/custom/apps/profile/profile-1/overview.html" class="navi-link py-4">
+									<a href="/dashboardcust" class="navi-link py-4">
 										<span class="navi-icon mr-2">
 											<span class="svg-icon">
 												<!--begin::Svg Icon | path:/metronic/theme/html/demo7/dist/assets/media/svg/icons/Design/Layers.svg-->
@@ -96,11 +92,11 @@
 												<!--end::Svg Icon-->
 											</span>
 										</span>
-										<span class="navi-text font-size-lg">Profile Overview</span>
+										<span class="navi-text font-size-lg">Cara Pemesanan</span>
 									</a>
 								</div>
 								<div class="navi-item mb-2">
-									<a href="/informasipribadi" class="navi-link py-4">
+									<a href="/informasipribadi" class="navi-link py-4 active">
 										<span class="navi-icon mr-2">
 											<span class="svg-icon">
 												<!--begin::Svg Icon | path:/metronic/theme/html/demo7/dist/assets/media/svg/icons/General/User.svg-->
@@ -115,24 +111,6 @@
 											</span>
 										</span>
 										<span class="navi-text font-size-lg">Informasi Pribadi</span>
-									</a>
-								</div>
-								<div class="navi-item mb-2">
-									<a href="/informasiakun" class="navi-link py-4 active">
-										<span class="navi-icon mr-2">
-											<span class="svg-icon">
-												<!--begin::Svg Icon | path:/metronic/theme/html/demo7/dist/assets/media/svg/icons/Code/Compiling.svg-->
-												<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-													<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-														<rect x="0" y="0" width="24" height="24" />
-														<path d="M2.56066017,10.6819805 L4.68198052,8.56066017 C5.26776695,7.97487373 6.21751442,7.97487373 6.80330086,8.56066017 L8.9246212,10.6819805 C9.51040764,11.267767 9.51040764,12.2175144 8.9246212,12.8033009 L6.80330086,14.9246212 C6.21751442,15.5104076 5.26776695,15.5104076 4.68198052,14.9246212 L2.56066017,12.8033009 C1.97487373,12.2175144 1.97487373,11.267767 2.56066017,10.6819805 Z M14.5606602,10.6819805 L16.6819805,8.56066017 C17.267767,7.97487373 18.2175144,7.97487373 18.8033009,8.56066017 L20.9246212,10.6819805 C21.5104076,11.267767 21.5104076,12.2175144 20.9246212,12.8033009 L18.8033009,14.9246212 C18.2175144,15.5104076 17.267767,15.5104076 16.6819805,14.9246212 L14.5606602,12.8033009 C13.9748737,12.2175144 13.9748737,11.267767 14.5606602,10.6819805 Z" fill="#000000" opacity="0.3" />
-														<path d="M8.56066017,16.6819805 L10.6819805,14.5606602 C11.267767,13.9748737 12.2175144,13.9748737 12.8033009,14.5606602 L14.9246212,16.6819805 C15.5104076,17.267767 15.5104076,18.2175144 14.9246212,18.8033009 L12.8033009,20.9246212 C12.2175144,21.5104076 11.267767,21.5104076 10.6819805,20.9246212 L8.56066017,18.8033009 C7.97487373,18.2175144 7.97487373,17.267767 8.56066017,16.6819805 Z M8.56066017,4.68198052 L10.6819805,2.56066017 C11.267767,1.97487373 12.2175144,1.97487373 12.8033009,2.56066017 L14.9246212,4.68198052 C15.5104076,5.26776695 15.5104076,6.21751442 14.9246212,6.80330086 L12.8033009,8.9246212 C12.2175144,9.51040764 11.267767,9.51040764 10.6819805,8.9246212 L8.56066017,6.80330086 C7.97487373,6.21751442 7.97487373,5.26776695 8.56066017,4.68198052 Z" fill="#000000" />
-													</g>
-												</svg>
-												<!--end::Svg Icon-->
-											</span>
-										</span>
-										<span class="navi-text font-size-lg">Informasi Akun</span>
 									</a>
 								</div>
 								<div class="navi-item mb-2">
@@ -165,30 +143,56 @@
 				<!--begin::Content-->
 				<div class="flex-row-fluid ml-lg-8">
 					<!--begin::Card-->
-					<div class="card card-custom">
+					<div class="card card-custom card-stretch">
 						<!--begin::Header-->
 						<div class="card-header py-3">
 							<div class="card-title align-items-start flex-column">
-								<h3 class="card-label font-weight-bolder text-dark">Informasi Akun</h3>
-								<span class="text-muted font-weight-bold font-size-sm mt-1">Ubah pengaturan akun Anda</span>
+								<h3 class="card-label font-weight-bolder text-dark">Informasi Pribadi</h3>
+								<span class="text-muted font-weight-bold font-size-sm mt-1">Perbarui informasi pribadi Anda</span>
 							</div>
 							<div class="card-toolbar">
-								<button type="reset" class="btn btn-success mr-2">Simpan Perubahan</button>
-								<button type="reset" class="btn btn-secondary">Batal</button>
+								<button type="submit" class="btn btn-success mr-2">Simpan Perubahan</button>
+								<a href="editinformasipribadi" class="btn btn-secondary">Batal</a>
 							</div>
 						</div>
 						<!--end::Header-->
 						<!--begin::Form-->
-						<form class="form">
+						<form class="form" action="/editinformasipribadi/{{ $id_profile }}" method="POST">
+							<!--begin::Body-->
+							@csrf
 							<div class="card-body">
-								<!--begin::Heading-->
 								<div class="row">
 									<label class="col-xl-3"></label>
 									<div class="col-lg-9 col-xl-6">
-										<h5 class="font-weight-bold mb-6">Akun:</h5>
+										<h5 class="font-weight-bold mb-6">Customer Info</h5>
 									</div>
 								</div>
-								<!--begin::Form Group-->
+								<div class="form-group row">
+									<label class="col-xl-3 col-lg-3 col-form-label">Foto Profil</label>
+									<div class="col-lg-9 col-xl-6">
+										<div class="image-input image-input-outline" id="kt_profile_avatar" style="background-image: url(/demo7/distpengunjung/assets/media/users/blank.png)">
+											<div class="image-input-wrapper" style="background-image: url(/metronic/theme/html/demo7/dist/assets/media/users/300_21.jpg)"></div>
+											<label class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="change" data-toggle="tooltip" title="" data-original-title="Change avatar">
+												<i class="fa fa-pen icon-sm text-muted"></i>
+												<input type="file" name="profile_avatar" accept=".png, .jpg, .jpeg" />
+												<input type="hidden" name="profile_avatar_remove" />
+											</label>
+											<span class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="cancel" data-toggle="tooltip" title="Cancel avatar">
+												<i class="ki ki-bold-close icon-xs text-muted"></i>
+											</span>
+											<span class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="remove" data-toggle="tooltip" title="Remove avatar">
+												<i class="ki ki-bold-close icon-xs text-muted"></i>
+											</span>
+										</div>
+										<span class="form-text text-muted">Jenis file yang diizinkan: png, jpg, jpeg.</span>
+									</div>
+								</div>
+								<div class="form-group row">
+									<label class="col-xl-3 col-lg-3 col-form-label">Nama Lengkap</label>
+									<div class="col-lg-9 col-xl-6">
+										<input class="form-control form-control-lg form-control-solid" type="text" value="{{ $identitas->nama_lengkap }}" name="nama_lengkap" />
+									</div>
+								</div>
 								<div class="form-group row">
 									<label class="col-xl-3 col-lg-3 col-form-label">Username</label>
 									<div class="col-lg-9 col-xl-6">
@@ -202,73 +206,70 @@
 										</div>
 									</div>
 								</div>
-								<!--begin::Form Group-->
 								<div class="form-group row">
 									<label class="col-xl-3 col-lg-3 col-form-label">Email</label>
 									<div class="col-lg-9 col-xl-6">
-										<div class="spinner spinner-sm spinner-success spinner-right">
-											<input class="form-control form-control-lg form-control-solid" type="text" value="alya@gmail.com" />
-										</div>
-										<span class="form-text text-muted">Email tidak akan ditampilkan secara publik .
-									</div>
-								</div>
-								<!--begin::Form Group-->
-								<div class="form-group row align-items-center">
-									<label class="col-xl-3 col-lg-3 col-form-label">Komunikasi</label>
-									<div class="col-lg-9 col-xl-6">
-										<div class="checkbox-inline">
-											<label class="checkbox">
-												<input type="checkbox" checked="checked" />
-												<span></span>Email</label>
-											<label class="checkbox">
-												<input type="checkbox" checked="checked" />
-												<span></span>SMS</label>
+										<div class="input-group input-group-lg input-group-solid">
+											<input type="text" class="form-control form-control-lg form-control-solid" value="alya@gmail.com" placeholder="Email" name="email" />
 										</div>
 									</div>
 								</div>
-								<!--begin::Form Group-->
-								<div class="separator separator-dashed my-5"></div>
-								<!--begin::Form Group-->
-								<div class="row">
-									<label class="col-xl-3"></label>
-									<div class="col-lg-9 col-xl-6">
-										<h5 class="font-weight-bold mb-6">Keamanan:</h5>
-									</div>
-								</div>
-								<!--begin::Form Group-->
 								<div class="form-group row">
-									<label class="col-xl-3 col-lg-3 col-form-label">Verifikasi masuk</label>
+									<label class="col-xl-3 col-lg-3 col-form-label">Nomor Telepon</label>
 									<div class="col-lg-9 col-xl-6">
-										<button type="button" class="btn btn-light-primary font-weight-bold btn-sm">Siapkan verifikasi masuk</button>
-										<p class="form-text text-muted pt-2">Setelah Anda masuk, Anda akan dimintai informasi tambahan untuk mengonfirmasi identitas Anda dan melindungi akun Anda agar tidak disusupi.
+										<div class="input-group input-group-lg input-group-solid">
+											<div class="input-group-prepend">
+												<span class="input-group-text">
+													<i class="la la-phone"></i>
+												</span>
+											</div>
+											<input type="text" class="form-control form-control-lg form-control-solid" value="{{ $identitas->telepon }}" name="telepon" />
+										</div>
 									</div>
 								</div>
-								<!--begin::Form Group-->
 								<div class="form-group row">
-									<label class="col-xl-3 col-lg-3 col-form-label">Password reset verification</label>
+									<label class="col-xl-3 col-lg-3 col-form-label">Alamat</label>
 									<div class="col-lg-9 col-xl-6">
-										<div class="checkbox-inline">
-											<label class="checkbox m-0">
-												<input type="checkbox" />
-												<span></span>Verifikasi pengaturan ulang kata sandi.</label>
+										<div class="input-group input-group-lg input-group-solid">
+											<input type="text" class="form-control form-control-lg form-control-solid" value="{{ $identitas->alamat }}" name="alamat" />
 										</div>
-										<p class="form-text text-muted py-2">Untuk keamanan ekstra, Anda harus mengonfirmasi email atau nomor telepon saat menyetel ulang sandi.
+									</div>
+								</div>
+								<div class="form-group row">
+									<label class="col-xl-3 col-lg-3 col-form-label">Tempat Lahir</label>
+									<div class="col-lg-9 col-xl-6">
+										<div class="input-group input-group-lg input-group-solid">
+											<input type="text" class="form-control form-control-lg form-control-solid" value="{{ $identitas->tempat_lahir }}" name="tempat_lahir" />
+										</div>
+									</div>
+								</div>
+								<div class="form-group row">
+									<label class="col-xl-3 col-lg-3 col-form-label">Tanggal Lahir</label>
+									<div class="col-lg-9 col-xl-6">
+										<div class="input-group date input-group-lg input-group-solid" value="{{ $identitas->tgl_lahir }}" name="tgl_lahir">
+											<input type="text" class="form-control" id="kt_datepicker_2" readonly="readonly" placeholder="Pilih Tanggal" />
+											<div class="input-group-append">
+												<span class="input-group-text">
+													<i class="la la-calendar-check-o"></i>
+												</span>
+											</div>
+										</div>
+										<span class="form-text text-muted">Kami tidak akan pernah membagikan informasi Anda kepada orang lain.</span>
 									</div>
 								</div>
 							</div>
+							<!--end::Body-->
 						</form>
 						<!--end::Form-->
 					</div>
-					<!--end::Card-->
 				</div>
 				<!--end::Content-->
 			</div>
-			<!--end::Profile Account Information-->
+			<!--end::Profile Personal Information-->
 		</div>
 		<!--end::Container-->
 	</div>
 	<!--end::Entry-->
 </div>
 <!--end::Content-->
-
 @endsection

@@ -9,13 +9,13 @@
 
             @if(Session::has('pesan'))
 
-								
-			    <div class="alert alert-danger">
-				    <b>Pemberitahuan</b><br>
-					{{ Session('pesan') }}
-				</div>
 
-			@endif
+            <div class="alert alert-danger">
+                <b>Pemberitahuan</b><br>
+                {{ Session('pesan') }}
+            </div>
+
+            @endif
 
             <div class="card card-custom">
                 <div class="card-header flex-wrap border-0 pt-6 pb-0">
@@ -139,9 +139,9 @@
                                                             </path>
                                                             <rect fill="#000000" opacity="0.3" x="5" y="20" width="15" height="2" rx="1"></rect>
                                                         </g>
-                                                    </svg> </span> </a> 
-                                                    
-                                                    <a href="delete-ticket/{{ $t->kd_tiket }}" onclick="return confirm('Apakah anda yakin ingin menghapus tiket dengan kode {{ $t->kd_tiket }} ? ')" class="btn btn-sm btn-clean btn-icon" title="Delete"> <span class="svg-icon svg-icon-md"> <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                    </svg> </span> </a>
+
+                                            <a href="delete-ticket/{{ $t->kd_tiket }}" onclick="return confirm('Apakah anda yakin ingin menghapus tiket dengan kode {{ $t->kd_tiket }} ? ')" class="btn btn-sm btn-clean btn-icon" title="Delete"> <span class="svg-icon svg-icon-md"> <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                                         <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                                             <rect x="0" y="0" width="24" height="24"></rect>
                                                             <path d="M6,8 L6,20.5 C6,21.3284271 6.67157288,22 7.5,22 L16.5,22 C17.3284271,22 18,21.3284271 18,20.5 L18,8 L6,8 Z" fill="#000000" fill-rule="nonzero"></path>
