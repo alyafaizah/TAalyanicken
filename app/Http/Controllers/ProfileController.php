@@ -8,6 +8,10 @@ use Illuminate\Support\Facades\DB;
 
 class ProfileController extends Controller
 {
+    public function dashboardcust()
+    {
+        return view('modules.profile.dashboardcust');
+    }
 
     public function ubahkatasandi()
     {

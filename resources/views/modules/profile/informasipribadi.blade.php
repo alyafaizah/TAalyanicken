@@ -78,7 +78,7 @@
 							<!--begin::Nav-->
 							<div class="navi navi-bold navi-hover navi-active navi-link-rounded">
 								<div class="navi-item mb-2">
-									<a href="/metronic/demo7/custom/apps/profile/profile-1/overview.html" class="navi-link py-4">
+									<a href="/dashboardcust" class="navi-link py-4">
 										<span class="navi-icon mr-2">
 											<span class="svg-icon">
 												<!--begin::Svg Icon | path:/metronic/theme/html/demo7/dist/assets/media/svg/icons/Design/Layers.svg-->
@@ -92,7 +92,7 @@
 												<!--end::Svg Icon-->
 											</span>
 										</span>
-										<span class="navi-text font-size-lg">Profile Overview</span>
+										<span class="navi-text font-size-lg">Cara Pemesanan</span>
 									</a>
 								</div>
 								<div class="navi-item mb-2">
@@ -152,7 +152,7 @@
 							</div>
 							@foreach ( $identitas as $i )
 							<div class="card-toolbar">
-								<a class="btn btn-success mr-2"  href="/editinformasipribadi/{{ $i->$id_profile }}i">Ubah Informasi</a>
+								<a class="btn btn-success mr-2"  href="/editinformasipribadi/{{ $i->$id_profile }}">Ubah Informasi</a>
 							</div>
 						</div>
 						<!--end::Header-->

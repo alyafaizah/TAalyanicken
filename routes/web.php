@@ -100,6 +100,7 @@ Route::get('/riwayat', function() {
 Route::post('/register/proses', [LoginController::class, 'prosesregis']);
 
 // profile
+Route::get('/dashboardcust', [ProfileController::class, 'dashboardcust']);
 Route::get('/informasipribadi', [ProfileController::class, 'index']);
 Route::get('/ubahkatasandi', [ProfileController::class, 'ubahkatasandi']);
 Route::resource('/updatepass','ProfileController');

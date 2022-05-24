@@ -13,6 +13,8 @@ class Profile extends Model
     protected $fillable = ["username", "level", "email", "password", "status"];
 
     // auto
-    public $timestamps = true;
-    protected $primaryKey = 'id_profile';
+    public function profile()
+    {
+        return $this->belongsTo('App\Models\Identitas', 'id_profile');
+    }
 }
