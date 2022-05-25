@@ -71,7 +71,7 @@
                                 </div>
                                 <div class="col-md-3">
                                     <small>Tanggal Pemesanan</small><br>
-                                    <b><?php echo date('d F Y H.i A') ?></b>
+                                    <b><?php echo date('d F Y H.i A', $input['tgl_kunjungan']) ?></b>
                                 </div>
 
                             </div>
@@ -101,14 +101,18 @@
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td>Dwi Nur Cahyo</td>
-                                                <td>Weekend</td>
-                                                <td>10 Tiket</td>
-                                                <td class="text-right"><?php echo number_format(300000, 2) ?></td>
+                                                <td>{{ $input['pemesan'] }}</td>
+                                                <td>{{ $tiket->jenis }}</td>
+                                                <td>{{ $input['jumlah'] }} Tiket</td>
+                                                <td class="text-right"><?php echo number_format($tiket->harga, 2) ?></td>
                                             </tr>
                                             <tr>
                                                 <td colspan="3" class="text-right"><b>TOTAL</b></td>
-                                                <td class="text-right"><b><?php echo number_format(3000000, 2) ?></b></td>
+
+                                                @php 
+                                                    $total = $tiket->harga * $input['jumlah'];
+                                                @endphp
+                                                <td class="text-right"><b><?php echo number_format($total, 2) ?></b></td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -129,7 +133,12 @@
 
                                     <div class="form-group">
                                         <label for="">Nominal</label>
-                                        <input type="number" name="bayar" class="form-control" placeholder="Jumlah Pembayaran" id="">
+                                        <input type="number" name="bayar" data-tagihan="{{ $total }}" class="form-control" placeholder="Jumlah Pembayaran" id="">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="">Kembalian</label>
+                                        <h3 id="kembalian">Rp 0</h3>
                                     </div>
 
                                 </div>
@@ -157,5 +166,30 @@
     <!--end::Entry-->
 </div>
 <!--end::Content-->
+
+
+<script>
+
+    $(function() {
+
+        var total_tagihan = $('input[name="bayar"]').data('tagihan');
+
+        $('input[name="bayar"]').on('keyup', function() {
+
+
+            let bayar = $(this).val();
+
+            let sisa = bayar - total_tagihan;
+
+            if ( sisa > 0 ) {
+
+                $('#kembalian').text("Rp " + sisa);
+            } 
+            
+        });
+    })
+</script>
+
+
 
 @endsection
