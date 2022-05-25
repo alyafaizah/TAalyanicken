@@ -9,6 +9,7 @@ use App\Http\Controllers\PetugasController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\RiwayatController;
+use App\Http\Controllers\LaporanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -61,7 +62,8 @@ Route::get('/edit-dtpemesanan/{kd}', [PemesananController::class, 'view_edit']);
 Route::post('/edit-dtpemesanan/{kd}', [PemesananController::class, 'update']);
 Route::get('/delete-dtpemesanan/{kd}', [PemesananController::class, 'delete']);
 
-
+//laporan
+Route::get('/laporan', [LaporanController::class, 'index']);
 
 
 
