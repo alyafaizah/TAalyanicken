@@ -58,7 +58,7 @@
 									<i class="symbol-badge bg-success"></i>
 								</div>
 								<div>
-									<a href="#" class="font-weight-bolder font-size-h5 text-dark-75 text-hover-primary">Alya Faizah</a>
+									<a href="#" class="font-weight-bolder font-size-h5 text-dark-75 text-hover-primary">{{ $identitas->nama_lengkap }}</a>
 								</div>
 							</div>
 							<!--end::User-->
@@ -186,12 +186,12 @@
 										<span class="form-text text-muted">Jenis file yang diizinkan: png, jpg, jpeg.</span>
 									</div>
 								</div>
-								@foreach ( $identitas as $i )
+								
 								<div class="form-group row">
 									<label class="col-xl-3 col-lg-3 col-form-label">Nama Lengkap</label>
 									<div class="col-lg-9 col-xl-6">
 										<div class="form-control form-control-lg form-control-solid">
-										{{ $i->nama_lengkap }}
+										{{ $identitas->nama_lengkap }}
 										</div>
 									</div>
 								</div>
@@ -230,7 +230,7 @@
 												</span>
 											</div>
 											<div class="form-control form-control-lg form-control-solid">
-											{{ $i->telepon }}
+											{{ $identitas->telepon }}
 											</div>
 										</div>
 									</div>
@@ -240,7 +240,7 @@
 									<div class="col-lg-9 col-xl-6">
 										<div class="input-group input-group-lg input-group-solid">
 											<div class="form-control form-control-lg form-control-solid">
-											{{ $i->alamat }}
+											{{ $identitas->alamat }}
 											</div>
 										</div>
 									</div>
@@ -250,7 +250,7 @@
 									<div class="col-lg-9 col-xl-6">
 										<div class="input-group input-group-lg input-group-solid">
 											<div class="form-control form-control-lg form-control-solid">
-											{{ $i->tempat_lahir}}
+											{{ $identitas->tempat_lahir}}
 											</div>
 										</div>
 									</div>
@@ -265,13 +265,13 @@
 												</span>
 											</div>
 											<div class="form-control form-control-lg form-control-solid">
-											{{date('d M Y', strtotime($i->tgl_lahir))}}
+											{{date('d M Y', strtotime($identitas->tgl_lahir))}}
 											</div>
 										</div>
 										<span class="form-text text-muted">Kami tidak akan pernah membagikan informasi Anda kepada orang lain.</span>
 									</div>
 								</div>
-								@endforeach
+								
 							</div>
 							<!--end::Body-->
 						</form>

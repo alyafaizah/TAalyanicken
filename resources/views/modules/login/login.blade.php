@@ -20,6 +20,7 @@ License: You must have a valid license purchased only from themeforest(the above
     <meta charset="utf-8" />
     <title>Login</title>
     <meta name="description" content="Login page example" />
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <link rel="canonical" href="https://keenthemes.com/metronic" />
     <!--begin::Fonts-->
@@ -80,12 +81,12 @@ License: You must have a valid license purchased only from themeforest(the above
                             @endif
 
 
-                            <form class="form" novalidate="novalidate" action="/login/proses" method="post">
+                            <form class="form" novalidate="novalidate" id="kt_login_signin_form">
 
                                 @csrf
 
                                 <div class="form-group py-3 m-0">
-                                    <input class="form-control h-auto border-0 px-0 placeholder-dark-75" type="email" placeholder="Email" name="email" autocomplete="off" />
+                                    <input class="form-control h-auto border-0 px-0 placeholder-dark-75" type="email" placeholder="Email" name="email-user" autocomplete="off" />
                                 </div>
                                 <div class="form-group py-3 border-top m-0">
                                     <input class="form-control h-auto border-0 px-0 placeholder-dark-75" type="password" placeholder="Kata Sandi" name="password" />
@@ -98,7 +99,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                         <span class="text-muted mr-2">Belum punya akun?</span>
                                         <a href="javascript:;" id="kt_login_signup" class="font-weight-bold">Daftar</a>
                                     </div>
-                                    <button class="btn btn-primary font-weight-bold px-9 py-4 my-3">Sign In</button>
+                                    <button id="btn-submit" type="button" class="btn btn-primary font-weight-bold px-9 py-4 my-3">Sign In</button>
                                 </div>
                             </form>
                             <!--end::Form-->
@@ -258,6 +259,79 @@ License: You must have a valid license purchased only from themeforest(the above
     <!--begin::Page Scripts(used by this page)-->
     <script src="{{ asset('/demo7/distpengunjung/assets/js/pages/custom/login/login-general.js?v=7.2.9') }}"></script>
     <!--end::Page Scripts-->
+
+
+    <script>
+
+        // @TODO 1
+        $(function() {
+
+
+            // @TODO 2
+            $('#btn-submit').click(function() {
+
+                // @TODO 3
+                var email = $('input[name="email-user"]').val();
+                var password = $('input[name="password"]').val();
+
+                // @TODO 4
+                data_input = {
+
+                    "email"     : email,
+                    "password"  : password,
+                }
+
+
+                // @TODO 5
+                $.ajax({
+
+                    url : "{{ url('login/proses') }}",
+                    data: data_input,
+                    dataType: "json",
+                    success : function ( response ) {
+
+                        if ( response.status == "success" ) {
+
+                            swal.fire({
+                                text: "Login Berhasil, Selamat Datang di KANSA!",
+                                icon: "success",
+                                buttonsStyling: false,
+                                confirmButtonText: "Ok, got it!",
+                                customClass: {
+                                    confirmButton: "btn font-weight-bold btn-light-primary"
+                                }
+                            }).then(function( tombol ) {
+                                
+                                // jika tombol 
+                                if ( tombol.isConfirmed ) {
+
+                                    window.location.href = response.url;
+                                }
+
+                            });
+                        } else {
+
+                            swal.fire({
+                                text: response.status,
+                                icon: "error",
+                                buttonsStyling: false,
+                                confirmButtonText: "Ok, got it!",
+                                customClass: {
+                                    confirmButton: "btn font-weight-bold btn-light-danger"
+                                }
+                            });
+                        }
+                    }
+                })
+            });
+
+            
+            $('#btn-submit-register').click(function() {
+
+                // here . . .
+            })
+        })
+    </script>
 </body>
 <!--end::Body-->
 

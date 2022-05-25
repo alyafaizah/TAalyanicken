@@ -43,7 +43,7 @@ Route::get('/pengujian', function() {
 
 // module login
 Route::get('/login', [LoginController::class, 'index']);
-Route::post('/login/proses', [LoginController::class, 'proses']);
+Route::get('/login/proses', [LoginController::class, 'proses']);
 
 
 
@@ -64,6 +64,7 @@ Route::get('/delete-dtpemesanan/{kd}', [PemesananController::class, 'delete']);
 
 //laporan
 Route::get('/laporan', [LaporanController::class, 'index']);
+
 
 
 
