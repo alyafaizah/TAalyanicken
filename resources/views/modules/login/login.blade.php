@@ -80,7 +80,7 @@ License: You must have a valid license purchased only from themeforest(the above
                             @endif
 
 
-                            <form class="form" novalidate="novalidate" id="kt_login_signin_form">
+                            <form class="form" novalidate="novalidate" action="/login/proses" method="post">
 
                                 @csrf
 
@@ -98,7 +98,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                         <span class="text-muted mr-2">Belum punya akun?</span>
                                         <a href="javascript:;" id="kt_login_signup" class="font-weight-bold">Daftar</a>
                                     </div>
-                                    <button id="kt_login_signin_submit" class="btn btn-primary font-weight-bold px-9 py-4 my-3">Sign In</button>
+                                    <button class="btn btn-primary font-weight-bold px-9 py-4 my-3">Sign In</button>
                                 </div>
                             </form>
                             <!--end::Form-->
@@ -137,7 +137,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                     </div>
                                 </div>
                                 <div class="form-group d-flex flex-wrap flex-center">
-                                    <button type="submit" id="kt_login_signup_submit" class="btn btn-primary font-weight-bold px-9 py-4 my-3 mx-2">Daftar</button>
+                                    <button type="submit" class="btn btn-primary font-weight-bold px-9 py-4 my-3 mx-2">Daftar</button>
                                     <button id="kt_login_signup_cancel" class="btn btn-outline-primary font-weight-bold px-9 py-4 my-3 mx-2">Batal</button>
                                 </div>
                             </form>
