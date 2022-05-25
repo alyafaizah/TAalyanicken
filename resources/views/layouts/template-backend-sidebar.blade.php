@@ -53,7 +53,7 @@
 			<!--end::Item-->
 			<!--begin::Item-->
 			<li class="nav-item mb-5" data-toggle="tooltip" data-placement="right" data-container="body" data-boundary="window" title="Laporan">
-				<a href="#" class="nnav-link btn btn-icon btn-icon-white btn-lg" role="tab">
+				<a href="/laporan" class="nnav-link btn btn-icon btn-icon-white btn-lg" role="tab">
 					<i class="icon-xl fas fa-chart-line"></i>
 				</a>
 			</li>
