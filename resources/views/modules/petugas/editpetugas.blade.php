@@ -47,14 +47,14 @@
                                         <span></span>
                                         Nonaktif
                                     </label>
-                        
+
                                 </div>
                                 <span class="form-text text-muted">Status akun pegawai</span>
                             </div>
                         </div>
                         <div class="card-footer">
                             <button type="submit" class="btn btn-warning mr-2">Simpan dan Perbarui</button>
-                            <a href="petugas" class="btn btn-secondary">Batal</a>
+                            <a href="{{route('view-petugas')}}" class="btn btn-secondary">Batal</a>
                         </div>
                     </form>
                     <!--end::Form-->
