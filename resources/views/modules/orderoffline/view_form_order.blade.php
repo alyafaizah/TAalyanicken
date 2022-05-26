@@ -11,7 +11,6 @@
             <!--begin::Card-->
 
             @if(Session::has('pesan'))
-
 								
 			    <div class="alert alert-danger">
 				    <b>Pemberitahuan</b><br>
@@ -29,7 +28,7 @@
                             </div>
                             <div class="card-toolbar">
                                 <!--begin::Button-->
-                                <a href="/createtiket" class="btn btn-primary font-weight-bolder">
+                                <button type="button" class="btn btn-primary font-weight-bolder" data-toggle="modal" data-target="#exampleModal">
                                     <span class="svg-icon svg-icon-md">
                                         <!--begin::Svg Icon | path:/metronic/theme/html/demo4/dist/assets/media/svg/icons/Design/Flatten.svg-->
                                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -40,8 +39,49 @@
                                             </g>
                                         </svg>
                                         <!--end::Svg Icon-->
-                                    </span>Ubah Jenis Tiket</a>
+                                    </span>Ubah Jenis Tiket</button>
                                 <!--end::Button-->
+
+                                <!-- Modal-->
+                                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel"></h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <i aria-hidden="true" class="ki ki-close"></i>
+                                                </button>
+                                            </div>
+
+                                            <form action="" method="get">
+                                            <div class="modal-body">
+                                                <h3>Jenis Tiket</h3>
+                                                <div class="form-group">
+                                                    <label for="">Jenis Tiket</label>
+                                                    <select name="jenis_tiket" class="form-control" id="" required="">
+                                                        <option value="">-- Pilih salah satu --</option>
+                                                        
+                                                        @foreach ( $tiket AS $tkl ) :
+                                                        <option value="{{ $tkl->kd_tiket }}">{{ ucfirst($tkl->jenis) }}</option>
+                                                        @endforeach
+
+                                                    </select>
+                                                    <small>Pilih Jenis Tiket</small>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">Batal</button>
+                                                <button class="btn btn-primary font-weight-bold">Tambahkan</button>
+                                            </div>
+                                            </form>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+
                             </div>
                         </div>
                         <div class="card-body">
@@ -67,9 +107,13 @@
 
                             @endphp
                             
+
+                            <form action="{{ url('petugas/payment') }}" method="GET">
+
+
                             <div class="row">
         
-        
+    
                                 {{-- Left menu --}}
                                 <div class="col-md-6">
         
@@ -84,7 +128,7 @@
                                         @endphp
         
                                         <label for="">Kode Order</label>
-                                        <input type="text" name="kode_order" class="form-control" value="{{ $kode_order }}" disabled>
+                                        <input type="text" name="kode_order" class="form-control" value="{{ $kode_order }}" readonly>
                                         <small>Koder order pemesanan</small>
                                     </div>
                                                 
@@ -94,7 +138,7 @@
                                     {{-- Tanggal Kunjungan --}}
                                     <div class="form-group">
                                         <label for="">Tanggal Kunjungan</label>
-                                        <input type="text" name="tanggal" class="form-control" value="{{ date('d F Y H.i A') }}" disabled>
+                                        <input type="text" class="form-control" value="{{ date('d F Y H.i A') }}" readonly>
                                         <small>Waktu pemesanan terkini</small>
                                     </div>
                                 </div>
@@ -113,13 +157,24 @@
 
                             <hr>
 
+
+                            
+                            
                             <div class="row">
                                 <div class="col-md-12">
 
                                     {{-- Jenis Tiket --}}
                                     <div class="form-group">
                                         <label for="">Jenis Tiket</label>
-                                        <input type="text" name="jenis_tiket" class="form-control" value="{{ $nama_tiket }}" disabled>
+                                        <select name="jenis_tiket" class="form-control" id="" required="">
+                                            <option value="">-- Pilih salah satu --</option>
+                                            
+                                            @foreach ( $tiket AS $tkl ) :
+                                            <option value="{{ $tkl->kd_tiket }}">{{ ucfirst($tkl->jenis) }}</option>
+                                            @endforeach
+
+                                        </select>
+                                        
                                         <small>Klik tombol diatas untuk merubah jenis tiket</small>
                                     </div>
 
@@ -149,11 +204,13 @@
 
                                     {{-- Button Submit --}}
                                     <div class="form-group text-right">
-                                        <a href="{{ url('petugas/payment') }}" class="btn btn-success">Lanjut Pembayaran</a>
+                                        <button class="btn btn-success">Lanjut Pembayaran</button>
                                     </div>  
 
                                 </div>
                             </div>
+
+                            </form>
         
         
                         </div>

@@ -22,8 +22,12 @@ class ProfileController extends Controller
     function index()
     {
 
-        $identitas = Identitas::all();
+        $id_profile = session("id");
+        $identitas = Identitas::where('id_profile', $id_profile)->first();
+
+        // echo $id_profile;
         return view('modules.profile.informasipribadi', compact('identitas'));
+
     }
 
     // view edit

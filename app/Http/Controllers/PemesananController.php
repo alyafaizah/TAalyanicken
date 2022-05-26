@@ -90,18 +90,44 @@ class PemesananController extends Controller
     /**
      * 
      *  Pemesanan Tiket 
+     * 
      */
     
     // view form order
     public function form_orderoffline() {
+            
+        $data['tiket'] = DB::table('data_tiket')->get();
 
-        return view('modules.orderoffline.view_form_order');
+        return view('modules.orderoffline.view_form_order', $data);
     }
+    
 
 
 
-    public function form_orderoffline_pembayaran() {
 
-        return view('modules.orderoffline.view_form_orderpembayaran');
+    public function form_orderoffline_pembayaran( Request $request ) {
+    
+        $input = array(
+
+            'pemesan'       => $request->input('nama_pengunjung'),
+            'kd_order'      => $request->input('kode_order'),
+            'kd_tiket'      => $request->input('jenis_tiket'),
+            'id_profile'    => 1,// session
+            'tgl_kunjungan' => strtotime("now"),
+            'jumlah'        => $request->input('jumlah'),
+            'jenis_pemesanan' => "offline"
+        );
+
+
+        // ambil informasi data tiket 
+        $dt_tiket = DB::table('data_tiket')->where('kd_tiket', $request->input('jenis_tiket'))->first();
+
+        $data = array(
+
+            'input' => $input,
+            'tiket' => $dt_tiket
+        );
+        
+        return view('modules.orderoffline.view_form_orderpembayaran', $data);
     }
 }
