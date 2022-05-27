@@ -112,7 +112,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <p class="text-muted font-weight-bold">Masukkan detail Anda untuk membuat akun</p>
                             </div>
                             <!--begin::Form-->
-                            <form class="form" novalidate="novalidate" id="kt_login_signup_form" action="/register/proses" method="post">
+                            <form class="form" novalidate="novalidate" id="kt_login_signup_form">
 
                                 @csrf
 
@@ -340,6 +340,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
                 $.ajax({
 
+                    type: "GET",
                     url: "{{ url('register/proses') }}",
                     data: data_input,
                     dataType: "json",

@@ -100,7 +100,7 @@ Route::get('/riwayat', function() {
  */
 
 //regis
-Route::post('/register/proses', [LoginController::class, 'prosesregis']);
+Route::get('/register/proses', [LoginController::class, 'prosesregis']);
 
 // profile
 Route::get('/dashboardcust', [ProfileController::class, 'dashboardcust']);
