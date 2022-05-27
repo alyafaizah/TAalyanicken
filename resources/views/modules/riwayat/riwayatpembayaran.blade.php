@@ -1,143 +1,199 @@
 @extends('layouts.template-backend-navbar-cust')
 
 @section('main-content-cust')
-
-<!--begin::Content-->
-<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
-    <!--begin::Entry-->
-    <div class="d-flex flex-column-fluid">
-        <!--begin::Container-->
-        <div class="container">
-            <!--begin::Layout-->
-            <div class="flex-row-fluid ml-lg-8">
-                <!--begin::Card-->
-                <div class="card card-custom gutter-b">
-                    <div class="card-body p-0">
-                        <!-- begin: Invoice-->
-                        <!-- begin: Invoice header-->
-                        <div class="row justify-content-center py-8 px-8 py-md-27 px-md-0">
-                            
-                            <div class="col-md-10">
-                                <div class="d-flex justify-content-between pb-10 pb-md-20 flex-column flex-md-row">
-                                    <h1 class="display-4 font-weight-boldest mb-10">Riwayat Pembayaran</h1>
-                                    <div class="d-flex flex-column align-items-md-end px-0">
-                                    </div>
-                                </div>
-                                <div class="border-bottom w-100"></div>
-                                <div class="d-flex justify-content-between pt-6">
-                                    <div class="d-flex flex-column flex-root">
-                                        <span class="font-weight-bolder mb-2">TANGGAL PEMESANAN</span>
-                                        <span class="opacity-70">Jan 07, 2020</span>
-                                    </div>
-                                    <div class="d-flex flex-column flex-root">
-                                        <span class="font-weight-bolder mb-2">KODE ORDER</span>
-                                        <span class="opacity-70">64616-103</span>
-                                    </div>
-                                    <div class="d-flex flex-column flex-root">
-                                        <span class="font-weight-bolder mb-2">TANGGAL BERKUNJUNG</span>
-                                        <span class="opacity-70">Jumat</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- end: Invoice header-->
-                        <!-- begin: Invoice body-->
-                        <div class="row justify-content-center py-8 px-8 py-md-10 px-md-0">
-                            <div class="col-md-10">
-                                <div class="table-responsive">
-                                    <table class="table">
-                                        <thead>
-                                            <tr>
-                                                <th class="pl-0 font-weight-bold text-muted text-uppercase">Jenis Tiket
-                                                </th>
-                                                <th class="font-weight-bold text-muted text-uppercase">Jumlah
-                                                    Tiket</th>
-                                                <th class="font-weight-bold text-muted text-uppercase">
-                                                    Harga/Qty</th>
-                                                <th class="text-right pr-0 font-weight-bold text-muted text-uppercase">
-                                                    Total</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr class="font-weight-boldest">
-                                                <td class="border-0 pl-0 pt-7 d-flex align-items-center">
-                                                    Weekend
-                                                </td>
-                                                <td class="pt-7 align-middle">2</td>
-                                                <td class="pt-7 align-middle">$90.00</td>
-                                                <td class="text-primary pr-0 pt-7 text-right align-middle">$180.00</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+    <!--begin::Content-->
+    <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+        <!--begin::Entry-->
+        <div class="d-flex flex-column-fluid">
+            <!--begin::Container-->
+            <div class="container">
+                <!--begin::Teachers-->
+                <div class="d-flex flex-row">
+                    <!--begin::Content-->
+                    <div class="flex-row-fluid">
+                        <!--begin::Card-->
+                        <div class="card card-custom">
+                            <!--begin::Header-->
+                            <div class="card-header flex-wrap border-0 pt-20 pb-0">
+                                <h3 class="card-title align-items-start flex-column">
+                                    <span class="card-label font-weight-bolder font-size-h3 text-dark">Riwayat
+                                        Pembayaran</span>
+                                </h3>
+                                <div class="card-toolbar">
+                                    <!--begin::Button-->
+                                    <a href="#" class="btn btn-primary font-weight-bolder">
+                                        <span class="svg-icon svg-icon-md">
+                                            <!--begin::Svg Icon | path:assets/media/svg/icons/Design/Flatten.svg-->
+                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"
+                                                viewBox="0 0 24 24" version="1.1">
+                                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                    <rect x="0" y="0" width="24" height="24" />
+                                                    <circle fill="#000000" cx="9" cy="15" r="6" />
+                                                    <path
+                                                        d="M8.8012943,7.00241953 C9.83837775,5.20768121 11.7781543,4 14,4 C17.3137085,4 20,6.6862915 20,10 C20,12.2218457 18.7923188,14.1616223 16.9975805,15.1987057 C16.9991904,15.1326658 17,15.0664274 17,15 C17,10.581722 13.418278,7 9,7 C8.93357256,7 8.86733422,7.00080962 8.8012943,7.00241953 Z"
+                                                        fill="#000000" opacity="0.3" />
+                                                </g>
+                                            </svg>
+                                            <!--end::Svg Icon-->
+                                        </span>Transaksi Baru</a>
+                                    <!--end::Button-->
                                 </div>
                             </div>
-                        </div>
-                        <!-- end: Invoice body-->
-                        <!-- begin: Invoice footer-->
-                        <div class="row justify-content-center bg-gray-100 py-8 px-8 py-md-10 px-md-0 mx-0">
-                            <div class="col-md-10">
-                                <div class="table-responsive">
-                                    <table class="table">
-                                        <thead>
-                                            <tr>
-                                                <th class="font-weight-bold text-muted text-uppercase">Jenis Pembayaran
+                            <!--end::Header-->
+                            <!--begin::Body-->
+                            <div class="card-body">
+                                <!--begin: Search Form-->
+                                <!--begin::Search Form-->
+                                <div class="mb-10">
+                                    <div class="row align-items-center">
+                                        <div class="col-lg-9 col-xl-8">
+                                            <div class="row align-items-center">
+                                                <div class="col-md-4 my-2 my-md-0">
+                                                    <div class="input-icon">
+                                                        <input type="text" class="form-control form-control-solid"
+                                                            placeholder="Search..." id="kt_datatable_search_query" />
+                                                        <span>
+                                                            <i class="flaticon2-search-1 text-muted"></i>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 my-2 my-md-0">
+                                                    <select class="form-control form-control-solid"
+                                                        id="kt_datatable_search_status">
+                                                        <option value="">Status</option>
+                                                        <option value="1">Diproses</option>
+                                                        <option value="2">Dibatalkan</option>
+                                                        <option value="3">Berhasil</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-4 my-2 my-md-0">
+                                                    <a href="#"
+                                                        class="btn btn-light-primary px-6 font-weight-bold">Search</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--end::Search Form-->
+                                <!--end: Search Form-->
+                                <!--begin: Datatable-->
+                                <div class="datatable datatable-bordered datatable-head-custom datatable-default datatable-primary datatable-loaded"
+                                    id="kt_datatable">
+                                    <table class="datatable-table" style="display: block;">
+                                        <thead class="datatable-head">
+                                            <tr class="datatable-row" style="left: 0px;">
+                                                <th class="datatable-cell datatable-toggle-detail datatable-cell-sort">
+                                                    <span></span>
                                                 </th>
-                                                <th class="font-weight-bold text-muted text-uppercase">Status Pembayaran
-                                                </th>
-                                                <th class="font-weight-bold text-muted text-uppercase">Tanggal
-                                                    Pembayaran</th>
-                                                <th class="font-weight-bold text-muted text-uppercase text-right">Total
-                                                    Pembayaran</th>
+                                                <th data-field="OrderID" class="datatable-cell datatable-cell-sort"><span
+                                                        style="width: 114px;">Kode Order</span></th>
+                                                <th data-field="Status" data-autohide-disabled="false"
+                                                    class="datatable-cell datatable-cell-sort"><span
+                                                        style="width: 114px;">Total Bayar</span></th>
+                                                <th data-field="tgl_kunjungan" data-autohide-disabled="false"
+                                                    class="datatable-cell datatable-cell-sort"><span
+                                                        style="width: 114px;">Type</span></th>
+                                                <th data-field="tgl_kunjungan" data-autohide-disabled="false"
+                                                    class="datatable-cell datatable-cell-sort"><span
+                                                        style="width: 114px;">Tanggal Pembayaran</span></th>
+                                                <th data-field="tgl_kunjungan" data-autohide-disabled="false"
+                                                    class="datatable-cell datatable-cell-sort"><span
+                                                        style="width: 114px;">Status Pembayaran</span></th>
                                             </tr>
-                                        </thead>
-                                        <tbody>
-                                        @foreach ( $pembayaran AS $b )
-                                            <tr class="font-weight-bolder">
-                                                <td>{{ $b->type }}</td>
-                                                <td>Success</td>
-                                                <td>{{ $b->tanggal }}</td>
-                                                <td class="text-primary font-size-h3 font-weight-boldest text-right">
-                                                Rp {{ number_format($b->total_bayar) }}</td>
-                                            </tr>
+                                        <tbody class="datatable-body">
+                                            @foreach ($pembayaran as $b)
+                                                {{-- @foreach ($jenis_tiket as $t) --}}
+                                                {{-- @if ($t->kd_tiket == $b->kd_tiket) --}}
+                                                <tr data-row="0" class="datatable-row" style="left: 0px;">
+                                                    <td class="datatable-cell datatable-toggle-detail"><a
+                                                            class="datatable-toggle-detail"
+                                                            href="/detailriwayat/{{ $b->kd_order }}"><i
+                                                                class="fa fa-caret-right"></i></a></td>
+                                                    <td data-field="kd_order" aria-label="64616-103" class="datatable-cell">
+                                                        <span style="width: 114px;">{{ $b->kd_order }}</span></td>
+                                                    <td data-field="status" data-autohide-disabled="false" aria-label="1"
+                                                        class="datatable-cell"><span style="width: 114px;"><span
+                                                                class="font-weight-bold">{{ $b->total_bayar }}</span></span>
+                                                    </td>
+                                                    <td data-field="tgl_berkunjung" aria-label="64616-103"
+                                                        class="datatable-cell"><span
+                                                            style="width: 114px;">{{ $b->type }}</span>
+                                                    </td>
+                                                    <td data-field="jumlah" aria-label="64616-103" class="datatable-cell">
+                                                        <span style="width: 114px;">{{ $b->tanggal }}</span></td>
+                                                    <td data-field="tgl_berkunjung" aria-label="64616-103"
+                                                        class="datatable-cell"><span style="width: 114px;">sukses</span>
+                                                    </td>
+                                                </tr>
+                                                {{-- @endif --}}
+                                                {{-- @endforeach --}}
                                             @endforeach
                                         </tbody>
                                     </table>
+                                    <div class="datatable-pager datatable-paging-loaded">
+                                        <ul class="datatable-pager-nav my-2 mb-sm-0">
+                                            <li><a title="First"
+                                                    class="datatable-pager-link datatable-pager-link-first datatable-pager-link-disabled"
+                                                    data-page="1" disabled="disabled"><i
+                                                        class="flaticon2-fast-back"></i></a></li>
+                                            <li><a title="Previous"
+                                                    class="datatable-pager-link datatable-pager-link-prev datatable-pager-link-disabled"
+                                                    data-page="1" disabled="disabled"><i class="flaticon2-back"></i></a>
+                                            </li>
+                                            <li style="display: none;"><input type="text"
+                                                    class="datatable-pager-input form-control" title="Page number"></li>
+                                            <li><a class="datatable-pager-link datatable-pager-link-number datatable-pager-link-active"
+                                                    data-page="1" title="1">1</a></li>
+                                            <li><a class="datatable-pager-link datatable-pager-link-number" data-page="2"
+                                                    title="2">2</a></li>
+                                            <li><a class="datatable-pager-link datatable-pager-link-number" data-page="3"
+                                                    title="3">3</a></li>
+                                            <li><a class="datatable-pager-link datatable-pager-link-number" data-page="4"
+                                                    title="4">4</a></li>
+                                            <li><a class="datatable-pager-link datatable-pager-link-number" data-page="5"
+                                                    title="5">5</a></li>
+                                            <li><a title="Next" class="datatable-pager-link datatable-pager-link-next"
+                                                    data-page="2"><i class="flaticon2-next"></i></a></li>
+                                            <li><a title="Last" class="datatable-pager-link datatable-pager-link-last"
+                                                    data-page="35"><i class="flaticon2-fast-next"></i></a></li>
+                                        </ul>
+                                        <div class="datatable-pager-info my-2 mb-sm-0">
+                                            <div class="dropdown bootstrap-select datatable-pager-size"
+                                                style="width: 60px;"><select class="selectpicker datatable-pager-size"
+                                                    title="Select page size" data-width="60px" data-container="body"
+                                                    data-selected="10">
+                                                    <option class="bs-title-option" value=""></option>
+                                                    <option value="5">5</option>
+                                                    <option value="10">10</option>
+                                                    <option value="20">20</option>
+                                                    <option value="30">30</option>
+                                                    <option value="50">50</option>
+                                                    <option value="100">100</option>
+                                                </select>
+                                                <div class="dropdown-menu ">
+                                                    <div class="inner show" role="listbox" id="bs-select-5"
+                                                        tabindex="-1">
+                                                        <ul class="dropdown-menu inner show" role="presentation"></ul>
+                                                    </div>
+                                                </div>
+                                            </div><span class="datatable-pager-detail">Showing 1 - 10 of 350</span>
+                                        </div>
+                                    </div>
                                 </div>
+                                <!--end: Datatable-->
                             </div>
+                            <!--end::Body-->
                         </div>
-                        <!-- end: Invoice footer-->
-                        <!--begin: QR-->
-                        <div class="flex-shrink-0 mr-7 mt-lg-0 mt-10">
-                            <div class="symbol symbol-100 symbol-lg-200">
-                                <img src="data:image/png;base64,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" alt="image" />
-                            </div>
-                            
-                        </div>
-                        <!--end::QR-->
-                        <!-- begin: Invoice action-->
-                        <div class="row justify-content-center py-8 px-8 py-md-10 px-md-0">
-                            <div class="col-md-10">
-                                <div class="d-flex justify-content-between">
-                                    <button type="button" class="btn btn-light-primary font-weight-bold"
-                                        onclick="window.print();">Download Order Details</button>
-                                    <button type="button" class="btn btn-primary font-weight-bold"
-                                        onclick="window.print();">Print
-                                        Order Details</button>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- end: Invoice action-->
-                        <!-- end: Invoice-->
+                        <!--end::Card-->
                     </div>
+                    <!--end::Content-->
                 </div>
-                <!--end::Card-->
+                <!--end::Teachers-->
             </div>
-            <!--end::Layout-->
+            <!--end::Container-->
         </div>
-        <!--end::Container-->
+        <!--end::Entry-->
     </div>
-    <!--end::Entry-->
-</div>
-<!--end::Content-->
-
+    <!--end::Content-->
 @endsection

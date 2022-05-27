@@ -69,9 +69,9 @@ Route::get('/laporan', [LaporanController::class, 'index']);
 
 
 /**
- * 
- *  Pemesanan Baru 
- * 
+ *
+ *  Pemesanan Baru
+ *
  */
 
 Route::get('petugas/order', [PemesananController::class, 'form_orderoffline']);
@@ -93,10 +93,10 @@ Route::get('/riwayat', function() {
 });
 
 /**
- * 
- * 
+ *
+ *
  *  Pengunjung
- * 
+ *
  */
 
 //regis
@@ -114,8 +114,9 @@ Route::post('/editinformasipribadi/{kd}', [ProfileController::class, 'update']);
 Route::get('/checkout', [CheckoutController::class, 'checkout']);
 Route::get('/struk', [CheckoutController::class, 'struk']);
 
-//riwayat 
+//riwayat
 Route::get('/riwayattransaksi', [RiwayatController::class, 'riwayattransaksi']);
+Route::get('/detailriwayat/{kd_order}', [RiwayatController::class, 'riwayatById']);
 Route::get('/riwayatpembayaran', [RiwayatController::class, 'riwayatpembayaran']);
 
 Route::get('pw', function() {

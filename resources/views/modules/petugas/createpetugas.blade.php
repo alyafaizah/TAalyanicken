@@ -1,7 +1,7 @@
 @extends('layouts.template-backend-sidebar')
 <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
     <!--begin::Subheader-->
-    <div class="subheader py-5 py-lg-10 gutter-b subheader-transparent" id="kt_subheader" style="background-color: #663259; background-position: right bottom; background-size: auto 100%; background-repeat: no-repeat; background-image: url(/metronic/theme/html/demo4/dist/assets/media/svg/patterns/taieri.svg)">
+    <div class="subheader py-5 py-lg-10 gutter-b subheader-transparent" id="kt_subheader">
         <div class="container d-flex flex-column">
         </div>
     </div>
@@ -25,7 +25,7 @@
                             <div class="form-group">
                                 <label for="exampleSelect1">Username Petugas
                                     <span class="text-danger">*</span></label>
-                                    <input type="text" name="username" class="form-control" placeholder="" />
+                                <input type="text" name="username" class="form-control" placeholder="" />
                             </div>
                             <div class="form-group">
                                 <label>Email
@@ -40,7 +40,7 @@
                         </div>
                         <div class="card-footer">
                             <button type="submit" class="btn btn-primary mr-2">Tambahkan dan Simpan</button>
-                            <button type="reset" class="btn btn-secondary">Cancel</button>
+                            <a href="{{route('view-petugas')}}" class="btn btn-secondary">Batal</a>
                         </div>
                     </form>
                     <!--end::Form-->
