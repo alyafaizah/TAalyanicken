@@ -142,7 +142,7 @@ class LoginController extends Controller
 
 
     //proses sign up
-    public function prosesregis(Request $request)
+    public function prosesregis_oldversion(Request $request)
     {
         $request->validate([
             // 'name' => 'required',
@@ -173,5 +173,41 @@ class LoginController extends Controller
         session()->flash('message', 'Akun Anda telah dibuat');
 
         return redirect('/login');
+    }
+
+    public function prosesregis(Request $request)
+    {
+        $request->validate([
+            'email' => 'required',
+            'password' => 'required',
+            'nama_lengkap' => 'required'
+        ]);
+
+        $data = array(
+
+            'email'     => strtolower($request->input('email')),
+            'password'  => bcrypt($request->input('password')),
+            'level'     => "pengunjung"
+        );
+
+        $id_profile = DB::table('profile')->insertGetId($data);
+        
+        $pesan = "";
+        $url = "";
+        
+
+        $dt_identitas = array(
+
+            'id_profile'   => $id_profile,
+            'nama_lengkap' => $request->input('nama_lengkap')
+        );
+
+        DB::table('identitas')->insert( $dt_identitas );
+
+        // session()->flash('message', 'Akun Anda telah dibuat');
+        $pesan = "success";
+        $url = url('/login');
+
+        // return redirect('/login');
     }
 }
