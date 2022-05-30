@@ -47,7 +47,7 @@
                                         <span></span>
                                         Nonaktif
                                     </label>
-
+                        
                                 </div>
                                 <span class="form-text text-muted">Status akun pegawai</span>
                             </div>

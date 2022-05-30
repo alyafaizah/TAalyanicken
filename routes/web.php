@@ -79,7 +79,7 @@ Route::get('petugas/payment', [PemesananController::class, 'form_orderoffline_pe
 
 
 //module petugas
-Route::get('/petugas', [PetugasController::class, 'index']);
+Route::get('/petugas', [PetugasController::class, 'index'])->name('view-petugas');
 Route::get('/createpetugas', [PetugasController::class, 'create']);
 Route::post('/createpetugas', [PetugasController::class, 'process'])->name('add-petugas');
 Route::get('/delete-petugas/{kd}', [PetugasController::class, 'delete']);
