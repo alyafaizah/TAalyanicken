@@ -17,4 +17,7 @@ class Profile extends Model
     {
         return $this->belongsTo('App\Models\Identitas', 'id_profile');
     }
+
+
+    public $timestamps = false;
 }

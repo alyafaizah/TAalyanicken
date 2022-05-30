@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Profile;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class PasswordUpdate extends Controller
 {
@@ -30,17 +31,20 @@ class PasswordUpdate extends Controller
         ]);
 
 
+        
+        $user = Profile::where('id_profile', $id)->first();
+        // $hashedPassword = Auth::user()->password;
 
-        $hashedPassword = Auth::user()->password;
+        $hashedPassword = $user->password;
+        if (Hash::check($request->oldpassword, $hashedPassword)) {
 
-        if (\Hash::check($request->oldpassword, $hashedPassword)) {
+            if (!Hash::check($request->newpassword, $hashedPassword)) {
 
-            if (!\Hash::check($request->newpassword, $hashedPassword)) {
+                $password = bcrypt($request->newpassword);
+                Profile::where('id_profile', $id)->update(array('password' =>  $password));
 
-                $users = Profile::find(Auth::user()->id);
-                $users->password = bcrypt($request->newpassword);
-                Profile::where('id', Auth::user()->id)->update(array('password' =>  $users->password));
-
+                // echo $users;
+                
                 session()->flash('message', 'kata sandi berhasil diubah');
                 return redirect()->back();
             } else {

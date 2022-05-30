@@ -10,6 +10,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\RiwayatController;
 use App\Http\Controllers\LaporanController;
+use App\Http\Controllers\PasswordUpdate;
 
 /*
 |--------------------------------------------------------------------------
@@ -106,8 +107,9 @@ Route::get('/register/proses', [LoginController::class, 'prosesregis']);
 Route::get('/dashboardcust', [ProfileController::class, 'dashboardcust']);
 Route::get('/informasipribadi', [ProfileController::class, 'index']);
 Route::get('/ubahkatasandi', [ProfileController::class, 'ubahkatasandi']);
-Route::resource('/updatepass','ProfileController');
-Route::get('/editinformasipribadi/{kd}', [ProfileController::class, 'view_edit']);
+// Route::resource('/updatepass','ProfileController');
+Route::post('/updatepass/{id}', [PasswordUpdate::class, 'update']);
+// Route::get('/editinformasipribadi/{kd}', [ProfileController::class, 'view_edit']);
 Route::post('/editinformasipribadi/{kd}', [ProfileController::class, 'update']);
 
 // purchase pengunjung

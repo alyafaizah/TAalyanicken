@@ -121,13 +121,13 @@ License: You must have a valid license purchased only from themeforest(the above
                                     <input class="form-control h-auto border-0 px-0 placeholder-dark-75" type="text" placeholder="Nama Lengkap" name="nama_lengkap" autocomplete="off" />
                                 </div>
                                 <div class="form-group py-3 border-top m-0">
-                                    <input class="form-control h-auto border-0 px-0 placeholder-dark-75" type="text" placeholder="Email" name="email" autocomplete="off" />
+                                    <input class="form-control h-auto border-0 px-0 placeholder-dark-75" type="text" placeholder="Email" name="email-regis" autocomplete="off" />
                                 </div>
                                 <div class="form-group py-3 border-top m-0">
-                                    <input class="form-control h-auto border-0 px-0 placeholder-dark-75" type="password" placeholder="Kata Sandi" name="password" autocomplete="off" />
+                                    <input class="form-control h-auto border-0 px-0 placeholder-dark-75" type="password" placeholder="Kata Sandi" name="password-regis" autocomplete="off" />
                                 </div>
                                 <div class="form-group py-3 border-top m-0">
-                                    <input class="form-control h-auto border-0 px-0 placeholder-dark-75" type="password" placeholder="Konfirmasi kata sandi" name="cpassword" autocomplete="off" />
+                                    <input class="form-control h-auto border-0 px-0 placeholder-dark-75" type="password" placeholder="Konfirmasi kata sandi" name="cpassword-regis" autocomplete="off" />
                                 </div>
                                 <div class="form-group mt-5">
                                     <div class="checkbox-inline">
@@ -327,8 +327,8 @@ License: You must have a valid license purchased only from themeforest(the above
 
             $('#btn-submit-register').click(function() {
 
-                var email = $('input[name="email-user"]').val();
-                var password = $('input[name="password"]').val();
+                var email = $('input[name="email-regis"]').val();
+                var password = $('input[name="password-regis"]').val();
                 var nama_lengkap = $('input[name="nama_lengkap"]').val();
 
                 data_input = {
@@ -337,6 +337,8 @@ License: You must have a valid license purchased only from themeforest(the above
                     "password": password,
                     "nama_lengkap": nama_lengkap,
                 }
+
+                // console.log(data_input);
 
                 $.ajax({
 
