@@ -152,7 +152,7 @@
 							</div>
 							
 							<div class="card-toolbar">
-								<a class="btn btn-success mr-2"  href="">Ubah Informasi</a>
+								<a class="btn btn-success mr-2"  href="editinformasipribadi/{{ $identitas->id_profile }}">Ubah Informasi</a>
 							</div>
 						</div>
 						<!--end::Header-->
@@ -215,7 +215,7 @@
 									<div class="col-lg-9 col-xl-6">
 										<div class="input-group input-group-lg input-group-solid">
 											<div class="form-control form-control-lg form-control-solid">
-												asdfghjhgfdsdfgh
+												{{ $profile->email }}
 											</div>
 										</div>
 									</div>

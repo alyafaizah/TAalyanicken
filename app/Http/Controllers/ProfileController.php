@@ -10,7 +10,9 @@ class ProfileController extends Controller
 {
     public function dashboardcust()
     {
-        return view('modules.profile.dashboardcust');
+        $id_profile = session("id");
+        $identitas = Identitas::where('id_profile', $id_profile)->first();
+        return view('modules.profile.dashboardcust', compact('identitas'));
     }
 
     public function ubahkatasandi()
@@ -41,10 +43,11 @@ class ProfileController extends Controller
     }
 
 
-    function update(Request $request, $kd)
+    function update(Request $request)
     {
 
-        $identitas = Identitas::where('id_profile', $kd);
+        $id_profile = session("id");
+        $identitas = Identitas::where('id_profile', $id_profile);
 
         if ($identitas) {
 
@@ -54,25 +57,27 @@ class ProfileController extends Controller
             $ambilTmptlahir  = $request->input('tempat_lahir');
             $ambilTgllahir  = $request->input('tgl_lahir');
 
+            // konversi menjadi Y-M-d 
+            $date_to_string = strtotime($ambilTgllahir);
+            $date = date('Y-m-d', $date_to_string);
 
             $data = array(
 
-                'id_profile'        => strtoupper(uniqid()),
                 'nama_lengkap'      => $ambilNama,
-                'telepon'           => $ambilAlamat,
-                'stok'              => $ambilTelp,
+                'alamat'           => $ambilAlamat,
+                'telepon'              => $ambilTelp,
                 'tempat_lahir'      => $ambilTmptlahir,
-                'tgl_lahir'         => $ambilTgllahir
+                'tgl_lahir'         => $date
 
             );
 
-
+            // print_r($data);
             $identitas->update($data);
-            return redirect('informasipribadi');
+            return redirect('informasipribadi/');
         } else {
 
 
-            echo "invalid kd " . $kd;
+            echo "invalid kd " . $id_profile;
         }
     }
 }

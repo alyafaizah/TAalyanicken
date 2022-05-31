@@ -109,8 +109,8 @@ Route::get('/informasipribadi', [ProfileController::class, 'index']);
 Route::get('/ubahkatasandi', [ProfileController::class, 'ubahkatasandi']);
 // Route::resource('/updatepass','ProfileController');
 Route::post('/updatepass/{id}', [PasswordUpdate::class, 'update']);
-// Route::get('/editinformasipribadi/{kd}', [ProfileController::class, 'view_edit']);
-Route::post('/editinformasipribadi/{kd}', [ProfileController::class, 'update']);
+Route::get('/editinformasipribadi/{kd}', [ProfileController::class, 'view_edit']);
+Route::post('/editinformasipribadi', [ProfileController::class, 'update']);
 
 // purchase pengunjung
 Route::get('/checkout', [CheckoutController::class, 'checkout']);

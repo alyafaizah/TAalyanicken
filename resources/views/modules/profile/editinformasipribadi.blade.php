@@ -150,14 +150,11 @@
 								<h3 class="card-label font-weight-bolder text-dark">Informasi Pribadi</h3>
 								<span class="text-muted font-weight-bold font-size-sm mt-1">Perbarui informasi pribadi Anda</span>
 							</div>
-							<div class="card-toolbar">
-								<button type="submit" class="btn btn-success mr-2">Simpan Perubahan</button>
-								<a href="editinformasipribadi" class="btn btn-secondary">Batal</a>
-							</div>
+
 						</div>
 						<!--end::Header-->
 						<!--begin::Form-->
-						<form class="form" action="/editinformasipribadi/{{ $id_profile }}" method="POST">
+						<form class="form" action="/editinformasipribadi" method="POST">
 							<!--begin::Body-->
 							@csrf
 							<div class="card-body">
@@ -246,8 +243,8 @@
 								<div class="form-group row">
 									<label class="col-xl-3 col-lg-3 col-form-label">Tanggal Lahir</label>
 									<div class="col-lg-9 col-xl-6">
-										<div class="input-group date input-group-lg input-group-solid" value="{{ $identitas->tgl_lahir }}" name="tgl_lahir">
-											<input type="text" class="form-control" id="kt_datepicker_2" readonly="readonly" placeholder="Pilih Tanggal" />
+										<div class="input-group date input-group-lg input-group-solid">
+											<input type="text" class="form-control" id="kt_datepicker_2" value="{{ $identitas->tgl_lahir }}" name="tgl_lahir" readonly="readonly" placeholder="Pilih Tanggal" />
 											<div class="input-group-append">
 												<span class="input-group-text">
 													<i class="la la-calendar-check-o"></i>
@@ -256,6 +253,10 @@
 										</div>
 										<span class="form-text text-muted">Kami tidak akan pernah membagikan informasi Anda kepada orang lain.</span>
 									</div>
+								</div>
+								<div class="card-toolbar">
+									<button type="submit" class="btn btn-success mr-2">Simpan Perubahan</button>
+									<a href="editinformasipribadi" class="btn btn-secondary">Batal</a>
 								</div>
 							</div>
 							<!--end::Body-->
