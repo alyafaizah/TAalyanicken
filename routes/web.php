@@ -120,6 +120,7 @@ Route::get('/struk', [CheckoutController::class, 'struk']);
 Route::get('/riwayattransaksi', [RiwayatController::class, 'riwayattransaksi']);
 Route::get('/detailriwayat/{kd_order}', [RiwayatController::class, 'riwayatById']);
 Route::get('/riwayatpembayaran', [RiwayatController::class, 'riwayatpembayaran']);
+Route::get('/riwayatadmin', [RiwayatController::class, 'riwayatadmin']);
 
 Route::get('pw', function() {
 

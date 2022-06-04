@@ -51,4 +51,9 @@ class RiwayatController extends Controller
         );
         return view('modules.riwayat.detailriwayat', $data);
     }
+
+    public function riwayatadmin()
+    {
+        return view('modules.riwayat.riwayatadmin');
+    }
 }
