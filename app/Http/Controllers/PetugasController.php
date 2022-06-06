@@ -11,8 +11,11 @@ class PetugasController extends Controller
 {
     function index() //halaman tampil
     {
-        $tb_profile = DB::table('profile')->where('level', "petugas_tiket")->get();
+        $tb_profile = Petugas::where('level', "petugas tiket")->get();
 
+        // echo "<pre>";
+        // print_r($tb_profile);
+        // die;
         $data = array(
 
             'petugas' => $tb_profile
@@ -25,33 +28,33 @@ class PetugasController extends Controller
         return view('modules.petugas.createpetugas');
     }
 
-    // proses tambah 
+    // proses tambah
     function process( Request $request ) {
 
-        $ambilUsername  = $request->input('username'); 
-        $ambilEmail     = $request->input('email'); 
-        $ambilPassword  = $request->input('password'); 
+        $ambilUsername  = $request->input('username');
+        $ambilEmail     = $request->input('email');
+        $ambilPassword  = $request->input('password');
 
         $data = array(
             'username'      => $ambilUsername,
             'password'      => Hash::make($ambilPassword),
-            'level' => "petugas_tiket",
+            'level' => "petugas tiket",
             'email'         => $ambilEmail,
         );
 
         // insert
         Petugas::create( $data );
-        
+
         return redirect('petugas');
     }
 
 
 
-    // fungsi hapus 
+    // fungsi hapus
     function delete( $kd ) {
 
         $petugas = Petugas::where('id_profile', $kd);
-        
+
         if ( $petugas ) {
 
             $petugas->delete();
@@ -71,7 +74,7 @@ class PetugasController extends Controller
 
         $data['petugas'] = Petugas::where('id_profile', $kd)->first();
         $data['id_profile'] = $kd;
-        
+
         return view('modules.petugas.editpetugas', $data);
     }
 
@@ -82,13 +85,13 @@ class PetugasController extends Controller
     function update( Request $request, $kd ) {
 
         $petugas = Petugas::where('id_profile', $kd);
-        
+
         if ( $petugas ) {
 
-            $ambilUsername  = $request->input('username'); 
-            $ambilEmail     = $request->input('email'); 
-            $ambilStatus  = $request->input('status_akun'); 
-            
+            $ambilUsername  = $request->input('username');
+            $ambilEmail     = $request->input('email');
+            $ambilStatus  = $request->input('status_akun');
+
 
             $data = array(
 
@@ -106,28 +109,7 @@ class PetugasController extends Controller
             echo "invalid kd ". $kd;
         }
 
-        
+
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
 
 }

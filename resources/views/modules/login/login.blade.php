@@ -99,7 +99,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                         <span class="text-muted mr-2">Belum punya akun?</span>
                                         <a href="javascript:;" id="kt_login_signup" class="font-weight-bold">Daftar</a>
                                     </div>
-                                    <button id="btn-submit" type="button" class="btn btn-primary font-weight-bold px-9 py-4 my-3">Sign In</button>
+                                    <button id="btn-submit" type="button" class="btn btn-primary font-weight-bold px-9 py-4 my-3">Masuk</button>
                                 </div>
                             </form>
                             <!--end::Form-->
@@ -112,7 +112,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <p class="text-muted font-weight-bold">Masukkan detail Anda untuk membuat akun</p>
                             </div>
                             <!--begin::Form-->
-                            <form class="form" novalidate="novalidate" id="kt_login_signup_form" action="/register/proses" method="post">
+                            <form class="form" novalidate="novalidate" id="kt_login_signup_form">
 
                                 @csrf
 
@@ -121,13 +121,13 @@ License: You must have a valid license purchased only from themeforest(the above
                                     <input class="form-control h-auto border-0 px-0 placeholder-dark-75" type="text" placeholder="Nama Lengkap" name="nama_lengkap" autocomplete="off" />
                                 </div>
                                 <div class="form-group py-3 border-top m-0">
-                                    <input class="form-control h-auto border-0 px-0 placeholder-dark-75" type="text" placeholder="Email" name="email" autocomplete="off" />
+                                    <input class="form-control h-auto border-0 px-0 placeholder-dark-75" type="text" placeholder="Email" name="email-regis" autocomplete="off" />
                                 </div>
                                 <div class="form-group py-3 border-top m-0">
-                                    <input class="form-control h-auto border-0 px-0 placeholder-dark-75" type="password" placeholder="Kata Sandi" name="password" autocomplete="off" />
+                                    <input class="form-control h-auto border-0 px-0 placeholder-dark-75" type="password" placeholder="Kata Sandi" name="password-regis" autocomplete="off" />
                                 </div>
                                 <div class="form-group py-3 border-top m-0">
-                                    <input class="form-control h-auto border-0 px-0 placeholder-dark-75" type="password" placeholder="Konfirmasi kata sandi" name="cpassword" autocomplete="off" />
+                                    <input class="form-control h-auto border-0 px-0 placeholder-dark-75" type="password" placeholder="Konfirmasi kata sandi" name="cpassword-regis" autocomplete="off" />
                                 </div>
                                 <div class="form-group mt-5">
                                     <div class="checkbox-inline">
@@ -138,7 +138,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                     </div>
                                 </div>
                                 <div class="form-group d-flex flex-wrap flex-center">
-                                    <button type="submit" class="btn btn-primary font-weight-bold px-9 py-4 my-3 mx-2">Daftar</button>
+                                    <button id="btn-submit-register" type="button" class="btn btn-primary font-weight-bold px-9 py-4 my-3 mx-2">Daftar</button>
                                     <button id="kt_login_signup_cancel" class="btn btn-outline-primary font-weight-bold px-9 py-4 my-3 mx-2">Batal</button>
                                 </div>
                             </form>
@@ -262,7 +262,6 @@ License: You must have a valid license purchased only from themeforest(the above
 
 
     <script>
-
         // @TODO 1
         $(function() {
 
@@ -277,20 +276,20 @@ License: You must have a valid license purchased only from themeforest(the above
                 // @TODO 4
                 data_input = {
 
-                    "email"     : email,
-                    "password"  : password,
+                    "email": email,
+                    "password": password,
                 }
 
 
                 // @TODO 5
                 $.ajax({
 
-                    url : "{{ url('login/proses') }}",
+                    url: "{{ url('login/proses') }}",
                     data: data_input,
                     dataType: "json",
-                    success : function ( response ) {
+                    success: function(response) {
 
-                        if ( response.status == "success" ) {
+                        if (response.status == "success") {
 
                             swal.fire({
                                 text: "Login Berhasil, Selamat Datang di KANSA!",
@@ -300,10 +299,10 @@ License: You must have a valid license purchased only from themeforest(the above
                                 customClass: {
                                     confirmButton: "btn font-weight-bold btn-light-primary"
                                 }
-                            }).then(function( tombol ) {
-                                
+                            }).then(function(tombol) {
+
                                 // jika tombol 
-                                if ( tombol.isConfirmed ) {
+                                if (tombol.isConfirmed) {
 
                                     window.location.href = response.url;
                                 }
@@ -325,10 +324,63 @@ License: You must have a valid license purchased only from themeforest(the above
                 })
             });
 
-            
+
             $('#btn-submit-register').click(function() {
 
-                // here . . .
+                var email = $('input[name="email-regis"]').val();
+                var password = $('input[name="password-regis"]').val();
+                var nama_lengkap = $('input[name="nama_lengkap"]').val();
+
+                data_input = {
+
+                    "email": email,
+                    "password": password,
+                    "nama_lengkap": nama_lengkap,
+                }
+
+                // console.log(data_input);
+
+                $.ajax({
+
+                    type: "GET",
+                    url: "{{ url('register/proses') }}",
+                    data: data_input,
+                    dataType: "json",
+                    success: function(response) {
+
+                        if (response.status == "success") {
+
+                            swal.fire({
+                                text: "Daftar Berhasil, Silahkan Masuk untuk Memulai Pesanan!",
+                                icon: "success",
+                                buttonsStyling: false,
+                                confirmButtonText: "Ok, got it!",
+                                customClass: {
+                                    confirmButton: "btn font-weight-bold btn-light-primary"
+                                }
+                            }).then(function(tombol) {
+
+                                // jika tombol 
+                                if (tombol.isConfirmed) {
+
+                                    window.location.href = response.url;
+                                }
+
+                            });
+                        } else {
+
+                            swal.fire({
+                                text: response.status,
+                                icon: "error",
+                                buttonsStyling: false,
+                                confirmButtonText: "Ok, got it!",
+                                customClass: {
+                                    confirmButton: "btn font-weight-bold btn-light-danger"
+                                }
+                            });
+                        }
+                    }
+                })
             })
         })
     </script>

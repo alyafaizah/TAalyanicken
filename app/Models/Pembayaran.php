@@ -10,8 +10,7 @@ class Pembayaran extends Model
     use HasFactory;
 
     protected $table = "pembayaran";
-    protected $fillable = ["kd_order","total_bayar","type", "tanggal"];
+    protected $fillable = ["id_pembayaran","kd_order","total_bayar", "type"];
 
     public $timestamps = true;
-    protected $primaryKey = 'id_pembayaran';
 }

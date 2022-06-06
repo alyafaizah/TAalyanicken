@@ -1,6 +1,7 @@
 @extends('layouts.template-backend-navbar-cust')
 
 <!--begin::Head-->
+
 <head>
     <base href="../../../">
     <meta charset="utf-8" />
@@ -26,6 +27,7 @@
 <!--end::Head-->
 
 <!--begin::Body-->
+
 <body id="kt_body" class="header-fixed header-mobile-fixed header-bottom-enabled page-loading">
     <!--begin::Main-->
 
@@ -60,7 +62,7 @@
                                                                 <div class="wizard-number">1</div>
                                                                 <div class="wizard-label">
                                                                     <div class="wizard-title">Pemesanan Tiket</div>
-                                                                    <div class="wizard-desc">emmm</div>
+                                                                    <div class="wizard-desc">.</div>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -70,8 +72,9 @@
                                                             <div class="wizard-wrapper">
                                                                 <div class="wizard-number">2</div>
                                                                 <div class="wizard-label">
-                                                                    <div class="wizard-title">Rincian Pemesanan Tiket</div>
-                                                                    <div class="wizard-desc">Payment Options</div>
+                                                                    <div class="wizard-title">Rincian Pemesanan Tiket
+                                                                    </div>
+                                                                    <div class="wizard-desc">.</div>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -82,7 +85,7 @@
                                                                 <div class="wizard-number">3</div>
                                                                 <div class="wizard-label">
                                                                     <div class="wizard-title">Pembayaran</div>
-                                                                    <div class="wizard-desc">Review and Submit</div>
+                                                                    <div class="wizard-desc">.</div>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -99,7 +102,8 @@
                                                                 <!--begin: Wizard Form-->
                                                                 <form class="form mt-0 mt-lg-10" id="kt_form">
                                                                     <!--begin: Wizard Step 1-->
-                                                                    <div class="pb-5" data-wizard-type="step-content"
+                                                                    <div class="pb-5"
+                                                                        data-wizard-type="step-content"
                                                                         data-wizard-state="current">
                                                                         <h2 class="mb-10 font-weight-bold text-dark">
                                                                             Pemesanan Tiket</h2>
@@ -109,13 +113,10 @@
                                                                                 <!--begin::Input-->
                                                                                 <div class="form-group">
                                                                                     <label>Tanggal Berkunjung</label>
-                                                                                    <input type="text"
-                                                                                        class="form-control form-control-solid form-control-lg"
-                                                                                        name="tanggal"
-                                                                                        placeholder="Pilih tanggal berkunjung" />
-                                                                                    <span
-                                                                                        class="form-text text-muted">Pilih
-                                                                                        tanggal untuk berkunjung</span>
+                                                                                    <input type="text" value="" name="tanggal" class="form-control" id="kt_datepicker_1_modal" readonly="readonly" placeholder="Pilih tanggal" />
+                                                                                    <span class="form-text text-muted">
+                                                                                        Pilih tanggal untuk berkunjung
+                                                                                    </span>
                                                                                 </div>
                                                                                 <!--end::Input-->
                                                                             </div>
@@ -125,6 +126,7 @@
                                                                                     <label>Jumlah Pemesanan</label>
                                                                                     <input type="number"
                                                                                         class="form-control form-control-solid form-control-lg"
+                                                                                        value=""
                                                                                         name="jumlah"
                                                                                         placeholder="Masukkan jumlah tiket" />
                                                                                     <span
@@ -137,8 +139,7 @@
 
                                                                         <div class="form-group">
                                                                             <label>Jenis Tiket</label>
-                                                                            <input type="text"
-                                                                                class="form-control form-control-solid form-control-lg"
+                                                                            <input type="text" class="form-control "
                                                                                 name="jenis_tiket" value="weekend"
                                                                                 disabled />
                                                                             <span class="form-text text-muted">Jenis
@@ -160,7 +161,8 @@
                                                                     <!--end: Wizard Step 1-->
 
                                                                     <!--begin: Wizard Step 2-->
-                                                                    <div class="pb-5" data-wizard-type="step-content">
+                                                                    <div class="pb-5"
+                                                                        data-wizard-type="step-content">
                                                                         <!--begin::Section-->
                                                                         <h2 class="mb-10 font-weight-bold text-dark">
                                                                             Rincian Pemesanan Tiket</h2>
@@ -232,7 +234,8 @@
                                                                     <!--end: Wizard Step 2-->
 
                                                                     <!--begin: Wizard Step 3-->
-                                                                    <div class="pb-5" data-wizard-type="step-content">
+                                                                    <div class="pb-5"
+                                                                        data-wizard-type="step-content">
                                                                         <h4 class="mb-10 font-weight-bold text-dark">
                                                                             Pembayaran</h4>
                                                                         <div class="row">

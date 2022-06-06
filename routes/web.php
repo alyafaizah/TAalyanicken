@@ -10,6 +10,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\RiwayatController;
 use App\Http\Controllers\LaporanController;
+use App\Http\Controllers\PasswordUpdate;
 
 /*
 |--------------------------------------------------------------------------
@@ -69,9 +70,9 @@ Route::get('/laporan', [LaporanController::class, 'index']);
 
 
 /**
- * 
- *  Pemesanan Baru 
- * 
+ *
+ *  Pemesanan Baru
+ *
  */
 
 Route::get('petugas/order', [PemesananController::class, 'form_orderoffline']);
@@ -84,7 +85,7 @@ Route::get('transaction-success/{kd_order}', [PemesananController::class, 'pemes
 
 
 //module petugas
-Route::get('/petugas', [PetugasController::class, 'index']);
+Route::get('/petugas', [PetugasController::class, 'index'])->name('view-petugas');
 Route::get('/createpetugas', [PetugasController::class, 'create']);
 Route::post('/createpetugas', [PetugasController::class, 'process'])->name('add-petugas');
 Route::get('/delete-petugas/{kd}', [PetugasController::class, 'delete']);
@@ -98,30 +99,33 @@ Route::get('/riwayat', function() {
 });
 
 /**
- * 
- * 
+ *
+ *
  *  Pengunjung
- * 
+ *
  */
 
 //regis
-Route::post('/register/proses', [LoginController::class, 'prosesregis']);
+Route::get('/register/proses', [LoginController::class, 'prosesregis']);
 
 // profile
 Route::get('/dashboardcust', [ProfileController::class, 'dashboardcust']);
 Route::get('/informasipribadi', [ProfileController::class, 'index']);
 Route::get('/ubahkatasandi', [ProfileController::class, 'ubahkatasandi']);
-Route::resource('/updatepass','ProfileController');
+// Route::resource('/updatepass','ProfileController');
+Route::post('/updatepass/{id}', [PasswordUpdate::class, 'update']);
 Route::get('/editinformasipribadi/{kd}', [ProfileController::class, 'view_edit']);
-Route::post('/editinformasipribadi/{kd}', [ProfileController::class, 'update']);
+Route::post('/editinformasipribadi', [ProfileController::class, 'update']);
 
 // purchase pengunjung
 Route::get('/checkout', [CheckoutController::class, 'checkout']);
 Route::get('/struk', [CheckoutController::class, 'struk']);
 
-//riwayat 
+//riwayat
 Route::get('/riwayattransaksi', [RiwayatController::class, 'riwayattransaksi']);
+Route::get('/detailriwayat/{kd_order}', [RiwayatController::class, 'riwayatById']);
 Route::get('/riwayatpembayaran', [RiwayatController::class, 'riwayatpembayaran']);
+Route::get('/riwayatadmin', [RiwayatController::class, 'riwayatadmin']);
 
 Route::get('pw', function() {
 

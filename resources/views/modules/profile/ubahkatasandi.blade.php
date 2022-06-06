@@ -157,10 +157,9 @@
                         </div>
                         <!--end::Header-->
                         <!--begin::Form-->
-                        <form class="form" action="/updatepass" method="post">
+                        <form class="form" action="/updatepass/{{ session('id') }}" method="post">
 
                             @csrf
-                            @method('PATCH')
 
                             <div class="card-body">
                                 <div class="form-group row">
@@ -180,6 +179,10 @@
                                     <div class="col-lg-9 col-xl-6">
                                         <input type="password" class="form-control form-control-lg form-control-solid" value="" placeholder="Verifikasi kata sandi" name="password_confirmation"/>
                                     </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <button class="btn btn-primary">Update Password</button>
                                 </div>
                             </div>
                         </form>

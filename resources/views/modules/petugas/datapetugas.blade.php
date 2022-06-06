@@ -5,7 +5,7 @@
 
 <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
     <!--begin::Subheader-->
-    <div class="subheader py-5 py-lg-10 gutter-b subheader-transparent" id="kt_subheader">
+    <div class="subheader py-5 py-lg-10 gutter-b subheader-transparent" id="kt_subheader" >
         <div class="container d-flex flex-column">
             <!--begin::Container-->
             <div class="container">
@@ -41,7 +41,6 @@
                                     <th>ID</th>
                                     <th>Username Petugas</th>
                                     <th>Email</th>
-                                    <th>Level</th>
                                     <th>Status Pegawai</th>
                                     <th>Actions</th>
                                 </tr>
@@ -51,7 +50,6 @@
                                 <tr>
                                     <td>{{ $e + 1 }}</td>
                                     <td>{{ $p->username }}</td>
-                                    <td>{{ $p->level }}</td>
                                     <td>{{ $p->email }}</td>
 
                                     <td>

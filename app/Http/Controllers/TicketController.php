@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 
 class TicketController extends Controller
 {
-    
+
     function index() {
 
         $data = array(
@@ -25,12 +25,12 @@ class TicketController extends Controller
 
 
 
-    // proses tambah 
+    // proses tambah
     function process( Request $request ) {
 
-        $ambilJenis = $request->input('jenis'); 
-        $ambilHarga = $request->input('harga'); 
-        $ambilStok  = $request->input('stok'); 
+        $ambilJenis = $request->input('jenis');
+        $ambilHarga = $request->input('harga');
+        $ambilStok  = $request->input('stok');
         $ambilKet   = $request->input('keterangan');
 
         $data = array(
@@ -44,17 +44,17 @@ class TicketController extends Controller
 
         // insert
         Ticket::create( $data );
-        
+
         return redirect('tiket');
     }
 
 
 
-    // fungsi hapus 
+    // fungsi hapus
     function delete( $kd ) {
 
         $tiket = Ticket::where('kd_tiket', $kd);
-        
+
         if ( $tiket ) {
 
             $tiket->delete();
@@ -74,7 +74,7 @@ class TicketController extends Controller
 
         $data['tiket'] = Ticket::where('kd_tiket', $kd)->first();
         $data['kd_tiket'] = $kd;
-        
+
         return view('modules.tiket.edittiket', $data);
     }
 
@@ -85,12 +85,12 @@ class TicketController extends Controller
     function update( Request $request, $kd ) {
 
         $tiket = Ticket::where('kd_tiket', $kd);
-        
+
         if ( $tiket ) {
 
-            $ambilJenis = $request->input('jenis'); 
-            $ambilHarga = $request->input('harga'); 
-            $ambilStok  = $request->input('stok'); 
+            $ambilJenis = $request->input('jenis');
+            $ambilHarga = $request->input('harga');
+            $ambilStok  = $request->input('stok');
             $ambilKet   = $request->input('keterangan');
 
             $data = array(
@@ -111,7 +111,7 @@ class TicketController extends Controller
             echo "invalid kd ". $kd;
         }
 
-        
+
     }
 
 
