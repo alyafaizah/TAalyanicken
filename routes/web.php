@@ -119,6 +119,11 @@ Route::post('/editinformasipribadi', [ProfileController::class, 'update']);
 
 // purchase pengunjung
 Route::get('/checkout', [CheckoutController::class, 'checkout']);
+Route::get('/request-date', [CheckoutController::class, 'request_date']);
+
+Route::post('/pengunjung/proses-pemesanan', [CheckoutController::class, 'proses_pemesanan']);
+
+
 Route::get('/struk', [CheckoutController::class, 'struk']);
 
 //riwayat
