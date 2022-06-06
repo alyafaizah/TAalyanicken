@@ -77,6 +77,11 @@ Route::get('/laporan', [LaporanController::class, 'index']);
 Route::get('petugas/order', [PemesananController::class, 'form_orderoffline']);
 Route::get('petugas/payment', [PemesananController::class, 'form_orderoffline_pembayaran']);
 
+// proses pemesanan
+Route::post('proses-pemesanan', [PemesananController::class, 'proses_pemesanan']);
+Route::get('transaction-success/{kd_order}', [PemesananController::class, 'pemesanan_berhasil']);
+
+
 
 //module petugas
 Route::get('/petugas', [PetugasController::class, 'index']);
