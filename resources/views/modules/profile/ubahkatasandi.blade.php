@@ -59,7 +59,7 @@
                                     <i class="symbol-badge bg-success"></i>
                                 </div>
                                 <div>
-                                    <a href="#" class="font-weight-bolder font-size-h5 text-dark-75 text-hover-primary">Alya Faizah</a>
+                                    <a href="#" class="font-weight-bolder font-size-h5 text-dark-75 text-hover-primary">{{$identitas->nama_lengkap}}</a>
                                 </div>
                             </div>
                             <!--end::User-->
@@ -67,11 +67,7 @@
                             <div class="py-9">
                                 <div class="d-flex align-items-center justify-content-between mb-2">
                                     <span class="font-weight-bold mr-2">Email:</span>
-                                    <a href="#" class="text-muted text-hover-primary">alya@gmail.com</a>
-                                </div>
-                                <div class="d-flex align-items-center justify-content-between">
-                                    <span class="font-weight-bold mr-2">Username:</span>
-                                    <span class="text-muted">alya123</span>
+                                    <a href="#" class="text-muted text-hover-primary">{{$profile->email}}</a>
                                 </div>
                             </div>
                             <!--end::Contact-->
@@ -150,10 +146,6 @@
                                 <h3 class="card-label font-weight-bolder text-dark">Ubah Kata Sandi</h3>
                                 <span class="text-muted font-weight-bold font-size-sm mt-1">Ubah kata sandi akun Anda</span>
                             </div>
-                            <div class="card-toolbar">
-                                <button type="submit" class="btn btn-success mr-2">Simpan Perubahan</button>
-                                <button type="reset" class="btn btn-secondary">Batal</button>
-                            </div>
                         </div>
                         <!--end::Header-->
                         <!--begin::Form-->
@@ -181,8 +173,9 @@
                                     </div>
                                 </div>
 
-                                <div class="form-group row">
-                                    <button class="btn btn-primary">Update Password</button>
+                                <div class="card-toolbar">
+                                    <button class="btn btn-primary">Perbarui Kata Sandi</button>
+                                    <button type="reset" class="btn btn-secondary">Batal</button>
                                 </div>
                             </div>
                         </form>

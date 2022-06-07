@@ -28,7 +28,7 @@
 							<a href="" class="text-muted">Profile</a>
 						</li>
 						<li class="breadcrumb-item text-muted">
-							<a href="" class="text-muted">Informasi Pribadi</a>
+							<a href="" class="text-muted">Edit Informasi Pribadi</a>
 						</li>
 					</ul>
 					<!--end::Breadcrumb-->
@@ -58,7 +58,7 @@
 									<i class="symbol-badge bg-success"></i>
 								</div>
 								<div>
-									<a href="#" class="font-weight-bolder font-size-h5 text-dark-75 text-hover-primary">Alya Faizah</a>
+									<a href="#" class="font-weight-bolder font-size-h5 text-dark-75 text-hover-primary">{{$identitas->nama_lengkap}}</a>
 								</div>
 							</div>
 							<!--end::User-->
@@ -67,11 +67,7 @@
 							<div class="py-9">
 								<div class="d-flex align-items-center justify-content-between mb-2">
 									<span class="font-weight-bold mr-2">Email:</span>
-									<a href="#" class="text-muted text-hover-primary">alya@gmail.com</a>
-								</div>
-								<div class="d-flex align-items-center justify-content-between">
-									<span class="font-weight-bold mr-2">Username:</span>
-									<span class="text-muted">alya123</span>
+									<a href="#" class="text-muted text-hover-primary">{{$profile->email}}</a>
 								</div>
 							</div>
 							<!--end::Contact-->

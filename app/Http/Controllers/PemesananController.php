@@ -108,26 +108,71 @@ class PemesananController extends Controller
     public function form_orderoffline_pembayaran( Request $request ) {
     
         $input = array(
-
-            'pemesan'       => $request->input('nama_pengunjung'),
-            'kd_order'      => $request->input('kode_order'),
-            'kd_tiket'      => $request->input('jenis_tiket'),
+            
+            'kode_order'    => $request->input('kode_order'),
+            'nama_pengunjung'       => $request->input('nama_pengunjung'),
             'id_profile'    => 1,// session
             'tgl_kunjungan' => strtotime("now"),
             'jumlah'        => $request->input('jumlah'),
+            'status'        => "berhasil",
+            'jenis_tiket' => $request->input('jenis'),
             'jenis_pemesanan' => "offline"
         );
 
 
         // ambil informasi data tiket 
-        $dt_tiket = DB::table('data_tiket')->where('kd_tiket', $request->input('jenis_tiket'))->first();
+        $dt_tiket = DB::table('data_tiket')->first();
 
         $data = array(
 
             'input' => $input,
             'tiket' => $dt_tiket
         );
-        
+    
         return view('modules.orderoffline.view_form_orderpembayaran', $data);
+    }
+
+
+
+
+
+    /** Proses pemesanan */
+    public function proses_pemesanan( Request $request ) {
+
+        $dt_pemesanan = array(
+
+            
+            'kd_order'      => $request->input('kode_order'),
+            'id_profile'    => session('id'),
+            'tgl_kunjungan' => date('Y-m-d H:i:s'),
+            'jumlah'        => $request->input('jumlah'),
+            'status'        => "berhasil",
+            'jenis_tiket'   => $request->input('jenis_tiket'),
+            'jenis_pemesanan' => "offline",
+        );
+
+
+        $dt_pembayaran = array(
+            'kd_order'      => $request->input('kode_order'),
+            'total_bayar'   => $request->input('bayar'),
+            'type'      => "",
+            'tanggal'   => date('Y-m-d H:i:s'),
+            'file'      => ""
+        );
+
+
+        // insert
+        DB::table('pemesanan')->insert($dt_pemesanan);
+        DB::table('pembayaran')->insert($dt_pembayaran);
+
+        return redirect('transaction-success/'. $dt_pemesanan['kd_order']);
+        
+    }
+
+
+
+    public function pemesanan_berhasil( $kd_order ) {
+
+        return view('modules.orderoffline.view_success');
     }
 }

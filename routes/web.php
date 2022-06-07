@@ -27,16 +27,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard',[DashboardController::class, 'dashboard']);
-Route::get('/ujicoba/{nama}', [DashboardController::class, 'dinamisroute']);
+Route::get('/dashboard', [DashboardController::class, 'dashboard']);
 
 
-Route::get('/template', function() {
-
-    return view('layouts.template-backend');
-});
-
-Route::get('/pengujian', function() {
+Route::get('/pengujian', function () {
 
     return view('modules.dashboard.index');
 });
@@ -45,6 +39,7 @@ Route::get('/pengujian', function() {
 // module login
 Route::get('/login', [LoginController::class, 'index']);
 Route::get('/login/proses', [LoginController::class, 'proses']);
+
 
 
 
@@ -58,15 +53,15 @@ Route::get('/edit-ticket/{kd}', [TicketController::class, 'view_edit']);
 Route::post('/edit-ticket/{kd}', [TicketController::class, 'update']);
 
 //module data pemesanan tiket
-Route::get('/dtpemesanantiket', [PemesananController::class, 'index']);
-Route::get('/edit-dtpemesanan/{kd}', [PemesananController::class, 'view_edit']);
-Route::post('/edit-dtpemesanan/{kd}', [PemesananController::class, 'update']);
-Route::get('/delete-dtpemesanan/{kd}', [PemesananController::class, 'delete']);
+// Route::get('/dtpemesanantiket', [PemesananController::class, 'index']);
+// Route::get('/edit-dtpemesanan/{kd}', [PemesananController::class, 'view_edit']);
+// Route::post('/edit-dtpemesanan/{kd}', [PemesananController::class, 'update']);
+// Route::get('/delete-dtpemesanan/{kd}', [PemesananController::class, 'delete']);
 
-//laporan
 Route::get('/laporan', [LaporanController::class, 'index']);
-
-
+Route::get('/laporanpengunjung',  [LaporanController::class, 'laporanpengunjung']);
+Route::get('/cetakpdfcust',  [LaporanController::class, 'cetakpdfcust']);
+Route::get('/download',  [ProfileController::class, 'savepdf']);
 
 
 /**
@@ -88,7 +83,7 @@ Route::get('/edit-petugas/{kd}', [PetugasController::class, 'view_edit']);
 Route::post('/edit-petugas/{kd}', [PetugasController::class, 'update']);
 
 
-Route::get('/riwayat', function() {
+Route::get('/riwayat', function () {
 
     return view('modules.riwayat.riwayattransaksi');
 });
@@ -107,7 +102,7 @@ Route::get('/register/proses', [LoginController::class, 'prosesregis']);
 Route::get('/dashboardcust', [ProfileController::class, 'dashboardcust']);
 Route::get('/informasipribadi', [ProfileController::class, 'index']);
 Route::get('/ubahkatasandi', [ProfileController::class, 'ubahkatasandi']);
-// Route::resource('/updatepass','ProfileController');
+// Route::resource('/updatepass', 'ProfileController');
 Route::post('/updatepass/{id}', [PasswordUpdate::class, 'update']);
 Route::get('/editinformasipribadi/{kd}', [ProfileController::class, 'view_edit']);
 Route::post('/editinformasipribadi', [ProfileController::class, 'update']);
@@ -120,9 +115,11 @@ Route::get('/struk', [CheckoutController::class, 'struk']);
 Route::get('/riwayattransaksi', [RiwayatController::class, 'riwayattransaksi']);
 Route::get('/detailriwayat/{kd_order}', [RiwayatController::class, 'riwayatById']);
 Route::get('/riwayatpembayaran', [RiwayatController::class, 'riwayatpembayaran']);
-Route::get('/riwayatadmin', [RiwayatController::class, 'riwayatadmin']);
 
-Route::get('pw', function() {
+Route::get('/download',  [ProfileController::class, 'savepdf']);
+
+
+Route::get('pw', function () {
 
     echo Hash::make("123");
 });

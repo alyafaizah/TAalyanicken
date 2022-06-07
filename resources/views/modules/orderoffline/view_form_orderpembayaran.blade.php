@@ -89,6 +89,18 @@
 
                                     <hr>
 
+                                    @php 
+                                    
+                                        $harga = 0;
+                                        if ( $input['jenis_tiket'] == "weekend" ) {
+
+                                            $harga = $tiket->weekend;
+
+                                        } else {
+
+                                            $harga = $tiket->weekday;
+                                        }                                    
+                                    @endphp
 
                                     <table class="table table-stripe table-hover">
                                         <thead>
@@ -101,16 +113,16 @@
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td>{{ $input['pemesan'] }}</td>
-                                                <td>{{ $tiket->jenis }}</td>
-                                                <td>{{ $input['jumlah'] }} Tiket</td>
-                                                <td class="text-right"><?php echo number_format($tiket->harga, 2) ?></td>
+                                                <td>{{ $input['nama_pengunjung'] }}</td>
+                                                <td>{{ $input['jenis_tiket'] }}</td>
+                                                <td>{{ $input['jumlah'] }} Item</td>
+                                                <td class="text-right"><?php echo number_format($harga, 2) ?></td>
                                             </tr>
                                             <tr>
                                                 <td colspan="3" class="text-right"><b>TOTAL</b></td>
 
                                                 @php 
-                                                    $total = $tiket->harga * $input['jumlah'];
+                                                    $total = $harga * $input['jumlah'];
                                                 @endphp
                                                 <td class="text-right"><b><?php echo number_format($total, 2) ?></b></td>
                                             </tr>
@@ -123,6 +135,7 @@
 
 
                             {{-- Pembayaran --}}
+                            <form action="{{ url('proses-pemesanan') }}" method="POST">
                             <div class="row">
                                 <div class="col-md-12">
                                     <h4 style="margin: 0px">Pembayaran</h4>
@@ -133,6 +146,14 @@
 
                                     <div class="form-group">
                                         <label for="">Nominal</label>
+
+                                        @csrf
+
+                                        <input type="hidden" name="kode_order" value="{{ $input['kode_order'] }}">
+                                        <input type="hidden" name="jenis_tiket" value="{{ $input['jenis_tiket'] }}">
+                                        <input type="hidden" name="nama_pengunjung" value="{{ $input['nama_pengunjung'] }}">
+                                        <input type="hidden" name="jumlah" value="{{ $input['jumlah'] }}">
+
                                         <input type="number" name="bayar" data-tagihan="{{ $total }}" class="form-control" placeholder="Jumlah Pembayaran" id="">
                                     </div>
 
@@ -153,6 +174,7 @@
                                     </div>
                                 </div>
                             </div>
+                            </form>
 
         
                         </div>
@@ -184,7 +206,10 @@
             if ( sisa > 0 ) {
 
                 $('#kembalian').text("Rp " + sisa);
-            } 
+            } else {
+
+                $('#kembalian').text("Rp 0");
+            }
             
         });
     })

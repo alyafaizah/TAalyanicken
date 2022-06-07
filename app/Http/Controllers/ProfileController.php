@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Identitas;
+use App\Models\Profile;
 use Illuminate\Http\Request;
+use Elibyy\TCPDF\Facades\TCPDF;
 use Illuminate\Support\Facades\DB;
 
 class ProfileController extends Controller
@@ -11,13 +13,19 @@ class ProfileController extends Controller
     public function dashboardcust()
     {
         $id_profile = session("id");
-        $identitas = Identitas::where('id_profile', $id_profile)->first();
-        return view('modules.profile.dashboardcust', compact('identitas'));
+        $data['identitas'] = Identitas::where('id_profile', $id_profile)->first();
+        $data['profile'] = Profile::where('id_profile', $id_profile)->first();
+
+        return view('modules.profile.dashboardcust', $data);
     }
 
     public function ubahkatasandi()
     {
-        return view('modules.profile.ubahkatasandi');
+        $id_profile = session("id");
+        $data['identitas'] = Identitas::where('id_profile', $id_profile)->first();
+        $data['profile'] = Profile::where('id_profile', $id_profile)->first();
+
+        return view('modules.profile.ubahkatasandi', $data);
     }
 
     //tampil informasi pribadi
@@ -25,11 +33,11 @@ class ProfileController extends Controller
     {
 
         $id_profile = session("id");
-        $identitas = Identitas::where('id_profile', $id_profile)->first();
+        $data['identitas'] = Identitas::where('id_profile', $id_profile)->first();
+        $data['profile'] = Profile::where('id_profile', $id_profile)->first();
 
         // echo $id_profile;
-        return view('modules.profile.informasipribadi', compact('identitas'));
-
+        return view('modules.profile.informasipribadi', $data);
     }
 
     // view edit
@@ -37,7 +45,9 @@ class ProfileController extends Controller
     {
 
         $data['identitas'] = Identitas::where('id_profile', $kd)->first();
+        $data['profile'] = Profile::where('id_profile', $kd)->first();
         $data['id_profile'] = $kd;
+
 
         return view('modules.profile.editinformasipribadi', $data);
     }
@@ -75,7 +85,6 @@ class ProfileController extends Controller
             $identitas->update($data);
             return redirect('informasipribadi/');
         } else {
-
 
             echo "invalid kd " . $id_profile;
         }
