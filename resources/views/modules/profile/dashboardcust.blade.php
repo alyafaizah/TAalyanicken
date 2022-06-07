@@ -29,7 +29,7 @@
                             <a href="" class="text-muted">Profile</a>
                         </li>
                         <li class="breadcrumb-item text-muted">
-                            <a href="" class="text-muted">Ubah Kata Sandi</a>
+                            <a href="" class="text-muted">Dashboard</a>
                         </li>
                     </ul>
                     <!--end::Breadcrumb-->
@@ -59,7 +59,7 @@
                                     <i class="symbol-badge bg-success"></i>
                                 </div>
                                 <div>
-                                    <a href="#" class="font-weight-bolder font-size-h5 text-dark-75 text-hover-primary">Alya Faizah</a>
+                                    <a href="#" class="font-weight-bolder font-size-h5 text-dark-75 text-hover-primary">{{$identitas->nama_lengkap}}</a>
                                 </div>
                             </div>
                             <!--end::User-->
@@ -67,11 +67,7 @@
                             <div class="py-9">
                                 <div class="d-flex align-items-center justify-content-between mb-2">
                                     <span class="font-weight-bold mr-2">Email:</span>
-                                    <a href="#" class="text-muted text-hover-primary">alya@gmail.com</a>
-                                </div>
-                                <div class="d-flex align-items-center justify-content-between">
-                                    <span class="font-weight-bold mr-2">Username:</span>
-                                    <span class="text-muted">alya123</span>
+                                    <a href="#" class="text-muted text-hover-primary">{{$profile->email}}</a>
                                 </div>
                             </div>
                             <!--end::Contact-->
@@ -150,7 +146,7 @@
                             <!--begin::Info-->
                             <div class="d-flex align-items-center mr-2 py-2">
                                 <!--begin::Title-->
-                                <h2>Selamat Datang (namanya siapa)!</h2>
+                                <h2>Selamat Datang {{ $identitas->nama_lengkap }}!</h2>
                                 <!--end::Title-->
                             </div>
                             <!--end::Info-->

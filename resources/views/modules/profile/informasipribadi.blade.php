@@ -67,11 +67,7 @@
 							<div class="py-9">
 								<div class="d-flex align-items-center justify-content-between mb-2">
 									<span class="font-weight-bold mr-2">Email:</span>
-									<a href="#" class="text-muted text-hover-primary">alya@gmail.com</a>
-								</div>
-								<div class="d-flex align-items-center justify-content-between">
-									<span class="font-weight-bold mr-2">Username:</span>
-									<span class="text-muted">alya123</span>
+									<a href="#" class="text-muted text-hover-primary">{{ $profile->email }}</a>
 								</div>
 							</div>
 							<!--end::Contact-->
@@ -152,7 +148,8 @@
 							</div>
 							
 							<div class="card-toolbar">
-								<a class="btn btn-success mr-2"  href="editinformasipribadi/{{ $identitas->id_profile }}">Ubah Informasi</a>
+								<a class="btn btn-success btn-sm"  href="editinformasipribadi/{{ $identitas->id_profile }}">Ubah Informasi</a>
+								<a href="/download" class="btn btn-success btn-sm">Download PDF</a>
 							</div>
 						</div>
 						<!--end::Header-->
