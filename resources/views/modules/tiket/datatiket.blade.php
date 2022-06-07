@@ -28,56 +28,10 @@
                                 <h1 class="card-label">Data Tiket</h1>
                             </div>
                             <div class="card-toolbar">
-                                <!--begin::Button-->
-                                <a href="/createtiket" class="btn btn-primary font-weight-bolder">
-                                    <span class="svg-icon svg-icon-md">
-                                        <!--begin::Svg Icon | path:/metronic/theme/html/demo4/dist/assets/media/svg/icons/Design/Flatten.svg-->
-                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                <rect x="0" y="0" width="24" height="24" />
-                                                <circle fill="#000000" cx="9" cy="15" r="6" />
-                                                <path d="M8.8012943,7.00241953 C9.83837775,5.20768121 11.7781543,4 14,4 C17.3137085,4 20,6.6862915 20,10 C20,12.2218457 18.7923188,14.1616223 16.9975805,15.1987057 C16.9991904,15.1326658 17,15.0664274 17,15 C17,10.581722 13.418278,7 9,7 C8.93357256,7 8.86733422,7.00080962 8.8012943,7.00241953 Z" fill="#000000" opacity="0.3" />
-                                            </g>
-                                        </svg>
-                                        <!--end::Svg Icon-->
-                                    </span>Tambah Tiket</a>
-                                <!--end::Button-->
                             </div>
                         </div>
                         <div class="card-body">
-                            <!--begin: Search Form-->
-                            <!--begin::Search Form-->
-                            <div class="mb-7">
-                                <div class="row align-items-center">
-                                    <div class="col-lg-9 col-xl-8">
-                                        <div class="row align-items-center">
-                                            <div class="col-md-4 my-2 my-md-0">
-                                                <div class="input-icon">
-                                                    <input type="text" class="form-control" placeholder="Search..." id="kt_datatable_search_query" />
-                                                    <span>
-                                                        <i class="flaticon2-search-1 text-muted"></i>
-                                                    </span>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4 my-2 my-md-0">
-                                                <div class="d-flex align-items-center">
-                                                    <label class="mr-3 mb-0 d-none d-md-block">Type:</label>
-                                                    <select class="form-control" id="kt_datatable_search_type">
-                                                        <option value="">All</option>
-                                                        <option value="1">Weekdays</option>
-                                                        <option value="2">Weekend</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-3 col-xl-4 mt-5 mt-lg-0">
-                                                <a href="#" class="btn btn-light-primary px-6 font-weight-bold">Search</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--end::Search Form-->
-                            <!--end: Search Form-->
+
                             <!--begin: Datatable-->
                             <div class="datatable datatable-bordered datatable-head-custom datatable-default datatable-primary datatable-loaded" id="kt_datatable" style="">
                                 <table class="datatable-table" style="display: block;">
@@ -90,10 +44,13 @@
                                                 <span style="width: 108px;">Jenis Tiket</span>
                                             </th>
                                             <th data-field="ShipDate" class="datatable-cell datatable-cell-sort">
-                                                <span style="width: 108px;">Harga</span>
+                                                <span style="width: 108px;">Weekday</span>
+                                            </th>
+                                            <th data-field="ShipDate" class="datatable-cell datatable-cell-sort">
+                                                <span style="width: 108px;">Weekend</span>
                                             </th>
                                             <th data-field="CompanyName" class="datatable-cell datatable-cell-sort">
-                                                <span style="width: 108px;">Stok</span>
+                                                <span style="width: 108px;">Kapasitas</span>
                                             </th>
                                             <th data-field="ShipDate" class="datatable-cell datatable-cell-sort">
                                                 <span style="width: 108px;">Keterangan</span>
@@ -110,11 +67,16 @@
                                         <tr data-row="0" class="datatable-row" style="left: 0px;">
                                             <td data-field="OrderID" aria-label="68084-198" class="datatable-cell"><span style="width: 108px;">{{ $t->kd_tiket }}</span></td>
                                             <td data-field="Country" aria-label="Philippines" class="datatable-cell">
-                                                <span style="width: 108px;"><span class="label font-weight-bold label-lg  label-light-success label-inline">{{$t->jenis}}</span></span>
+                                                <span style="width: 108px;"><span class="label font-weight-bold label-lg  label-light-success label-inline">REGULAR</span></span>
                                             </td>
                                             <td data-field="ShipDate" aria-label="10/4/2017" class="datatable-cell"><span style="width: 108px;">
                                                     Rp {{ number_format($t->harga) }}
-                                                </span></td>
+                                                </span>
+                                            </td>
+                                            <td data-field="ShipDate" aria-label="10/4/2017" class="datatable-cell"><span style="width: 108px;">
+                                                Rp {{ number_format($t->harga) }}
+                                            </span>
+                                        </td>
                                             <td class="datatable-cell-sorted datatable-cell" align="center"><span style="width: 108px;">{{ $t->stok }} item</span></td>
                                             <td data-field="Status" aria-label="2" class="datatable-cell">
 
