@@ -10,7 +10,7 @@ class Ticket extends Model
     use HasFactory;
 
     protected $table = "data_tiket";
-    protected $fillable = ["kd_tiket", "jenis", "harga", "stok", "keterangan"];
+    protected $fillable = ["kd_tiket", "weekend", "weekday", "stok", "keterangan"];
 
     // auto
     public $timestamps = true;

@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 
 class TicketController extends Controller
 {
-    
+
     function index() {
 
         $data = array(
@@ -25,46 +25,30 @@ class TicketController extends Controller
 
 
 
-    // proses tambah 
+    // proses tambah
     function process( Request $request ) {
 
-        $ambilJenis = $request->input('jenis'); 
-        $ambilHarga = $request->input('harga'); 
-        $ambilStok  = $request->input('stok'); 
+        $ambilWeekend = $request->input('weekend');
+        $ambilWeekday = $request->input('weekday');
+        $ambilStok  = $request->input('stok');
         $ambilKet   = $request->input('keterangan');
 
         $data = array(
 
             'kd_tiket'  => date('ymdHis'),
-            'jenis'     => $ambilJenis,
-            'harga'     => $ambilHarga,
+            'weekend'   => $ambilWeekend,
+            'weekday'   => $ambilWeekday,
             'stok'      => $ambilStok,
             'keterangan'=> $ambilKet
         );
 
         // insert
         Ticket::create( $data );
-        
+
         return redirect('tiket');
     }
 
 
-
-    // fungsi hapus 
-    function delete( $kd ) {
-
-        $tiket = Ticket::where('kd_tiket', $kd);
-        
-        if ( $tiket ) {
-
-            $tiket->delete();
-            return redirect('tiket')->with('pesan', 'Tiket berhasil terhapus');
-        } else {
-
-            return redirect('tiket')->with('pesan', 'Hapus gagal, Kode tiket ' . $kd.' tidak ditemukan');
-        }
-
-    }
 
 
 
@@ -74,7 +58,7 @@ class TicketController extends Controller
 
         $data['tiket'] = Ticket::where('kd_tiket', $kd)->first();
         $data['kd_tiket'] = $kd;
-        
+
         return view('modules.tiket.edittiket', $data);
     }
 
@@ -85,19 +69,19 @@ class TicketController extends Controller
     function update( Request $request, $kd ) {
 
         $tiket = Ticket::where('kd_tiket', $kd);
-        
+
         if ( $tiket ) {
 
-            $ambilJenis = $request->input('jenis'); 
-            $ambilHarga = $request->input('harga'); 
-            $ambilStok  = $request->input('stok'); 
-            $ambilKet   = $request->input('keterangan');
+            $ambilWeekend = $request->input('weekend');
+            $ambilWeekday = $request->input('weekday');
+            $ambilStok    = $request->input('stok');
+            $ambilKet     = $request->input('keterangan');
 
             $data = array(
 
                 'kd_tiket'  => strtoupper(uniqid()),
-                'jenis'     => $ambilJenis,
-                'harga'     => $ambilHarga,
+                'weekend'   => $ambilWeekend,
+                'weekday'   => $ambilWeekday,
                 'stok'      => $ambilStok,
                 'keterangan'=> $ambilKet
             );
@@ -111,7 +95,7 @@ class TicketController extends Controller
             echo "invalid kd ". $kd;
         }
 
-        
+
     }
 
 
