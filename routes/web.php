@@ -30,9 +30,9 @@ Route::get('/', function () {
 Route::get('/dashboard', [DashboardController::class, 'dashboard']);
 
 
-Route::get('/pengujian', function () {
+Route::get('/laporanonline', function () {
 
-    return view('modules.dashboard.index');
+    return view('modules.laporanonline.laporanonline');
 });
 
 
