@@ -239,7 +239,7 @@
                         <!--end::Tap pane-->
                         <!--begin::Tap pane- bulanan -->
                         <div class="tab-pane fade" id="kt_tab_pane_1_2" role="tabpanel" aria-labelledby="kt_tab_pane_1_2">
-                            <!--begin::Table Pemesanan Online-->
+                            <!--begin::Table Pemesanan Offline-->
                             <div class="table-responsive">
                                 <table class="table table-borderless table-vertical-center">
                                     <thead>
@@ -260,7 +260,7 @@
                                                 </div>
                                             </th>
                                             <td class="py-6 pl-0">
-                                                <a href="#" class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">Januari</a>
+                                                <a href="/laporanoffline" class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">Januari</a>
                                             </td>
                                             <td>
                                                 <div class="d-flex flex-column w-100 mr-2">
@@ -448,13 +448,6 @@
                             <div id="chart_3" style="min-height: 365px;">
                                 <div id="apexchartss948adiz" class="apexcharts-canvas apexchartss948adiz apexcharts-theme-light" style="width: 881px; height: 350px;"><svg id="SvgjsSvg4118" width="881" height="350" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" class="apexcharts-svg" xmlns:data="ApexChartsNS" transform="translate(0, 0)" style="background: transparent;">
                                         <foreignObject x="0" y="0" width="881" height="350">
-                                            <div class="apexcharts-legend apexcharts-align-center position-bottom" xmlns="http://www.w3.org/1999/xhtml" style="inset: auto 0px 1px; position: absolute; max-height: 175px;">
-
-                                                <div class="apexcharts-legend-series" rel="2" seriesname="Revenue" data:collapsed="false" style="margin: 2px 5px;">
-                                                    <span class="apexcharts-legend-marker" rel="2" data:collapsed="false" style="background: rgb(27, 197, 189) !important; color: rgb(27, 197, 189); height: 12px; width: 12px; left: 0px; top: 0px; border-width: 0px; border-color: rgb(255, 255, 255); border-radius: 2px;"></span><span class="apexcharts-legend-text" rel="2" i="1" data:default-text="Revenue" data:collapsed="false" style="color: rgb(55, 61, 63); font-size: 12px; font-weight: 400; font-family: Helvetica, Arial, sans-serif;">Pemesanan Tiket Online</span></div>
-                                                <div class="apexcharts-legend-series" rel="3" seriesname="FreexCashxFlow" data:collapsed="false" style="margin: 2px 5px;">
-                                                    <span class="apexcharts-legend-marker" rel="3" data:collapsed="false" style="background: rgb(255, 168, 0) !important; color: rgb(255, 168, 0); height: 12px; width: 12px; left: 0px; top: 0px; border-width: 0px; border-color: rgb(255, 255, 255); border-radius: 2px;"></span><span class="apexcharts-legend-text" rel="3" i="2" data:default-text="Free%20Cash%20Flow" data:collapsed="false" style="color: rgb(55, 61, 63); font-size: 12px; font-weight: 400; font-family: Helvetica, Arial, sans-serif;">Pemesanan Tiket Offline</span></div>
-                                            </div>
                                             <style type="text/css">
                                                 .apexcharts-legend {
                                                     display: flex;
