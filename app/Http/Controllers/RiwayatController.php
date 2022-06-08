@@ -54,6 +54,19 @@ class RiwayatController extends Controller
 
     public function riwayatadmin()
     {
-        return view('modules.riwayat.riwayatadmin');
+        // $pemesanan = PemesananTiket::all();
+        // $pembayaran = Pembayaran::all();
+
+        $pemesanan = DB::table('pemesanan')->select('pemesanan.*', 'pembayaran.*', 'identitas.*')
+            ->rightJoin('pembayaran', 'pembayaran.kd_order', '=', 'pemesanan.kd_order')
+            ->rightJoin('identitas', 'identitas.id_profile', '=', 'pemesanan.id_profile')
+            ->get();
+
+        $data = array(
+            'pemesanan' => $pemesanan
+        );
+
+        // print_r($data);
+        return view('modules.riwayat.riwayatadmin', $data);
     }
 }

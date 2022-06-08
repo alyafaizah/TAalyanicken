@@ -30,13 +30,10 @@ class PetugasController extends Controller
 
     // proses tambah
     function process( Request $request ) {
-
-        $ambilUsername  = $request->input('username');
         $ambilEmail     = $request->input('email');
         $ambilPassword  = $request->input('password');
 
         $data = array(
-            'username'      => $ambilUsername,
             'password'      => Hash::make($ambilPassword),
             'level' => "petugas tiket",
             'email'         => $ambilEmail,
@@ -88,14 +85,12 @@ class PetugasController extends Controller
 
         if ( $petugas ) {
 
-            $ambilUsername  = $request->input('username');
             $ambilEmail     = $request->input('email');
             $ambilStatus  = $request->input('status_akun');
 
 
             $data = array(
 
-                'username'      => $ambilUsername,
                 'email'         => $ambilEmail,
                 'status_akun'      => $ambilStatus,
             );

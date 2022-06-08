@@ -41,7 +41,7 @@
                 <!--begin::Item-->
                 <li class="nav-item mb-5" data-toggle="tooltip" data-placement="right" data-container="body"
                     data-boundary="window" title="Riwayat">
-                    <a href="#" class="nav-link btn btn-icon btn-icon-white btn-lg" data-toggle="tab"
+                    <a href="/riwayatadmin" class="nav-link btn btn-icon btn-icon-white btn-lg"
                         data-target="#kt_aside_tab_3" role="tab">
                         <i class="icon-l fas fa-file-invoice-dollar"></i>
                     </a>

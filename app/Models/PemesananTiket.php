@@ -10,7 +10,7 @@ class PemesananTiket extends Model
     use HasFactory;
 
     protected $table = "pemesanan";
-    protected $fillable = ["kd_order","kd_tiket","id_profile", "tgl_kunjungan", "status"];
+    protected $fillable = ["kd_order","kd_tiket","id_profile", "tgl_kunjungan", "jumlah", "status", "jenis_tiket", "jenis_pemesanan"];
 
     public $timestamps = true;
     protected $primaryKey = 'id_pemesanan';

@@ -5,14 +5,13 @@
 
     <!--begin::Content-->
     <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
-        <!--begin::Entry-->
-        <div class="d-flex flex-column-fluid">
-            <!--begin::Container-->
-            <div class="container">
-                <!--begin::Teachers-->
-                <div class="d-flex flex-row">
-                    <!--begin::Content-->
-                    <div class="flex-row-fluid">
+        <!--begin::Subheader-->
+        <div class="subheader py-5 py-lg-10 gutter-b subheader-transparent">
+            <div class="container d-flex flex-column">
+                <!--begin::Entry-->
+                <div class="d-flex flex-column-fluid">
+                    <!--begin::Container-->
+                    <div class="container">
                         <!--begin::Card-->
                         <div class="card card-custom">
                             <!--begin::Header-->
@@ -90,7 +89,7 @@
                                             </tr>
                                         </thead>
                                         <tbody class="datatable-body">
-
+                                            @foreach ($pemesanan as $p)
                                                         <tr data-row="0" class="datatable-row" style="left: 0px;">
                                                             <td class="datatable-cell datatable-toggle-detail"><a
                                                                     class="datatable-toggle-detail"
@@ -102,30 +101,31 @@
                                                                     <div class="d-flex align-items-center">
                                                                         <div class="ml-4">
                                                                             <a href="#"
-                                                                                class="text-dark-75 font-weight-bolder font-size-lg mb-0">12345</a>
+                                                                                class="text-dark-75 font-weight-bolder font-size-lg mb-0">{{ $p->kd_order }}</a>
                                                                         </div>
                                                                     </div>
                                                                 </span></td>
                                                             <td data-field="kd_order" aria-label="64616-103"
                                                                 class="datatable-cell"><span
-                                                                    style="width: 114px;">Nicken Octaviana</span></td>
+                                                                    style="width: 114px;">{{ $p->nama_lengkap }}</span></td>
                                                             <td data-field="status" data-autohide-disabled="false"
                                                                 aria-label="1" class="datatable-cell"><span
                                                                     style="width: 114px;"><span
-                                                                        class="font-weight-bold">offline</span></span>
+                                                                        class="font-weight-bold">{{ $p->jenis_pemesanan }}</span></span>
                                                             </td>
                                                             <td data-field="tgl_berkunjung" aria-label="64616-103"
                                                                 class="datatable-cell"><span
-                                                                    style="width: 114px;">12-10-2022</span>
+                                                                    style="width: 114px;">{{ $p->tgl_kunjungan }}</span>
                                                             </td>
                                                             <td data-field="jumlah" aria-label="64616-103"
                                                                 class="datatable-cell"><span
-                                                                    style="width: 114px;">2</span></td>
+                                                                    style="width: 114px;">{{ $p->jumlah }}</span></td>
                                                             <td data-field="tgl_berkunjung" aria-label="64616-103"
                                                                 class="datatable-cell"><span
-                                                                    style="width: 114px;">30000</span>
+                                                                    style="width: 114px;">{{ $p->total_bayar }}</span>
                                                             </td>
                                                         </tr>
+                                                        @endforeach
                                         </tbody>
                                     </table>
                                     <div class="datatable-pager datatable-paging-loaded">
@@ -192,6 +192,6 @@
         </div>
         <!--end::Entry-->
     </div>
-    
+
     <!--end::Content-->
                                             @endsection

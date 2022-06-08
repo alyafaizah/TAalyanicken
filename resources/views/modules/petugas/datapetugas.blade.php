@@ -39,7 +39,6 @@
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Username Petugas</th>
                                     <th>Email</th>
                                     <th>Status Pegawai</th>
                                     <th>Actions</th>
@@ -49,7 +48,6 @@
                                 @foreach ( $petugas AS $e => $p )
                                 <tr>
                                     <td>{{ $e + 1 }}</td>
-                                    <td>{{ $p->username }}</td>
                                     <td>{{ $p->email }}</td>
 
                                     <td>
@@ -109,7 +107,7 @@
                                                         </div>
                                                         <div class="modal-body">
                                                             Apakah anda yakin ingin menghapus data petugas
-                                                            <h4>{{ $p->username }}</h4>
+                                                            <h4></h4>
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-light-danger font-weight-bold" data-dismiss="modal">Close</button>
