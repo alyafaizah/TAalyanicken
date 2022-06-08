@@ -17,15 +17,14 @@
                     <div class="card-toolbar">
                         <ul class="nav nav-pills nav-pills-sm nav-dark-75">
                             <li class="nav-item">
-                                <a class="nav-link py-2 px-4" data-toggle="tab" href="#kt_tab_pane_1_1">Mingguan</a>
+                                <a class="nav-link py-2 px-4" data-toggle="tab" href="#kt_tab_pane_1_1">Pemesanan Tiket Online</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link py-2 px-4" data-toggle="tab" href="#kt_tab_pane_1_2">Bulanan</a>
+                                <a class="nav-link py-2 px-4" data-toggle="tab" href="#kt_tab_pane_1_2">Pemesanan Tiket Offline</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link py-2 px-4" data-toggle="tab" href="#kt_tab_pane_1_3">Grafik</a>
                             </li>
-                            <a href="/download" class="btn btn-success btn-sm">Cetak PDF</a>
                         </ul>
                     </div>
                 </div>
@@ -35,7 +34,7 @@
                     <div class="tab-content mt-5" id="myTabTables1">
                         <!--begin::Tap pane-->
                         <div class="tab-pane fade" id="kt_tab_pane_1_1" role="tabpanel" aria-labelledby="kt_tab_pane_1_1">
-                            <!--begin::Table Mingguan-->
+                            <!--begin::Table Pemesanan Online-->
                             <div class="table-responsive">
                                 <table class="table table-borderless table-vertical-center">
                                     <thead>
@@ -56,14 +55,12 @@
                                                 </div>
                                             </th>
                                             <td class="py-6 pl-0">
-                                                <a href="#" class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">Minggu 1</a>
-                                                <span class="text-muted font-weight-bold d-block">1-7 Mei 2022</span>
+                                                <a href="/laporanonline" class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">Januari</a>
                                             </td>
                                             <td>
                                                 <div class="d-flex flex-column w-100 mr-2">
                                                     <div class="d-flex align-items-center justify-content-between mb-2">
-                                                        <span class="text-muted mr-2 font-size-sm font-weight-bold">71%</span>
-                                                        <span class="text-muted font-size-sm font-weight-bold">Progress</span>
+                                                        <span class="text-muted font-size-sm font-weight-bold">Rp 500000</span>
                                                     </div>
                                                     <div class="progress progress-xs w-100">
                                                         <div class="progress-bar bg-danger" role="progressbar" style="width: 71%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
@@ -95,14 +92,12 @@
                                                 </div>
                                             </th>
                                             <td class="pl-0">
-                                                <a href="#" class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">Minggu 2</a>
-                                                <span class="text-muted font-weight-bold d-block">8-14 Mei 2022</span>
+                                                <a href="#" class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">Februari</a>
                                             </td>
                                             <td>
                                                 <div class="d-flex flex-column w-100 mr-2">
                                                     <div class="d-flex align-items-center justify-content-between mb-2">
-                                                        <span class="text-muted mr-2 font-size-sm font-weight-bold">50%</span>
-                                                        <span class="text-muted font-size-sm font-weight-bold">Progress</span>
+                                                        <span class="text-muted font-size-sm font-weight-bold">Rp 500000</span>
                                                     </div>
                                                     <div class="progress progress-xs w-100">
                                                         <div class="progress-bar bg-info" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
@@ -134,14 +129,12 @@
                                                 </div>
                                             </td>
                                             <td class="pl-0">
-                                                <a href="#" class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">Minggu 3</a>
-                                                <span class="text-muted font-weight-bold d-block">9-21 Mei 2022</span>
+                                                <a href="#" class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">Maret</a>
                                             </td>
                                             <td>
                                                 <div class="d-flex flex-column w-100 mr-2">
                                                     <div class="d-flex align-items-center justify-content-between mb-2">
-                                                        <span class="text-muted mr-2 font-size-sm font-weight-bold">65%</span>
-                                                        <span class="text-muted font-size-sm font-weight-bold">Progress</span>
+                                                        <span class="text-muted font-size-sm font-weight-bold">RP 500000</span>
                                                     </div>
                                                     <div class="progress progress-xs w-100">
                                                         <div class="progress-bar bg-danger" role="progressbar" style="width: 65%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
@@ -173,14 +166,12 @@
                                                 </div>
                                             </th>
                                             <td class="pl-0">
-                                                <a href="#" class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">Minggu 4</a>
-                                                <span class="text-muted font-weight-bold d-block">22-28 Mei 2022</span>
+                                                <a href="#" class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">April</a>
                                             </td>
                                             <td>
                                                 <div class="d-flex flex-column w-100 mr-2">
                                                     <div class="d-flex align-items-center justify-content-between mb-2">
-                                                        <span class="text-muted mr-2 font-size-sm font-weight-bold">83%</span>
-                                                        <span class="text-muted font-size-sm font-weight-bold">Progress</span>
+                                                        <span class="text-muted font-size-sm font-weight-bold">Rp 500000</span>
                                                     </div>
                                                     <div class="progress progress-xs w-100">
                                                         <div class="progress-bar bg-success" role="progressbar" style="width: 83%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
@@ -212,14 +203,12 @@
                                                 </div>
                                             </th>
                                             <td class="pl-0">
-                                                <a href="#" class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">Minggu 5</a>
-                                                <span class="text-muted font-weight-bold d-block">29-31 Mei 2022</span>
+                                                <a href="#" class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">Mei</a>
                                             </td>
                                             <td>
                                                 <div class="d-flex flex-column w-100 mr-2">
                                                     <div class="d-flex align-items-center justify-content-between mb-2">
-                                                        <span class="text-muted mr-2 font-size-sm font-weight-bold">47%</span>
-                                                        <span class="text-muted font-size-sm font-weight-bold">Progress</span>
+                                                        <span class="text-muted font-size-sm font-weight-bold">Rp 500000</span>
                                                     </div>
                                                     <div class="progress progress-xs w-100">
                                                         <div class="progress-bar bg-primary" role="progressbar" style="width: 47%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
@@ -250,7 +239,7 @@
                         <!--end::Tap pane-->
                         <!--begin::Tap pane- bulanan -->
                         <div class="tab-pane fade" id="kt_tab_pane_1_2" role="tabpanel" aria-labelledby="kt_tab_pane_1_2">
-                            <!--begin::Table Bulanan-->
+                            <!--begin::Table Pemesanan Offline-->
                             <div class="table-responsive">
                                 <table class="table table-borderless table-vertical-center">
                                     <thead>
@@ -266,97 +255,17 @@
                                             <th class="pl-0 py-5">
                                                 <div class="symbol symbol-50 symbol-light mr-2">
                                                     <span class="symbol-label">
-                                                        <img src="/metronic/theme/html/demo4/dist/assets/media/svg/misc/015-telegram.svg" class="h-50 align-self-center" alt="" />
-                                                    </span>
-                                                </div>
-                                            </th>
-                                            <td class="pl-0">
-                                                <a href="#" class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">Popular Authors</a>
-                                                <span class="text-muted font-weight-bold d-block">Most Successful</span>
-                                            </td>
-                                            <td>
-                                                <div class="d-flex flex-column w-100 mr-2">
-                                                    <div class="d-flex align-items-center justify-content-between mb-2">
-                                                        <span class="text-muted mr-2 font-size-sm font-weight-bold">83%</span>
-                                                        <span class="text-muted font-size-sm font-weight-bold">Progress</span>
-                                                    </div>
-                                                    <div class="progress progress-xs w-100">
-                                                        <div class="progress-bar bg-success" role="progressbar" style="width: 83%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="text-right pr-0">
-                                                <a href="#" class="btn btn-icon btn-light btn-sm">
-                                                    <span class="svg-icon svg-icon-md svg-icon-success">
-                                                        <!--begin::Svg Icon | path:/metronic/theme/html/demo4/dist/assets/media/svg/icons/Navigation/Arrow-right.svg-->
-                                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                                <polygon points="0 0 24 0 24 24 0 24" />
-                                                                <rect fill="#000000" opacity="0.3" transform="translate(12.000000, 12.000000) rotate(-90.000000) translate(-12.000000, -12.000000)" x="11" y="5" width="2" height="14" rx="1" />
-                                                                <path d="M9.70710318,15.7071045 C9.31657888,16.0976288 8.68341391,16.0976288 8.29288961,15.7071045 C7.90236532,15.3165802 7.90236532,14.6834152 8.29288961,14.2928909 L14.2928896,8.29289093 C14.6714686,7.914312 15.281055,7.90106637 15.675721,8.26284357 L21.675721,13.7628436 C22.08284,14.136036 22.1103429,14.7686034 21.7371505,15.1757223 C21.3639581,15.5828413 20.7313908,15.6103443 20.3242718,15.2371519 L15.0300721,10.3841355 L9.70710318,15.7071045 Z" fill="#000000" fill-rule="nonzero" transform="translate(14.999999, 11.999997) scale(1, -1) rotate(90.000000) translate(-14.999999, -11.999997)" />
-                                                            </g>
-                                                        </svg>
-                                                        <!--end::Svg Icon-->
-                                                    </span>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th class="pl-0 py-5">
-                                                <div class="symbol symbol-50 symbol-light mr-2">
-                                                    <span class="symbol-label">
-                                                        <img src="/metronic/theme/html/demo4/dist/assets/media/svg/misc/003-puzzle.svg" class="h-50 align-self-center" alt="" />
-                                                    </span>
-                                                </div>
-                                            </th>
-                                            <td class="pl-0">
-                                                <a href="#" class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">New Users</a>
-                                                <span class="text-muted font-weight-bold d-block">Awesome Users</span>
-                                            </td>
-                                            <td>
-                                                <div class="d-flex flex-column w-100 mr-2">
-                                                    <div class="d-flex align-items-center justify-content-between mb-2">
-                                                        <span class="text-muted mr-2 font-size-sm font-weight-bold">47%</span>
-                                                        <span class="text-muted font-size-sm font-weight-bold">Progress</span>
-                                                    </div>
-                                                    <div class="progress progress-xs w-100">
-                                                        <div class="progress-bar bg-primary" role="progressbar" style="width: 47%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="text-right pr-0">
-                                                <a href="#" class="btn btn-icon btn-light btn-sm">
-                                                    <span class="svg-icon svg-icon-md svg-icon-success">
-                                                        <!--begin::Svg Icon | path:/metronic/theme/html/demo4/dist/assets/media/svg/icons/Navigation/Arrow-right.svg-->
-                                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                                <polygon points="0 0 24 0 24 24 0 24" />
-                                                                <rect fill="#000000" opacity="0.3" transform="translate(12.000000, 12.000000) rotate(-90.000000) translate(-12.000000, -12.000000)" x="11" y="5" width="2" height="14" rx="1" />
-                                                                <path d="M9.70710318,15.7071045 C9.31657888,16.0976288 8.68341391,16.0976288 8.29288961,15.7071045 C7.90236532,15.3165802 7.90236532,14.6834152 8.29288961,14.2928909 L14.2928896,8.29289093 C14.6714686,7.914312 15.281055,7.90106637 15.675721,8.26284357 L21.675721,13.7628436 C22.08284,14.136036 22.1103429,14.7686034 21.7371505,15.1757223 C21.3639581,15.5828413 20.7313908,15.6103443 20.3242718,15.2371519 L15.0300721,10.3841355 L9.70710318,15.7071045 Z" fill="#000000" fill-rule="nonzero" transform="translate(14.999999, 11.999997) scale(1, -1) rotate(90.000000) translate(-14.999999, -11.999997)" />
-                                                            </g>
-                                                        </svg>
-                                                        <!--end::Svg Icon-->
-                                                    </span>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th class="pl-0 py-5">
-                                                <div class="symbol symbol-50 symbol-light mr-2">
-                                                    <span class="symbol-label">
-                                                        <img src="/metronic/theme/html/demo4/dist/assets/media/svg/misc/005-bebo.svg" class="h-50 align-self-center" alt="" />
+                                                        <i class="flaticon2-line-chart fa-2x"></i>
                                                     </span>
                                                 </div>
                                             </th>
                                             <td class="py-6 pl-0">
-                                                <a href="#" class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">Active Customers</a>
-                                                <span class="text-muted font-weight-bold d-block">Best Customers</span>
+                                                <a href="/laporanoffline" class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">Januari</a>
                                             </td>
                                             <td>
                                                 <div class="d-flex flex-column w-100 mr-2">
                                                     <div class="d-flex align-items-center justify-content-between mb-2">
-                                                        <span class="text-muted mr-2 font-size-sm font-weight-bold">71%</span>
-                                                        <span class="text-muted font-size-sm font-weight-bold">Progress</span>
+                                                        <span class="text-muted font-size-sm font-weight-bold">Rp 500000</span>
                                                     </div>
                                                     <div class="progress progress-xs w-100">
                                                         <div class="progress-bar bg-danger" role="progressbar" style="width: 71%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
@@ -380,22 +289,57 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td class="pl-0 py-5">
+                                            <th class="pl-0 py-5">
                                                 <div class="symbol symbol-50 symbol-light mr-2">
                                                     <span class="symbol-label">
-                                                        <img src="/metronic/theme/html/demo4/dist/assets/media/svg/misc/006-plurk.svg" class="h-50 align-self-center" alt="" />
+                                                        <i class="flaticon2-line-chart fa-2x"></i>
                                                     </span>
                                                 </div>
-                                            </td>
+                                            </th>
                                             <td class="pl-0">
-                                                <a href="#" class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">Top Authors</a>
-                                                <span class="text-muted font-weight-bold d-block">Successful Fellas</span>
+                                                <a href="#" class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">Februari</a>
                                             </td>
                                             <td>
                                                 <div class="d-flex flex-column w-100 mr-2">
                                                     <div class="d-flex align-items-center justify-content-between mb-2">
-                                                        <span class="text-muted mr-2 font-size-sm font-weight-bold">65%</span>
-                                                        <span class="text-muted font-size-sm font-weight-bold">Progress</span>
+                                                        <span class="text-muted font-size-sm font-weight-bold">Rp 500000</span>
+                                                    </div>
+                                                    <div class="progress progress-xs w-100">
+                                                        <div class="progress-bar bg-info" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="text-right pr-0">
+                                                <a href="#" class="btn btn-icon btn-light btn-sm">
+                                                    <span class="svg-icon svg-icon-md svg-icon-success">
+                                                        <!--begin::Svg Icon | path:/metronic/theme/html/demo4/dist/assets/media/svg/icons/Navigation/Arrow-right.svg-->
+                                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                                <polygon points="0 0 24 0 24 24 0 24" />
+                                                                <rect fill="#000000" opacity="0.3" transform="translate(12.000000, 12.000000) rotate(-90.000000) translate(-12.000000, -12.000000)" x="11" y="5" width="2" height="14" rx="1" />
+                                                                <path d="M9.70710318,15.7071045 C9.31657888,16.0976288 8.68341391,16.0976288 8.29288961,15.7071045 C7.90236532,15.3165802 7.90236532,14.6834152 8.29288961,14.2928909 L14.2928896,8.29289093 C14.6714686,7.914312 15.281055,7.90106637 15.675721,8.26284357 L21.675721,13.7628436 C22.08284,14.136036 22.1103429,14.7686034 21.7371505,15.1757223 C21.3639581,15.5828413 20.7313908,15.6103443 20.3242718,15.2371519 L15.0300721,10.3841355 L9.70710318,15.7071045 Z" fill="#000000" fill-rule="nonzero" transform="translate(14.999999, 11.999997) scale(1, -1) rotate(90.000000) translate(-14.999999, -11.999997)" />
+                                                            </g>
+                                                        </svg>
+                                                        <!--end::Svg Icon-->
+                                                    </span>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="pl-0 py-5">
+                                                <div class="symbol symbol-50 symbol-light mr-2">
+                                                    <span class="symbol-label">
+                                                        <i class="flaticon2-line-chart fa-2x"></i>
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td class="pl-0">
+                                                <a href="#" class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">Maret</a>
+                                            </td>
+                                            <td>
+                                                <div class="d-flex flex-column w-100 mr-2">
+                                                    <div class="d-flex align-items-center justify-content-between mb-2">
+                                                        <span class="text-muted font-size-sm font-weight-bold">RP 500000</span>
                                                     </div>
                                                     <div class="progress progress-xs w-100">
                                                         <div class="progress-bar bg-danger" role="progressbar" style="width: 65%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
@@ -422,22 +366,57 @@
                                             <th class="pl-0 py-5">
                                                 <div class="symbol symbol-50 symbol-light mr-2">
                                                     <span class="symbol-label">
-                                                        <img src="/metronic/theme/html/demo4/dist/assets/media/svg/misc/014-kickstarter.svg" class="h-50 align-self-center" alt="" />
+                                                        <i class="flaticon2-line-chart fa-2x"></i>
                                                     </span>
                                                 </div>
                                             </th>
                                             <td class="pl-0">
-                                                <a href="#" class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">Bestseller Theme</a>
-                                                <span class="text-muted font-weight-bold d-block">Amazing Templates</span>
+                                                <a href="#" class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">April</a>
                                             </td>
                                             <td>
                                                 <div class="d-flex flex-column w-100 mr-2">
                                                     <div class="d-flex align-items-center justify-content-between mb-2">
-                                                        <span class="text-muted mr-2 font-size-sm font-weight-bold">50%</span>
-                                                        <span class="text-muted font-size-sm font-weight-bold">Progress</span>
+                                                        <span class="text-muted font-size-sm font-weight-bold">Rp 500000</span>
                                                     </div>
                                                     <div class="progress progress-xs w-100">
-                                                        <div class="progress-bar bg-info" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                                        <div class="progress-bar bg-success" role="progressbar" style="width: 83%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="text-right pr-0">
+                                                <a href="#" class="btn btn-icon btn-light btn-sm">
+                                                    <span class="svg-icon svg-icon-md svg-icon-success">
+                                                        <!--begin::Svg Icon | path:/metronic/theme/html/demo4/dist/assets/media/svg/icons/Navigation/Arrow-right.svg-->
+                                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                                <polygon points="0 0 24 0 24 24 0 24" />
+                                                                <rect fill="#000000" opacity="0.3" transform="translate(12.000000, 12.000000) rotate(-90.000000) translate(-12.000000, -12.000000)" x="11" y="5" width="2" height="14" rx="1" />
+                                                                <path d="M9.70710318,15.7071045 C9.31657888,16.0976288 8.68341391,16.0976288 8.29288961,15.7071045 C7.90236532,15.3165802 7.90236532,14.6834152 8.29288961,14.2928909 L14.2928896,8.29289093 C14.6714686,7.914312 15.281055,7.90106637 15.675721,8.26284357 L21.675721,13.7628436 C22.08284,14.136036 22.1103429,14.7686034 21.7371505,15.1757223 C21.3639581,15.5828413 20.7313908,15.6103443 20.3242718,15.2371519 L15.0300721,10.3841355 L9.70710318,15.7071045 Z" fill="#000000" fill-rule="nonzero" transform="translate(14.999999, 11.999997) scale(1, -1) rotate(90.000000) translate(-14.999999, -11.999997)" />
+                                                            </g>
+                                                        </svg>
+                                                        <!--end::Svg Icon-->
+                                                    </span>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th class="pl-0 py-5">
+                                                <div class="symbol symbol-50 symbol-light mr-2">
+                                                    <span class="symbol-label">
+                                                        <i class="flaticon2-line-chart fa-2x"></i>
+                                                    </span>
+                                                </div>
+                                            </th>
+                                            <td class="pl-0">
+                                                <a href="#" class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">Mei</a>
+                                            </td>
+                                            <td>
+                                                <div class="d-flex flex-column w-100 mr-2">
+                                                    <div class="d-flex align-items-center justify-content-between mb-2">
+                                                        <span class="text-muted font-size-sm font-weight-bold">Rp 500000</span>
+                                                    </div>
+                                                    <div class="progress progress-xs w-100">
+                                                        <div class="progress-bar bg-primary" role="progressbar" style="width: 47%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                                                     </div>
                                                 </div>
                                             </td>
@@ -469,13 +448,6 @@
                             <div id="chart_3" style="min-height: 365px;">
                                 <div id="apexchartss948adiz" class="apexcharts-canvas apexchartss948adiz apexcharts-theme-light" style="width: 881px; height: 350px;"><svg id="SvgjsSvg4118" width="881" height="350" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" class="apexcharts-svg" xmlns:data="ApexChartsNS" transform="translate(0, 0)" style="background: transparent;">
                                         <foreignObject x="0" y="0" width="881" height="350">
-                                            <div class="apexcharts-legend apexcharts-align-center position-bottom" xmlns="http://www.w3.org/1999/xhtml" style="inset: auto 0px 1px; position: absolute; max-height: 175px;">
-                                                
-                                                <div class="apexcharts-legend-series" rel="2" seriesname="Revenue" data:collapsed="false" style="margin: 2px 5px;">
-                                                    <span class="apexcharts-legend-marker" rel="2" data:collapsed="false" style="background: rgb(27, 197, 189) !important; color: rgb(27, 197, 189); height: 12px; width: 12px; left: 0px; top: 0px; border-width: 0px; border-color: rgb(255, 255, 255); border-radius: 2px;"></span><span class="apexcharts-legend-text" rel="2" i="1" data:default-text="Revenue" data:collapsed="false" style="color: rgb(55, 61, 63); font-size: 12px; font-weight: 400; font-family: Helvetica, Arial, sans-serif;">Pemesanan Tiket Online</span></div>
-                                                <div class="apexcharts-legend-series" rel="3" seriesname="FreexCashxFlow" data:collapsed="false" style="margin: 2px 5px;">
-                                                    <span class="apexcharts-legend-marker" rel="3" data:collapsed="false" style="background: rgb(255, 168, 0) !important; color: rgb(255, 168, 0); height: 12px; width: 12px; left: 0px; top: 0px; border-width: 0px; border-color: rgb(255, 255, 255); border-radius: 2px;"></span><span class="apexcharts-legend-text" rel="3" i="2" data:default-text="Free%20Cash%20Flow" data:collapsed="false" style="color: rgb(55, 61, 63); font-size: 12px; font-weight: 400; font-family: Helvetica, Arial, sans-serif;">Pemesanan Tiket Offline</span></div>
-                                            </div>
                                             <style type="text/css">
                                                 .apexcharts-legend {
                                                     display: flex;
@@ -619,7 +591,7 @@
                                                     </text>
                                                 </g>
 
-                                                
+
                                             </g>
                                             <g id="SvgjsG4132" class="apexcharts-bar-series apexcharts-plot-series">
                                                 <g id="SvgjsG4133" class="apexcharts-series" rel="2" seriesName="Revenue" data:realIndex="1">
@@ -680,11 +652,11 @@
                                         </g>
                                         <g id="SvgjsG4121" class="apexcharts-annotations"></g>
                                     </svg>
-                                    
+
                                     <div class="apexcharts-yaxistooltip apexcharts-yaxistooltip-0 apexcharts-yaxistooltip-left apexcharts-theme-light">
                                         <div class="apexcharts-yaxistooltip-text"></div>
                                     </div>
-                                   
+
                                 </div>
                             </div>
                             <!--end::Table-->

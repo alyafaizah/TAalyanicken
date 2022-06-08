@@ -98,9 +98,9 @@ class LoginController extends Controller
 
                 $sess = array(
 
-                    'id'        => $profile->id_profile,
-                    'username'  => $profile->username,
-                    'level'     => $profile->level
+                    'id'         => $profile->id_profile,
+                    'email'      => $profile->email,
+                    'level'      => $profile->level,
                 );
 
 
@@ -119,7 +119,7 @@ class LoginController extends Controller
 
                     $identitas = Identitas::where('id_profile', $profile->id_profile)->first();
 
-                    $sess['nama_lengkap']= $identitas->nama_lengkap;
+                    $sess['nama_lengkap'] = $identitas->nama_lengkap;
 
                     $pesan = "success";
                     $url = url('/dashboardcust');

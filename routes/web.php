@@ -30,10 +30,20 @@ Route::get('/', function () {
 Route::get('/dashboard', [DashboardController::class, 'dashboard']);
 
 
-Route::get('/pengujian', function () {
+Route::get('/laporanonline', function () {
 
-    return view('modules.dashboard.index');
+    return view('modules.laporanonline.laporanonline');
 });
+
+Route::get('/landingpage', function () {
+
+    return view('modules.landingpage.landingpage');
+});
+
+// Route::get('/laporanoffline', function () {
+
+//     return view('modules.laporanoffline.laporanoffline');
+// });
 
 
 // module login
@@ -60,6 +70,7 @@ Route::post('/edit-ticket/{kd}', [TicketController::class, 'update']);
 
 Route::get('/laporan', [LaporanController::class, 'index']);
 Route::get('/laporanpengunjung',  [LaporanController::class, 'laporanpengunjung']);
+Route::get('/laporanoffline',  [LaporanController::class, 'invoice']);
 Route::get('/cetakpdfcust',  [LaporanController::class, 'cetakpdfcust']);
 Route::get('/download',  [ProfileController::class, 'savepdf']);
 
@@ -122,5 +133,5 @@ Route::get('/download',  [ProfileController::class, 'savepdf']);
 
 Route::get('pw', function () {
 
-    echo Hash::make("123");
+    echo Hash::make("456");
 });
