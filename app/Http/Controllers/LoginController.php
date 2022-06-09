@@ -19,11 +19,11 @@ class LoginController extends Controller
         return view('modules.login.login');
     }
 
-    // proses pencocokan akun 
+    // proses pencocokan akun
     function proses_oldversion(Request $request)
     {
 
-        // $this->validate($request, 
+        // $this->validate($request,
 
         //     ['email'    => "required"],
         //     ['password' => "required"]
@@ -76,7 +76,7 @@ class LoginController extends Controller
     function proses(Request $request)
     {
 
-        // $this->validate($request, 
+        // $this->validate($request,
 
         //     ['email'    => "required"],
         //     ['password' => "required"]
