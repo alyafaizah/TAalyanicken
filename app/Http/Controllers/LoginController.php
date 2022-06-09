@@ -111,7 +111,7 @@ class LoginController extends Controller
                     // return redirect('/dashboard');
                     $pesan = "success";
                     $url = url('/dashboard');
-                } else if ($profile->level == "petugas_tiket") {
+                } else if ($profile->level == "petugas tiket") {
 
                     $pesan = "success";
                     $url = url('/dashboard');
