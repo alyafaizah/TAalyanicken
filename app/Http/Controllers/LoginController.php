@@ -216,6 +216,12 @@ class LoginController extends Controller
         $pesan = "success";
         $url = url('/login');
 
+        echo json_encode([
+
+            'status'    => $pesan,
+            'url'       => $url
+        ]);
+
         // return redirect('/login');
     }
 }

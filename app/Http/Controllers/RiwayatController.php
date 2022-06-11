@@ -58,8 +58,8 @@ class RiwayatController extends Controller
         // $pembayaran = Pembayaran::all();
 
         $pemesanan = DB::table('pemesanan')->select('pemesanan.*', 'pembayaran.*', 'identitas.*')
-            ->rightJoin('pembayaran', 'pembayaran.kd_order', '=', 'pemesanan.kd_order')
-            ->rightJoin('identitas', 'identitas.id_profile', '=', 'pemesanan.id_profile')
+            ->join('pembayaran', 'pembayaran.kd_order', '=', 'pemesanan.kd_order')
+            ->join('identitas', 'identitas.id_profile', '=', 'pemesanan.id_profile')
             ->get();
 
         $data = array(
