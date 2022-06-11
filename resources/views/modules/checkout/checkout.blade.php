@@ -171,7 +171,7 @@
                                                                                     <!--begin::Input-->
                                                                                     <div class="form-group">
                                                                                         <label>Harga / Qty</label>
-                                                                                        <input type="text" class="form-control form-control-solid form-control-lg" name="harga" disabled />
+                                                                                        <input type="text" class="form-control form-control-solid form-control-lg" name="harga" readonly />
                                                                                         <span class="form-text text-muted">Harga
                                                                                             per
                                                                                             tiket </span>

@@ -12,10 +12,15 @@ class DashboardController extends Controller
     }
 
 
-    function dinamisroute($name)
+
+    function dinamisroute( $name ) {
+
+
+        echo "<h1>Hello ". $name ."</h1>";
+    }
+
+    public function dashboardpetugas()
     {
-
-
-        echo "<h1>Hello " . $name . "</h1>";
+        return view('modules.dashboard.dashboardpetugas');
     }
 }

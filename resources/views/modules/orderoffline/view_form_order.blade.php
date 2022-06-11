@@ -1,7 +1,7 @@
-@extends('layouts.template-backend-sidebar')
+@extends('layouts.template-backend-sidebar-petugas')
 
 
-@section('main-content')
+@section('main-content-petugas')
 <!--begin::Content-->
 <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
     <!--begin::Entry-->
@@ -36,7 +36,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <small>Petugas Tiket</small>
-                                    <h2>Dwi Nur Cahyo</h2>
+                                    <h2>Rania</h2>
                                 </div>
                             </div>
         

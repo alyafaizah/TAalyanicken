@@ -28,28 +28,23 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', [DashboardController::class, 'dashboard']);
+Route::get('/ujicoba/{nama}', [DashboardController::class, 'dinamisroute']);
 
 
-Route::get('/laporanonline', function () {
+Route::get('/template', function () {
 
-    return view('modules.laporanonline.laporanonline');
+    return view('layouts.template-backend');
 });
 
-Route::get('/landingpage', function () {
+Route::get('/pengujian', function () {
 
-    return view('modules.landingpage.landingpage');
+    return view('modules.dashboard.index');
 });
-
-// Route::get('/laporanoffline', function () {
-
-//     return view('modules.laporanoffline.laporanoffline');
-// });
 
 
 // module login
 Route::get('/login', [LoginController::class, 'index']);
 Route::get('/login/proses', [LoginController::class, 'proses']);
-
 
 
 
@@ -63,16 +58,15 @@ Route::get('/edit-ticket/{kd}', [TicketController::class, 'view_edit']);
 Route::post('/edit-ticket/{kd}', [TicketController::class, 'update']);
 
 //module data pemesanan tiket
-// Route::get('/dtpemesanantiket', [PemesananController::class, 'index']);
-// Route::get('/edit-dtpemesanan/{kd}', [PemesananController::class, 'view_edit']);
-// Route::post('/edit-dtpemesanan/{kd}', [PemesananController::class, 'update']);
-// Route::get('/delete-dtpemesanan/{kd}', [PemesananController::class, 'delete']);
+Route::get('/dtpemesanantiket', [PemesananController::class, 'index']);
+Route::get('/edit-dtpemesanan/{kd}', [PemesananController::class, 'view_edit']);
+Route::post('/edit-dtpemesanan/{kd}', [PemesananController::class, 'update']);
+Route::get('/delete-dtpemesanan/{kd}', [PemesananController::class, 'delete']);
 
+//laporan
 Route::get('/laporan', [LaporanController::class, 'index']);
-Route::get('/laporanpengunjung',  [LaporanController::class, 'laporanpengunjung']);
-Route::get('/laporanoffline',  [LaporanController::class, 'invoice']);
-Route::get('/cetakpdfcust',  [LaporanController::class, 'cetakpdfcust']);
-Route::get('/download',  [ProfileController::class, 'savepdf']);
+
+
 
 
 /**
@@ -81,8 +75,15 @@ Route::get('/download',  [ProfileController::class, 'savepdf']);
  *
  */
 
+Route::get('/dashboardpetugas', [DashboardController::class, 'dashboardpetugas']);
+
 Route::get('petugas/order', [PemesananController::class, 'form_orderoffline']);
 Route::get('petugas/payment', [PemesananController::class, 'form_orderoffline_pembayaran']);
+
+// proses pemesanan
+Route::post('proses-pemesanan', [PemesananController::class, 'proses_pemesanan']);
+Route::get('transaction-success/{kd_order}', [PemesananController::class, 'pemesanan_berhasil']);
+
 
 
 //module petugas
@@ -113,13 +114,18 @@ Route::get('/register/proses', [LoginController::class, 'prosesregis']);
 Route::get('/dashboardcust', [ProfileController::class, 'dashboardcust']);
 Route::get('/informasipribadi', [ProfileController::class, 'index']);
 Route::get('/ubahkatasandi', [ProfileController::class, 'ubahkatasandi']);
-// Route::resource('/updatepass', 'ProfileController');
+// Route::resource('/updatepass','ProfileController');
 Route::post('/updatepass/{id}', [PasswordUpdate::class, 'update']);
 Route::get('/editinformasipribadi/{kd}', [ProfileController::class, 'view_edit']);
 Route::post('/editinformasipribadi', [ProfileController::class, 'update']);
 
 // purchase pengunjung
 Route::get('/checkout', [CheckoutController::class, 'checkout']);
+Route::get('/request-date', [CheckoutController::class, 'request_date']);
+
+Route::post('/pengunjung/proses-pemesanan', [CheckoutController::class, 'proses_pemesanan']);
+
+
 Route::get('/struk', [CheckoutController::class, 'struk']);
 
 //riwayat
@@ -128,10 +134,10 @@ Route::get('/detailriwayat/{kd_order}', [RiwayatController::class, 'riwayatById'
 Route::get('/riwayatpembayaran', [RiwayatController::class, 'riwayatpembayaran']);
 Route::get('/riwayatadmin', [RiwayatController::class, 'riwayatadmin']);
 
-Route::get('/download',  [ProfileController::class, 'savepdf']);
-
-
 Route::get('pw', function () {
 
-    echo Hash::make("456");
+    echo Hash::make("123");
 });
+
+
+Route::post('payments/midtrans-notification', [PaymentCallbackController::class, 'receive']);

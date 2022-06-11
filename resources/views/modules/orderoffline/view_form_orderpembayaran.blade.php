@@ -1,7 +1,7 @@
-@extends('layouts.template-backend-sidebar')
+@extends('layouts.template-backend-sidebar-petugas')
 
 
-@section('main-content')
+@section('main-content-petugas')
 <!--begin::Content-->
 <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
     <!--begin::Entry-->
@@ -29,7 +29,7 @@
                             </div>
                             <div class="card-toolbar">
                                 <!--begin::Button-->
-                                <a href="/createtiket" class="btn btn-primary font-weight-bolder">
+                                <a href="/petugas/order" class="btn btn-primary font-weight-bolder">
                                     <span class="svg-icon svg-icon-md">
                                         <!--begin::Svg Icon | path:/metronic/theme/html/demo4/dist/assets/media/svg/icons/Design/Flatten.svg-->
                                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -67,7 +67,7 @@
 
                                 <div class="col-md-9">
                                     <small>Nama Petugas Tiket</small><br>
-                                    <b>Dwi Nur Cahyo</b>
+                                    <b>Rania</b>
                                 </div>
                                 <div class="col-md-3">
                                     <small>Tanggal Pemesanan</small><br>
