@@ -24,7 +24,7 @@ use App\Http\Controllers\PasswordUpdate;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('modules.landingpage.landingpage');
 });
 
 Route::get('/dashboard', [DashboardController::class, 'dashboard']);
@@ -46,7 +46,11 @@ Route::get('/pengujian', function () {
 Route::get('/login', [LoginController::class, 'index']);
 Route::get('/login/proses', [LoginController::class, 'proses']);
 
+//landing page
+Route::get('/landingpage2', function () {
 
+    return view('modules.landingpage.landingpage2');
+});
 
 //module tiket
 Route::get('/tiket', [TicketController::class, 'index']);
