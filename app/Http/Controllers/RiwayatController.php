@@ -13,10 +13,8 @@ class RiwayatController extends Controller
     public function riwayattransaksi()
     {
         $pemesanan = PemesananTiket::all();
-        $jenis_tiket = Ticket::all();
         // $data = $pemesanan->join('kd_tiket', $jenis_tiket->kd_tiket, '=', $pemesanan->kd_tiket);
         $data = array(
-            'jenis_tiket' => $jenis_tiket,
             'pemesanan' => $pemesanan
         );
         // echo "<pre>";
@@ -28,9 +26,7 @@ class RiwayatController extends Controller
     public function riwayatpembayaran()
     {
         $pembayaran = Pembayaran::all();
-        $jenis_tiket = Ticket::all();
         $data = array(
-            'jenis_tiket' => $jenis_tiket,
             'pembayaran' => $pembayaran
         );
         // echo "<pre>";
@@ -56,7 +52,6 @@ class RiwayatController extends Controller
     {
         // $pemesanan = PemesananTiket::all();
         // $pembayaran = Pembayaran::all();
-
         $pemesanan = DB::table('pemesanan')->select('pemesanan.*', 'pembayaran.*', 'identitas.*')
             ->join('pembayaran', 'pembayaran.kd_order', '=', 'pemesanan.kd_order')
             ->join('identitas', 'identitas.id_profile', '=', 'pemesanan.id_profile')
@@ -66,7 +61,7 @@ class RiwayatController extends Controller
             'pemesanan' => $pemesanan
         );
 
-        // print_r($data);
+        //print_r($data);
         return view('modules.riwayat.riwayatadmin', $data);
     }
 }

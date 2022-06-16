@@ -13,8 +13,8 @@
             <ul class="nav flex-column">
                 <!--begin::Item-->
                 <li class="nav-item mb-5" data-toggle="tooltip" data-placement="right" data-container="body"
-                    data-boundary="window" title="Latest Projects">
-                    <a href="#" class="nav-link btn btn-icon btn-clean btn-icon-white btn-lg active">
+                    data-boundary="window" title="Dashboard">
+                    <a href="/dashboard" class="nav-link btn btn-icon btn-clean btn-icon-white btn-lg active">
                         <i class="flaticon2-protection icon-lg"></i>
                     </a>
                 </li>

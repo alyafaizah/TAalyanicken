@@ -78,7 +78,6 @@
                                             <th class="datatable-cell datatable-toggle-detail datatable-cell-sort">
                                                 <span></span>
                                             </th>
-                                            <th data-field="Product" class="datatable-cell datatable-cell-sort datatable-cell-sorted" data-sort="desc"><span style="width: 160px;">Jenis Tiket</span></th>
                                             <th data-field="OrderID" class="datatable-cell datatable-cell-sort"><span style="width: 114px;">Kode Order</span></th>
                                             <th data-field="Status" data-autohide-disabled="false" class="datatable-cell datatable-cell-sort"><span style="width: 114px;">Status</span></th>
                                             <th data-field="tgl_kunjungan" data-autohide-disabled="false" class="datatable-cell datatable-cell-sort"><span style="width: 114px;">Tanggal Berkunjung</span></th>
@@ -91,13 +90,7 @@
 
                                         <tr data-row="0" class="datatable-row" style="left: 0px;">
                                             <td class="datatable-cell datatable-toggle-detail"><a class="datatable-toggle-detail" href="/detailriwayat/{{ $p->kd_order }}"><i class="fa fa-caret-right"></i></a></td>
-                                            <td class="datatable-cell-sorted datatable-cell" data-field="Product" aria-label="null"><span style="width: 160px;">
-                                                    <div class="d-flex align-items-center">
-                                                        <div class="ml-4">
-                                                            <a href="#" class="text-dark-75 font-weight-bolder font-size-lg mb-0">{{ $p->jenis_tiket }}</a>
-                                                        </div>
-                                                    </div>
-                                                </span></td>
+                                            
                                             <td data-field="kd_order" aria-label="64616-103" class="datatable-cell"><span style="width: 114px;">{{ $p->kd_order }}</span></td>
                                             <td data-field="status" data-autohide-disabled="false" aria-label="1" class="datatable-cell"><span style="width: 114px;"><span class="label label-danger label-dot mr-2"></span><span class="font-weight-bold text-danger">{{ $p->status }}</span></span>
                                             </td>
@@ -110,38 +103,6 @@
                                         @endforeach
                                     </tbody>
                                 </table>
-                                <div class="datatable-pager datatable-paging-loaded">
-                                    <ul class="datatable-pager-nav my-2 mb-sm-0">
-                                        <li><a title="First" class="datatable-pager-link datatable-pager-link-first datatable-pager-link-disabled" data-page="1" disabled="disabled"><i class="flaticon2-fast-back"></i></a></li>
-                                        <li><a title="Previous" class="datatable-pager-link datatable-pager-link-prev datatable-pager-link-disabled" data-page="1" disabled="disabled"><i class="flaticon2-back"></i></a>
-                                        </li>
-                                        <li style="display: none;"><input type="text" class="datatable-pager-input form-control" title="Page number"></li>
-                                        <li><a class="datatable-pager-link datatable-pager-link-number datatable-pager-link-active" data-page="1" title="1">1</a></li>
-                                        <li><a class="datatable-pager-link datatable-pager-link-number" data-page="2" title="2">2</a></li>
-                                        <li><a class="datatable-pager-link datatable-pager-link-number" data-page="3" title="3">3</a></li>
-                                        <li><a class="datatable-pager-link datatable-pager-link-number" data-page="4" title="4">4</a></li>
-                                        <li><a class="datatable-pager-link datatable-pager-link-number" data-page="5" title="5">5</a></li>
-                                        <li><a title="Next" class="datatable-pager-link datatable-pager-link-next" data-page="2"><i class="flaticon2-next"></i></a></li>
-                                        <li><a title="Last" class="datatable-pager-link datatable-pager-link-last" data-page="35"><i class="flaticon2-fast-next"></i></a></li>
-                                    </ul>
-                                    <div class="datatable-pager-info my-2 mb-sm-0">
-                                        <div class="dropdown bootstrap-select datatable-pager-size" style="width: 60px;"><select class="selectpicker datatable-pager-size" title="Select page size" data-width="60px" data-container="body" data-selected="10">
-                                                <option class="bs-title-option" value=""></option>
-                                                <option value="5">5</option>
-                                                <option value="10">10</option>
-                                                <option value="20">20</option>
-                                                <option value="30">30</option>
-                                                <option value="50">50</option>
-                                                <option value="100">100</option>
-                                            </select>
-                                            <div class="dropdown-menu ">
-                                                <div class="inner show" role="listbox" id="bs-select-5" tabindex="-1">
-                                                    <ul class="dropdown-menu inner show" role="presentation"></ul>
-                                                </div>
-                                            </div>
-                                        </div><span class="datatable-pager-detail">Showing 1 - 10 of 350</span>
-                                    </div>
-                                </div>
                             </div>
                             <!--end: Datatable-->
                         </div>
