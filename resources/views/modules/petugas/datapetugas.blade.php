@@ -41,7 +41,7 @@
                                     <th>ID</th>
                                     <th>Email</th>
                                     <th>Status Pegawai</th>
-                                    <th>Actions</th>
+                                    <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>

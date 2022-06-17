@@ -53,7 +53,7 @@ Route::get('/landingpage2', function () {
 });
 
 //module tiket
-Route::get('/tiket', [TicketController::class, 'index']);
+Route::get('/tiket', [TicketController::class, 'index'])->name('view-ticket');
 Route::get('/createtiket', [TicketController::class, 'create']);
 Route::post('/createtiket', [TicketController::class, 'process'])->name('add-ticket');
 Route::get('/delete-ticket/{kd}', [TicketController::class, 'delete']);

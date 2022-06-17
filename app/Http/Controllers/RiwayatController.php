@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\PemesananTiket;
 use App\Models\Pembayaran;
 use App\Models\Ticket;
+use App\Models\Profile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -12,9 +13,12 @@ class RiwayatController extends Controller
 {
     public function riwayattransaksi()
     {
-        $pemesanan = PemesananTiket::all();
+        $id_profile = session("id");
+        $pemesanan = PemesananTiket::where('id_profile', $id_profile)->orderBy('created_at', 'desc')->get();
+
         // $data = $pemesanan->join('kd_tiket', $jenis_tiket->kd_tiket, '=', $pemesanan->kd_tiket);
         $data = array(
+
             'pemesanan' => $pemesanan
         );
         // echo "<pre>";

@@ -11,8 +11,7 @@ class PetugasController extends Controller
 {
     function index() //halaman tampil
     {
-        $tb_profile = Petugas::where('level', "petugas tiket")->get();
-
+        $tb_profile = Petugas::where('level', "petugas tiket")->orderBy('created_at', 'desc')->get();
         // echo "<pre>";
         // print_r($tb_profile);
         // die;

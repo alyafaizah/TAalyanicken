@@ -37,26 +37,26 @@
                                 <table class="datatable-table" style="display: block;">
                                     <thead class="datatable-head">
                                         <tr class="datatable-row" align="center" style="left: 0px;">
-                                            <th data-field="OrderID" class="datatable-cell datatable-cell-sort">
+                                            <th data-field="Kd_tiket" class="datatable-cell datatable-cell-sort">
                                                 <span style="width: 108px;">Kode Tiket</span>
                                             </th>
-                                            <th data-field="Country" class="datatable-cell datatable-cell-sort">
+                                            <th data-field="jenistiket" class="datatable-cell datatable-cell-sort">
                                                 <span style="width: 108px;">Jenis Tiket</span>
                                             </th>
-                                            <th data-field="ShipDate" class="datatable-cell datatable-cell-sort">
+                                            <th data-field="weekday" class="datatable-cell datatable-cell-sort">
                                                 <span style="width: 108px;">Weekday</span>
                                             </th>
-                                            <th data-field="ShipDate" class="datatable-cell datatable-cell-sort">
+                                            <th data-field="weekend" class="datatable-cell datatable-cell-sort">
                                                 <span style="width: 108px;">Weekend</span>
                                             </th>
-                                            <th data-field="CompanyName" class="datatable-cell datatable-cell-sort">
+                                            <th data-field="kapasitas" class="datatable-cell datatable-cell-sort">
                                                 <span style="width: 108px;">Kapasitas</span>
                                             </th>
-                                            <th data-field="ShipDate" class="datatable-cell datatable-cell-sort">
+                                            <th data-field="keterangan" class="datatable-cell datatable-cell-sort">
                                                 <span style="width: 108px;">Keterangan</span>
                                             </th>
-                                            <th data-field="Actions" data-autohide-disabled="false" class="datatable-cell datatable-cell-sort">
-                                                <span style="width: 125px;">Actions</span>
+                                            <th data-field="Aksi" data-autohide-disabled="false" class="datatable-cell datatable-cell-sort">
+                                                <span style="width: 125px;">Aksi</span>
                                             </th>
                                         </tr>
                                     </thead>
