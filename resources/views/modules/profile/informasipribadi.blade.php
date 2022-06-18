@@ -46,7 +46,7 @@
 			<!--begin::Profile Personal Information-->
 			<div class="d-flex flex-row">
 				<!--begin::Aside-->
-				<div class="flex-row-auto offcanvas-mobile w-250px w-xxl-350px" id="kt_profile_aside">
+				<div class="flex-row-auto offcanvas-mobile w-250px w-xxl-350px" id="">
 					<!--begin::Profile Card-->
 					<div class="card card-custom card-stretch">
 						<!--begin::Body-->
@@ -54,8 +54,10 @@
 							<!--begin::User-->
 							<div class="d-flex align-items-center">
 								<div class="symbol symbol-60 symbol-xxl-100 mr-5 align-self-start align-self-xxl-center">
-									<div class="symbol-label" style="background-image:url('/demo7/distpengunjung/assets/media/users/300_21.jpg')"></div>
-									<i class="symbol-badge bg-success"></i>
+									<div class="">
+									<img class="img-fluid mb-1 col-sm-1 img-circle" src="{{{asset('storage/'. $identitas->image) }}}" >
+									</div>
+
 								</div>
 								<div>
 									<a href="#" class="font-weight-bolder font-size-h5 text-dark-75 text-hover-primary">{{ $identitas->nama_lengkap }}</a>
@@ -146,14 +148,14 @@
 								<h1 class="card-label font-weight-bolder text-dark">Informasi Pribadi</h1>
 								<span class="text-muted font-weight-bold font-size-lg mt-1">Jika Kolom Kosong, Segera Lengkapi informasi pribadi Anda</span>
 							</div>
-							
+
 							<div class="card-toolbar">
-								<a class="btn btn-success btn-sm"  href="editinformasipribadi/{{ $identitas->id_profile }}">Ubah Informasi</a>
+								<a class="btn btn-success btn-sm" href="editinformasipribadi/{{ $identitas->id_profile }}">Ubah Informasi</a>
 							</div>
 						</div>
 						<!--end::Header-->
 						<!--begin::Form-->
-						<form class="form">
+						<form class="form" enctype="multipart/form-data">
 							<!--begin::Body-->
 							<div class="card-body">
 								<div class="row">
@@ -165,29 +167,32 @@
 								<div class="form-group row">
 									<label class="col-xl-3 col-lg-3 col-form-label">Foto Profil</label>
 									<div class="col-lg-9 col-xl-6">
-										<div class="image-input image-input-outline" id="kt_profile_avatar" style="background-image: url(/demo7/distpengunjung/assets/media/users/blank.png)">
-											<div class="image-input-wrapper" style="background-image: url(/metronic/theme/html/demo7/dist/assets/media/users/300_21.jpg)"></div>
-											<label class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="change" data-toggle="tooltip" title="" data-original-title="Change avatar">
-												<i class="fa fa-pen icon-sm text-muted"></i>
-												<input type="file" name="profile_avatar" accept=".png, .jpg, .jpeg" />
-												<input type="hidden" name="profile_avatar_remove" />
-											</label>
-											<span class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="cancel" data-toggle="tooltip" title="Cancel avatar">
-												<i class="ki ki-bold-close icon-xs text-muted"></i>
-											</span>
-											<span class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="remove" data-toggle="tooltip" title="Remove avatar">
-												<i class="ki ki-bold-close icon-xs text-muted"></i>
-											</span>
+										<div class="d-flex align-items-center">
+											<div class="symbol symbol-60 symbol-xxl-100 mr-5 align-self-start align-self-xxl-center">
+												<div class="" >
+													@if($identitas->image)
+													<img class="img-fluid mb-1 col-sm-1" src="{{{asset('storage/'. $identitas->image) }}}" >
+
+													@else
+													<div style="">
+														<img src="{{ asset('/demo7/distpengunjung/assets/media/users/blank.png') }}" alt="">
+													</div>
+													@endif
+
+												</div>
+												<span class="form-text text-muted">Jenis file yang diizinkan: png, jpg, jpeg.</span>
+											</div>
+
 										</div>
-										<span class="form-text text-muted">Jenis file yang diizinkan: png, jpg, jpeg.</span>
 									</div>
 								</div>
-								
+
+
 								<div class="form-group row">
 									<label class="col-xl-3 col-lg-3 col-form-label">Nama Lengkap</label>
 									<div class="col-lg-9 col-xl-6">
 										<div class="form-control form-control-lg form-control-solid">
-										{{ $identitas->nama_lengkap }}
+											{{ $identitas->nama_lengkap }}
 										</div>
 									</div>
 								</div>
@@ -211,7 +216,7 @@
 												</span>
 											</div>
 											<div class="form-control form-control-lg form-control-solid">
-											{{ $identitas->telepon }}
+												{{ $identitas->telepon }}
 											</div>
 										</div>
 									</div>
@@ -221,7 +226,7 @@
 									<div class="col-lg-9 col-xl-6">
 										<div class="input-group input-group-lg input-group-solid">
 											<div class="form-control form-control-lg form-control-solid">
-											{{ $identitas->alamat }}
+												{{ $identitas->alamat }}
 											</div>
 										</div>
 									</div>
@@ -231,7 +236,7 @@
 									<div class="col-lg-9 col-xl-6">
 										<div class="input-group input-group-lg input-group-solid">
 											<div class="form-control form-control-lg form-control-solid">
-											{{ $identitas->tempat_lahir}}
+												{{ $identitas->tempat_lahir}}
 											</div>
 										</div>
 									</div>
@@ -240,23 +245,25 @@
 									<label class="col-xl-3 col-lg-3 col-form-label">Tanggal Lahir</label>
 									<div class="col-lg-9 col-xl-6">
 										<div class="input-group date input-group-lg input-group-solid">
-										<div class="input-group-append">
+											<div class="input-group-append">
 												<span class="input-group-text">
 													<i class="la la-calendar-check-o"></i>
 												</span>
 											</div>
 											<div class="form-control form-control-lg form-control-solid">
-											{{date('d M Y', strtotime($identitas->tgl_lahir))}}
+												{{date('d M Y', strtotime($identitas->tgl_lahir))}}
 											</div>
 										</div>
 										<span class="form-text text-muted">Kami tidak akan pernah membagikan informasi Anda kepada orang lain.</span>
 									</div>
 								</div>
-								
+
 							</div>
 							<!--end::Body-->
 						</form>
 						<!--end::Form-->
+
+
 					</div>
 				</div>
 				<!--end::Content-->
@@ -268,4 +275,11 @@
 	<!--end::Entry-->
 </div>
 <!--end::Content-->
+
+<script>
+	function previewImage() {
+		const image = document.querySelector('#image');
+		const imgPreview = document.querySelector('.img-preview');
+	}
+</script>
 @endsection

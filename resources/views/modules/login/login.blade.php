@@ -112,22 +112,37 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <p class="text-muted font-weight-bold">Masukkan detail Anda untuk membuat akun</p>
                             </div>
                             <!--begin::Form-->
-                            <form class="form" novalidate="novalidate" id="kt_login_signup_form">
+                            <form class="form">
 
                                 @csrf
 
 
                                 <div class="form-group py-3 m-0">
-                                    <input class="form-control h-auto border-0 px-0 placeholder-dark-75" type="text" placeholder="Nama Lengkap" name="nama_lengkap" autocomplete="off" />
+                                    <input class="form-control h-auto border-0 px-0 placeholder-dark-75 " type="text" placeholder="Nama Lengkap" id="nama_lengkap" name="nama_lengkap" :value="old('nama_lengkap')" required autofocus autocomplete="nama_lengkap" autocomplete="off" />
+                                    @error('nama_lengkap')
+                                    <div class="invalid-feedback">
+                                        {{$message}}
+                                    </div>
+                                    @enderror
                                 </div>
                                 <div class="form-group py-3 border-top m-0">
-                                    <input class="form-control h-auto border-0 px-0 placeholder-dark-75" type="text" placeholder="Email" name="email-regis" autocomplete="off" />
+                                    <input class="form-control h-auto border-0 px-0 placeholder-dark-75" type="text" placeholder="Email" id="email-regis" name="email-regis" :value="old('email-regis')" autofocus autocomplete="email" required autocomplete="off" />
+                                    @error ('email')
+                                    <div class="invalid-feedback">
+                                        {{$message}}
+                                    </div>
+                                    @enderror
                                 </div>
                                 <div class="form-group py-3 border-top m-0">
-                                    <input class="form-control h-auto border-0 px-0 placeholder-dark-75" type="password" placeholder="Kata Sandi" name="password-regis" autocomplete="off" />
+                                    <input class="form-control h-auto border-0 px-0 placeholder-dark-75 @error ('password-regis') is-invalid @enderror" type="password" placeholder="Kata Sandi" id="password-regis" name="password-regis" required autocomplete="off" />
+                                    @error ('password')
+                                    <div class="invalid-feedback">
+                                        {{$message}}
+                                    </div>
+                                    @enderror
                                 </div>
                                 <div class="form-group py-3 border-top m-0">
-                                    <input class="form-control h-auto border-0 px-0 placeholder-dark-75" type="password" placeholder="Konfirmasi kata sandi" name="cpassword-regis" autocomplete="off" />
+                                    <input class="form-control h-auto border-0 px-0 placeholder-dark-75" type="password" placeholder="Konfirmasi kata sandi" name="cpassword-regis" required autocomplete="off" />
                                 </div>
                                 <div class="form-group mt-5">
                                     <div class="checkbox-inline">

@@ -8,10 +8,12 @@ use App\Http\Controllers\PemesananController;
 use App\Http\Controllers\PetugasController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\LandingPage;
 use App\Http\Controllers\RiwayatController;
 use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\PasswordUpdate;
 use App\Http\Controllers\DiskonController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,23 +26,25 @@ use App\Http\Controllers\DiskonController;
 |
 */
 
-Route::get('/', function () {
-    return view('modules.landingpage.landingpage');
-});
+// Route::get('/', function () {
+//     return view('modules.landingpage.landingpage2');
+// });
+
+Route::get('/', [LandingPage::class, 'index']);
 
 Route::get('/dashboard', [DashboardController::class, 'dashboard']);
-Route::get('/ujicoba/{nama}', [DashboardController::class, 'dinamisroute']);
 
 
-Route::get('/template', function () {
+Route::get('/laporanonline', function () {
 
-    return view('layouts.template-backend');
+    return view('modules.laporanonline.laporanonline');
 });
 
-Route::get('/pengujian', function () {
 
-    return view('modules.dashboard.index');
-});
+// Route::get('/laporanoffline', function () {
+
+//     return view('modules.laporanoffline.laporanoffline');
+// });
 
 //diskon
 Route::get('/diskon', [DiskonController::class, 'index']);
@@ -51,33 +55,15 @@ Route::get('/creatediskon', function () {
 });
 
 // module login
-Route::get('/login', [LoginController::class, 'index']);
+Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::get('/login/proses', [LoginController::class, 'proses']);
+Route::post('/logout',[LoginController::class,'logout']);
 
 //landing page
-Route::get('/landingpage2', function () {
+// Route::get('/landingpage2', function () {
 
-    return view('modules.landingpage.landingpage2');
-});
-
-//module tiket
-Route::get('/tiket', [TicketController::class, 'index'])->name('view-ticket');
-Route::get('/createtiket', [TicketController::class, 'create']);
-Route::post('/createtiket', [TicketController::class, 'process'])->name('add-ticket');
-Route::get('/delete-ticket/{kd}', [TicketController::class, 'delete']);
-
-Route::get('/edit-ticket/{kd}', [TicketController::class, 'view_edit']);
-Route::post('/edit-ticket/{kd}', [TicketController::class, 'update']);
-
-//module data pemesanan tiket
-Route::get('/dtpemesanantiket', [PemesananController::class, 'index']);
-Route::get('/edit-dtpemesanan/{kd}', [PemesananController::class, 'view_edit']);
-Route::post('/edit-dtpemesanan/{kd}', [PemesananController::class, 'update']);
-Route::get('/delete-dtpemesanan/{kd}', [PemesananController::class, 'delete']);
-
-//laporan
-Route::get('/laporan', [LaporanController::class, 'index']);
-
+//     return view('modules.landingpage.landingpage2');
+// });
 
 
 
@@ -87,18 +73,51 @@ Route::get('/laporan', [LaporanController::class, 'index']);
  *
  */
 
+
+
+/**
+ *
+ *
+ *  Pengunjung
+ *
+ */
+//regis (pengunjung)
+Route::get('/register/proses', [LoginController::class, 'prosesregis']);
+
+
+// Route::post('payments/midtrans-notification', [PaymentCallbackController::class, 'receive']);
+
+
+// Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
+
+//modules tiket (admin)
+Route::get('/tiket', [TicketController::class, 'index']);
+Route::get('/createtiket', [TicketController::class, 'create']);
+Route::post('/createtiket', [TicketController::class, 'process'])->name('add-ticket');
+Route::get('/delete-ticket/{kd}', [TicketController::class, 'delete']);
+
+Route::get('/edit-ticket/{kd}', [TicketController::class, 'view_edit']);
+Route::post('/edit-ticket/{kd}', [TicketController::class, 'update']);
+
+// modules laporan (admin)
+Route::get('/laporan', [LaporanController::class, 'index']);
+Route::get('/laporanpengunjung',  [LaporanController::class, 'laporanpengunjung']);
+Route::get('/laporanoffline',  [LaporanController::class, 'invoice']);
+Route::get('/cetakpdfcust',  [LaporanController::class, 'cetakpdfcust']);
+Route::get('/download',  [ProfileController::class, 'savepdf']);
+
+//modules dashboard (petugas)
 Route::get('/dashboardpetugas', [DashboardController::class, 'dashboardpetugas']);
 
+//modules transaksi pemesanan offline (petugas)
 Route::get('petugas/order', [PemesananController::class, 'form_orderoffline']);
 Route::get('petugas/payment', [PemesananController::class, 'form_orderoffline_pembayaran']);
 
-// proses pemesanan
+// proses pemesanan tiket online (pengunjung)
 Route::post('proses-pemesanan', [PemesananController::class, 'proses_pemesanan']);
 Route::get('transaction-success/{kd_order}', [PemesananController::class, 'pemesanan_berhasil']);
 
-
-
-//module petugas
+//modules data petugas (admin)
 Route::get('/petugas', [PetugasController::class, 'index'])->name('view-petugas');
 Route::get('/createpetugas', [PetugasController::class, 'create']);
 Route::post('/createpetugas', [PetugasController::class, 'process'])->name('add-petugas');
@@ -107,49 +126,47 @@ Route::get('/edit-petugas/{kd}', [PetugasController::class, 'view_edit']);
 Route::post('/edit-petugas/{kd}', [PetugasController::class, 'update']);
 
 
-Route::get('/riwayat', function () {
-
-    return view('modules.riwayat.riwayattransaksi');
-});
-
-/**
- *
- *
- *  Pengunjung
- *
- */
-
-//regis
-Route::get('/register/proses', [LoginController::class, 'prosesregis']);
-
-// profile
+// profile (pengunjung)
 Route::get('/dashboardcust', [ProfileController::class, 'dashboardcust']);
 Route::get('/informasipribadi', [ProfileController::class, 'index']);
 Route::get('/ubahkatasandi', [ProfileController::class, 'ubahkatasandi']);
-// Route::resource('/updatepass','ProfileController');
+// Route::resource('/updatepass', 'ProfileController');
 Route::post('/updatepass/{id}', [PasswordUpdate::class, 'update']);
 Route::get('/editinformasipribadi/{kd}', [ProfileController::class, 'view_edit']);
 Route::post('/editinformasipribadi', [ProfileController::class, 'update']);
 
-// purchase pengunjung
+//purchase pengunjung atau pemesanan tiket online (pengunjung)
 Route::get('/checkout', [CheckoutController::class, 'checkout']);
 Route::get('/request-date', [CheckoutController::class, 'request_date']);
 
 Route::post('/pengunjung/proses-pemesanan', [CheckoutController::class, 'proses_pemesanan']);
 
-
 Route::get('/struk', [CheckoutController::class, 'struk']);
 
-//riwayat
+//riwayat all level
+// Route::get('/riwayat', function () {
+
+//     return view('modules.riwayat.riwayattransaksi');
+// });
 Route::get('/riwayattransaksi', [RiwayatController::class, 'riwayattransaksi']);
 Route::get('/detailriwayat/{kd_order}', [RiwayatController::class, 'riwayatById']);
 Route::get('/riwayatpembayaran', [RiwayatController::class, 'riwayatpembayaran']);
 Route::get('/riwayatadmin', [RiwayatController::class, 'riwayatadmin']);
 
+
+
+// });
+
+Route::get('/download',  [ProfileController::class, 'savepdf']);
+
 Route::get('pw', function () {
 
-    echo Hash::make("123");
+    // echo Hash::make("456");
+    if (Auth::check())
+    {
+        echo "okei";
+    } else {
+
+        echo "Nay";
+    }
 });
-
-
-Route::post('payments/midtrans-notification', [PaymentCallbackController::class, 'receive']);

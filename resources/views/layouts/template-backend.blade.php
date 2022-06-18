@@ -733,7 +733,12 @@
 					<div class="font-weight-bold font-size-h5 text-dark-75">{{ session('level')}}</div>
 
 					<div class="navi mt-2">
-						<a href="/login" class="btn btn-sm btn-light-primary font-weight-bolder py-2 px-5">Sign Out</a>
+						<form action="/logout" method="post">
+							@csrf
+							<button type="submit" class="btn btn-sm btn-light-primary font-weight-bolder py-2 px-5">
+								Keluar
+							</button>
+						</form>
 					</div>
 				</div>
 			</div>

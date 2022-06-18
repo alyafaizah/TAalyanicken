@@ -9,10 +9,13 @@ use Illuminate\Support\Facades\DB;
 
 class CheckoutController extends Controller
 {
+    
     public function checkout()
     {
         $tiket = Ticket::first();
-        return view('modules.checkout.checkout', compact('tiket'));
+        return view('modules.checkout.checkout', compact('tiket'), [
+            "title" => "Pemesanan"
+        ]);
     }
 
     function process( Request $request ) {
