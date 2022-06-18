@@ -136,3 +136,6 @@ Route::get('pw', function() {
 
     echo Hash::make("123");
 });
+
+
+Route::post('payments/midtrans-notification', [PaymentCallbackController::class, 'receive']);

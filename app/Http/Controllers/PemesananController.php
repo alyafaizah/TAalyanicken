@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\PemesananTiket;
 use Illuminate\Support\Facades\DB;
 
+
+
 class PemesananController extends Controller
 {
     //menampilkan
@@ -175,4 +177,7 @@ class PemesananController extends Controller
 
         return view('modules.orderoffline.view_success');
     }
+
+
+
 }
