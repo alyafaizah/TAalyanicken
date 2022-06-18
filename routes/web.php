@@ -11,6 +11,7 @@ use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\RiwayatController;
 use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\PasswordUpdate;
+use App\Http\Controllers\DiskonController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,6 +42,13 @@ Route::get('/pengujian', function () {
     return view('modules.dashboard.index');
 });
 
+//diskon
+Route::get('/diskon', [DiskonController::class, 'index']);
+
+Route::get('/creatediskon', function () {
+
+    return view('modules.diskon.creatediskon');
+});
 
 // module login
 Route::get('/login', [LoginController::class, 'index']);
