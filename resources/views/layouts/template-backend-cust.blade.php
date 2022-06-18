@@ -17,9 +17,10 @@ License: You must have a valid license purchased only from themeforest(the above
 <head>
     <base href="">
     <meta charset="utf-8" />
-    <title>Metronic Live preview | Keenthemes</title>
+    <title>Kandang Sapi | {{$title}}</title>
     <meta name="description" content="Bootstrap datepicker examples" />
     <meta name="description" content="Updates and statistics" />
+    <meta name="description" content="Bootstrap datepicker examples" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <link rel="canonical" href="https://keenthemes.com/metronic" />
     <!--begin::Fonts-->
@@ -40,6 +41,7 @@ License: You must have a valid license purchased only from themeforest(the above
 <!--end::Head-->
 
 <!--begin::Body-->
+
 <body id="kt_body" class="header-fixed header-mobile-fixed header-bottom-enabled page-loading">
     <!--begin::Main-->
     <!--begin::Header Mobile-->
@@ -126,9 +128,15 @@ License: You must have a valid license purchased only from themeforest(the above
                 </div>
                 <div class="d-flex flex-column">
                     <div class="font-weight-bold font-size-h5 text-dark-75">{{ session('nama_lengkap')}}</div>
-                    
+
                     <div class="navi mt-2">
-                        <a href="/login" class="btn btn-sm btn-light-primary font-weight-bolder py-2 px-5">Sign Out</a>
+                        <form action="/logout" method="post">
+                            @csrf
+                            <button type="submit" class="btn btn-sm btn-light-primary font-weight-bolder py-2 px-5">
+                                Keluar
+                            </button>
+                        </form>
+
                     </div>
                 </div>
             </div>
@@ -164,7 +172,7 @@ License: You must have a valid license purchased only from themeforest(the above
                     </div>
                 </a>
                 <!--end:Item-->
-                
+
                 <!--begin::Item-->
                 <a href="/riwayatpembayaran" class="navi-item">
                     <div class="navi-link">
@@ -190,21 +198,21 @@ License: You must have a valid license purchased only from themeforest(the above
                     </div>
                 </a>
                 <!--end:Item-->
-                
+
             </div>
             <!--end::Nav-->
             <!--begin::Separator-->
             <div class="separator separator-dashed my-7"></div>
             <!--end::Separator-->
-           
+
         </div>
         <!--end::Content-->
     </div>
     <!-- end::User Panel-->
-  
+
     </div>
     <!--end::Quick Cart-->
-  
+
     <!--begin::Scrolltop-->
     <div id="kt_scrolltop" class="scrolltop">
         <span class="svg-icon">
@@ -220,8 +228,8 @@ License: You must have a valid license purchased only from themeforest(the above
         </span>
     </div>
     <!--end::Scrolltop-->
-   
-    
+
+
     <script>
         var HOST_URL = "https://preview.keenthemes.com/metronic/theme/html/tools/preview";
     </script>
@@ -298,6 +306,7 @@ License: You must have a valid license purchased only from themeforest(the above
     <!--begin::Page Scripts(used by this page)-->
     <script src="{{ asset('/demo7/distpengunjung/assets/js/pages/widgets.js') }}"></script>
     <script src="{{ asset('/demo7/distpengunjung/assets/js/pages/crud/forms/widgets/bootstrap-datepicker.js?v=7.2.9') }}"></script>
+    <script src="assets/js/pages/crud/forms/widgets/bootstrap-datepicker.js"></script>
     <!--end::Page Scripts-->
 </body>
 <!--end::Body-->

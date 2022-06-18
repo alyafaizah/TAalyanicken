@@ -80,7 +80,7 @@ Route::get('/register/proses', [LoginController::class, 'prosesregis']);
 // Route::post('payments/midtrans-notification', [PaymentCallbackController::class, 'receive']);
 
 
-Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
+// Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
 
 //modules tiket (admin)
 Route::get('/tiket', [TicketController::class, 'index']);
@@ -147,7 +147,7 @@ Route::get('/riwayatadmin', [RiwayatController::class, 'riwayatadmin']);
 
 
 
-});
+// });
 
 Route::get('/download',  [ProfileController::class, 'savepdf']);
 
