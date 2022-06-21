@@ -10,7 +10,7 @@ class Diskon extends Model
     use HasFactory;
 
     protected $table = "diskon";
-    protected $fillable = ["kode_diskon","nama_diskon","foto_diskon", "keterangan_diskon", "nilai_diskon", "tgl_awal", "tgl_akhir", "status"];
+    protected $guarded = [];
 
     public $timestamps = true;
     protected $primaryKey = 'id_diskon';

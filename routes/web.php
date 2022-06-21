@@ -47,12 +47,13 @@ Route::get('/laporanonline', function () {
 // });
 
 //diskon
-Route::get('/diskon', [DiskonController::class, 'index']);
+Route::get('/diskon', [DiskonController::class, 'index'])->name('view-diskon');
+Route::get('/creatediskon', [DiskonController::class, 'create']);
+Route::post('/creatediskon', [DiskonController::class, 'process'])->name('add-diskon');
+Route::get('/editdiskon/{kd}', [DiskonController::class, 'view_edit']);
+Route::post('/editdiskon/{kd}', [DiskonController::class, 'update']);
+Route::get('/deletediskon/{kd}', [DiskonController::class, 'delete']);
 
-Route::get('/creatediskon', function () {
-
-    return view('modules.diskon.creatediskon');
-});
 
 // module login
 Route::get('/login', [LoginController::class, 'index'])->name('login');

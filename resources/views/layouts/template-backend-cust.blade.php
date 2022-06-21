@@ -167,7 +167,8 @@ License: You must have a valid license purchased only from themeforest(the above
                         <div class="navi-text">
                             <div class="font-weight-bold">Akun saya</div>
                             <div class="text-muted">Pengaturan akun
-                                <span class="label label-light-danger label-inline font-weight-bold">perbarui</span></div>
+                                <span class="label label-light-danger label-inline font-weight-bold">perbarui</span>
+                            </div>
                         </div>
                     </div>
                 </a>
@@ -308,6 +309,9 @@ License: You must have a valid license purchased only from themeforest(the above
     <script src="{{ asset('/demo7/distpengunjung/assets/js/pages/crud/forms/widgets/bootstrap-datepicker.js?v=7.2.9') }}"></script>
     <script src="assets/js/pages/crud/forms/widgets/bootstrap-datepicker.js"></script>
     <!--end::Page Scripts-->
+
+
+
 </body>
 <!--end::Body-->
 
