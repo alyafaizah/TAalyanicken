@@ -31,13 +31,7 @@ use Illuminate\Support\Facades\Auth;
 
 Route::get('/', [LandingPage::class, 'index']);
 
-Route::get('/dashboard', [DashboardController::class, 'dashboard']);
 
-
-Route::get('/laporanonline', function () {
-
-    return view('modules.laporanonline.laporanonline');
-});
 
 
 // Route::get('/laporanoffline', function () {
@@ -80,85 +74,85 @@ Route::get('/register/proses', [LoginController::class, 'prosesregis']);
 // Route::post('payments/midtrans-notification', [PaymentCallbackController::class, 'receive']);
 
 
-// Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
+Route::group(['middleware' => 'usersession'], function () {
 
-//modules tiket (admin)
-Route::get('/tiket', [TicketController::class, 'index']);
-Route::get('/createtiket', [TicketController::class, 'create']);
-Route::post('/createtiket', [TicketController::class, 'process'])->name('add-ticket');
-Route::get('/delete-ticket/{kd}', [TicketController::class, 'delete']);
+    //modules tiket (admin)
+    Route::get('/tiket', [TicketController::class, 'index']);
+    Route::get('/createtiket', [TicketController::class, 'create']);
+    Route::post('/createtiket', [TicketController::class, 'process'])->name('add-ticket');
+    Route::get('/delete-ticket/{kd}', [TicketController::class, 'delete']);
 
-Route::get('/edit-ticket/{kd}', [TicketController::class, 'view_edit']);
-Route::post('/edit-ticket/{kd}', [TicketController::class, 'update']);
+    Route::get('/edit-ticket/{kd}', [TicketController::class, 'view_edit']);
+    Route::post('/edit-ticket/{kd}', [TicketController::class, 'update']);
 
-// modules laporan (admin)
-Route::get('/laporan', [LaporanController::class, 'index']);
-Route::get('/laporanpengunjung',  [LaporanController::class, 'laporanpengunjung']);
-Route::get('/laporanoffline',  [LaporanController::class, 'invoice']);
-Route::get('/cetakpdfcust',  [LaporanController::class, 'cetakpdfcust']);
-Route::get('/download',  [ProfileController::class, 'savepdf']);
+    // modules laporan (admin)
+    Route::get('/laporan', [LaporanController::class, 'index']);
+    Route::get('/laporanpengunjung',  [LaporanController::class, 'laporanpengunjung']);
+    Route::get('/laporanoffline',  [LaporanController::class, 'invoice']);
+    Route::get('/cetakpdfcust',  [LaporanController::class, 'cetakpdfcust']);
+    Route::get('/download',  [ProfileController::class, 'savepdf']);
 
-//modules dashboard (petugas)
-Route::get('/dashboardpetugas', [DashboardController::class, 'dashboardpetugas']);
+    //modules dashboard (petugas)
+    Route::get('/dashboardpetugas', [DashboardController::class, 'dashboardpetugas']);
 
-//modules transaksi pemesanan offline (petugas)
-Route::get('petugas/order', [PemesananController::class, 'form_orderoffline']);
-Route::get('petugas/payment', [PemesananController::class, 'form_orderoffline_pembayaran']);
+    //modules transaksi pemesanan offline (petugas)
+    Route::get('petugas/order', [PemesananController::class, 'form_orderoffline']);
+    Route::get('petugas/payment', [PemesananController::class, 'form_orderoffline_pembayaran']);
 
-// proses pemesanan tiket online (pengunjung)
-Route::post('proses-pemesanan', [PemesananController::class, 'proses_pemesanan']);
-Route::get('transaction-success/{kd_order}', [PemesananController::class, 'pemesanan_berhasil']);
+    // proses pemesanan tiket online (pengunjung)
+    Route::post('proses-pemesanan', [PemesananController::class, 'proses_pemesanan']);
+    Route::get('transaction-success/{kd_order}', [PemesananController::class, 'pemesanan_berhasil']);
 
-//modules data petugas (admin)
-Route::get('/petugas', [PetugasController::class, 'index'])->name('view-petugas');
-Route::get('/createpetugas', [PetugasController::class, 'create']);
-Route::post('/createpetugas', [PetugasController::class, 'process'])->name('add-petugas');
-Route::get('/delete-petugas/{kd}', [PetugasController::class, 'delete']);
-Route::get('/edit-petugas/{kd}', [PetugasController::class, 'view_edit']);
-Route::post('/edit-petugas/{kd}', [PetugasController::class, 'update']);
-
-
-// profile (pengunjung)
-Route::get('/dashboardcust', [ProfileController::class, 'dashboardcust']);
-Route::get('/informasipribadi', [ProfileController::class, 'index']);
-Route::get('/ubahkatasandi', [ProfileController::class, 'ubahkatasandi']);
-// Route::resource('/updatepass', 'ProfileController');
-Route::post('/updatepass/{id}', [PasswordUpdate::class, 'update']);
-Route::get('/editinformasipribadi/{kd}', [ProfileController::class, 'view_edit']);
-Route::post('/editinformasipribadi', [ProfileController::class, 'update']);
-
-//purchase pengunjung atau pemesanan tiket online (pengunjung)
-Route::get('/checkout', [CheckoutController::class, 'checkout']);
-Route::get('/request-date', [CheckoutController::class, 'request_date']);
-
-Route::post('/pengunjung/proses-pemesanan', [CheckoutController::class, 'proses_pemesanan']);
-
-Route::get('/struk', [CheckoutController::class, 'struk']);
-
-//riwayat all level
-// Route::get('/riwayat', function () {
-
-//     return view('modules.riwayat.riwayattransaksi');
-// });
-Route::get('/riwayattransaksi', [RiwayatController::class, 'riwayattransaksi']);
-Route::get('/detailriwayat/{kd_order}', [RiwayatController::class, 'riwayatById']);
-Route::get('/riwayatpembayaran', [RiwayatController::class, 'riwayatpembayaran']);
-Route::get('/riwayatadmin', [RiwayatController::class, 'riwayatadmin']);
+    //modules data petugas (admin)
+    Route::get('/petugas', [PetugasController::class, 'index'])->name('view-petugas');
+    Route::get('/createpetugas', [PetugasController::class, 'create']);
+    Route::post('/createpetugas', [PetugasController::class, 'process'])->name('add-petugas');
+    Route::get('/delete-petugas/{kd}', [PetugasController::class, 'delete']);
+    Route::get('/edit-petugas/{kd}', [PetugasController::class, 'view_edit']);
+    Route::post('/edit-petugas/{kd}', [PetugasController::class, 'update']);
 
 
+    // profile (pengunjung)
+    Route::get('/dashboardcust', [ProfileController::class, 'dashboardcust']);
+    Route::get('/informasipribadi', [ProfileController::class, 'index']);
+    Route::get('/ubahkatasandi', [ProfileController::class, 'ubahkatasandi']);
+    // Route::resource('/updatepass', 'ProfileController');
+    Route::post('/updatepass/{id}', [PasswordUpdate::class, 'update']);
+    Route::get('/editinformasipribadi/{kd}', [ProfileController::class, 'view_edit']);
+    Route::post('/editinformasipribadi', [ProfileController::class, 'update']);
 
-// });
+    //purchase pengunjung atau pemesanan tiket online (pengunjung)
+    Route::get('/checkout', [CheckoutController::class, 'checkout']);
+    Route::get('/request-date', [CheckoutController::class, 'request_date']);
+
+    Route::post('/pengunjung/proses-pemesanan', [CheckoutController::class, 'proses_pemesanan']);
+
+    Route::get('/struk', [CheckoutController::class, 'struk']);
+
+    //riwayat all level
+    // Route::get('/riwayat', function () {
+
+    //     return view('modules.riwayat.riwayattransaksi');
+    // });
+    Route::get('/riwayattransaksi', [RiwayatController::class, 'riwayattransaksi']);
+    Route::get('/detailriwayat/{kd_order}', [RiwayatController::class, 'riwayatById']);
+    Route::get('/riwayatpembayaran', [RiwayatController::class, 'riwayatpembayaran']);
+    Route::get('/riwayatadmin', [RiwayatController::class, 'riwayatadmin']);
+
+    
+    Route::get('/dashboard', [DashboardController::class, 'dashboard']);
+
+
+    Route::get('/laporanonline', function () {
+
+        return view('modules.laporanonline.laporanonline');
+    });
+
+});
 
 Route::get('/download',  [ProfileController::class, 'savepdf']);
 
 Route::get('pw', function () {
 
     // echo Hash::make("456");
-    if (Auth::check())
-    {
-        echo "okei";
-    } else {
-
-        echo "Nay";
-    }
 });

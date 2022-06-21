@@ -188,17 +188,13 @@ class LoginController extends Controller
 
     public function prosesregis(Request $request)
     {
-        $request->validate([
-            'nama_lengkap' => 'required',
-            'email' => 'required|email|unique:profile',
-            'password' => 'required|min:5|max:255'
-        ]);
-
-        // $data = $request->validate([
+        // $request->validate([
         //     'nama_lengkap' => 'required',
         //     'email' => 'required|email|unique:profile',
         //     'password' => 'required|min:5|max:255'
         // ]);
+
+       
 
         $data = array(
 
