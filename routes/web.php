@@ -14,6 +14,7 @@ use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\PasswordUpdate;
 use App\Http\Controllers\DiskonController;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\EmailController;
 
 /*
 |--------------------------------------------------------------------------
@@ -59,6 +60,9 @@ Route::get('/deletediskon/{kd}', [DiskonController::class, 'delete']);
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::get('/login/proses', [LoginController::class, 'proses']);
 Route::post('/logout',[LoginController::class,'logout']);
+
+//email
+Route::get('/email',[EmailController::class,'index']);
 
 //landing page
 // Route::get('/landingpage2', function () {

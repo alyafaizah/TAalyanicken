@@ -17,7 +17,7 @@ License: You must have a valid license purchased only from themeforest(the above
 <head>
     <base href="">
     <meta charset="utf-8" />
-    <title>Kandang Sapi | {{$title}}</title>
+    <title>Kandang Sapi | </title>
     <meta name="description" content="Bootstrap datepicker examples" />
     <meta name="description" content="Updates and statistics" />
     <meta name="description" content="Bootstrap datepicker examples" />
