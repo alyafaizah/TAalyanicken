@@ -12,7 +12,9 @@ use App\Http\Controllers\LandingPage;
 use App\Http\Controllers\RiwayatController;
 use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\PasswordUpdate;
+use App\Http\Controllers\DiskonController;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\EmailController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,11 +41,22 @@ Route::get('/', [LandingPage::class, 'index']);
 //     return view('modules.laporanoffline.laporanoffline');
 // });
 
+//diskon
+Route::get('/diskon', [DiskonController::class, 'index'])->name('view-diskon');
+Route::get('/creatediskon', [DiskonController::class, 'create']);
+Route::post('/creatediskon', [DiskonController::class, 'process'])->name('add-diskon');
+Route::get('/editdiskon/{kd}', [DiskonController::class, 'view_edit']);
+Route::post('/editdiskon/{kd}', [DiskonController::class, 'update']);
+Route::get('/deletediskon/{kd}', [DiskonController::class, 'delete']);
+
 
 // module login
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::get('/login/proses', [LoginController::class, 'proses']);
 Route::post('/logout',[LoginController::class,'logout']);
+
+//email
+Route::get('/email',[EmailController::class,'index']);
 
 //landing page
 // Route::get('/landingpage2', function () {

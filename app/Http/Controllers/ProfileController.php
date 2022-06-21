@@ -106,11 +106,11 @@ class ProfileController extends Controller
             $data = array(
 
                 'nama_lengkap'      => $ambilNama,
-                'alamat'           => $ambilAlamat,
-                'telepon'              => $ambilTelp,
+                'alamat'            => $ambilAlamat,
+                'telepon'           => $ambilTelp,
                 'tempat_lahir'      => $ambilTmptlahir,
                 'tgl_lahir'         => $date,
-                'image'         => $ambilImage
+                'image'             => $ambilImage
 
             );
 
