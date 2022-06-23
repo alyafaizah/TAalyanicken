@@ -25,11 +25,6 @@
 
                         <div class="card-body">
                             <div class="form-group">
-                                <label for="exampleSelect1">Username
-                                    <span class="text-danger">*</span></label>
-                                    <input type="text" name="username" class="form-control" value="{{ $petugas->username }}" placeholder="" />
-                            </div>
-                            <div class="form-group">
                                 <label>Email
                                     <span class="text-danger">*</span></label>
                                 <input type="text" name="email" class="form-control" value="{{ $petugas->email }}" placeholder="" />
@@ -47,7 +42,7 @@
                                         <span></span>
                                         Nonaktif
                                     </label>
-                        
+
                                 </div>
                                 <span class="form-text text-muted">Status akun pegawai</span>
                             </div>

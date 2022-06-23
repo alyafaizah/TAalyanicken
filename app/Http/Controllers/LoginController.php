@@ -6,6 +6,8 @@ use Illuminate\Contracts\Routing\UrlGenerator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use App\Models\Identitas;
+use App\Models\Profile;
 
 class LoginController extends Controller
 {
@@ -17,11 +19,11 @@ class LoginController extends Controller
         return view('modules.login.login');
     }
 
-    // proses pencocokan akun 
+    // proses pencocokan akun
     function proses_oldversion(Request $request)
     {
 
-        // $this->validate($request, 
+        // $this->validate($request,
 
         //     ['email'    => "required"],
         //     ['password' => "required"]
@@ -74,7 +76,7 @@ class LoginController extends Controller
     function proses(Request $request)
     {
 
-        // $this->validate($request, 
+        // $this->validate($request,
 
         //     ['email'    => "required"],
         //     ['password' => "required"]
@@ -96,29 +98,35 @@ class LoginController extends Controller
 
                 $sess = array(
 
-                    'id'        => $profile->id_profile,
-                    'username'  => $profile->username,
-                    'level'     => $profile->level
+                    'id'         => $profile->id_profile,
+                    'email'      => $profile->email,
+                    'level'      => $profile->level,
                 );
-                session($sess);
+
+
+
 
                 if ($profile->level == "admin") {
 
                     // return redirect('/dashboard');
                     $pesan = "success";
                     $url = url('/dashboard');
-
-
-                } else if ($profile->level == "petugas_tiket") {
+                } else if ($profile->level == "petugas tiket") {
 
                     $pesan = "success";
                     $url = url('/dashboard');
-
                 } else if ($profile->level == "pengunjung") {
+
+                    $identitas = Identitas::where('id_profile', $profile->id_profile)->first();
+
+                    $sess['nama_lengkap'] = $identitas->nama_lengkap;
 
                     $pesan = "success";
                     $url = url('/dashboardcust');
                 }
+
+
+                session($sess);
             } else {
 
                 // return redirect('/login')->with('pesan', 'Kata sandi salah');
@@ -159,8 +167,8 @@ class LoginController extends Controller
         );
 
         $id_profile = DB::table('profile')->insertGetId($data);
-        
-        
+
+
 
         $dt_identitas = array(
 
@@ -168,7 +176,7 @@ class LoginController extends Controller
             'nama_lengkap' => $request->input('nama_lengkap')
         );
 
-        DB::table('identitas')->insert( $dt_identitas );
+        DB::table('identitas')->insert($dt_identitas);
 
         session()->flash('message', 'Akun Anda telah dibuat');
 
@@ -191,10 +199,10 @@ class LoginController extends Controller
         );
 
         $id_profile = DB::table('profile')->insertGetId($data);
-        
+
         $pesan = "";
         $url = "";
-        
+
 
         $dt_identitas = array(
 
@@ -202,11 +210,17 @@ class LoginController extends Controller
             'nama_lengkap' => $request->input('nama_lengkap')
         );
 
-        DB::table('identitas')->insert( $dt_identitas );
+        DB::table('identitas')->insert($dt_identitas);
 
         // session()->flash('message', 'Akun Anda telah dibuat');
         $pesan = "success";
         $url = url('/login');
+
+        echo json_encode([
+
+            'status'    => $pesan,
+            'url'       => $url
+        ]);
 
         // return redirect('/login');
     }

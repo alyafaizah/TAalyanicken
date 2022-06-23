@@ -28,16 +28,16 @@ class TicketController extends Controller
     // proses tambah
     function process( Request $request ) {
 
-        $ambilJenis = $request->input('jenis');
-        $ambilHarga = $request->input('harga');
+        $ambilWeekend = $request->input('weekend');
+        $ambilWeekday = $request->input('weekday');
         $ambilStok  = $request->input('stok');
         $ambilKet   = $request->input('keterangan');
 
         $data = array(
 
-            'kd_tiket'  => strtoupper(uniqid()),
-            'jenis'     => $ambilJenis,
-            'harga'     => $ambilHarga,
+            'kd_tiket'  => date('ymdHis'),
+            'weekend'   => $ambilWeekend,
+            'weekday'   => $ambilWeekday,
             'stok'      => $ambilStok,
             'keterangan'=> $ambilKet
         );
@@ -49,22 +49,6 @@ class TicketController extends Controller
     }
 
 
-
-    // fungsi hapus
-    function delete( $kd ) {
-
-        $tiket = Ticket::where('kd_tiket', $kd);
-
-        if ( $tiket ) {
-
-            $tiket->delete();
-            return redirect('tiket')->with('pesan', 'Tiket berhasil terhapus');
-        } else {
-
-            return redirect('tiket')->with('pesan', 'Hapus gagal, Kode tiket ' . $kd.' tidak ditemukan');
-        }
-
-    }
 
 
 
@@ -88,16 +72,16 @@ class TicketController extends Controller
 
         if ( $tiket ) {
 
-            $ambilJenis = $request->input('jenis');
-            $ambilHarga = $request->input('harga');
-            $ambilStok  = $request->input('stok');
-            $ambilKet   = $request->input('keterangan');
+            $ambilWeekend = $request->input('weekend');
+            $ambilWeekday = $request->input('weekday');
+            $ambilStok    = $request->input('stok');
+            $ambilKet     = $request->input('keterangan');
 
             $data = array(
 
                 'kd_tiket'  => strtoupper(uniqid()),
-                'jenis'     => $ambilJenis,
-                'harga'     => $ambilHarga,
+                'weekend'   => $ambilWeekend,
+                'weekday'   => $ambilWeekday,
                 'stok'      => $ambilStok,
                 'keterangan'=> $ambilKet
             );

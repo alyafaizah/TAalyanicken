@@ -28,7 +28,7 @@
 							<a href="" class="text-muted">Profile</a>
 						</li>
 						<li class="breadcrumb-item text-muted">
-							<a href="" class="text-muted">Informasi Pribadi</a>
+							<a href="" class="text-muted">Edit Informasi Pribadi</a>
 						</li>
 					</ul>
 					<!--end::Breadcrumb-->
@@ -58,7 +58,7 @@
 									<i class="symbol-badge bg-success"></i>
 								</div>
 								<div>
-									<a href="#" class="font-weight-bolder font-size-h5 text-dark-75 text-hover-primary">Alya Faizah</a>
+									<a href="#" class="font-weight-bolder font-size-h5 text-dark-75 text-hover-primary">{{$identitas->nama_lengkap}}</a>
 								</div>
 							</div>
 							<!--end::User-->
@@ -67,11 +67,7 @@
 							<div class="py-9">
 								<div class="d-flex align-items-center justify-content-between mb-2">
 									<span class="font-weight-bold mr-2">Email:</span>
-									<a href="#" class="text-muted text-hover-primary">alya@gmail.com</a>
-								</div>
-								<div class="d-flex align-items-center justify-content-between">
-									<span class="font-weight-bold mr-2">Username:</span>
-									<span class="text-muted">alya123</span>
+									<a href="#" class="text-muted text-hover-primary">{{$profile->email}}</a>
 								</div>
 							</div>
 							<!--end::Contact-->
@@ -191,23 +187,10 @@
 									</div>
 								</div>
 								<div class="form-group row">
-									<label class="col-xl-3 col-lg-3 col-form-label">Username</label>
-									<div class="col-lg-9 col-xl-6">
-										<div class="input-group input-group-lg input-group-solid">
-											<div class="input-group-prepend">
-												<span class="input-group-text">
-													<i class="la la-at"></i>
-												</span>
-											</div>
-											<input type="text" class="form-control form-control-lg form-control-solid" value="alya123" placeholder="Email" />
-										</div>
-									</div>
-								</div>
-								<div class="form-group row">
 									<label class="col-xl-3 col-lg-3 col-form-label">Email</label>
 									<div class="col-lg-9 col-xl-6">
-										<div class="input-group input-group-lg input-group-solid">
-											<input type="text" class="form-control form-control-lg form-control-solid" value="alya@gmail.com" placeholder="Email" name="email" />
+										<div class="input-group input-group-lg input-group-solid disable">
+											<input type="text"  readonly class="form-control form-control-lg form-control-solid" value="alya@gmail.com" placeholder="Email" name="email" />
 										</div>
 									</div>
 								</div>
@@ -256,7 +239,7 @@
 								</div>
 								<div class="card-toolbar">
 									<button type="submit" class="btn btn-success mr-2">Simpan Perubahan</button>
-									<a href="editinformasipribadi" class="btn btn-secondary">Batal</a>
+									<a href="/informasipribadi" class="btn btn-secondary">Batal</a>
 								</div>
 							</div>
 							<!--end::Body-->

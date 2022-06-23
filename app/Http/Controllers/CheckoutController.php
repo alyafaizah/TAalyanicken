@@ -82,6 +82,8 @@ class CheckoutController extends Controller
             'id_profile'    => session('id'),
             'tgl_kunjungan' => date('Y-m-d H:i:s', strtotime($request->input('tanggal'))),
             'jumlah'        => $request->input('jumlah'),
+            'harga'        => $request->input('harga'),
+            'total'        => $request->input('jumlah')*$request->input('harga'),
             'status'        => "diproses",
             'jenis_tiket'   => strtolower($request->input('jenis_tiket')),
             'jenis_pemesanan' => "online",

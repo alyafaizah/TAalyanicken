@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\PemesananTiket;
 use App\Models\Pembayaran;
 use App\Models\Ticket;
+use App\Models\Profile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -12,11 +13,12 @@ class RiwayatController extends Controller
 {
     public function riwayattransaksi()
     {
-        $pemesanan = PemesananTiket::all();
-        $jenis_tiket = Ticket::all();
+        $id_profile = session("id");
+        $pemesanan = PemesananTiket::where('id_profile', $id_profile)->orderBy('created_at', 'desc')->get();
+
         // $data = $pemesanan->join('kd_tiket', $jenis_tiket->kd_tiket, '=', $pemesanan->kd_tiket);
         $data = array(
-            'jenis_tiket' => $jenis_tiket,
+
             'pemesanan' => $pemesanan
         );
         // echo "<pre>";
@@ -28,9 +30,7 @@ class RiwayatController extends Controller
     public function riwayatpembayaran()
     {
         $pembayaran = Pembayaran::all();
-        $jenis_tiket = Ticket::all();
         $data = array(
-            'jenis_tiket' => $jenis_tiket,
             'pembayaran' => $pembayaran
         );
         // echo "<pre>";
@@ -54,6 +54,18 @@ class RiwayatController extends Controller
 
     public function riwayatadmin()
     {
-        return view('modules.riwayat.riwayatadmin');
+        // $pemesanan = PemesananTiket::all();
+        // $pembayaran = Pembayaran::all();
+        $pemesanan = DB::table('pemesanan')->select('pemesanan.*', 'pembayaran.*', 'identitas.*')
+            ->join('pembayaran', 'pembayaran.kd_order', '=', 'pemesanan.kd_order')
+            ->join('identitas', 'identitas.id_profile', '=', 'pemesanan.id_profile')
+            ->get();
+
+        $data = array(
+            'pemesanan' => $pemesanan
+        );
+
+        //print_r($data);
+        return view('modules.riwayat.riwayatadmin', $data);
     }
 }

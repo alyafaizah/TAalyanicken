@@ -67,11 +67,7 @@
 							<div class="py-9">
 								<div class="d-flex align-items-center justify-content-between mb-2">
 									<span class="font-weight-bold mr-2">Email:</span>
-									<a href="#" class="text-muted text-hover-primary">alya@gmail.com</a>
-								</div>
-								<div class="d-flex align-items-center justify-content-between">
-									<span class="font-weight-bold mr-2">Username:</span>
-									<span class="text-muted">alya123</span>
+									<a href="#" class="text-muted text-hover-primary">{{ $profile->email }}</a>
 								</div>
 							</div>
 							<!--end::Contact-->
@@ -152,7 +148,7 @@
 							</div>
 							
 							<div class="card-toolbar">
-								<a class="btn btn-success mr-2"  href="editinformasipribadi/{{ $identitas->id_profile }}">Ubah Informasi</a>
+								<a class="btn btn-success btn-sm"  href="editinformasipribadi/{{ $identitas->id_profile }}">Ubah Informasi</a>
 							</div>
 						</div>
 						<!--end::Header-->
@@ -192,21 +188,6 @@
 									<div class="col-lg-9 col-xl-6">
 										<div class="form-control form-control-lg form-control-solid">
 										{{ $identitas->nama_lengkap }}
-										</div>
-									</div>
-								</div>
-								<div class="form-group row">
-									<label class="col-xl-3 col-lg-3 col-form-label">Username</label>
-									<div class="col-lg-9 col-xl-6">
-										<div class="input-group input-group-lg input-group-solid">
-											<div class="input-group-prepend">
-												<span class="input-group-text">
-													<i class="la la-at"></i>
-												</span>
-											</div>
-											<div class="form-control form-control-lg form-control-solid">
-												asdfghjhgfdsdfgh
-											</div>
 										</div>
 									</div>
 								</div>

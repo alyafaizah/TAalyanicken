@@ -23,11 +23,6 @@
 
                         <div class="card-body">
                             <div class="form-group">
-                                <label for="exampleSelect1">Username Petugas
-                                    <span class="text-danger">*</span></label>
-                                <input type="text" name="username" class="form-control" placeholder="" />
-                            </div>
-                            <div class="form-group">
                                 <label>Email
                                     <span class="text-danger">*</span></label>
                                 <input type="email" name="email" class="form-control" placeholder="" />

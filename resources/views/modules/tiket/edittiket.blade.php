@@ -23,17 +23,17 @@
 
                         <div class="card-body">
                             <div class="form-group">
-                                <label for="exampleSelect1">Jenis
+                                <label>Weekend
                                     <span class="text-danger">*</span></label>
-                                    <input type="text" name="jenis" class="form-control" value="{{ $tiket->jenis }}" placeholder="" />
+                                <input type="number" name="weekend" class="form-control" value="{{ $tiket->weekend }}" placeholder="" />
                             </div>
                             <div class="form-group">
-                                <label>Harga
+                                <label>Weekday
                                     <span class="text-danger">*</span></label>
-                                <input type="number" name="harga" class="form-control" value="{{ $tiket->harga }}" placeholder="" />
+                                <input type="number" name="weekday" class="form-control" value="{{ $tiket->weekday }}" placeholder="" />
                             </div>
                             <div class="form-group">
-                                <label>Stok
+                                <label>Kapasitas
                                     <span class="text-danger">*</span></label>
                                 <input type="number" name="stok" class="form-control" value="{{ $tiket->stok }}" placeholder="" />
                             </div>
@@ -44,7 +44,7 @@
                         </div>
                         <div class="card-footer">
                             <button type="submit" class="btn btn-warning mr-2">Simpan dan Perbarui</button>
-                            <a href="tiket" class="btn btn-secondary">Batal</a>
+                            <a href="{{route('view-ticket')}}" class="btn btn-secondary">Batal</a>
                         </div>
                     </form>
                     <!--end::Form-->
