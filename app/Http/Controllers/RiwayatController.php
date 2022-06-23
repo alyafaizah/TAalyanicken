@@ -14,8 +14,8 @@ class RiwayatController extends Controller
     public function riwayattransaksi()
     {
         $id_profile = session("id");
-        $pemesanan=Profile::where('id_profile', $id_profile)->first();
-        $pemesanan = PemesananTiket::where('id_profile', $id_profile)->orderBy('created_at', 'desc')->get();
+        $pemesanan  = Profile::where('id_profile', $id_profile)->first();
+        $pemesanan  = PemesananTiket::where('id_profile', $id_profile)->orderBy('created_at', 'desc')->get();
 
         // $data = $pemesanan->join('kd_tiket', $jenis_tiket->kd_tiket, '=', $pemesanan->kd_tiket);
         $data = array(
@@ -61,19 +61,14 @@ class RiwayatController extends Controller
 
     public function riwayatadmin()
     {
-        // $pemesanan = PemesananTiket::all();
-        // $pembayaran = Pembayaran::all();
+        
+        $dt_pemesanan = array();
 
-        $pemesanan = DB::table('pemesanan')->select('pemesanan.*', 'pembayaran.*', 'identitas.*')
-            ->rightjoin('pembayaran', 'pembayaran.kd_order', '=', 'pemesanan.kd_order')
-            ->rightjoin('identitas', 'identitas.id_profile', '=', 'pemesanan.id_profile')
-            ->get();
 
-        $data = array(
-            'pemesanan' => $pemesanan
-        );
+        // ambil data 
+        $pemesanan = DB::table('pemesanan')->get();
 
         // print_r($data);
-        return view('modules.riwayat.riwayatadmin', $data);
+        return view('modules.riwayat.riwayatadmin', compact('pemesanan'));
     }
 }
