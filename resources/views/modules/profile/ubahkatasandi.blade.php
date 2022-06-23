@@ -53,16 +53,18 @@
                         <!--begin::Body-->
                         <div class="card-body pt-4">
                             <!--begin::User-->
-                            <div class="d-flex align-items-center">
-                                <div class="symbol symbol-60 symbol-xxl-100 mr-5 align-self-start align-self-xxl-center">
-                                    <div class="symbol-label" style="background-image:url('/demo7/distpengunjung/assets/media/users/300_21.jpg')"></div>
-                                    <i class="symbol-badge bg-success"></i>
-                                </div>
-                                <div>
-                                    <a href="#" class="font-weight-bolder font-size-h5 text-dark-75 text-hover-primary">{{$identitas->nama_lengkap}}</a>
-                                </div>
-                            </div>
-                            <!--end::User-->
+							<div class="d-flex align-items-center">
+								<div class="symbol symbol-60 symbol-xxl-100 mr-5 align-self-start align-self-xxl-center">
+									<div class="symbol-label" style="max-height:350px;overflow:hidden;">
+										<img src="{{{asset('storage/'. $identitas->image) }}}" alt="" srcset="">
+									</div>
+
+								</div>
+								<div>
+									<a href="#" class="font-weight-bolder font-size-h5 text-dark-75 text-hover-primary">{{ $identitas->nama_lengkap }}</a>
+								</div>
+							</div>
+							<!--end::User-->
                             <!--begin::Contact-->
                             <div class="py-9">
                                 <div class="d-flex align-items-center justify-content-between mb-2">

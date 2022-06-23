@@ -11,7 +11,8 @@ class PetugasController extends Controller
 {
     function index() //halaman tampil
     {
-        $tb_profile = Petugas::where('level', "petugas tiket")->orderBy('created_at', 'desc')->get();
+        $tb_profile = Petugas::where('level',"petugas tiket")->get();
+
         // echo "<pre>";
         // print_r($tb_profile);
         // die;
@@ -23,12 +24,14 @@ class PetugasController extends Controller
         return view('modules.petugas.datapetugas', $data);
     }
 
-    function create(){ //halaman buat petugas
+    function create()
+    { //halaman buat petugas
         return view('modules.petugas.createpetugas');
     }
 
     // proses tambah
-    function process( Request $request ) {
+    function process(Request $request)
+    {
         $ambilEmail     = $request->input('email');
         $ambilPassword  = $request->input('password');
 
@@ -39,7 +42,7 @@ class PetugasController extends Controller
         );
 
         // insert
-        Petugas::create( $data );
+        Petugas::create($data);
 
         return redirect('petugas');
     }
@@ -47,26 +50,27 @@ class PetugasController extends Controller
 
 
     // fungsi hapus
-    function delete( $kd ) {
+    function delete($kd)
+    {
 
         $petugas = Petugas::where('id_profile', $kd);
 
-        if ( $petugas ) {
+        if ($petugas) {
 
             $petugas->delete();
             return redirect('petugas')->with('pesan', 'Petugas berhasil terhapus');
         } else {
 
-            return redirect('petugas')->with('pesan', 'Hapus gagal, Kode petugas ' . $kd.' tidak ditemukan');
+            return redirect('petugas')->with('pesan', 'Hapus gagal, Kode petugas ' . $kd . ' tidak ditemukan');
         }
-
     }
 
 
 
 
     // view edit
-    function view_edit( $kd ) {
+    function view_edit($kd)
+    {
 
         $data['petugas'] = Petugas::where('id_profile', $kd)->first();
         $data['id_profile'] = $kd;
@@ -78,11 +82,17 @@ class PetugasController extends Controller
 
 
     // function proses update
-    function update( Request $request, $kd ) {
+    function update(Request $request, $kd)
+    {
+
+        $request->validate([
+            'email' => 'required|email|unique:profile',
+            'password' => 'required|min:5|max:255'
+        ]);
 
         $petugas = Petugas::where('id_profile', $kd);
 
-        if ( $petugas ) {
+        if ($petugas) {
 
             $ambilEmail     = $request->input('email');
             $ambilStatus  = $request->input('status_akun');
@@ -95,15 +105,12 @@ class PetugasController extends Controller
             );
 
 
-            $petugas->update( $data);
+            $petugas->update($data);
             return redirect('petugas');
         } else {
 
 
-            echo "invalid kd ". $kd;
+            echo "invalid kd " . $kd;
         }
-
-
     }
-
 }

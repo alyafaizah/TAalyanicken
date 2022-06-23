@@ -112,22 +112,26 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <p class="text-muted font-weight-bold">Masukkan detail Anda untuk membuat akun</p>
                             </div>
                             <!--begin::Form-->
-                            <form class="form" novalidate="novalidate" id="kt_login_signup_form">
+                            <form class="form">
 
                                 @csrf
 
 
                                 <div class="form-group py-3 m-0">
-                                    <input class="form-control h-auto border-0 px-0 placeholder-dark-75" type="text" placeholder="Nama Lengkap" name="nama_lengkap" autocomplete="off" />
+                                    <input class="form-control h-auto border-0 px-0 placeholder-dark-75 " type="text" placeholder="Nama Lengkap" id="nama_lengkap" name="nama_lengkap" :value="old('nama_lengkap')" required autofocus autocomplete="nama_lengkap" autocomplete="off" />
+                                    <div id="caption-nama-regis"></div>
                                 </div>
                                 <div class="form-group py-3 border-top m-0">
-                                    <input class="form-control h-auto border-0 px-0 placeholder-dark-75" type="text" placeholder="Email" name="email-regis" autocomplete="off" />
+                                    <input class="form-control h-auto border-0 px-0 placeholder-dark-75" type="text" placeholder="Email" id="email-regis" name="email-regis" :value="old('email-regis')" autofocus autocomplete="email" required autocomplete="off" />
+                                    <div id="caption-email-regis"></div>
                                 </div>
                                 <div class="form-group py-3 border-top m-0">
-                                    <input class="form-control h-auto border-0 px-0 placeholder-dark-75" type="password" placeholder="Kata Sandi" name="password-regis" autocomplete="off" />
+                                    <input class="form-control h-auto border-0 px-0 placeholder-dark-75 @error ('password-regis') is-invalid @enderror" type="password" placeholder="Kata Sandi" id="password-regis" name="password-regis" required autocomplete="off" />
+                                    <div id="caption-password-regis"></div>
                                 </div>
                                 <div class="form-group py-3 border-top m-0">
-                                    <input class="form-control h-auto border-0 px-0 placeholder-dark-75" type="password" placeholder="Konfirmasi kata sandi" name="cpassword-regis" autocomplete="off" />
+                                    <input class="form-control h-auto border-0 px-0 placeholder-dark-75" type="password" placeholder="Konfirmasi kata sandi" name="cpassword-regis" required autocomplete="off" />
+                                    <div id="caption-password-cf"></div>
                                 </div>
                                 <div class="form-group mt-5">
                                     <div class="checkbox-inline">
@@ -139,7 +143,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                 </div>
                                 <div class="form-group d-flex flex-wrap flex-center">
                                     <button id="btn-submit-register" type="button" class="btn btn-primary font-weight-bold px-9 py-4 my-3 mx-2">Daftar</button>
-                                    <button id="kt_login_signup_cancel" class="btn btn-outline-primary font-weight-bold px-9 py-4 my-3 mx-2">Batal</button>
+                                    <a href="/login" class="btn btn-outline-primary font-weight-bold px-9 py-4 my-3 mx-2">Batal</a>
                                 </div>
                             </form>
                             <!--end::Form-->
@@ -324,11 +328,20 @@ License: You must have a valid license purchased only from themeforest(the above
                 })
             });
 
+            const validateEmail = (email) => {
+                return email.match(
+                    /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+                );
+                if (validateEmail(email)) {
+                    $('#caption-email-regis').html("<small class='text-danger'>Email yang anda masukkan tidak valid</small>").hide().show(500);
+                }
+            };
 
             $('#btn-submit-register').click(function() {
 
                 var email = $('input[name="email-regis"]').val();
                 var password = $('input[name="password-regis"]').val();
+                var password_cf = $('input[name="cpassword-regis"]').val();
                 var nama_lengkap = $('input[name="nama_lengkap"]').val();
 
                 data_input = {
@@ -340,47 +353,83 @@ License: You must have a valid license purchased only from themeforest(the above
 
                 // console.log(data_input);
 
-                $.ajax({
 
-                    type: "GET",
-                    url: "{{ url('register/proses') }}",
-                    data: data_input,
-                    dataType: "json",
-                    success: function(response) {
+                if (password == password_cf) {
 
-                        if (response.status == "success") {
 
-                            swal.fire({
-                                text: "Daftar Berhasil, Silahkan Masuk untuk Memulai Pesanan!",
-                                icon: "success",
-                                buttonsStyling: false,
-                                confirmButtonText: "Ok, got it!",
-                                customClass: {
-                                    confirmButton: "btn font-weight-bold btn-light-primary"
-                                }
-                            }).then(function(tombol) {
+                    $.ajax({
 
-                                // jika tombol 
-                                if (tombol.isConfirmed) {
+                        type: "GET",
+                        url: "{{ url('register/proses') }}",
+                        data: data_input,
+                        dataType: "json",
+                        success: function(response) {
 
-                                    window.location.href = response.url;
-                                }
+                            if (response.status == "success") {
 
-                            });
-                        } else {
+                                // notifikasi
+                                swal.fire({
+                                    text: "Daftar Berhasil, Silahkan Masuk untuk Memulai Pesanan!",
+                                    icon: "success",
+                                    buttonsStyling: false,
+                                    confirmButtonText: "Ok, got it!",
+                                    customClass: {
+                                        confirmButton: "btn font-weight-bold btn-light-primary"
+                                    }
+                                }).then(function(tombol) {
 
-                            swal.fire({
-                                text: response.status,
-                                icon: "error",
-                                buttonsStyling: false,
-                                confirmButtonText: "Ok, got it!",
-                                customClass: {
-                                    confirmButton: "btn font-weight-bold btn-light-danger"
-                                }
-                            });
+                                    // jika tombol 
+                                    if (tombol.isConfirmed) {
+
+                                        window.location.href = response.url;
+                                    }
+
+                                });
+                            } else {
+
+                                swal.fire({
+                                    text: response.status,
+                                    icon: "error",
+                                    buttonsStyling: false,
+                                    confirmButtonText: "Ok, got it!",
+                                    customClass: {
+                                        confirmButton: "btn font-weight-bold btn-light-danger"
+                                    }
+                                });
+                            }
                         }
-                    }
-                })
+                    })
+                } else {
+
+                    // notifikasi button
+                    // swal.fire({
+                    //     text: "Katasandi tidak sama",
+                    //     icon: "warning",
+                    //     buttonsStyling: false,
+                    //     confirmButtonText: "Dimengerti",
+                    //     customClass: {
+                    //         confirmButton: "btn font-weight-bold btn-light-warning"
+                    //         }
+                    //     });
+
+                    //notif di bawah inputan
+                    $('#caption-password-cf').html("<small class='text-danger'>Password tidak sama</small>");
+                }
+
+                if (!nama_lengkap) {
+                    $('#caption-nama-regis').html("<small class='text-danger'>Nama tidak boleh kosong</small>").hide().show(500);
+                }
+
+                
+
+                if (!password) {
+                    $('#caption-password-regis').html("<small class='text-danger'>Kata sandi harus diisi</small>").hide().show(500);
+                } else if (password < 8) {
+                    $('#caption-password-regis').html("<small class='text-danger'>Kata sandi minimal 8 karakter</small>").hide().show(500);
+                }
+
+
+
             })
         })
     </script>

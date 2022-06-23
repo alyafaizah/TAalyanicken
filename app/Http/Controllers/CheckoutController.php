@@ -9,10 +9,60 @@ use Illuminate\Support\Facades\DB;
 
 class CheckoutController extends Controller
 {
-    public function checkout()
+    
+    public function checkout( Request $request )
     {
+        
+        // Set your Merchant Server Key
+        \Midtrans\Config::$serverKey = env('MIDTRANS_SERVER_KEY');
+        // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
+        \Midtrans\Config::$isProduction = false;
+        // Set sanitization on (default)
+        \Midtrans\Config::$isSanitized = true;
+        // Set 3DS transaction for credit card to true
+        \Midtrans\Config::$is3ds = true;
+
+        $params = array(
+            'transaction_details' => array(
+                'order_id' => rand(),
+                'gross_amount' => 10000, //total pembelian
+            ),
+
+            'item_details' => array(
+                [
+                    'id' => 'a1', //id produk
+                    'price' => '10000',
+                    'quantity' => 1,
+                    'name' => 'Apel'
+                ],
+
+                [
+                    'id' => 'b1', //id produk
+                    'price' => '12000',
+                    'quantity' => 1,
+                    'name' => 'Jeruk'
+                ],
+            ),
+
+            'customer_details' => array(
+                'first_name' => $request->get('nama_lengkap'),
+                'last_name' => 'pratama',
+                'email' => $request->get('email'),
+                'phone' => $request->get('nomor'),
+            ),
+        );
+
+        $snapToken = \Midtrans\Snap::getSnapToken($params);
+
         $tiket = Ticket::first();
-        return view('modules.checkout.checkout', compact('tiket'));
+
+        $data = array(
+
+            "title" => "Pemesanan",
+            'tiket' => $tiket,
+            'snap_token' => $snapToken,
+        );
+        return view('modules.checkout.checkout', $data);
     }
 
     function process( Request $request ) {
@@ -75,6 +125,7 @@ class CheckoutController extends Controller
     // proses pemesanan untuk pelanggan 
     public function proses_pemesanan( Request $request ) {
 
+        
         $dt_pemesanan = array(
 
             
@@ -93,5 +144,53 @@ class CheckoutController extends Controller
         DB::table('pemesanan')->insert($dt_pemesanan);
         echo "Oke berhasil";
         // return redirect('transaction-success/'. $dt_pemesanan['kd_order']);
+    }
+
+    public function payment(Request $request)
+    {
+
+        // Set your Merchant Server Key
+        \Midtrans\Config::$serverKey = env('MIDTRANS_SERVER_KEY');
+        // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
+        \Midtrans\Config::$isProduction = false;
+        // Set sanitization on (default)
+        \Midtrans\Config::$isSanitized = true;
+        // Set 3DS transaction for credit card to true
+        \Midtrans\Config::$is3ds = true;
+
+        $params = array(
+            'transaction_details' => array(
+                'order_id' => rand(),
+                'gross_amount' => 10000, //total pembelian
+            ),
+
+            'item_details' => array(
+                [
+                    'id' => 'a1', //id produk
+                    'price' => '10000',
+                    'quantity' => 1,
+                    'name' => 'Apel'
+                ],
+
+                [
+                    'id' => 'b1', //id produk
+                    'price' => '12000',
+                    'quantity' => 1,
+                    'name' => 'Jeruk'
+                ],
+            ),
+
+            'customer_details' => array(
+                'first_name' => $request->get('nama_lengkap'),
+                'last_name' => 'pratama',
+                'email' => $request->get('email'),
+                'phone' => $request->get('nomor'),
+            ),
+        );
+
+        $snapToken = \Midtrans\Snap::getSnapToken($params);
+
+        echo $snapToken;
+        // return view('payment', ['snap_token' => $snapToken]);
     }
 }

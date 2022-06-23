@@ -92,6 +92,26 @@
 	<script src="{{ asset('/assets/plugins/global/plugins.bundle.js') }}"></script>
 	<script src="{{ asset('/assets/plugins/custom/prismjs/prismjs.bundle.js') }}"></script>
 	<script src="{{ asset('/assets/js/scripts.bundle.js') }}"></script>
+	<script src="{{ asset('/assets/js/pages/crud/forms/widgets/bootstrap-datepicker.js?v=7.2.9') }}"></script>
+
+
+	<script>
+		$(function() {
+
+			// minimum setup for modal demo
+			$('#tanggal-1').datepicker({
+				rtl: KTUtil.isRTL(),
+				todayHighlight: true,
+				orientation: "bottom left",
+			});
+
+			$('#tanggal-2').datepicker({
+				rtl: KTUtil.isRTL(),
+				todayHighlight: true,
+				orientation: "bottom left",
+			});
+		})
+	</script>
 	<!--end::Global Theme Bundle-->
 </head>
 <!--end::Head-->
@@ -627,7 +647,8 @@
 											<div class="tab-pane" id="topbar_notifications_logs" role="tabpanel">
 												<!--begin::Nav-->
 												<div class="d-flex flex-center text-center text-muted min-h-200px">All caught up!
-													<br />No new notifications.</div>
+													<br />No new notifications.
+												</div>
 												<!--end::Nav-->
 											</div>
 											<!--end::Tabpane-->
@@ -731,7 +752,12 @@
 					<div class="font-weight-bold font-size-h5 text-dark-75">{{ session('level')}}</div>
 
 					<div class="navi mt-2">
-						<a href="/login" class="btn btn-sm btn-light-primary font-weight-bolder py-2 px-5">Sign Out</a>
+						<form action="/logout" method="post">
+							@csrf
+							<button type="submit" class="btn btn-sm btn-light-primary font-weight-bolder py-2 px-5">
+								Keluar
+							</button>
+						</form>
 					</div>
 				</div>
 			</div>

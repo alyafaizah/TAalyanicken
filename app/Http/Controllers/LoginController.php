@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Identitas;
 use App\Models\Profile;
+use Illuminate\Support\Facades\Auth;
+
 
 class LoginController extends Controller
 {
@@ -19,11 +21,11 @@ class LoginController extends Controller
         return view('modules.login.login');
     }
 
-    // proses pencocokan akun
+    // proses pencocokan akun 
     function proses_oldversion(Request $request)
     {
 
-        // $this->validate($request,
+        // $this->validate($request, 
 
         //     ['email'    => "required"],
         //     ['password' => "required"]
@@ -76,11 +78,13 @@ class LoginController extends Controller
     function proses(Request $request)
     {
 
-        // $this->validate($request,
+        $this->validate(
+            $request,
 
-        //     ['email'    => "required"],
-        //     ['password' => "required"]
-        // );
+            ['email'    => "required", "email"],
+            ['password' => "required"]
+        );
+
 
         // ambil nilai email dan password dari database
         $email      = $request->input('email');
@@ -114,7 +118,7 @@ class LoginController extends Controller
                 } else if ($profile->level == "petugas tiket") {
 
                     $pesan = "success";
-                    $url = url('/dashboard');
+                    $url = url('/dashboardpetugas');
                 } else if ($profile->level == "pengunjung") {
 
                     $identitas = Identitas::where('id_profile', $profile->id_profile)->first();
@@ -122,7 +126,7 @@ class LoginController extends Controller
                     $sess['nama_lengkap'] = $identitas->nama_lengkap;
 
                     $pesan = "success";
-                    $url = url('/dashboardcust');
+                    $url = url('/checkout');
                 }
 
 
@@ -185,11 +189,13 @@ class LoginController extends Controller
 
     public function prosesregis(Request $request)
     {
-        $request->validate([
-            'email' => 'required',
-            'password' => 'required',
-            'nama_lengkap' => 'required'
-        ]);
+        // $request->validate([
+        //     'nama_lengkap' => 'required',
+        //     'email' => 'required|email|unique:profile',
+        //     'password' => 'required|min:5|max:255'
+        // ]);
+
+       
 
         $data = array(
 
@@ -202,6 +208,7 @@ class LoginController extends Controller
 
         $pesan = "";
         $url = "";
+
 
 
         $dt_identitas = array(
@@ -223,5 +230,20 @@ class LoginController extends Controller
         ]);
 
         // return redirect('/login');
+
+
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+
+        request()->session()->invalidate();
+
+        request()->session()->regenerateToken();
+
+        return redirect('/login');
     }
 }
+
+

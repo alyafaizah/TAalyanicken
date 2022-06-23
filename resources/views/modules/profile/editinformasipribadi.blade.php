@@ -150,7 +150,7 @@
 						</div>
 						<!--end::Header-->
 						<!--begin::Form-->
-						<form class="form" action="/editinformasipribadi" method="POST">
+						<form class="form" action="/editinformasipribadi" method="POST" enctype="multipart/form-data">
 							<!--begin::Body-->
 							@csrf
 							<div class="card-body">
@@ -160,37 +160,47 @@
 										<h5 class="font-weight-bold mb-6">Customer Info</h5>
 									</div>
 								</div>
-								<div class="form-group row">
+
+								<div class="form-group row" enctype="multipart/form-data">
 									<label class="col-xl-3 col-lg-3 col-form-label">Foto Profil</label>
-									<div class="col-lg-9 col-xl-6">
-										<div class="image-input image-input-outline" id="kt_profile_avatar" style="background-image: url(/demo7/distpengunjung/assets/media/users/blank.png)">
-											<div class="image-input-wrapper" style="background-image: url(/metronic/theme/html/demo7/dist/assets/media/users/300_21.jpg)"></div>
-											<label class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="change" data-toggle="tooltip" title="" data-original-title="Change avatar">
-												<i class="fa fa-pen icon-sm text-muted"></i>
-												<input type="file" name="profile_avatar" accept=".png, .jpg, .jpeg" />
-												<input type="hidden" name="profile_avatar_remove" />
+									<div class="row">
+										<div class="col-lg-9 col-xl-12 image-input image-input-empty image-input-outline" id="kt_user_edit_avatar">
+											<label for="image" class="form-label">
+												<input type="hidden" name="oldImage" value="{{ $identitas->image }}">
+												@if($identitas->image)
+												<img class="img-preview img-fluid mb-3 col-sm-5" src="{{{asset('storage/'. $identitas->image) }}}">
+												@else
+												<img class="img-preview img-fluid mb-3 col-sm-5">
+												@endif
+
+												<input class="form-control @error('image') is-invalid @enderror" type="file" id="image" name="image" accept=".png, .jpg, .jpeg" onchange="previewImage()" />
+												<input type="hidden" name="foto_remove" />
+												<span class="form-text text-muted">Jenis file yang diizinkan: png, jpg, jpeg.</span>
+												@error('image')
+												<div class="invalid-feedback">
+													{{$message}}
+												</div>
+												@enderror
+
 											</label>
-											<span class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="cancel" data-toggle="tooltip" title="Cancel avatar">
-												<i class="ki ki-bold-close icon-xs text-muted"></i>
-											</span>
-											<span class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="remove" data-toggle="tooltip" title="Remove avatar">
-												<i class="ki ki-bold-close icon-xs text-muted"></i>
-											</span>
 										</div>
-										<span class="form-text text-muted">Jenis file yang diizinkan: png, jpg, jpeg.</span>
 									</div>
 								</div>
+
+
+
 								<div class="form-group row">
 									<label class="col-xl-3 col-lg-3 col-form-label">Nama Lengkap</label>
 									<div class="col-lg-9 col-xl-6">
 										<input class="form-control form-control-lg form-control-solid" type="text" value="{{ $identitas->nama_lengkap }}" name="nama_lengkap" />
+
 									</div>
 								</div>
 								<div class="form-group row">
 									<label class="col-xl-3 col-lg-3 col-form-label">Email</label>
 									<div class="col-lg-9 col-xl-6">
 										<div class="input-group input-group-lg input-group-solid disable">
-											<input type="text"  readonly class="form-control form-control-lg form-control-solid" value="alya@gmail.com" placeholder="Email" name="email" />
+											<input type="text" readonly class="form-control form-control-lg form-control-solid" value="alya@gmail.com" placeholder="Email" name="email" />
 										</div>
 									</div>
 								</div>
@@ -256,4 +266,21 @@
 	<!--end::Entry-->
 </div>
 <!--end::Content-->
+
+<script>
+	function previewImage() {
+		const image = document.querySelector('#image');
+		const imgPreview = document.querySelector('.img-preview');
+
+		imgPreview.style.display = 'block';
+
+		const oFReader = new FileReader();
+
+		oFReader.readAsDataURL(image.files[0]);
+
+		oFReader.onload = function(oFREvent) {
+			imgPreview.src = oFREvent.target.result;
+		}
+	}
+</script>
 @endsection

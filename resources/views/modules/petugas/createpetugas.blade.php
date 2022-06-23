@@ -25,12 +25,18 @@
                             <div class="form-group">
                                 <label>Email
                                     <span class="text-danger">*</span></label>
-                                <input type="email" name="email" class="form-control" placeholder="" />
+                                <input type="email" name="email" class="form-control @error('email','post') is-invalid @enderror" placeholder="" required autofocus value="{{old ('email')}}">
+                                @error('email')
+                                <div class="alert alert-danger">email tidak boleh kosong</div>
+                                @enderror
                             </div>
                             <div class="form-group">
                                 <label>Password
                                     <span class="text-danger">*</span></label>
-                                <input type="password" name="password" class="form-control" placeholder="" />
+                                <input type="password" name="password" class="form-control @error('password','post') is-invalid @enderror" placeholder="" required>
+                                @error('password')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                         </div>
                         <div class="card-footer">

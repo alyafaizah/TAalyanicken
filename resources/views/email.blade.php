@@ -1,0 +1,1 @@
+<p> Ini adalah tutorial email laravel8 </p>

@@ -119,13 +119,9 @@
                         <div id="kt_header_menu" class="header-menu header-menu-mobile header-menu-layout-default">
                             <!--begin::Nav-->
                             <ul class="menu-nav">
-                                <li class="menu-item menu-item-active" aria-haspopup="true">
-                                    <a href="/dashboardcust" class="menu-link">
-                                        <span class="menu-text">Dashboard</span>
-                                    </a>
-                                </li>
-                                <li class="menu-item" data-menu-toggle="click" aria-haspopup="true">
-                                    <a href="/checkout" class="menu-link">
+                                <li class="menu-item" aria-haspopup="true">
+                                    <a href="/checkout" class="menu-link ">
+                                    <a href="/checkout" class="menu-link  ">
                                         <span class="menu-text">Pemesanan</span>
                                     </a>
                                 </li>
@@ -138,12 +134,19 @@
                                 </li>
                                 <li class="menu-item" data-menu-toggle="click" aria-haspopup="true">
                                     <a href="/riwayattransaksi" class="menu-link">
+                                    <a href="/riwayattransaksi" class="menu-link ">
                                         <span class="menu-text">Riwayat Transaksi</span>
                                     </a>
                                 </li>
                                 <li class="menu-item" data-menu-toggle="click" aria-haspopup="true">
                                     <a href="/riwayatpembayaran" class="menu-link">
+                                    <a href="/riwayatpembayaran" class="menu-link ">
                                         <span class="menu-text">Riwayat Pembayaran</span>
+                                    </a>
+                                </li>
+                                <li class="menu-item" data-menu-toggle="click" aria-haspopup="true">
+                                    <a href="/dashboardcust" class="menu-link">
+                                        <span class="menu-text">Profile</span>
                                     </a>
                                 </li>
                             </ul>

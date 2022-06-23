@@ -7,6 +7,8 @@ use App\Models\Profile;
 use Illuminate\Http\Request;
 use Elibyy\TCPDF\Facades\TCPDF;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
+
 
 class ProfileController extends Controller
 {
@@ -16,7 +18,9 @@ class ProfileController extends Controller
         $data['identitas'] = Identitas::where('id_profile', $id_profile)->first();
         $data['profile'] = Profile::where('id_profile', $id_profile)->first();
 
-        return view('modules.profile.dashboardcust', $data);
+        return view('modules.profile.dashboardcust', $data, [
+            "title" => "Profil"
+        ]);
     }
 
     public function ubahkatasandi()
@@ -32,12 +36,15 @@ class ProfileController extends Controller
     function index()
     {
 
+
         $id_profile = session("id");
         $data['identitas'] = Identitas::where('id_profile', $id_profile)->first();
         $data['profile'] = Profile::where('id_profile', $id_profile)->first();
 
         // echo $id_profile;
-        return view('modules.profile.informasipribadi', $data);
+        return view('modules.profile.informasipribadi', $data, [
+            "title" => "Informasi Pribadi"
+        ]);
     }
 
     // view edit
@@ -49,12 +56,36 @@ class ProfileController extends Controller
         $data['id_profile'] = $kd;
 
 
-        return view('modules.profile.editinformasipribadi', $data);
+        return view('modules.profile.editinformasipribadi', $data, [
+            "title" => "Ubah Informasi Pribadi"
+        ]);
     }
 
 
     function update(Request $request)
     {
+
+
+        $request->validate([
+            'image' => 'image|file|max:1024',
+        ]);
+
+
+
+        // if ($request->file('image')) {
+        //     $validatedData['image'] = $request->file('image')->store('identitas-images');
+        // }
+
+
+        $file_name = $request->image->getClientOriginalName();
+
+        if ($request->file('image')) {
+            if ($request->oldImage) {
+                Storage::delete($request->oldImage);
+            }
+        }
+
+        $upload_image = $request->image->storeAs('post-images', $file_name);
 
         $id_profile = session("id");
         $identitas = Identitas::where('id_profile', $id_profile);
@@ -66,6 +97,7 @@ class ProfileController extends Controller
             $ambilTelp = $request->input('telepon');
             $ambilTmptlahir  = $request->input('tempat_lahir');
             $ambilTgllahir  = $request->input('tgl_lahir');
+            $ambilImage  = $upload_image;
 
             // konversi menjadi Y-M-d 
             $date_to_string = strtotime($ambilTgllahir);
@@ -74,10 +106,11 @@ class ProfileController extends Controller
             $data = array(
 
                 'nama_lengkap'      => $ambilNama,
-                'alamat'           => $ambilAlamat,
-                'telepon'              => $ambilTelp,
+                'alamat'            => $ambilAlamat,
+                'telepon'           => $ambilTelp,
                 'tempat_lahir'      => $ambilTmptlahir,
-                'tgl_lahir'         => $date
+                'tgl_lahir'         => $date,
+                'image'             => $ambilImage
 
             );
 

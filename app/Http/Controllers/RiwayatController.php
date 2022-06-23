@@ -14,6 +14,7 @@ class RiwayatController extends Controller
     public function riwayattransaksi()
     {
         $id_profile = session("id");
+        $pemesanan=Profile::where('id_profile', $id_profile)->first();
         $pemesanan = PemesananTiket::where('id_profile', $id_profile)->orderBy('created_at', 'desc')->get();
 
         // $data = $pemesanan->join('kd_tiket', $jenis_tiket->kd_tiket, '=', $pemesanan->kd_tiket);
@@ -24,19 +25,25 @@ class RiwayatController extends Controller
         // echo "<pre>";
         // print_r($jenis_tiket);
         // die;
-        return view('modules.riwayat.riwayattransaksi', $data);
+        return view('modules.riwayat.riwayattransaksi', $data, [
+            "title" => "Riwayat Transaksi"
+        ]);
     }
 
     public function riwayatpembayaran()
     {
         $pembayaran = Pembayaran::all();
+        $jenis_tiket = Ticket::all();
         $data = array(
+            'jenis_tiket' => $jenis_tiket,
             'pembayaran' => $pembayaran
         );
         // echo "<pre>";
         // print_r($jenis_tiket);
         // die;
-        return view('modules.riwayat.riwayatpembayaran', $data);
+        return view('modules.riwayat.riwayatpembayaran', $data, [
+            "title" => "Riwayat Pembayaran"
+        ]);
     }
 
     public function riwayatById($kd_order)
@@ -56,16 +63,17 @@ class RiwayatController extends Controller
     {
         // $pemesanan = PemesananTiket::all();
         // $pembayaran = Pembayaran::all();
+
         $pemesanan = DB::table('pemesanan')->select('pemesanan.*', 'pembayaran.*', 'identitas.*')
-            ->join('pembayaran', 'pembayaran.kd_order', '=', 'pemesanan.kd_order')
-            ->join('identitas', 'identitas.id_profile', '=', 'pemesanan.id_profile')
+            ->rightjoin('pembayaran', 'pembayaran.kd_order', '=', 'pemesanan.kd_order')
+            ->rightjoin('identitas', 'identitas.id_profile', '=', 'pemesanan.id_profile')
             ->get();
 
         $data = array(
             'pemesanan' => $pemesanan
         );
 
-        //print_r($data);
+        // print_r($data);
         return view('modules.riwayat.riwayatadmin', $data);
     }
 }
