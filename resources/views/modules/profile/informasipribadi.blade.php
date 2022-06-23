@@ -171,7 +171,7 @@
 											<div class="symbol symbol-60 symbol-xxl-100 mr-5 align-self-start align-self-xxl-center">
 												<div class="" >
 													@if($identitas->image)
-													<img class="img-fluid mb-1 col-sm-1" src="{{{asset('storage/'. $identitas->image) }}}" >
+													<img class="img-fluid mb-1 col-sm-4" src="{{{asset('storage/'. $identitas->image) }}}" >
 
 													@else
 													<div style="">
