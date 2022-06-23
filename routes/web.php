@@ -36,6 +36,7 @@ Route::get('/', [LandingPage::class, 'index']);
 
 
 
+
 // Route::get('/laporanoffline', function () {
 
 //     return view('modules.laporanoffline.laporanoffline');

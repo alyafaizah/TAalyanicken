@@ -45,10 +45,10 @@ class DiskonController extends Controller
         $ambilTglawal  = $request->input('tgl_awal');
         $ambilTglakhir  = $request->input('tgl_akhir');
 
-        $date_to_string = strtotime($ambilTglawal);
-        $date_to_string = strtotime($ambilTglakhir);
-        $ambilTglawal = date('Y-m-d', $date_to_string);
-        $ambilTglakhir = date('Y-m-d', $date_to_string);
+        $date_to_string_awal = strtotime($ambilTglawal);
+        $date_to_string_akhir = strtotime($ambilTglakhir);
+        $ambilTglawal = date('Y-m-d', $date_to_string_awal);
+        $ambilTglakhir = date('Y-m-d', $date_to_string_akhir);
 
         $data = array(
             'kode_diskon'           => $ambilKode,
@@ -147,5 +147,5 @@ class DiskonController extends Controller
             return redirect('diskon')->with('pesan', 'Hapus gagal, Kode diskon ' . $kd . ' tidak ditemukan');
         }
     }
-
+   
 }
