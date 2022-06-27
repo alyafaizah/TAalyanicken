@@ -20,16 +20,26 @@ class DashboardController extends Controller
         return view('modules.dashboard.index',compact('transaksi'));
     }
 
-
-
-    function dinamisroute( $name ) {
-
-
-        echo "<h1>Hello ". $name ."</h1>";
-    }
-
     public function dashboardpetugas()
     {
         return view('modules.dashboard.dashboardpetugas');
+    }
+
+
+
+    // scan camera
+    public function checkQR( Request $request ) {
+
+        $qr = $request->input('qr');
+
+        $pesan = false;
+        if ( $qr == "sinauka" ) {
+
+            $pesan = true;
+        }
+
+
+        echo json_encode( ['status' => $pesan] );
+
     }
 }

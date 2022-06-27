@@ -66,7 +66,7 @@ class RiwayatController extends Controller
 
 
         // ambil data 
-        $pemesanan = DB::table('pemesanan')->get();
+        $pemesanan = DB::table('pemesanan')->get(); 
 
         // print_r($data);
         return view('modules.riwayat.riwayatadmin', compact('pemesanan'));

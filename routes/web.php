@@ -108,6 +108,7 @@ Route::group(['middleware' => 'usersession'], function () {
 
     //modules dashboard (petugas)
     Route::get('/dashboardpetugas', [DashboardController::class, 'dashboardpetugas']);
+    Route::get('/check-qr', [DashboardController::class, 'checkQR']);
 
     //modules transaksi pemesanan offline (petugas)
     Route::get('petugas/order', [PemesananController::class, 'form_orderoffline']);
@@ -161,6 +162,13 @@ Route::group(['middleware' => 'usersession'], function () {
 
         return view('modules.laporanonline.laporanonline');
     });
+
+
+
+    
+
+    // scanner
+    // Route::get('/scanner', [DashboardController::class, 'scan']);
 
 });
 
