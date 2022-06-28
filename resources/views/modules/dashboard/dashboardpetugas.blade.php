@@ -68,20 +68,12 @@
                         <!--begin::Header-->
                         <div class="card-header border-0 pt-5">
                             <h3 class="card-title align-items-start flex-column">
-                                <span class="card-label font-weight-bolder text-dark">Transaksi</span>
+                            <span class="card-label font-weight-bolder text-dark">Transaksi {{ date('d F Y') }}</span>
                                 <span class="text-muted mt-3 font-weight-bold font-size-sm">Transaksi yang
                                     terekam</span>
                             </h3>
                             <div class="card-toolbar">
                                 <ul class="nav nav-pills nav-pills-sm nav-dark-75">
-                                    <li class="nav-item">
-                                        <a class="nav-link py-2 px-4" data-toggle="tab"
-                                            href="#kt_tab_pane_2_1">Bulan</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link py-2 px-4" data-toggle="tab"
-                                            href="#kt_tab_pane_2_2">Minggu</a>
-                                    </li>
                                     <li class="nav-item">
                                         <a class="nav-link py-2 px-4 active" data-toggle="tab"
                                             href="#kt_tab_pane_2_3">Hari</a>
@@ -93,136 +85,6 @@
                         <!--begin::Body-->
                         <div class="card-body pt-2 pb-0 mt-n3">
                             <div class="tab-content mt-5" id="myTabTables2">
-                                <!--begin::Tap pane-->
-                                <div class="tab-pane fade" id="kt_tab_pane_2_1" role="tabpanel"
-                                    aria-labelledby="kt_tab_pane_2_1">
-                                    <!--begin::Table BULAN-->
-                                    <div class="table-responsive">
-                                        <table class="table table-borderless table-vertical-center">
-                                            <thead>
-                                                <tr>
-                                                    <th class="p-0 w-50px"></th>
-                                                    <th class="p-0 min-w-150px"></th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <!--begin::offline-->
-                                                    <td class="pl-0 py-5">
-                                                        <div class="symbol symbol-50 symbol-light mr-2">
-                                                            <span class="symbol-label">
-                                                                <img src="assets/media/svg/misc/008-infography.svg"
-                                                                    class="h-50 align-self-center" alt="" />
-                                                            </span>
-                                                        </div>
-                                                    </td>
-                                                    <td class="pl-0">
-                                                        <a href="#"
-                                                            class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">Pembelian
-                                                            Offline</a>
-                                                        <span class="text-muted font-weight-bold d-block">Successful
-                                                            Fellas</span>
-                                                    </td>
-
-                                                    <td class="text-right pr-0">
-                                                        <span class="text-muted font-weight-bold">4600 Users</span>
-                                                    </td>
-                                                </tr>
-                                                <!--end::offline-->
-                                                <!--begin::online-->
-                                                <tr>
-                                                    <td class="pl-0 py-5">
-                                                        <div class="symbol symbol-50 symbol-light mr-2">
-                                                            <span class="symbol-label">
-                                                                <img src="assets/media/svg/misc/002-eolic-energy.svg"
-                                                                    class="h-50 align-self-center" alt="" />
-                                                            </span>
-                                                        </div>
-                                                    </td>
-                                                    <td class="pl-0">
-                                                        <a href="#"
-                                                            class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">Pembelian
-                                                            Online</a>
-                                                        <span class="text-muted font-weight-bold d-block">Successful
-                                                            Fellas</span>
-                                                    </td>
-
-                                                    <td class="text-right pr-0">
-                                                        <span class="text-muted font-weight-bold">4600 Users</span>
-                                                    </td>
-                                                </tr>
-                                                <!--end::online-->
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                    <!--end::Table-->
-                                </div>
-                                <!--end::Tap pane-->
-                                <!--begin::Tap pane-->
-                                <div class="tab-pane fade" id="kt_tab_pane_2_2" role="tabpanel"
-                                    aria-labelledby="kt_tab_pane_2_2">
-                                    <!--begin::Table MINGGU-->
-                                    <div class="table-responsive">
-                                        <table class="table table-borderless table-vertical-center">
-                                            <thead>
-                                                <tr>
-                                                    <th class="p-0 w-50px"></th>
-                                                    <th class="p-0 min-w-150px"></th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <!--begin::offline-->
-                                                    <td class="pl-0 py-5">
-                                                        <div class="symbol symbol-50 symbol-light mr-2">
-                                                            <span class="symbol-label">
-                                                            <img src="assets/media/svg/misc/008-infography.svg"
-                                                                    class="h-50 align-self-center" alt="" />
-                                                            </span>
-                                                        </div>
-                                                    </td>
-                                                    <td class="pl-0">
-                                                        <a href="#"
-                                                            class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">Pembelian
-                                                            Offline</a>
-                                                        <span class="text-muted font-weight-bold d-block">Successful
-                                                            Fellas</span>
-                                                    </td>
-
-                                                    <td class="text-right pr-0">
-                                                        <span class="text-muted font-weight-bold">4600 Users</span>
-                                                    </td>
-                                                </tr>
-                                                <!--end::offline-->
-                                                <!--begin::online-->
-                                                <tr>
-                                                    <td class="pl-0 py-5">
-                                                        <div class="symbol symbol-50 symbol-light mr-2">
-                                                            <span class="symbol-label">
-                                                            <img src="assets/media/svg/misc/002-eolic-energy.svg"
-                                                                    class="h-50 align-self-center" alt="" />
-                                                            </span>
-                                                        </div>
-                                                    </td>
-                                                    <td class="pl-0">
-                                                        <a href="#"
-                                                            class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">Pembelian
-                                                            Online</a>
-                                                        <span class="text-muted font-weight-bold d-block">Successful
-                                                            Fellas</span>
-                                                    </td>
-
-                                                    <td class="text-right pr-0">
-                                                        <span class="text-muted font-weight-bold">4600 Users</span>
-                                                    </td>
-                                                </tr>
-                                                <!--end::online-->
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                    <!--end::Table-->
-                                </div>
-                                <!--end::Tap pane-->
                                 <!--begin::Tap pane-->
                                 <div class="tab-pane fade show active" id="kt_tab_pane_2_3" role="tabpanel"
                                     aria-labelledby="kt_tab_pane_2_3">
@@ -255,7 +117,7 @@
                                                     </td>
 
                                                     <td class="text-right pr-0">
-                                                        <span class="text-muted font-weight-bold">4600 Users</span>
+                                                        <span class="text-muted font-weight-bold">{{$transaksioffline->banyaktransaksioffline}}</span>
                                                     </td>
                                                 </tr>
                                                 <!--end::offline-->
@@ -278,7 +140,7 @@
                                                     </td>
 
                                                     <td class="text-right pr-0">
-                                                        <span class="text-muted font-weight-bold">4600 Users</span>
+                                                        <span class="text-muted font-weight-bold">{{$transaksionline->banyaktransaksionline}}</span>
                                                     </td>
                                                 </tr>
                                                 <!--end::online-->
@@ -302,22 +164,15 @@
                         <!--begin::Header-->
                         <div class="card-header border-0 pt-5">
                             <h3 class="card-title align-items-start flex-column">
-                                <span class="card-label font-weight-bolder text-dark">Pendapatan</span>
+                            <span class="card-label font-weight-bolder text-dark">Pendapatan {{ date('d F Y') }}</span>
                                 <span class="text-muted mt-3 font-weight-bold font-size-sm">Nomimal uang yang di
                                     dapat</span>
                             </h3>
                             <div class="card-toolbar">
                                 <ul class="nav nav-pills nav-pills-sm nav-dark-75">
                                     <li class="nav-item">
-                                        <a class="nav-link py-2 px-4" data-toggle="tab"
-                                            href="#kt_tab_pane_3_1">Month</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link py-2 px-4" data-toggle="tab" href="#kt_tab_pane_3_2">Week</a>
-                                    </li>
-                                    <li class="nav-item">
                                         <a class="nav-link py-2 px-4 active" data-toggle="tab"
-                                            href="#kt_tab_pane_3_3">Day</a>
+                                            href="#kt_tab_pane_3_3">Hari</a>
                                     </li>
                                 </ul>
                             </div>
@@ -326,136 +181,6 @@
                         <!--begin::Body-->
                         <div class="card-body pt-2 pb-0 mt-n3">
                             <div class="tab-content mt-5" id="myTabTables2">
-                                <!--begin::Tap pane-->
-                                <div class="tab-pane fade" id="kt_tab_pane_3_1" role="tabpanel"
-                                    aria-labelledby="kt_tab_pane_3_1">
-                                    <!--begin::Table BULAN-->
-                                    <div class="table-responsive">
-                                        <table class="table table-borderless table-vertical-center">
-                                            <thead>
-                                                <tr>
-                                                    <th class="p-0 w-50px"></th>
-                                                    <th class="p-0 min-w-150px"></th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <!--begin::offline-->
-                                                    <td class="pl-0 py-5">
-                                                        <div class="symbol symbol-50 symbol-light mr-2">
-                                                            <span class="symbol-label">
-                                                            <img src="assets/media/svg/misc/011-swarm.svg"
-                                                                    class="h-50 align-self-center" alt="" />
-                                                            </span>
-                                                        </div>
-                                                    </td>
-                                                    <td class="pl-0">
-                                                        <a href="#"
-                                                            class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">Pendapatan
-                                                            Offline</a>
-                                                        <span class="text-muted font-weight-bold d-block">Successful
-                                                            Fellas</span>
-                                                    </td>
-
-                                                    <td class="text-right pr-0">
-                                                        <span class="text-muted font-weight-bold">4600 Users</span>
-                                                    </td>
-                                                </tr>
-                                                <!--end::offline-->
-                                                <!--begin::online-->
-                                                <tr>
-                                                    <td class="pl-0 py-5">
-                                                        <div class="symbol symbol-50 symbol-light mr-2">
-                                                            <span class="symbol-label">
-                                                            <img src="assets/media/svg/misc/013-rgb.svg"
-                                                                    class="h-50 align-self-center" alt="" />
-                                                            </span>
-                                                        </div>
-                                                    </td>
-                                                    <td class="pl-0">
-                                                        <a href="#"
-                                                            class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">Pendapatan
-                                                            Online</a>
-                                                        <span class="text-muted font-weight-bold d-block">Successful
-                                                            Fellas</span>
-                                                    </td>
-
-                                                    <td class="text-right pr-0">
-                                                        <span class="text-muted font-weight-bold">4600 Users</span>
-                                                    </td>
-                                                </tr>
-                                                <!--end::online-->
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                    <!--end::Table-->
-                                </div>
-                                <!--end::Tap pane-->
-                                <!--begin::Tap pane-->
-                                <div class="tab-pane fade" id="kt_tab_pane_3_2" role="tabpanel"
-                                    aria-labelledby="kt_tab_pane_3_2">
-                                    <!--begin::Table MINGGU-->
-                                    <div class="table-responsive">
-                                        <table class="table table-borderless table-vertical-center">
-                                            <thead>
-                                                <tr>
-                                                    <th class="p-0 w-50px"></th>
-                                                    <th class="p-0 min-w-150px"></th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <!--begin::offline-->
-                                                    <td class="pl-0 py-5">
-                                                        <div class="symbol symbol-50 symbol-light mr-2">
-                                                            <span class="symbol-label">
-                                                            <img src="assets/media/svg/misc/011-swarm.svg"
-                                                                    class="h-50 align-self-center" alt="" />
-                                                            </span>
-                                                        </div>
-                                                    </td>
-                                                    <td class="pl-0">
-                                                        <a href="#"
-                                                            class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">Pendapatan
-                                                            Offline</a>
-                                                        <span class="text-muted font-weight-bold d-block">Successful
-                                                            Fellas</span>
-                                                    </td>
-
-                                                    <td class="text-right pr-0">
-                                                        <span class="text-muted font-weight-bold">4600 Users</span>
-                                                    </td>
-                                                </tr>
-                                                <!--end::offline-->
-                                                <!--begin::online-->
-                                                <tr>
-                                                    <td class="pl-0 py-5">
-                                                        <div class="symbol symbol-50 symbol-light mr-2">
-                                                            <span class="symbol-label">
-                                                            <img src="assets/media/svg/misc/013-rgb.svg"
-                                                                    class="h-50 align-self-center" alt="" />
-                                                            </span>
-                                                        </div>
-                                                    </td>
-                                                    <td class="pl-0">
-                                                        <a href="#"
-                                                            class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">Pendapatan
-                                                            Online</a>
-                                                        <span class="text-muted font-weight-bold d-block">Successful
-                                                            Fellas</span>
-                                                    </td>
-
-                                                    <td class="text-right pr-0">
-                                                        <span class="text-muted font-weight-bold">4600 Users</span>
-                                                    </td>
-                                                </tr>
-                                                <!--end::online-->
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                    <!--end::Table-->
-                                </div>
-                                <!--end::Tap pane-->
                                 <!--begin::Tap pane-->
                                 <div class="tab-pane fade show active" id="kt_tab_pane_3_3" role="tabpanel"
                                     aria-labelledby="kt_tab_pane_3_3">
@@ -488,7 +213,7 @@
                                                     </td>
 
                                                     <td class="text-right pr-0">
-                                                        <span class="text-muted font-weight-bold">4600 Users</span>
+                                                        <span class="text-muted font-weight-bold">Rp {{ number_format($transaksioffline->pendapatanoffline) }}</span>
                                                     </td>
                                                 </tr>
                                                 <!--end::offline-->
@@ -511,7 +236,7 @@
                                                     </td>
 
                                                     <td class="text-right pr-0">
-                                                        <span class="text-muted font-weight-bold">4600 Users</span>
+                                                        <span class="text-muted font-weight-bold">Rp {{ number_format($transaksionline->pendapatanonline) }}</span>
                                                     </td>
                                                 </tr>
                                                 <!--end::online-->

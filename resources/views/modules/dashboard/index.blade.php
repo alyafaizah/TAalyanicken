@@ -51,7 +51,7 @@
                         <!--begin::Header-->
                         <div class="card-header border-0 pt-5">
                             <h3 class="card-title align-items-start flex-column">
-                                <span class="card-label font-weight-bolder text-dark">Transaksi</span>
+                                <span class="card-label font-weight-bolder text-dark">Transaksi {{ date('d F Y') }}</span>
                                 <span class="text-muted mt-3 font-weight-bold font-size-sm">Transaksi yang
                                     terekam</span>
                             </h3>
@@ -88,7 +88,6 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                            @foreach ($transaksi as $t)
                                                 <tr>
                                                     <!--begin::offline-->
                                                     <td class="pl-0 py-5">
@@ -108,7 +107,7 @@
                                                     </td>
 
                                                     <td class="text-right pr-0">
-                                                        <span class="text-muted font-weight-bold">{{$t->banyaktransaksi}}</span>
+                                                        <span class="font-weight-bold">{{$transaksioffline->banyaktransaksioffline}}</span>
                                                     </td>
                                                 </tr>
                                                 <!--end::offline-->
@@ -131,10 +130,9 @@
                                                     </td>
 
                                                     <td class="text-right pr-0">
-                                                        <span class="text-muted font-weight-bold">{{$t->banyaktransaksi}}</span>
+                                                        <span class="font-weight-bold">{{$transaksionline->banyaktransaksionline}}</span>
                                                     </td>
                                                 </tr>
-                                                @endforeach
                                                 <!--end::online-->
                                             </tbody>
                                         </table>
@@ -156,9 +154,10 @@
                         <!--begin::Header-->
                         <div class="card-header border-0 pt-5">
                             <h3 class="card-title align-items-start flex-column">
-                                <span class="card-label font-weight-bolder text-dark">Pendapatan</span>
+                                <span class="card-label font-weight-bolder text-dark">Pendapatan {{ date('d F Y') }}</span>
                                 <span class="text-muted mt-3 font-weight-bold font-size-sm">Nomimal uang yang di
                                     dapat</span>
+                                    
                             </h3>
                             <div class="card-toolbar">
                                 <ul class="nav nav-pills nav-pills-sm nav-dark-75">
@@ -187,7 +186,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                            @foreach ($transaksi as $t)
+
                                                 <tr>
                                                     <!--begin::offline-->
                                                     <td class="pl-0 py-5">
@@ -207,7 +206,7 @@
                                                     </td>
 
                                                     <td class="text-right pr-0">
-                                                        <span class="text-muted font-weight-bold">Rp {{ number_format($t->pendapatan) }}</span>
+                                                        <span class="font-weight-bold">Rp {{ number_format($transaksioffline->pendapatanoffline) }}</span>
                                                     </td>
                                                 </tr>
                                                 <!--end::offline-->
@@ -230,10 +229,10 @@
                                                     </td>
 
                                                     <td class="text-right pr-0">
-                                                        <span class="text-muted font-weight-bold">Rp {{ number_format($t->pendapatan) }}</span>
+                                                        <span class="font-weight-bold">Rp {{ number_format($transaksionline->pendapatanonline) }}</span>
                                                     </td>
                                                 </tr>
-                                                @endforeach
+
                                                 <!--end::online-->
                                             </tbody>
                                         </table>
@@ -258,8 +257,4 @@
     <!--end::Entry-->
 </div>
 <!--end::Content-->
-
-
-
-
 @endsection
