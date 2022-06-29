@@ -58,6 +58,9 @@ Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::get('/login/proses', [LoginController::class, 'proses']);
 Route::post('/logout',[LoginController::class,'logout']);
 
+
+Route::get('/forgotpass', [EmailController::class, 'forgotpass']);
+
 //email
 Route::get('/email',[EmailController::class,'index']);
 

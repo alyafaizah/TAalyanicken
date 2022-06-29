@@ -154,38 +154,6 @@ class LoginController extends Controller
 
 
     //proses sign up
-    public function prosesregis_oldversion(Request $request)
-    {
-        $request->validate([
-            // 'name' => 'required',
-            'email' => 'required',
-            'password' => 'required',
-            'nama_lengkap' => 'required'
-        ]);
-
-        $data = array(
-
-            'email'     => strtolower($request->input('email')),
-            'password'  => bcrypt($request->input('password')),
-            'level'     => "pengunjung"
-        );
-
-        $id_profile = DB::table('profile')->insertGetId($data);
-
-
-
-        $dt_identitas = array(
-
-            'id_profile'   => $id_profile,
-            'nama_lengkap' => $request->input('nama_lengkap')
-        );
-
-        DB::table('identitas')->insert($dt_identitas);
-
-        session()->flash('message', 'Akun Anda telah dibuat');
-
-        return redirect('/login');
-    }
 
     public function prosesregis(Request $request)
     {
@@ -243,6 +211,25 @@ class LoginController extends Controller
         request()->session()->regenerateToken();
 
         return redirect('/login');
+    }
+
+    public function forgotpass(Request $request){
+        $email      = $request->input('email');
+
+        $profile = DB::table('profile')->where('email', $email)->first();
+
+
+        $pesan = "";
+        $url = "";
+
+        $pesan = "success";
+        $url = url('/login');
+
+        echo json_encode([
+
+            'status'    => $pesan,
+            'url'       => $url
+        ]);
     }
 }
 
