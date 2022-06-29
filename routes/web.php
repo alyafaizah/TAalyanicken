@@ -101,9 +101,17 @@ Route::group(['middleware' => 'usersession'], function () {
 
     // modules laporan (admin)
     Route::get('/laporan', [LaporanController::class, 'index']);
+
     Route::get('/laporanpengunjung',  [LaporanController::class, 'laporanpengunjung']);
-    Route::get('/laporanoffline',  [LaporanController::class, 'invoice']);
     Route::get('/cetakpdfcust',  [LaporanController::class, 'cetakpdfcust']);
+
+    Route::get('/laporanoffline',  [LaporanController::class, 'laporanoffline']);
+    Route::get('/cetakpdfoffline',  [LaporanController::class, 'cetakpdflaporanoffline']);
+
+    Route::get('/laporanonline',  [LaporanController::class, 'laporanonline']);
+    Route::get('/filterlaporanonline', [LaporanController::class, 'periode']);
+    Route::get('/cetakpdfonline',  [LaporanController::class, 'cetakpdflaporanonline']);
+
     Route::get('/download',  [ProfileController::class, 'savepdf']);
 
     //modules dashboard (petugas)
@@ -149,18 +157,12 @@ Route::group(['middleware' => 'usersession'], function () {
     //     return view('modules.riwayat.riwayattransaksi');
     // });
     Route::get('/riwayattransaksi', [RiwayatController::class, 'riwayattransaksi']);
-    Route::get('/detailriwayat/{kd_order}', [RiwayatController::class, 'riwayatById']);
+    Route::get('/detailriwayat/{order_id}', [RiwayatController::class, 'riwayatById']);
     Route::get('/riwayatpembayaran', [RiwayatController::class, 'riwayatpembayaran']);
     Route::get('/riwayatadmin', [RiwayatController::class, 'riwayatadmin']);
 
     
     Route::get('/dashboard', [DashboardController::class, 'dashboard']);
-
-
-    Route::get('/laporanonline', function () {
-
-        return view('modules.laporanonline.laporanonline');
-    });
 
 });
 
