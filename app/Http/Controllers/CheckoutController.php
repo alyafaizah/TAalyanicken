@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -10,8 +9,7 @@ use Illuminate\Support\Facades\DB;
 class CheckoutController extends Controller
 {
     
-    public function checkout( Request $request )
-    {
+    public function checkout( Request $request ){
         
         // Set your Merchant Server Key
         \Midtrans\Config::$serverKey = env('MIDTRANS_SERVER_KEY');

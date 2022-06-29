@@ -10,26 +10,61 @@ class DashboardController extends Controller
 {
     public function dashboard()
     {
-        $transaksi = PemesananTiket::get();
-        $transaksi=DB::table('pemesanan')->select([
-            DB::raw('count(*) as banyaktransaksi'),
-            DB::raw('sum(total) as pendapatan')
-        ])
-        ->get();
+        $transaksionline = PemesananTiket::get();
+        $transaksioffline = PemesananTiket::get();
+        $transaksioffline = DB::table('pemesanan')->select(
+            DB::Raw('count(*) as banyaktransaksioffline'),
+            DB::raw('sum(total) as pendapatanoffline')
+        )
+            ->where("jenis_pemesanan", 'offline')
+            ->first();
 
-        return view('modules.dashboard.index',compact('transaksi'));
-    }
+        $transaksionline = DB::table('pemesanan')->select(
+            DB::Raw('count(*) as banyaktransaksionline'),
+            DB::raw('sum(total) as pendapatanonline')
+        )
+            ->where("jenis_pemesanan", 'online')
+            ->first();
 
-
-
-    function dinamisroute( $name ) {
-
-
-        echo "<h1>Hello ". $name ."</h1>";
+        return view('modules.dashboard.index', compact('transaksionline', 'transaksioffline'));
     }
 
     public function dashboardpetugas()
     {
-        return view('modules.dashboard.dashboardpetugas');
+        $transaksionline = PemesananTiket::get();
+        $transaksioffline = PemesananTiket::get();
+        $transaksioffline = DB::table('pemesanan')->select(
+            DB::Raw('count(*) as banyaktransaksioffline'),
+            DB::raw('sum(total) as pendapatanoffline')
+        )
+            ->where("jenis_pemesanan", 'offline')
+            ->first();
+
+        $transaksionline = DB::table('pemesanan')->select(
+            DB::Raw('count(*) as banyaktransaksionline'),
+            DB::raw('sum(total) as pendapatanonline')
+        )
+            ->where("jenis_pemesanan", 'online')
+            ->first();
+
+        return view('modules.dashboard.dashboardpetugas', compact('transaksionline', 'transaksioffline'));
+    }
+
+
+
+    // scan camera
+    public function checkQR(Request $request)
+    {
+
+        $qr = $request->input('qr');
+
+        $pesan = false;
+        if ($qr == "sinauka") {
+
+            $pesan = true;
+        }
+
+
+        echo json_encode(['status' => $pesan]);
     }
 }
