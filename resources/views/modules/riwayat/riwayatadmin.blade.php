@@ -65,10 +65,10 @@
                                             <th class="datatable-cell datatable-toggle-detail datatable-cell-sort">
                                                 <span></span>
                                             </th>
-                                            <th data-field="Product" class="datatable-cell datatable-cell-sort datatable-cell-sorted" data-sort="desc"><span style="width: 160px;">Kode Order</span></th>
+                                            <th data-field="Product" class="datatable-cell datatable-cell-sort datatable-cell-sorted" data-sort="desc"><span style="width: 160px;">Order Id</span></th>
                                             <th data-field="OrderID" class="datatable-cell datatable-cell-sort"><span style="width: 114px;">Status Pembayaran</span></th>
-                                            <th data-field="tgl_kunjungan" data-autohide-disabled="false" class="datatable-cell datatable-cell-sort"><span style="width: 114px;">Tanggal Berkunjung</span></th>
-                                            <th data-field="Status" data-autohide-disabled="false" class="datatable-cell datatable-cell-sort"><span style="width: 114px;">Jenis Tiket</span></th>
+                                            <th data-field="tgl_kunjungan" data-autohide-disabled="false" class="datatable-cell datatable-cell-sort"><span style="width: 114px;">Jenis Pemesanan</span></th>
+                                            <th data-field="Status" data-autohide-disabled="false" class="datatable-cell datatable-cell-sort"><span style="width: 114px;">Tanggal Berkunjung</span></th>
                                             <th data-field="tgl_kunjungan" data-autohide-disabled="false" class="datatable-cell datatable-cell-sort"><span style="width: 114px;">Jumlah Tiket</span></th>
                                             <th data-field="tgl_kunjungan" data-autohide-disabled="false" class="datatable-cell datatable-cell-sort"><span style="width: 114px;">Total</span></th>
                                         </tr>
@@ -80,7 +80,7 @@
                                             <td class="datatable-cell-sorted datatable-cell" data-field="Product" aria-label="null"><span style="width: 160px;">
                                                     <div class="d-flex align-items-center">
                                                         <div class="ml-4">
-                                                            <a href="#" class="text-dark-75 font-weight-bolder font-size-lg mb-0">{{ $p->kd_order }}</a>
+                                                            <a href="/detailriwayat/{{ $p->order_id }}" class="text-dark-75 font-weight-bolder font-size-lg mb-0">{{ $p->order_id }}</a>
                                                         </div>
                                                     </div>
                                                 </span></td>

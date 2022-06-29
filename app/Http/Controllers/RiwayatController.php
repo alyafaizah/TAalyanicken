@@ -46,11 +46,11 @@ class RiwayatController extends Controller
         ]);
     }
 
-    public function riwayatById($kd_order)
+    public function riwayatById($order_id)
     {
-        $pemesanan = PemesananTiket::where('kd_order', $kd_order)->get();
+        $pemesanan = PemesananTiket::where('order_id', $order_id)->get();
         $jenis_tiket = Ticket::all();
-        $pembayaran = Pembayaran::where('kd_order', $kd_order)->get();
+        $pembayaran = Pembayaran::where('order_id', $order_id)->get();
         $data = array(
             'jenis_tiket' => $jenis_tiket,
             'pemesanan' => $pemesanan,
@@ -66,6 +66,7 @@ class RiwayatController extends Controller
 
 
         // ambil data 
+        $pemesanan = DB::table('pemesanan')->orderBy('created_at','desc')->get();
         $pemesanan = DB::table('pemesanan')->get(); 
 
         // print_r($data);

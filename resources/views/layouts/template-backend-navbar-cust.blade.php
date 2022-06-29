@@ -138,12 +138,7 @@
                                         <span class="menu-text">Riwayat Transaksi</span>
                                     </a>
                                 </li>
-                                <li class="menu-item" data-menu-toggle="click" aria-haspopup="true">
-                                    <a href="/riwayatpembayaran" class="menu-link">
-                                    <a href="/riwayatpembayaran" class="menu-link ">
-                                        <span class="menu-text">Riwayat Pembayaran</span>
-                                    </a>
-                                </li>
+                                
                                 <li class="menu-item" data-menu-toggle="click" aria-haspopup="true">
                                     <a href="/dashboardcust" class="menu-link">
                                         <span class="menu-text">Profile</span>
