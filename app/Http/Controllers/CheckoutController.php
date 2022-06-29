@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use App\Models\PemesananTiket;
 use App\Models\Ticket;
 use Illuminate\Support\Facades\DB;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class CheckoutController extends Controller
 {
@@ -190,5 +191,10 @@ class CheckoutController extends Controller
 
         echo $snapToken;
         // return view('payment', ['snap_token' => $snapToken]);
+    }
+
+    //Qr-Code
+    public function qrcode(){
+        return view('modules.checkout.qr-code');
     }
 }

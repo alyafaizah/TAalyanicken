@@ -26,6 +26,8 @@ use App\Http\Controllers\EmailController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+// Qr-Code
+Route::get('/qrcode', [CheckoutController::class, 'qrcode']);
 
 // Route::get('/', function () {
 //     return view('modules.landingpage.landingpage2');
