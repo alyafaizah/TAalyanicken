@@ -26,6 +26,8 @@ use App\Http\Controllers\EmailController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+// Qr-Code
+Route::get('/qrcode', [CheckoutController::class, 'qrcode']);
 
 // Route::get('/', function () {
 //     return view('modules.landingpage.landingpage2');
@@ -161,6 +163,7 @@ Route::group(['middleware' => 'usersession'], function () {
     Route::get('/detailriwayat/{order_id}', [RiwayatController::class, 'riwayatById']);
     Route::get('/riwayatpembayaran', [RiwayatController::class, 'riwayatpembayaran']);
     Route::get('/riwayatadmin', [RiwayatController::class, 'riwayatadmin']);
+    Route::get('/riwayatpetugas', [RiwayatController::class, 'riwayatpetugas']);
 
     
     Route::get('/dashboard', [DashboardController::class, 'dashboard']);

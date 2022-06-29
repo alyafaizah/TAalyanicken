@@ -38,7 +38,7 @@
 			
 			<!--begin::Item-->
 			<li class="nav-item mb-5" data-toggle="tooltip" data-placement="right" data-container="body" data-boundary="window" title="Riwayat">
-				<a href="/riwayatadmin" class="nav-link btn btn-icon btn-icon-white btn-lg" role="tab">
+				<a href="/riwayatpetugas" class="nav-link btn btn-icon btn-icon-white btn-lg" role="tab">
 					<i class="icon-l fas fa-file-invoice-dollar"></i>
 				</a>
 			</li>

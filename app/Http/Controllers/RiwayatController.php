@@ -72,4 +72,17 @@ class RiwayatController extends Controller
         // print_r($data);
         return view('modules.riwayat.riwayatadmin', compact('pemesanan'));
     }
+
+    public function riwayatpetugas()
+    {
+        
+        $dt_pemesanan = array();
+
+
+        // ambil data 
+        $pemesanan = DB::table('pemesanan')->get();
+
+        // print_r($data);
+        return view('modules.riwayat.riwayatpetugas', compact('pemesanan'));
+    }
 }
