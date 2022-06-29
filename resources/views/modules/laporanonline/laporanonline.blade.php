@@ -30,12 +30,7 @@
                                         </div>
                                     </div>
                                     <div class="border-bottom opacity-20"></div>
-                                    <div class="d-flex justify-content-between text-white pt-6">
-                                        <div class="d-flex flex-column flex-root">
-                                            <span class="font-weight-bolde mb-2r">DATA</span>
-                                            <span class="opacity-70">Januari 2022</span>
-                                        </div>
-                                    </div>
+                                    
                                 </div>
                             </div>
                             <!-- end: Invoice header-->

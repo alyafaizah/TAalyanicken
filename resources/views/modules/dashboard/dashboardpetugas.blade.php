@@ -263,8 +263,8 @@
                     <small>Hasil preview dari scanning dari pembeli</small>
 
 
-                    <audio id="accept"><source src="{{ asset('assets/wav/cat-meow6.wav') }}"  type="audio/mpeg"></audio>
-                    <audio id="decline"><source src="{{ asset('assets/wav/cat-mad3.wav') }}" type="audio/mpeg"></audio>
+                    <audio id="accept"><source src="{{ asset('assets/wav/sukses.mp3') }}"  type="audio/mpeg"></audio>
+                    <audio id="decline"><source src="{{ asset('assets/wav/gagal.mp3') }}" type="audio/mpeg"></audio>
 
                 </div>
                 <div class="col-md-8">

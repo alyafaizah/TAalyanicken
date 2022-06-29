@@ -91,7 +91,7 @@ Route::get('/register/proses', [LoginController::class, 'prosesregis']);
 Route::group(['middleware' => 'usersession'], function () {
 
     //modules tiket (admin)
-    Route::get('/tiket', [TicketController::class, 'index']);
+    Route::get('/tiket', [TicketController::class, 'index'])->name('view-ticket');
     Route::get('/createtiket', [TicketController::class, 'create']);
     Route::post('/createtiket', [TicketController::class, 'process'])->name('add-ticket');
     Route::get('/delete-ticket/{kd}', [TicketController::class, 'delete']);

@@ -30,12 +30,7 @@
                                         </div>
                                     </div>
                                     <div class="border-bottom opacity-20"></div>
-                                    <div class="d-flex justify-content-between text-white pt-6">
-                                        <div class="d-flex flex-column flex-root">
-                                            <span class="font-weight-bolde mb-2r">DATA</span>
-                                            <span class="opacity-70">Januari 2022</span>
-                                        </div>
-                                    </div>
+                                    
                                 </div>
                             </div>
                             <!-- end: Invoice header-->
@@ -54,6 +49,9 @@
                                         </div>
                                         <button type="submit" class="btn btn-primary mb-2">filter</button>
                                     </form>
+                                    @php
+                                    $pemasukan=0
+                                    @endphp
                                     <div class="table-responsive">
                                         <table class="table">
                                             <thead>
@@ -67,6 +65,9 @@
                                                 </tr>
                                             </thead>
                                             @foreach ( $pemesanan AS $e => $p )
+                                            @php
+                                            $pemasukan+=$p->total;
+                                            @endphp
                                             <tbody>
                                                 <tr class="font-weight-boldest font-size-lg">
                                                     <td class="pl-0 pt-7">{{$p->order_id}}</td>
