@@ -121,9 +121,9 @@
                             <ul class="menu-nav">
                                 <li class="menu-item" aria-haspopup="true">
                                     <a href="/checkout" class="menu-link ">
-                                    <a href="/checkout" class="menu-link  ">
-                                        <span class="menu-text">Pemesanan</span>
-                                    </a>
+                                        <a href="/checkout" class="menu-link  ">
+                                            <span class="menu-text">Pemesanan</span>
+                                        </a>
                                 </li>
                                 <li class="menu-item" data-menu-toggle="click" aria-haspopup="true">
                                     <a href="javascript:;" class="menu-link menu-toggle">
@@ -132,13 +132,12 @@
                                         <i class="menu-arrow"></i>
                                     </a>
                                 </li>
-                                <li class="menu-item" data-menu-toggle="click" aria-haspopup="true">
+                                <li class="menu-item" garia-haspopup="true">
                                     <a href="/riwayattransaksi" class="menu-link">
-                                    <a href="/riwayattransaksi" class="menu-link ">
-                                        <span class="menu-text">Riwayat Transaksi</span>
-                                    </a>
+                                        <a href="/riwayattransaksi" class="menu-link ">
+                                            <span class="menu-text">Riwayat Transaksi</span>
+                                        </a>
                                 </li>
-                                
                                 <li class="menu-item" data-menu-toggle="click" aria-haspopup="true">
                                     <a href="/dashboardcust" class="menu-link">
                                         <span class="menu-text">Profile</span>
