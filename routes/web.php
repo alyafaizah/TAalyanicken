@@ -153,6 +153,7 @@ Route::group(['middleware' => 'usersession'], function () {
     Route::get('/detailriwayat/{kd_order}', [RiwayatController::class, 'riwayatById']);
     Route::get('/riwayatpembayaran', [RiwayatController::class, 'riwayatpembayaran']);
     Route::get('/riwayatadmin', [RiwayatController::class, 'riwayatadmin']);
+    Route::get('/riwayatpetugas', [RiwayatController::class, 'riwayatpetugas']);
 
     
     Route::get('/dashboard', [DashboardController::class, 'dashboard']);
