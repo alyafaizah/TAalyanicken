@@ -3,7 +3,7 @@
 
 Anda baru saja meminta kami untuk mereset password anda. Silahkan klik tombol dibawah untuk melanjutkan reset password
 
-@component('mail::button', ['url' => ''])
+@component('mail::button', ['url' => 'http://127.0.0.1:8000/aturulangpassword'])
 Reset Password
 @endcomponent
 
