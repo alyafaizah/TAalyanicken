@@ -116,7 +116,7 @@ class CheckoutController extends Controller
         }
 
 
-        echo json_encode( [$type, $harga, $hari[ $dayOfIndex ]] );
+        echo json_encode( [$type, $harga, $tanggal, $hari[ $dayOfIndex ]]);
     }
 
 

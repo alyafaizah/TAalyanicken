@@ -433,7 +433,6 @@ License: You must have a valid license purchased only from themeforest(the above
             });
 
             $('#kt_login_forgot_submit').click(function(){
-                
                 var email = $('input[name="email-forgot"]').val();
 
                 data_input = {
