@@ -122,4 +122,5 @@ class ProfileController extends Controller
             echo "invalid kd " . $id_profile;
         }
     }
+
 }
