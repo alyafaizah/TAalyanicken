@@ -50,45 +50,32 @@ class LaporanController extends Controller
         return response()->download(public_path($html_content));
     }
 
-    // public function invoice()
-    // {
-    //     $data = DB::table('pembayaran')->select([
-    //         DB::raw('total_bayar as pemasukan'),
-    //     ]);
-    //     $data = DB::table('pemesanan')->select([
-    //         DB::raw('count(*) as jumlah'),
-    //         DB::raw('DATE(created_at) as tanggal')
-    //     ])
-    //         ->groupBy('tanggal')
-    //         ->whereRaw('DATE(created_at)>=?', [date('Y-m-d', strtotime('-30 days'))])
-    //         ->orderBy('tanggal', 'asc')
-    //         ->get()
-    //         ->toArray();
-
-    //     return view('modules.laporanoffline.laporanoffline', compact('data'));
-    // }
-
-
-    public function laporanonline()
+    public function laporanonline(Request $request)
     {
-        
-        // $jenis_pemesanan = 'jenis_pemesanan';
-        $pemesanan = PemesananTiket::where('jenis_pemesanan', 'online')->get();
-     
-        // $pemesanan=DB::table('pemesanan')->select([
-        //     DB::raw('sum(total) as pemasukan')
-        // ])
-        // ->get();
 
-        return view('modules.laporanonline.laporanonline',compact('pemesanan'));
+        // dd($request->all());
+        // $dari = $request->dari;
+        // $sampai = $request->sampai;
+        if ($dari) {
+            $pemesanan = PemesananTiket::where('jenis_pemesanan', 'online')->where('tgl_kunjungan', '>=', $dari)->where('tgl_kunjungan', '<=', $sampai)->orderBy('created_at', 'asc')->get();
+        }else{
+            $pemesanan = PemesananTiket::where('jenis_pemesanan', 'online')->get();
+        }
+
+
+
+
+        return view('modules.laporanonline.laporanonline', compact('pemesanan', 'dari', 'sampai'));
         // return view('modules.laporanonline.laporanonline', $data);
     }
 
-    public function cetakpdflaporanonline()
+    public function cetakpdflaporanonline(Request $request)
     {
-       $pemesanan = PemesananTiket::where('jenis_pemesanan', 'online')->get();
+        $dari = $request->dari;
+        $sampai = $request->sampai;
+        $pemesanan = PemesananTiket::where('jenis_pemesanan', 'online')->where('tgl_kunjungan', '>=', $dari)->where('tgl_kunjungan', '<=', $sampai)->orderBy('created_at', 'asc')->get();
 
-        $view = \View::make('modules.laporanonline.cetaklaporanonline',compact('pemesanan'));
+        $view = \View::make('modules.laporanonline.cetaklaporanonline', compact('pemesanan', 'dari', 'sampai'));
         $html_content = $view->render();
 
 
@@ -110,21 +97,23 @@ class LaporanController extends Controller
 
         //     'pemesanan' => DB::table('pemesanan')->get()
         // );
-        
-        
+
+
         $pemesanan = PemesananTiket::where('jenis_pemesanan', 'offline')->get();
 
-        return view('modules.laporanoffline.laporanoffline',compact('pemesanan'));
+        return view('modules.laporanoffline.laporanoffline', compact('pemesanan'));
         // return view('modules.laporanonline.laporanonline', $data);
     }
 
-    public function cetakpdflaporanoffline()
+    public function cetakpdflaporanoffline(Request $request)
     {
-        
-        $pemesanan = PemesananTiket::where('jenis_pemesanan', 'offline')->get();
+
+        $dari = $request->dari;
+        $sampai = $request->sampai;
+        $pemesanan = PemesananTiket::where('jenis_pemesanan', 'offline')->whereDate('tgl_kunjungan', '>=', $dari)->whereDate('tgl_kunjungan', '<=', $sampai)->orderBy('created_at', 'asc')->get();
 
 
-        $view = \View::make('modules.laporanoffline.cetaklaporanoffline',compact('pemesanan'));
+        $view = \View::make('modules.laporanoffline.cetaklaporanoffline', compact('pemesanan'));
         $html_content = $view->render();
 
 
@@ -142,12 +131,37 @@ class LaporanController extends Controller
 
     public function periode(Request $request)
     {
-        $tanggal_awal = $request->tanggal_awal;
-        $tanggal_akhir = $request->tanggal_akhir;
+        try {
+            $dari = $request->dari;
+            $sampai = $request->sampai;
 
-        $title = "Filter laporan dari $tanggal_awal sampai $tanggal_akhir";
-        $data = PemesananTiket::where('tgl_kunjungan', '>=', $tanggal_awal)->where('tgl_kunjungan', '<=', $tanggal_akhir)->get();
+            $title = "Filter laporan dari $dari sampai $sampai";
 
-        return view('modules.laporanonline.filterlaporan', compact('title', 'data'));
+            $pemesanan = PemesananTiket::where('tgl_kunjungan', '>=', $dari)->where('tgl_kunjungan', '<=', $sampai)->orderBy('created_at', 'asc')->get();
+
+            return view('modules.laporanonline.laporanonline', compact('title', 'pemesanan','dari','sampai'));
+        } catch (\Exception $e) {
+            \Session::flash('gagal', $e->getMessage());
+
+            return redirect()->back();
+        }
+    }
+
+    public function periodeoffline(Request $request)
+    {
+        try {
+            $dari = $request->darioffline;
+            $sampai = $request->sampaioffline;
+
+            $title = "Filter laporan dari $dari sampai $sampai";
+
+            $pemesanan = PemesananTiket::whereDate('tgl_kunjungan', '>=', $dari)->whereDate('tgl_kunjungan', '<=', $sampai)->orderBy('created_at', 'asc')->get();
+
+            return view('modules.laporanoffline.laporanoffline', compact('title', 'pemesanan'));
+        } catch (\Exception $e) {
+            \Session::flash('gagal', $e->getMessage());
+
+            return redirect()->back();
+        }
     }
 }

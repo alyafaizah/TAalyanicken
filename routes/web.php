@@ -113,10 +113,11 @@ Route::group(['middleware' => 'usersession'], function () {
     Route::get('/cetakpdfcust',  [LaporanController::class, 'cetakpdfcust']);
 
     Route::get('/laporanoffline',  [LaporanController::class, 'laporanoffline']);
+    Route::get('/laporanoffline/periode', [LaporanController::class, 'periodeoffline']);
     Route::get('/cetakpdfoffline',  [LaporanController::class, 'cetakpdflaporanoffline']);
 
     Route::get('/laporanonline',  [LaporanController::class, 'laporanonline']);
-    Route::get('/filterlaporanonline', [LaporanController::class, 'periode']);
+    Route::get('/laporanonline/periode', [LaporanController::class, 'periode']);
     Route::get('/cetakpdfonline',  [LaporanController::class, 'cetakpdflaporanonline']);
 
     Route::get('/download',  [ProfileController::class, 'savepdf']);

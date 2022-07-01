@@ -91,7 +91,7 @@
                                         <tr data-row="0" class="datatable-row" style="left: 0px;">
                                             <td class="datatable-cell datatable-toggle-detail"><a class="datatable-toggle-detail" href="/detailriwayat/{{ $p->kd_order }}"><i class="fa fa-caret-right"></i></a></td>
                                             
-                                            <td data-field="kd_order" aria-label="64616-103" class="datatable-cell"><span style="width: 114px;">{{ $p->kd_order }}</span></td>
+                                            <td data-field="kd_order" aria-label="64616-103" class="datatable-cell"><span style="width: 114px;">{{ $p->order_id }}</span></td>
                                             <td data-field="status" data-autohide-disabled="false" aria-label="1" class="datatable-cell"><span style="width: 114px;"><span class="label label-danger label-dot mr-2"></span><span class="font-weight-bold text-danger">{{ $p->status }}</span></span>
                                             </td>
                                             <td data-field="tgl_berkunjung" aria-label="64616-103" class="datatable-cell"><span style="width: 114px;">{{ $p->tgl_kunjungan }}</span>
