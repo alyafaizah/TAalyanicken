@@ -38,7 +38,7 @@
                         <table class="table table-separate table-head-custom table-checkable">
                             <thead>
                                 <tr>
-                                    <th>ID</th>
+                                    <th>No</th>
                                     <th>Email</th>
                                     <th>Status Pegawai</th>
                                     <th>Aksi</th>

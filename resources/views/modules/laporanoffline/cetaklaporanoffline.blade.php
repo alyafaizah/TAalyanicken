@@ -44,5 +44,39 @@
     <span class="font-size-lg font-weight-bolder mb-1">TOTAL PEMASUKAN</span>
     <span class="font-size-h2 font-weight-boldest text-danger mb-1">Rp 5000000</span>
 </div>
+
+<div class="modal-body">
+
+                <form role="form" action="/laporanoffline/periode" method="get">
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Mulai Tanggal</label>
+                            <input type="date" name="darioffline" class="form-control datepicker" id="exampleInputEmail1" placeholder="Dari tanggal" value="{{date('d-m-Y')}}" autocomplete="off">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Sampai Tanggal</label>
+                            <input type="date" name="sampaioffline" class="form-control datepicker" id="exampleInputPassword1" placeholder="Sampai tanggal" value="{{date('d-m-Y')}}" autocomplete="off">
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $('#btn-filter').click(function(e) {
+        e.preventDefault(); //mencegah menjalankan proses apapun
+
+        $('#modal-filter').modal();
+    })
+</script>
 <!-- end: Invoice footer-->
 <!-- end::Card-->

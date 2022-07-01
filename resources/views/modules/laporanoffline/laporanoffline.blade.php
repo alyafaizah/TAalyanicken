@@ -17,7 +17,7 @@
                         <div class="card-body p-0">
                             <!-- begin: Invoice-->
                             <!-- begin: Invoice header-->
-                            <div class="row justify-content-center bgi-size-cover bgi-no-repeat py-8 px-8 px-md-0" style="background-image: url(assets/media/bg/bg-6.jpg);">
+                            <div class="row justify-content-center bgi-size-cover bgi-no-repeat py-8 px-8 px-md-0" style="background: linear-gradient(#000046, #6b5b95);">
                                 <div class="col-md-9">
                                     <div class="d-flex justify-content-between pb-10 pb-md-20 flex-column flex-md-row">
                                         <h2 class="display-4 text-white font-weight-boldest mb-10">LAPORAN PEMESANAN</h2>
@@ -30,25 +30,14 @@
                                         </div>
                                     </div>
                                     <div class="border-bottom opacity-20"></div>
-                                    
+
                                 </div>
                             </div>
                             <!-- end: Invoice header-->
                             <!-- begin: Invoice body-->
                             <div class="row justify-content-center py-8 px-8 py-md-10 px-md-0">
                                 <div class="col-md-9">
-                                    <form class="form-inline"  method="get" action="/filterlaporanonline">
-                                        <div class="form-group mb-2">
-                                            <label class="mr-3" for="email">Tanggal Awal:</label>
-                                            <input type="date" class="form-control" name="tanggal_akhir" placeholder="Tanggal Akhir">
-
-                                        </div>
-                                        <div class="form-group mx-sm-5 mb-2">
-                                            <label class="mr-3" for="email">Tanggal Akhir:</label>
-                                            <input type="date" class="form-control sm-3" name="tanggal_akhir" placeholder="Tanggal Akhir">
-                                        </div>
-                                        <button type="submit" class="btn btn-primary mb-2">filter</button>
-                                    </form>
+                                    <a href="#" id="btn-filter" class="btn btn-sm btn-flat btn-primary" style="float:right"><i class="fa fa-filter"></i> Filter Berdasarkan Tanggal Berkunjung</a>
                                     @php
                                     $pemasukan=0
                                     @endphp
@@ -133,4 +122,48 @@
     </div>
 </div>
 
+<div class="modal fade" id="modal-filter" tabindex="-1" role="dialog" aria-labelledby="modal-notification" aria-hidden="true">
+    <div class="modal-dialog modal-default modal-dialog-centered modal-" role="document">
+        <div class="modal-content bg-gradient-danger">
+
+            <div class="modal-header">
+                <h6 class="modal-title" id="modal-title-notification">Filter Laporan Berdasarkan Tanggal Berkunjung</h6>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+
+                <form role="form" action="/laporanoffline/periode" method="get">
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Mulai Tanggal</label>
+                            <input type="date" name="darioffline" class="form-control datepicker" id="exampleInputEmail1" placeholder="Dari tanggal" value="{{date('d-m-Y')}}" autocomplete="off">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Sampai Tanggal</label>
+                            <input type="date" name="sampaioffline" class="form-control datepicker" id="exampleInputPassword1" placeholder="Sampai tanggal" value="{{date('d-m-Y')}}" autocomplete="off">
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $('#btn-filter').click(function(e) {
+        e.preventDefault(); //mencegah menjalankan proses apapun
+
+        $('#modal-filter').modal();
+    })
+</script>
 @endsection

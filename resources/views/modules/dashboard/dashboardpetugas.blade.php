@@ -435,11 +435,6 @@
         // html5QrcodeScanner.render(onScanSuccess); 
 
 
-        
-
-
-
-
     });
 </script>
 
