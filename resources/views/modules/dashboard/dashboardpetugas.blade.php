@@ -292,7 +292,7 @@
                                 <div class="col-md-9">
                                     <br>
                                     <h2>Pembelian Tiket</h2>
-                                    <b>#<label id="kd_order"></label> &emsp;|&emsp; Pembelian pada <label id="tgl"></label></b>
+                                    <b>#<label id="kd_tiket"></label> &emsp;|&emsp; Pembelian pada <label id="tgl"></label></b>
                                     
                                 </div>
                             </div>

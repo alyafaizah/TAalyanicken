@@ -80,7 +80,7 @@ class DashboardController extends Controller
                 $data = array(
 
                     'kd_order'  => $dt_pemesanan->kd_order,
-                    'jenis_tiket'  => $dt_pemesanan->kd_order,
+                    'jenis_tiket'  => $dt_pemesanan->jenis_tiket,
                     'tgl_kunjungan'  => date('d F Y', strtotime($dt_pemesanan->tgl_kunjungan)),
                     'jumlah'  => $dt_pemesanan->jumlah,
                     'harga'  => $dt_pemesanan->harga,
