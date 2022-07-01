@@ -52,18 +52,18 @@
 						<!--begin::Body-->
 						<div class="card-body pt-4">
 							<!--begin::User-->
-							<div class="d-flex align-items-center">
-								<div class="symbol symbol-60 symbol-xxl-100 mr-5 align-self-start align-self-xxl-center">
-									<div class="">
-									<img class="img-fluid mb-1 col-sm-1 img-circle" src="{{{asset('storage/'. $identitas->image) }}}" >
-									</div>
+                            <div class="d-flex align-items-center">
+                                <div class="symbol symbol-60 symbol-xxl-100 mr-5 align-self-start align-self-xxl-center">
+                                    <div class="symbol-label" style="max-height:350px;overflow:hidden;">
+                                        <img src="{{{asset('storage/'. $identitas->image) }}}" class="img-circle" style="width:150px;height:150px;" alt="" srcset="">
+                                    </div>
+                                </div>
 
-								</div>
-								<div>
-									<a href="#" class="font-weight-bolder font-size-h5 text-dark-75 text-hover-primary">{{ $identitas->nama_lengkap }}</a>
-								</div>
-							</div>
-							<!--end::User-->
+                            </div>
+                            <div class="mt-3">
+                                <a href="#" class="font-weight-bolder font-size-h5 text-dark-75 text-hover-primary">{{ $identitas->nama_lengkap }}</a>
+                            </div>
+                            <!--end::User-->
 							<!--begin::Contact-->
 							<!--begin::Contact-->
 							<div class="py-9">

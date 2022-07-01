@@ -85,7 +85,7 @@ class ProfileController extends Controller
             }
         }
 
-        $upload_image = $request->image->storeAs('post-images', $file_name);
+        var_dump($upload_image = $request->image->storeAs('post-images', $file_name));
 
         $id_profile = session("id");
         $identitas = Identitas::where('id_profile', $id_profile);
