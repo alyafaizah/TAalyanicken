@@ -16,7 +16,7 @@ class EmailController extends Controller
 
     public function forgotpass(Request $request)
     {
-
+        
         Mail::to('octaviananicken@gmail.com')->send(new SendEmail);
 
         $pesan = "success";
@@ -28,6 +28,5 @@ class EmailController extends Controller
             'url'       => $url
         ]);
 
-        return 'Berhasil Mengirim Email';
     }
 }
