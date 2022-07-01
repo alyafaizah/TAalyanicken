@@ -54,11 +54,11 @@ class LaporanController extends Controller
     {
 
         // dd($request->all());
-        // $dari = $request->dari;
-        // $sampai = $request->sampai;
+        $dari = $request->dari;
+        $sampai = $request->sampai;
         if ($dari) {
             $pemesanan = PemesananTiket::where('jenis_pemesanan', 'online')->where('tgl_kunjungan', '>=', $dari)->where('tgl_kunjungan', '<=', $sampai)->orderBy('created_at', 'asc')->get();
-        }else{
+        } else {
             $pemesanan = PemesananTiket::where('jenis_pemesanan', 'online')->get();
         }
 
@@ -66,14 +66,18 @@ class LaporanController extends Controller
 
 
         return view('modules.laporanonline.laporanonline', compact('pemesanan', 'dari', 'sampai'));
-        // return view('modules.laporanonline.laporanonline', $data);
     }
 
     public function cetakpdflaporanonline(Request $request)
     {
         $dari = $request->dari;
         $sampai = $request->sampai;
-        $pemesanan = PemesananTiket::where('jenis_pemesanan', 'online')->where('tgl_kunjungan', '>=', $dari)->where('tgl_kunjungan', '<=', $sampai)->orderBy('created_at', 'asc')->get();
+
+        if ($dari) {
+            $pemesanan = PemesananTiket::where('jenis_pemesanan', 'online')->where('tgl_kunjungan', '>=', $dari)->where('tgl_kunjungan', '<=', $sampai)->orderBy('created_at', 'asc')->get();
+        } else {
+            $pemesanan = PemesananTiket::where('jenis_pemesanan', 'online')->get();
+        }
 
         $view = \View::make('modules.laporanonline.cetaklaporanonline', compact('pemesanan', 'dari', 'sampai'));
         $html_content = $view->render();
@@ -81,7 +85,7 @@ class LaporanController extends Controller
 
         $pdf = new TCPDF;
 
-        $pdf::SetTitle("Laporan Pemesanan Tiket");
+        $pdf::SetTitle("Laporan Pemesanan Tiket Online");
         $pdf::AddPage();
         $pdf::writeHTML($html_content, true, false, true, false, '');
         // D is the change of these two functions. Including D parameter will avoid 
@@ -91,18 +95,20 @@ class LaporanController extends Controller
         return response()->download(public_path($html_content));
     }
 
-    public function laporanoffline()
+    public function laporanoffline(Request $request)
     {
-        // $data = array(
+        $dari = $request->darioffiline;
+        $sampai = $request->sampai;
+        if ($dari) {
+            $pemesanan = PemesananTiket::where('jenis_pemesanan', 'offline')->where('tgl_kunjungan', '>=', $dari)->where('tgl_kunjungan', '<=', $sampai)->orderBy('created_at', 'asc')->get();
+        } else {
+            $pemesanan = PemesananTiket::where('jenis_pemesanan', 'offline')->get();
+        }
 
-        //     'pemesanan' => DB::table('pemesanan')->get()
-        // );
 
 
-        $pemesanan = PemesananTiket::where('jenis_pemesanan', 'offline')->get();
 
-        return view('modules.laporanoffline.laporanoffline', compact('pemesanan'));
-        // return view('modules.laporanonline.laporanonline', $data);
+        return view('modules.laporanoffline.laporanoffline', compact('pemesanan', 'dari', 'sampai'));
     }
 
     public function cetakpdflaporanoffline(Request $request)
@@ -110,16 +116,20 @@ class LaporanController extends Controller
 
         $dari = $request->dari;
         $sampai = $request->sampai;
-        $pemesanan = PemesananTiket::where('jenis_pemesanan', 'offline')->whereDate('tgl_kunjungan', '>=', $dari)->whereDate('tgl_kunjungan', '<=', $sampai)->orderBy('created_at', 'asc')->get();
 
+        if ($dari) {
+            $pemesanan = PemesananTiket::where('jenis_pemesanan', 'offline')->where('tgl_kunjungan', '>=', $dari)->where('tgl_kunjungan', '<=', $sampai)->orderBy('created_at', 'asc')->get();
+        } else {
+            $pemesanan = PemesananTiket::where('jenis_pemesanan', 'offline')->get();
+        }
 
-        $view = \View::make('modules.laporanoffline.cetaklaporanoffline', compact('pemesanan'));
+        $view = \View::make('modules.laporanoffline.cetaklaporanoffline', compact('pemesanan', 'dari', 'sampai'));
         $html_content = $view->render();
 
 
         $pdf = new TCPDF;
 
-        $pdf::SetTitle("Laporan Pemesanan Tiket");
+        $pdf::SetTitle("Laporan Pemesanan Tiket Offline");
         $pdf::AddPage();
         $pdf::writeHTML($html_content, true, false, true, false, '');
         // D is the change of these two functions. Including D parameter will avoid 
@@ -137,9 +147,9 @@ class LaporanController extends Controller
 
             $title = "Filter laporan dari $dari sampai $sampai";
 
-            $pemesanan = PemesananTiket::where('tgl_kunjungan', '>=', $dari)->where('tgl_kunjungan', '<=', $sampai)->orderBy('created_at', 'asc')->get();
+            $pemesanan = PemesananTiket::where('jenis_pemesanan', 'online')->where('tgl_kunjungan', '>=', $dari)->where('tgl_kunjungan', '<=', $sampai)->orderBy('created_at', 'asc')->get();
 
-            return view('modules.laporanonline.laporanonline', compact('title', 'pemesanan','dari','sampai'));
+            return view('modules.laporanonline.laporanonline', compact('title', 'pemesanan', 'dari', 'sampai'));
         } catch (\Exception $e) {
             \Session::flash('gagal', $e->getMessage());
 
@@ -150,14 +160,14 @@ class LaporanController extends Controller
     public function periodeoffline(Request $request)
     {
         try {
-            $dari = $request->darioffline;
-            $sampai = $request->sampaioffline;
+            $dari = $request->dari;
+            $sampai = $request->sampai;
 
             $title = "Filter laporan dari $dari sampai $sampai";
 
-            $pemesanan = PemesananTiket::whereDate('tgl_kunjungan', '>=', $dari)->whereDate('tgl_kunjungan', '<=', $sampai)->orderBy('created_at', 'asc')->get();
+            $pemesanan = PemesananTiket::where('jenis_pemesanan', 'offline')->where('tgl_kunjungan', '>=', $dari)->where('tgl_kunjungan', '<=', $sampai)->orderBy('created_at', 'asc')->get();
 
-            return view('modules.laporanoffline.laporanoffline', compact('title', 'pemesanan'));
+            return view('modules.laporanoffline.laporanoffline', compact('title', 'pemesanan', 'dari', 'sampai'));
         } catch (\Exception $e) {
             \Session::flash('gagal', $e->getMessage());
 

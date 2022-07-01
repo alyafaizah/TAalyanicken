@@ -113,7 +113,7 @@
                                         </td>
                                         <td>{{date('d M Y', strtotime($p->tgl_kunjungan))}}</td>
                                         <td>{{ $p->jumlah }}</td>
-                                        <td>{{ number_format ($p->total) }}</td>
+                                        <td>Rp {{ number_format ($p->total, 0, ',','.') }}</td>
                                     </tr>
                                     @endforeach
                                 </tbody>

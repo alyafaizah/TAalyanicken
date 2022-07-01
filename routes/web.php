@@ -136,7 +136,7 @@ Route::group(['middleware' => 'usersession'], function () {
 
     // proses pemesanan tiket online (pengunjung)
     Route::post('proses-pemesanan', [PemesananController::class, 'proses_pemesanan']);
-    Route::get('transaction-success/{kd_order}', [PemesananController::class, 'pemesanan_berhasil']);
+    Route::get('transaction-success/{order_id}', [PemesananController::class, 'pemesanan_berhasil']);
 
     //modules data petugas (admin)
     Route::get('/petugas', [PetugasController::class, 'index'])->name('view-petugas');
@@ -159,6 +159,8 @@ Route::group(['middleware' => 'usersession'], function () {
     //purchase pengunjung atau pemesanan tiket online (pengunjung)
     Route::get('/checkout', [CheckoutController::class, 'checkout']);
     Route::get('/request-date', [CheckoutController::class, 'request_date']);
+    Route::get('checkout-success/{order_id}', [CheckoutController::class, 'pemesanan_berhasil']);
+
 
     Route::post('/pengunjung/proses-pemesanan', [CheckoutController::class, 'proses_pemesanan']);
 

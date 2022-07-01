@@ -128,7 +128,7 @@ class CheckoutController extends Controller
         $dt_pemesanan = array(
 
             
-            'kd_order'      => $request->input('kd_order'),
+            'order_id'      => $request->input('order_id'),
             'id_profile'    => session('id'),
             'tgl_kunjungan' => date('Y-m-d H:i:s', strtotime($request->input('tanggal'))),
             'jumlah'        => $request->input('jumlah'),
@@ -142,7 +142,7 @@ class CheckoutController extends Controller
         // insert
         DB::table('pemesanan')->insert($dt_pemesanan);
         echo "Oke berhasil";
-        // return redirect('transaction-success/'. $dt_pemesanan['kd_order']);
+        // return redirect('transaction-success/'. $dt_pemesanan['order_id']);
     }
 
     public function payment(Request $request)
@@ -196,5 +196,9 @@ class CheckoutController extends Controller
     //Qr-Code
     public function qrcode(){
         return view('modules.checkout.qr-code');
+    }
+
+    public function pemesanan_berhasil(){
+        return view('modules.checkout.view_success_cust');
     }
 }

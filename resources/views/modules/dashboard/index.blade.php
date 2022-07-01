@@ -84,7 +84,7 @@
                                                         </div>
                                                     </td>
                                                     <td class="pl-0">
-                                                        <a href="#" class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">Pembelian
+                                                        <a href="#" class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">Pemesanan
                                                             Offline</a>
                                                         <span class="text-muted font-weight-bold d-block">Successful
                                                             Fellas</span>
@@ -105,7 +105,7 @@
                                                         </div>
                                                     </td>
                                                     <td class="pl-0">
-                                                        <a href="#" class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">Pembelian
+                                                        <a href="#" class="text-dark font-weight-bolder text-hover-primary mb-1 font-size-lg">Pemesanan
                                                             Online</a>
                                                         <span class="text-muted font-weight-bold d-block">Successful
                                                             Fellas</span>

@@ -37,20 +37,24 @@
                             <!-- begin: Invoice body-->
                             <div class="row justify-content-center py-8 px-8 py-md-10 px-md-0">
                                 <div class="col-md-9">
-                                    <a href="#" id="btn-filter" class="btn btn-sm btn-flat btn-primary" style="float:right"><i class="fa fa-filter"></i> Filter Berdasarkan Tanggal Berkunjung</a>
+                                    <div class="row">
+                                        <div class="col-md-9 mb-3" style="float:right"><a href="#" id="btn-filter-offline" class="btn btn-sm btn-flat btn-primary" ><i class="fa fa-filter"></i> Filter Berdasarkan Tanggal Berkunjung</a></div>
+                                        <div class="col-md-9 mb-3">Laporan Pemesanan Tiket Offline mulai (tgl awal) sampai (tgl akhir):</div>
+                                    </div>
+                                    
                                     @php
                                     $pemasukan=0
                                     @endphp
                                     <div class="table-responsive">
-                                        <table class="table">
+                                        <table class="table table-bordered table-hover table-checkable" id="kt_datatable" style="margin-top: 13px !important">
                                             <thead>
                                                 <tr>
-                                                    <th class="pl-0 font-weight-bold text-muted text-uppercase">Order Id</th>
-                                                    <th class="text-right font-weight-bold text-muted text-uppercase">Jenis Tiket</th>
-                                                    <th class="text-right font-weight-bold text-muted text-uppercase">Tanggal Kunjungan</th>
-                                                    <th class="text-right font-weight-bold text-muted text-uppercase">Tanggal Pemesanan</th>
-                                                    <th class="text-right pr-0 font-weight-bold text-muted text-uppercase">Jumlah</th>
-                                                    <th class="text-right pr-0 font-weight-bold text-muted text-uppercase">Total</th>
+                                                    <th>Order Id</th>
+                                                    <th>Jenis Tiket</th>
+                                                    <th>Tanggal Kunjungan</th>
+                                                    <th>Tanggal Pemesanan</th>
+                                                    <th>Jumlah Tiket</th>
+                                                    <th>Total</th>
                                                 </tr>
                                             </thead>
                                             @foreach ( $pemesanan AS $e => $p )
@@ -58,17 +62,29 @@
                                             $pemasukan+=$p->total;
                                             @endphp
                                             <tbody>
-                                                <tr class="font-weight-boldest font-size-lg">
-                                                    <td class="pl-0 pt-7">{{$p->order_id}}</td>
-                                                    <td class="text-right pt-7">{{$p->jenis_tiket}}</td>
-                                                    <td class="text-right pt-7">{{date('d M Y', strtotime($p->tgl_kunjungan))}}</td>
-                                                    <td class="text-right pt-7">{{date('d M Y', strtotime($p->created_at))}}</td>
-                                                    <td class="text-danger pr-0 pt-7 text-right">{{$p->jumlah}}</td>
-                                                    <td class="text-danger pr-0 pt-7 text-right">{{number_format($p->total)}}</td>
-                                                </tr>
+                                                <tr>
+                                                    <td>{{ $p->order_id }}</td>
+                                                    <td>@php
 
+                                                        if ( $p->jenis_tiket == "weekday" ) {
+
+                                                        $color = "light-primary";
+                                                        $text = "weekday";
+                                                        }else{
+                                                        $color = "light-danger";
+                                                        $text = "weekend";
+                                                        }
+
+                                                        @endphp
+                                                        <span class="label label-{{ $color }} label-pill label-inline mr-2">{{ $text }}</span>
+                                                    </td>
+                                                    <td>{{date('d M Y', strtotime($p->tgl_kunjungan))}}</td>
+                                                    <td>{{date('d M Y', strtotime($p->created_at))}}</td>
+                                                    <td>{{ $p->jumlah }}</td>
+                                                    <td>Rp {{ number_format ($p->total, 0, ',','.') }}</td>
+                                                </tr>
+                                                @endforeach
                                             </tbody>
-                                            @endforeach
                                         </table>
                                     </div>
                                 </div>
@@ -83,7 +99,7 @@
                                         </div>
                                         <div class="d-flex flex-column text-md-right">
                                             <span class="font-size-lg font-weight-bolder mb-1">TOTAL PEMASUKAN</span>
-                                            <span class="font-size-h2 font-weight-boldest text-danger mb-1">{{number_format($pemasukan)}}</span>
+                                            <span class="font-size-h2 font-weight-boldest text-danger mb-1">Rp {{number_format($pemasukan, 0, ',', '.')}}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -95,7 +111,7 @@
                             <div class="row justify-content-center py-8 px-8 py-md-10 px-md-0">
                                 <div class="col-md-9">
                                     <div class="d-flex justify-content-between">
-                                        <a href="/cetakpdfoffline" class="btn btn-light-primary font-weight-bolder" aria-haspopup="true" aria-expanded="false">
+                                        <a href="{{url('cetakpdfoffline?dari='.$dari.'&sampai='.$sampai)}}" class="btn btn-light-primary font-weight-bolder" aria-haspopup="true" aria-expanded="false">
                                             <span class="svg-icon svg-icon-md">
                                                 <!--begin::Svg Icon | path:/metronic/theme/html/demo4/dist/assets/media/svg/icons/Design/PenAndRuller.svg-->
                                                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -122,7 +138,7 @@
     </div>
 </div>
 
-<div class="modal fade" id="modal-filter" tabindex="-1" role="dialog" aria-labelledby="modal-notification" aria-hidden="true">
+<div class="modal fade" id="modal-filter-offline-offline" tabindex="-1" role="dialog" aria-labelledby="modal-notification" aria-hidden="true">
     <div class="modal-dialog modal-default modal-dialog-centered modal-" role="document">
         <div class="modal-content bg-gradient-danger">
 
@@ -139,11 +155,11 @@
                     <div class="box-body">
                         <div class="form-group">
                             <label for="exampleInputEmail1">Mulai Tanggal</label>
-                            <input type="date" name="darioffline" class="form-control datepicker" id="exampleInputEmail1" placeholder="Dari tanggal" value="{{date('d-m-Y')}}" autocomplete="off">
+                            <input type="date" name="dari" class="form-control datepicker" id="exampleInputEmail1" placeholder="Dari tanggal" value="{{date('d-m-Y')}}" autocomplete="off">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Sampai Tanggal</label>
-                            <input type="date" name="sampaioffline" class="form-control datepicker" id="exampleInputPassword1" placeholder="Sampai tanggal" value="{{date('d-m-Y')}}" autocomplete="off">
+                            <input type="date" name="sampai" class="form-control datepicker" id="exampleInputPassword1" placeholder="Sampai tanggal" value="{{date('d-m-Y')}}" autocomplete="off">
                         </div>
                     </div>
                     <!-- /.box-body -->
@@ -160,10 +176,10 @@
 </div>
 
 <script type="text/javascript">
-    $('#btn-filter').click(function(e) {
+    $('#btn-filter-offline').click(function(e) {
         e.preventDefault(); //mencegah menjalankan proses apapun
 
-        $('#modal-filter').modal();
+        $('#modal-filter-offline').modal();
     })
 </script>
 @endsection
