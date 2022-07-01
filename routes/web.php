@@ -44,25 +44,19 @@ Route::get('/', [LandingPage::class, 'index']);
 //     return view('modules.laporanoffline.laporanoffline');
 // });
 
-//diskon
-Route::get('/diskon', [DiskonController::class, 'index'])->name('view-diskon');
-Route::get('/creatediskon', [DiskonController::class, 'create']);
-Route::post('/creatediskon', [DiskonController::class, 'process'])->name('add-diskon');
-Route::get('/editdiskon/{kd}', [DiskonController::class, 'view_edit']);
-Route::post('/editdiskon/{kd}', [DiskonController::class, 'update']);
-Route::get('/deletediskon/{kd}', [DiskonController::class, 'delete']);
+
 
 
 // module login
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::get('/login/proses', [LoginController::class, 'proses']);
-Route::post('/logout',[LoginController::class,'logout']);
+Route::post('/logout', [LoginController::class, 'logout']);
 
 
 Route::get('/forgotpass', [EmailController::class, 'forgotpass']);
 
 //email
-Route::get('/email',[EmailController::class,'index']);
+Route::get('/email', [EmailController::class, 'index']);
 
 //landing page
 // Route::get('/landingpage2', function () {
@@ -94,6 +88,14 @@ Route::get('/register/proses', [LoginController::class, 'prosesregis']);
 
 
 Route::group(['middleware' => 'usersession'], function () {
+
+    //diskon
+    Route::get('/diskon', [DiskonController::class, 'index'])->name('view-diskon');
+    Route::get('/creatediskon', [DiskonController::class, 'create']);
+    Route::post('/creatediskon', [DiskonController::class, 'process'])->name('add-diskon');
+    Route::get('/editdiskon/{kd}', [DiskonController::class, 'view_edit']);
+    Route::post('/editdiskon/{kd}', [DiskonController::class, 'update']);
+    Route::get('/deletediskon/{kd}', [DiskonController::class, 'delete']);
 
     //modules tiket (admin)
     Route::get('/tiket', [TicketController::class, 'index'])->name('view-ticket');
@@ -168,14 +170,14 @@ Route::group(['middleware' => 'usersession'], function () {
     Route::get('/riwayatadmin', [RiwayatController::class, 'riwayatadmin']);
     Route::get('/riwayatpetugas', [RiwayatController::class, 'riwayatpetugas']);
 
-    
+
     Route::get('/dashboard', [DashboardController::class, 'dashboard']);
 
 
 
 
 
-    
+
 
     // scanner
     // Route::get('/scanner', [DashboardController::class, 'scan']);
