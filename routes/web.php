@@ -131,7 +131,7 @@ Route::group(['middleware' => 'usersession'], function () {
     Route::get('/check-qr', [DashboardController::class, 'checkQR']);
 
     //modules transaksi pemesanan offline (petugas)
-    Route::get('petugas/order', [PemesananController::class, 'form_orderoffline']);
+    Route::get('petugas/order', [PemesananController::class, 'form_orderoffline'])->name('view-order');
     Route::get('petugas/payment', [PemesananController::class, 'form_orderoffline_pembayaran']);
 
     // proses pemesanan tiket online (pengunjung)
