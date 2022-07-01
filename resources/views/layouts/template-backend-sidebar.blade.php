@@ -56,6 +56,11 @@
 				</a>
 			</li>
 			<!--end::Item-->
+			<li class="nav-item mb-5" data-toggle="tooltip" data-placement="right" data-container="body" data-boundary="window" title="Data Diskon">
+				<a href="/diskon" class="nnav-link btn btn-icon btn-icon-white btn-lg" role="tab">
+					<i class="icon-xl fas fa-donate"></i>
+				</a>
+			</li>
 		</ul>
 		<!--end::Nav-->
 	</div>

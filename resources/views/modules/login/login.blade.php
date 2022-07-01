@@ -158,7 +158,7 @@ License: You must have a valid license purchased only from themeforest(the above
                             <!--begin::Form-->
                             <form class="form" novalidate="novalidate" id="kt_login_forgot_form">
                                 <div class="form-group py-3 border-bottom mb-10">
-                                    <input class="form-control h-auto border-0 px-0 placeholder-dark-75" type="email" placeholder="Email" name="email" autocomplete="off" />
+                                    <input class="form-control h-auto border-0 px-0 placeholder-dark-75" type="email" placeholder="Email" name="email-forgot" autocomplete="off" />
                                 </div>
                                 <div class="form-group d-flex flex-wrap flex-center">
                                     <button type="submit" id="kt_login_forgot_submit" class="btn btn-primary font-weight-bold px-9 py-4 my-3 mx-2">Atur Ulang</button>
@@ -430,8 +430,45 @@ License: You must have a valid license purchased only from themeforest(the above
 
 
 
+            });
+
+            $('#kt_login_forgot_submit').click(function(){
+                
+                var email = $('input[name="email-forgot"]').val();
+
+                data_input = {
+                    "email": email,
+                }
+
+                $.ajax({
+                    type: "GET",
+                    url: "{{ url('/forgotpass') }}",
+                    data: data_input,
+                    dataType: "json",
+                    success: function(response){
+                        if (response.status == "success"){
+                            swal.fire({
+                                    text: "Email Berhasil Dikirim",
+                                    icon: "success",
+                                    buttonsStyling: false,
+                                    confirmButtonText: "Ok, got it!",
+                                    customClass: {
+                                        confirmButton: "btn font-weight-bold btn-light-primary"
+                                    }
+                                }).then(function(tombol) {
+
+                                    // jika tombol 
+                                    if (tombol.isConfirmed) {
+
+                                        window.location.href = response.url;
+                                    }
+
+                                });
+                        }
+                    }
+                })
             })
-        })
+        });
     </script>
 </body>
 <!--end::Body-->

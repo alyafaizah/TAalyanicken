@@ -255,7 +255,7 @@
                 </div>
             </div>
 
-            <div class="row" id="scanner">
+            <div class="row" id="scanner" style="display: none">
                 <div class="col-md-4">
                     <div style="width: 100%" id="reader"></div>
 
@@ -263,21 +263,77 @@
                     <small>Hasil preview dari scanning dari pembeli</small>
 
 
-                    <audio id="accept"><source src="{{ asset('assets/wav/sukses.mp3') }}"  type="audio/mpeg"></audio>
-                    <audio id="decline"><source src="{{ asset('assets/wav/gagal.mp3') }}" type="audio/mpeg"></audio>
+                    <audio id="accept"><source src="{{ asset('assets/wav/accept.wav') }}"  type="audio/mpeg"></audio>
+                    <audio id="decline"><source src="{{ asset('assets/wav/decline.wav') }}" type="audio/mpeg"></audio>
 
 
 
                 </div>
                 <div class="col-md-8">
                     
-                    <div class="text-center">
+                    <div class="">
                         
-                        
-                        <div class="text-center" id="start-result">
+                        {{-- Awalan --}}
+                        <div class="text-center" id="start">
 
-                            <?php echo svg() ?>
+                            @php echo svg() @endphp
                             <h2 id="text-res">Hasil Verifikasi</h2>
+                            <p>Riwayat detail hasil verifikasi pendaftaran berdasarkan kode QR</p>
+                            <small>Scan QR pada kamera</small>
+                        </div>
+
+
+                        {{-- Valid --}}
+                        <div class="card card-body" id="accept-reporting" style="display: none">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <img src="https://static.vecteezy.com/system/resources/previews/004/697/021/non_2x/payment-accounting-circle-flat-icon-vector.jpg" alt="" srcset="" style="width: 120px;">
+                                </div>
+                                <div class="col-md-9">
+                                    <br>
+                                    <h2>Pembelian Tiket</h2>
+                                    <b>#<label id="kd_order"></label> &emsp;|&emsp; Pembelian pada <label id="tgl"></label></b>
+                                    
+                                </div>
+                            </div>
+
+                            <hr>
+
+                            <b>Pembeli</b>
+                            <h4 id="nama">NicAl</h4>
+
+                            <table class="table">
+                                <tr>
+                                    <td>
+                                        <small>Jenis Tiket</small>
+                                        <h4 id="jenis_tiket">Weekend</h4>
+                                    </td>
+                                    <td>
+                                        <small>Jumlah</small>
+                                        <h4 id="jumlah">10 item</h4>
+                                    </td>
+                                    <td>
+                                        <small>Harga</small>
+                                        <h4 id="harga">10.000</h4>
+                                    </td>
+                                </tr>
+                            </table>
+                            
+                            <hr>
+
+                            <small><b>TOTAL</b></small>
+                            <h3 id="total">Rp. 100000</h3>
+
+
+                        </div>
+
+
+
+                        {{-- Invalid --}}
+                        <div class="text-center" id="invalid" style="display: none">
+
+                            @php echo svg() @endphp
+                            <h2 id="text-res">QR Tidak ditemukan</h2>
                             <p>Riwayat detail hasil verifikasi pendaftaran berdasarkan kode QR</p>
                             <small>Scan QR pada kamera</small>
                         </div>
@@ -333,7 +389,7 @@
         
 
         // hidden
-        pageScanner.hide();
+        // starter.hide();
 
         $('#btnScan').click(function() {
 
@@ -364,7 +420,25 @@
                     if ( response.status == true ) {
 
                         soundAccept[0].play();
+
+                        $('#start').hide();
+                        $('#accept-reporting').show();
+                        $('#invalid').hide();
+
+
+                        $('#kd_tiket').text( response.data.kd_order );
+                        $('#tgl').text( response.data.tgl_kunjungan );
+                        $('#nama').text( response.data.nama_lengkap );
+                        $('#jenis_tiket').text( response.data.jenis_tiket );
+                        $('#jumlah').text( response.data.jumlah );
+                        $('#harga').text( response.data.harga );
+                        $('#total').text( response.data.total );
+
                     } else {
+
+                        $('#start').hide();
+                        $('#accept-reporting').hide();
+                        $('#invalid').fadeIn();
 
                         soundDecline[0].play();
                     }
