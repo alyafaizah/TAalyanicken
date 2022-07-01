@@ -21,8 +21,7 @@
                     <p>Silahkan Kembali untuk mengecek hasil transaksi</p>
 
                     <a href="" class="btn btn-secondary">Cetak Struk</a>
-                    <a href="{{ url('petugas/order') }}" class="btn btn-success">Transaksi Baru</a>
-
+                    <a href="{{route('view-order')}}" class="btn btn-success">Transaksi Baru</a>
                 </div>
             </div>
             <!--end::Card-->

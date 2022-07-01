@@ -167,7 +167,7 @@
 
                                 <div class="col-md-12">
                                     <div class="form-group text-right">
-                                        <button class="btn btn-danger">Batalkan</button>
+                                    <a href="{{route('view-order')}}" class="btn btn-danger">Batalkan</a>
                                         <button class="btn btn-success">Proses Pembayaran</button>
                                         <br>
                                         <small>Dengan menekan proses pembayaran, tiket telah terbayar lunas, dan struk pembelian akan muncul secara otomatis</small>
