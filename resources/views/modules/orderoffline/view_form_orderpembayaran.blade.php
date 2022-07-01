@@ -116,7 +116,7 @@
                                                 <td>{{ $input['nama_pengunjung'] }}</td>
                                                 <td>{{ $input['jenis_tiket'] }}</td>
                                                 <td>{{ $input['jumlah'] }} Item</td>
-                                                <td class="text-right"><?php echo number_format($harga, 2) ?></td>
+                                                <td class="text-right">Rp <?php echo number_format($harga, 0, ',','.') ?></td>
                                             </tr>
                                             <tr>
                                                 <td colspan="3" class="text-right"><b>TOTAL</b></td>
@@ -124,7 +124,7 @@
                                                 @php 
                                                     $total = $harga * $input['jumlah'];
                                                 @endphp
-                                                <td class="text-right"><b><?php echo number_format($total, 2) ?></b></td>
+                                                <td class="text-right"><b>Rp <?php echo number_format($total, 0, ',','.') ?></b></td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -205,12 +205,17 @@
 
             if ( sisa > 0 ) {
 
-                $('#kembalian').text("Rp " + sisa);
+                $('#kembalian').text(formatMoney(sisa));
             } else {
 
                 $('#kembalian').text("Rp 0");
             }
-            
+            function formatMoney(a){
+                return new Intl.NumberFormat("id-ID",{
+                    style: "currency",
+                    currency: "IDR",
+                }).format(a);
+            }
         });
     })
 </script>
