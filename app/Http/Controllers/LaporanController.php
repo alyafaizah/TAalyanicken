@@ -20,8 +20,8 @@ class LaporanController extends Controller
     public function laporanpengunjung()
     {
         $id_profile = session("id");
-        $data['identitas'] = Identitas::where('id_profile', $id_profile)->first();
-        $data['profile'] = Profile::where('id_profile', $id_profile)->first();
+        $data['identitas'] = Identitas::where('id_profile', $id_profile)->get();
+        $data['profile'] = Profile::where('id_profile', $id_profile)->get();
 
         // echo $id_profile;
         return view('modules.laporan.laporanpengunjung', $data);

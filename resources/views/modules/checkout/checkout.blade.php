@@ -184,6 +184,16 @@
                                                                                 </div>
                                                                             </div>
 
+                                                                            <div class="row">
+                                                                                <div class="col-md-6">
+                                                                                <div class="form-group">
+                                                                                        <label>Kode Diskon</label>
+                                                                                        <input type="text" class="form-control " value="" name="" placeholder="Masukkan kode diskon" />
+                                                                                        <span class="form-text text-muted">Masukkan kode diskon anda</span>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+
 
                                                                             <div class="row">
                                                                                 <div class="col-md-12">
