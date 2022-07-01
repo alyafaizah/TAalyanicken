@@ -16,9 +16,12 @@ class SendEmail extends Mailable
      *
      * @return void
      */
-    public function __construct()
+    protected $email;
+    public function __construct( $email )
     {
         //
+
+        $this->email = $email;
     }
 
     /**
@@ -28,6 +31,7 @@ class SendEmail extends Mailable
      */
     public function build()
     {
-        return $this->view('email');
+        $data['email'] = $this->email;
+        return $this->view('email', $data);
     }
 }

@@ -19,15 +19,17 @@ class EmailController extends Controller
     {
 
         $pesan = "success";
+        $email = $request->input('email-forgot');
         $url = url('/login');
 
+    
+        Mail::to( $email )->send(new SendEmail);
+        
+        
         echo json_encode([
 
             'status'    => $pesan,
             'url'       => $url
         ]);
-
-        Mail::to('octaviananicken@gmail.com')->send(new SendEmail);
-        return 'Berhasil Mengirim Email';
     }
 }

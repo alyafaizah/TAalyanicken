@@ -156,12 +156,12 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <p class="text-muted font-weight-bold">Masukkan email Anda untuk mengatur ulang kata sandi</p>
                             </div>
                             <!--begin::Form-->
-                            <form class="form" novalidate="novalidate" id="kt_login_forgot_form">
+                            <form class="form" novalidate="novalidate">
                                 <div class="form-group py-3 border-bottom mb-10">
                                     <input class="form-control h-auto border-0 px-0 placeholder-dark-75" type="email" placeholder="Email" name="email-forgot" autocomplete="off" />
                                 </div>
                                 <div class="form-group d-flex flex-wrap flex-center">
-                                    <button type="submit" id="kt_login_forgot_submit" class="btn btn-primary font-weight-bold px-9 py-4 my-3 mx-2">Atur Ulang</button>
+                                    <button type="submit" id="btn-submit-forgot" class="btn btn-primary font-weight-bold px-9 py-4 my-3 mx-2">Atur Ulang</button>
                                     <button id="kt_login_forgot_cancel" class="btn btn-light-primary font-weight-bold px-9 py-4 my-3 mx-2">Batal</button>
                                 </div>
                             </form>
@@ -432,13 +432,15 @@ License: You must have a valid license purchased only from themeforest(the above
 
             });
 
-            $('#kt_login_forgot_submit').click(function(){
+            $('#btn-submit-forgot').click(function( aksi ){
                 
                 var email = $('input[name="email-forgot"]').val();
 
+
                 data_input = {
-                    "email": email,
+                    "email-forgot": email,
                 }
+                
 
                 $.ajax({
                     type: "GET",
@@ -446,6 +448,7 @@ License: You must have a valid license purchased only from themeforest(the above
                     data: data_input,
                     dataType: "json",
                     success: function(response){
+                        
                         if (response.status == "success"){
                             swal.fire({
                                     text: "Email Berhasil Dikirim",
@@ -465,8 +468,13 @@ License: You must have a valid license purchased only from themeforest(the above
 
                                 });
                         }
+                    }, error: function( error ) {
+
+                        console.log( error );
                     }
                 })
+
+                aksi.preventDefault();
             })
         });
     </script>
