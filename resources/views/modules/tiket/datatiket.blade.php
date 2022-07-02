@@ -35,8 +35,8 @@
                             <!--begin: Datatable-->
                             <div class="datatable datatable-bordered datatable-head-custom datatable-default datatable-primary datatable-loaded" id="kt_datatable" style="">
                                 <table class="datatable-table" style="display: block;">
-                                    <thead class="datatable-head">
-                                        <tr class="datatable-row" align="center" style="left: 0px;">
+                                    <thead class="datatable-head" style="text-align: center;">
+                                        <tr class="datatable-row" >
                                             <th data-field="Kd_tiket" class="datatable-cell datatable-cell-sort">
                                                 <span style="width: 108px;">Kode Tiket</span>
                                             </th>
@@ -61,7 +61,7 @@
                                         </tr>
                                     </thead>
 
-                                    <tbody class="datatable-body" align="center" style="">
+                                    <tbody class="datatable-body" style="text-align: center;">
 
                                         @foreach ( $tiket AS $t )
                                         <tr data-row="0" class="datatable-row" style="left: 0px;">

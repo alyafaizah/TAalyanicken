@@ -37,20 +37,24 @@
                             <!-- begin: Invoice body-->
                             <div class="row justify-content-center py-8 px-8 py-md-10 px-md-0">
                                 <div class="col-md-9">
-                                    <a href="#" id="btn-filter" class="btn btn-sm btn-flat btn-primary" style="float:right"><i class="fa fa-filter"></i> Filter Berdasarkan Tanggal Berkunjung</a>
+                                    <div class="row">
+                                        <div class="col-md-9 mb-3" style="float:right"><a href="#" id="btn-filter-offline" class="btn btn-sm btn-flat btn-primary"><i class="fa fa-filter"></i> Filter Berdasarkan Tanggal Berkunjung</a></div>
+                                        <div class="col-md-9 mb-3">Laporan Pemesanan Tiket Online mulai (tgl awal) sampai (tgl akhir):</div>
+                                    </div>
+
                                     @php
                                     $pemasukan=0
                                     @endphp
                                     <div class="table-responsive">
-                                        <table class="table">
+                                        <table class="table table-bordered table-hover table-checkable" id="kt_datatable" style="margin-top: 13px !important">
                                             <thead>
                                                 <tr>
-                                                    <th class="pl-0 font-weight-bold text-muted text-uppercase">Order Id</th>
-                                                    <th class="text-right font-weight-bold text-muted text-uppercase">Jenis Tiket</th>
-                                                    <th class="text-right font-weight-bold text-muted text-uppercase">Tanggal Kunjungan</th>
-                                                    <th class="text-right font-weight-bold text-muted text-uppercase">Tanggal Pemesanan</th>
-                                                    <th class="text-right pr-0 font-weight-bold text-muted text-uppercase">Jumlah</th>
-                                                    <th class="text-right pr-0 font-weight-bold text-muted text-uppercase">Total</th>
+                                                    <th>Order Id</th>
+                                                    <th>Jenis Tiket</th>
+                                                    <th>Tanggal Kunjungan</th>
+                                                    <th>Tanggal Pemesanan</th>
+                                                    <th>Jumlah Tiket</th>
+                                                    <th>Total</th>
                                                 </tr>
                                             </thead>
                                             @foreach ( $pemesanan AS $e => $p )
@@ -58,17 +62,29 @@
                                             $pemasukan+=$p->total;
                                             @endphp
                                             <tbody>
-                                                <tr class="font-weight-boldest font-size-lg">
-                                                    <td class="pl-0 pt-7">{{$p->order_id}}</td>
-                                                    <td class="text-right pt-7">{{$p->jenis_tiket}}</td>
-                                                    <td class="text-right pt-7">{{date('d M Y', strtotime($p->tgl_kunjungan))}}</td>
-                                                    <td class="text-right pt-7">{{date('d M Y', strtotime($p->created_at))}}</td>
-                                                    <td class="text-danger pr-0 pt-7 text-right">{{$p->jumlah}}</td>
-                                                    <td class="text-danger pr-0 pt-7 text-right">{{number_format($p->total)}}</td>
-                                                </tr>
-                                            </tbody>
+                                                <tr>
+                                                    <td>{{ $p->order_id }}</td>
+                                                    <td>@php
 
-                                            @endforeach
+                                                        if ( $p->jenis_tiket == "weekday" ) {
+
+                                                        $color = "light-primary";
+                                                        $text = "weekday";
+                                                        }else{
+                                                        $color = "light-danger";
+                                                        $text = "weekend";
+                                                        }
+
+                                                        @endphp
+                                                        <span class="label label-{{ $color }} label-pill label-inline mr-2">{{ $text }}</span>
+                                                    </td>
+                                                    <td>{{date('d M Y', strtotime($p->tgl_kunjungan))}}</td>
+                                                    <td>{{date('d M Y', strtotime($p->created_at))}}</td>
+                                                    <td>{{ $p->jumlah }}</td>
+                                                    <td>Rp {{ number_format ($p->total, 0, ',','.') }}</td>
+                                                </tr>
+                                                @endforeach
+                                            </tbody>
                                         </table>
                                     </div>
                                 </div>

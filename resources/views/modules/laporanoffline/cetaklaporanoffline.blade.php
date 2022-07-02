@@ -12,6 +12,9 @@
 <!-- begin: Invoice body-->
 <div class="card-body">
     <!--begin: Datatable-->
+    @php
+    $pemasukan=0
+    @endphp
     <table border="1" cellpadding="10" style="margin-bottom: 100px;">
         <thead>
             <tr>
@@ -24,7 +27,11 @@
             </tr>
         </thead>
         @foreach ( $pemesanan AS $e => $p )
+        @php
+        $pemasukan+=$p->total;
+        @endphp
         <tbody>
+
             <tr class="font-weight-boldest font-size-lg">
                 <td class="pl-0 pt-7">{{$p->order_id}}</td>
                 <td class="text-right pt-7">{{$p->jenis_tiket}}</td>
@@ -42,41 +49,7 @@
 <!-- begin: Invoice footer-->
 <div class="d-flex flex-column text-md-right">
     <span class="font-size-lg font-weight-bolder mb-1">TOTAL PEMASUKAN</span>
-    <span class="font-size-h2 font-weight-boldest text-danger mb-1">Rp 5000000</span>
+    <span class="font-size-h2 font-weight-boldest text-danger mb-1">{{number_format($pemasukan)}}</span>
 </div>
-
-<div class="modal-body">
-
-                <form role="form" action="/laporanoffline/periode" method="get">
-                    <div class="box-body">
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Mulai Tanggal</label>
-                            <input type="date" name="darioffline" class="form-control datepicker" id="exampleInputEmail1" placeholder="Dari tanggal" value="{{date('d-m-Y')}}" autocomplete="off">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputPassword1">Sampai Tanggal</label>
-                            <input type="date" name="sampaioffline" class="form-control datepicker" id="exampleInputPassword1" placeholder="Sampai tanggal" value="{{date('d-m-Y')}}" autocomplete="off">
-                        </div>
-                    </div>
-                    <!-- /.box-body -->
-
-                    <div class="box-footer">
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </div>
-                </form>
-
-            </div>
-
-        </div>
-    </div>
-</div>
-
-<script type="text/javascript">
-    $('#btn-filter').click(function(e) {
-        e.preventDefault(); //mencegah menjalankan proses apapun
-
-        $('#modal-filter').modal();
-    })
-</script>
 <!-- end: Invoice footer-->
 <!-- end::Card-->

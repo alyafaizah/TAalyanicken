@@ -175,7 +175,8 @@
                                                                                     <!--begin::Input-->
                                                                                     <div class="form-group">
                                                                                         <label>Harga / Qty</label>
-                                                                                        <input type="text" class="form-control form-control-solid form-control-lg" name="harga" readonly />
+                                                                                        <input type="text" class="form-control form-control-solid form-control-lg" name="harga_ui" readonly />
+                                                                                        <input type="hidden" class="form-control form-control-solid form-control-lg" name="harga" readonly />
                                                                                         <span class="form-text text-muted">Harga
                                                                                             per
                                                                                             tiket </span>
@@ -221,11 +222,11 @@
                                                                             <div class="text-dark-50 line-height-lg mb-7">
                                                                                 @php
 
-                                                                                $kd_order = strtoupper(uniqid());
+                                                                                $order_id = strtoupper(uniqid());
                                                                                 @endphp
-                                                                                <input type="hidden" name="kd_order" value="{{ $kd_order }}">
+                                                                                <input type="hidden" name="order_id" value="{{ $order_id }}">
 
-                                                                                <div>#{{ $kd_order }}</div>
+                                                                                <div>#{{ $order_id }}</div>
                                                                             </div>
 
                                                                             <h6 class="font-weight-bolder">Tanggal
@@ -420,6 +421,7 @@
 
                         $('input[name="jenis_tiket"]').val(response[0]);
                         $('input[name="jenis_tiket_interface"]').val(response[0]);
+                        $('input[name="harga_ui"]').val(formatMoney(nominal));
                         $('input[name="harga"]').val(nominal);
                         $('#hari').text(response[3]);
                         $('#tanggal').text(response[2]);
@@ -438,7 +440,7 @@
                 let jumlah = $(this).val();
                 let total = jumlah * nominal;
 
-                $('#total').text(total);
+                $('#total').text(formatMoney(total));
 
 
                 // form 2 :: table
@@ -446,6 +448,13 @@
                 $('#table-subtotal').text(total);
 
             });
+
+            function formatMoney(a){
+                return new Intl.NumberFormat("id-ID",{
+                    style: "currency",
+                    currency: "IDR",
+                }).format(a);
+            }
         });
     </script>
 
