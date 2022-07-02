@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\Mail;
 use App\Mail\SendEmail;
 use App\Models\Profile;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
 
 class EmailController extends Controller
 {
@@ -17,6 +16,8 @@ class EmailController extends Controller
 
     public function forgotpass(Request $request)
     {
+
+        Mail::to('octaviananicken@gmail.com')->send(new SendEmail);
 
         $pesan = "success";
         $email = $request->input('email-forgot');

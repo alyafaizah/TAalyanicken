@@ -103,7 +103,7 @@
 
 
                                                                             {{-- Keterangan --}}
-                                                                            <div class="row">
+                                                                            <!-- <div class="row">
                                                                                 <div class="col-md-5 text-center">
                                                                                     @php echo weekday() @endphp
                                                                                     <h5>Weekday</h5>
@@ -123,7 +123,7 @@
                                                                                     <h2>{{ number_format($tiket->weekend, 2) }}
                                                                                     </h2>
                                                                                 </div>
-                                                                            </div>
+                                                                            </div> -->
 
                                                                             <hr>
 
@@ -184,6 +184,16 @@
                                                                                 </div>
                                                                             </div>
 
+                                                                            <div class="row">
+                                                                                <div class="col-md-6">
+                                                                                <div class="form-group">
+                                                                                        <label>Kode Diskon</label>
+                                                                                        <input type="text" class="form-control " value="" name="" placeholder="Masukkan kode diskon" />
+                                                                                        <span class="form-text text-muted">Masukkan kode diskon anda</span>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+
 
                                                                             <div class="row">
                                                                                 <div class="col-md-12">
@@ -222,6 +232,7 @@
                                                                                 Berkunjung:</h6>
                                                                             <div class="text-dark-50 line-height-lg">
                                                                                 <div id="hari">Jumat</div>
+                                                                                <div id="tanggal">blablabla</div>
                                                                             </div>
                                                                             <div class="separator separator-dashed my-5">
                                                                             </div>
@@ -266,7 +277,7 @@
                                                                             <!--end::Section-->
                                                                             <!--begin::Section-->
                                                                             <div class="text-dark-50 line-height-lg">
-                                                                                <div>Klik lanjutkan untuk melanjutkan
+                                                                                <div>Klik bayar untuk melanjutkan
                                                                                     pembayaran</div>
                                                                             </div>
                                                                             <!--end::Section-->
@@ -410,8 +421,8 @@
                         $('input[name="jenis_tiket"]').val(response[0]);
                         $('input[name="jenis_tiket_interface"]').val(response[0]);
                         $('input[name="harga"]').val(nominal);
-                        $('#hari').text(response[2]);
-
+                        $('#hari').text(response[3]);
+                        $('#tanggal').text(response[2]);
 
                         // form 2  :: table
                         $('#table-jenis').text(response[0]);

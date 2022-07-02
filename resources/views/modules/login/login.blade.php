@@ -427,16 +427,10 @@ License: You must have a valid license purchased only from themeforest(the above
                 } else if (password < 8) {
                     $('#caption-password-regis').html("<small class='text-danger'>Kata sandi minimal 8 karakter</small>").hide().show(500);
                 }
-
-
-
             });
 
             $('#btn-submit-forgot').click(function( aksi ){
-                
-                var email = $('input[name="email-forgot"]').val();
-
-
+            
                 data_input = {
                     "email-forgot": email,
                 }

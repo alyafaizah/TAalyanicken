@@ -120,7 +120,6 @@
                             <!--begin::Nav-->
                             <ul class="menu-nav">
                                 <li class="menu-item" aria-haspopup="true">
-                                    <a href="/checkout" class="menu-link ">
                                         <a href="/checkout" class="menu-link  ">
                                             <span class="menu-text">Pemesanan</span>
                                         </a>
@@ -133,7 +132,6 @@
                                     </a>
                                 </li>
                                 <li class="menu-item" garia-haspopup="true">
-                                    <a href="/riwayattransaksi" class="menu-link">
                                         <a href="/riwayattransaksi" class="menu-link ">
                                             <span class="menu-text">Riwayat Transaksi</span>
                                         </a>

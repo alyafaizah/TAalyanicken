@@ -94,7 +94,7 @@
                                         </div>
                                         <div class="d-flex flex-column text-md-right">
                                             <span class="font-size-lg font-weight-bolder mb-1">TOTAL PEMASUKAN</span>
-                                            <span class="font-size-h2 font-weight-boldest text-danger mb-1">{{number_format($p->pemasukan)}}</span>
+                                            <span class="font-size-h2 font-weight-boldest text-danger mb-1">{{number_format($pemasukan)}}</span>
                                         </div>
                                     </div>
                                 </div>
