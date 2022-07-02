@@ -38,8 +38,19 @@
                             <div class="row justify-content-center py-8 px-8 py-md-10 px-md-0">
                                 <div class="col-md-9">
                                     <div class="row">
-                                        <div class="col-md-9 mb-3" style="float:right"><a href="#" id="btn-filter-offline" class="btn btn-sm btn-flat btn-primary"><i class="fa fa-filter"></i> Filter Berdasarkan Tanggal Berkunjung</a></div>
-                                        <div class="col-md-9 mb-3">Laporan Pemesanan Tiket Online mulai (tgl awal) sampai (tgl akhir):</div>
+                                        <div class="col-md-9 mb-3" style="float:right"><a href="#" id="btn-filter" class="btn btn-sm btn-flat btn-primary"><i class="fa fa-filter"></i> Filter Berdasarkan Tanggal Berkunjung</a></div>
+
+                                        @php
+                                            $start = "-";
+                                            $end = "-";
+
+                                            if ( $dari ) {
+
+                                                $start = date('d M Y', strtotime($dari));
+                                                $end = date('d M Y', strtotime($sampai));
+                                            }
+                                        @endphp
+                                        <div class="col-md-9 mb-3">Laporan Pemesanan Tiket Online mulai ({{ $start }}) sampai ({{ $end }}):</div>
                                     </div>
 
                                     @php

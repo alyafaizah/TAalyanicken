@@ -319,7 +319,7 @@
                         <div class="text-center" id="invalid" style="display: none">
 
                             @php echo svg() @endphp
-                            <h2 id="text-res">QR Tidak ditemukan</h2>
+                            <h2 id="text-res-failed">QR Tidak ditemukan</h2>
                             <p>Riwayat detail hasil verifikasi pendaftaran berdasarkan kode QR</p>
                             <small>Scan QR pada kamera</small>
                         </div>
@@ -427,7 +427,11 @@
                         $('#invalid').fadeIn();
 
                         soundDecline[0].play();
+
+                        $('#text-res-failed').text(response.pesan);
                     }
+
+                    console.log( response );
                 }
             })
         }
