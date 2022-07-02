@@ -54,9 +54,9 @@ Route::post('/logout', [LoginController::class, 'logout']);
 
 
 Route::get('/forgotpass', [EmailController::class, 'forgotpass']);
-Route::get('/aturulangpassword', function(){
-    return view('modules.aturulangpassword');
-});
+// Route::get('/aturulangpassword', function(){
+//     return view('modules.aturulangpassword');
+// });
 
 //email
 Route::get('/email', [EmailController::class, 'index']);
