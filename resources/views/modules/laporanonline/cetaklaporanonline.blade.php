@@ -12,6 +12,9 @@
 <!-- begin: Invoice body-->
 <div class="card-body">
     <!--begin: Datatable-->
+    @php
+    $pemasukan=0
+    @endphp
     <table border="1" cellpadding="10" style="margin-bottom: 100px;">
         <thead>
             <tr>
@@ -24,6 +27,9 @@
             </tr>
         </thead>
         @foreach ( $pemesanan AS $e => $p )
+        @php
+        $pemasukan+=$p->total;
+        @endphp
         <tbody>
 
             <tr class="font-weight-boldest font-size-lg">
@@ -43,7 +49,7 @@
 <!-- begin: Invoice footer-->
 <div class="d-flex flex-column text-md-right">
     <span class="font-size-lg font-weight-bolder mb-1">TOTAL PEMASUKAN</span>
-    <span class="font-size-h2 font-weight-boldest text-danger mb-1">Rp 5000000</span>
+    <span class="font-size-h2 font-weight-boldest text-danger mb-1">{{number_format($pemasukan)}}</span>
 </div>
 <!-- end: Invoice footer-->
 <!-- end::Card-->

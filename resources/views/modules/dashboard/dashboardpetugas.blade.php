@@ -72,14 +72,7 @@
                                 <span class="text-muted mt-3 font-weight-bold font-size-sm">Transaksi yang
                                     terekam</span>
                             </h3>
-                            <div class="card-toolbar">
-                                <ul class="nav nav-pills nav-pills-sm nav-dark-75">
-                                    <li class="nav-item">
-                                        <a class="nav-link py-2 px-4 active" data-toggle="tab"
-                                            href="#kt_tab_pane_2_3">Hari</a>
-                                    </li>
-                                </ul>
-                            </div>
+                            
                         </div>
                         <!--end::Header-->
                         <!--begin::Body-->
@@ -168,14 +161,7 @@
                                 <span class="text-muted mt-3 font-weight-bold font-size-sm">Nomimal uang yang di
                                     dapat</span>
                             </h3>
-                            <div class="card-toolbar">
-                                <ul class="nav nav-pills nav-pills-sm nav-dark-75">
-                                    <li class="nav-item">
-                                        <a class="nav-link py-2 px-4 active" data-toggle="tab"
-                                            href="#kt_tab_pane_3_3">Hari</a>
-                                    </li>
-                                </ul>
-                            </div>
+                            
                         </div>
                         <!--end::Header-->
                         <!--begin::Body-->
@@ -292,7 +278,7 @@
                                 <div class="col-md-9">
                                     <br>
                                     <h2>Pembelian Tiket</h2>
-                                    <b>#<label id="kd_order"></label> &emsp;|&emsp; Pembelian pada <label id="tgl"></label></b>
+                                    <b>#<label id="kd_tiket"></label> &emsp;|&emsp; Pembelian pada <label id="tgl"></label></b>
                                     
                                 </div>
                             </div>
@@ -447,11 +433,6 @@
         }
 
         // html5QrcodeScanner.render(onScanSuccess); 
-
-
-        
-
-
 
 
     });

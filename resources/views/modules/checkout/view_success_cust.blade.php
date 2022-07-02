@@ -1,7 +1,6 @@
-@extends('layouts.template-backend-sidebar-petugas')
+@extends('layouts.template-backend-navbar-cust')
 
-
-@section('main-content-petugas')
+@section('main-content-cust')
 <!--begin::Content-->
 <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
     <!--begin::Entry-->
@@ -21,7 +20,8 @@
                     <p>Silahkan Kembali untuk mengecek hasil transaksi</p>
 
                     <a href="" class="btn btn-secondary">Cetak Struk</a>
-                    <a href="{{route('view-order')}}" class="btn btn-success">Transaksi Baru</a>
+                    <a href="{{ url('petugas/order') }}" class="btn btn-success">Transaksi Baru</a>
+
                 </div>
             </div>
             <!--end::Card-->

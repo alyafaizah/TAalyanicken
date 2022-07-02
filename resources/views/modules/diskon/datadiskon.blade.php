@@ -37,13 +37,13 @@
                         </div>
                         <div class="card-body">
                             <!--begin: Datatable-->
-                            <table class="table table-bordered table-checkable" id="kt_datatable">
+                            <table class="table table-bordered table-hover table-checkable" id="kt_datatable" style="margin-top: 13px !important">
                                 <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th>Kode</th>
+                                        <th>Kode Diskon</th>
                                         <th>Nama</th>
-                                        <th>Nilai</th>
+                                        <th>Nilai (%)</th>
                                         <th>Foto</th>
                                         <th>Keterangan</th>
                                         <th>Tanggal Awal</th>
@@ -60,12 +60,28 @@
                                         <td>{{ $d->nama_diskon }}</td>
                                         <td>{{ $d->nilai_diskon }}</td>
                                         <td>
-                                            <img class="img-preview img-fluid mb-3 col-sm-5" src="{{{asset('storage/'. $d->image) }}}" alt="">
+                                            <img class="img-preview" style="width:200px;height:100px;" src="{{{asset('storage/'. $d->image) }}}" alt="">
                                         </td>
                                         <td>{{ $d->keterangan_diskon }}</td>
                                         <td>{{date('d M Y', strtotime($d->tgl_awal))}}</td>
                                         <td>{{date('d M Y', strtotime($d->tgl_akhir))}}</td>
-                                        <td>{{ $d->status }}</td>
+                                        <td>@php
+
+                                            if ( $d->status == "aktif" ) {
+                                            $dot = "primary";
+                                            $color = "primary";
+                                            $text = "aktif";
+                                            }
+                                            else{
+                                            $dot = "danger";
+                                            $color = "danger";
+                                            $text = "nonaktif";
+                                            }
+
+                                            @endphp
+                                            <span class="label label-{{ $dot }} label-dot mr-2"></span>
+                                            <span class="font-weight-bold text-{{ $color }}">{{ $text }}</span>
+                                        </td>
                                         <td data-field="Actions" data-autohide-disabled="false" aria-label="null" class="datatable-cell"><span style="overflow: visible; position: relative; width: 125px;">
                                                 <div class="dropdown dropdown-inline"></div>
                                                 <a href="editdiskon/{{ $d->id_diskon }}" class="btn btn-sm btn-clean btn-icon mr-2" title="Edit diskon">
@@ -82,7 +98,7 @@
                                                 </a>
 
 
-                                                <a href="deletediskon/{{ $d->id_diskon }}" data-target="#" class="btn btn-sm btn-clean btn-icon"  title="delete diskon">
+                                                <a href="deletediskon/{{ $d->id_diskon }}" data-target="#" class="btn btn-sm btn-clean btn-icon" title="delete diskon">
                                                     <span class="svg-icon svg-icon-md"> <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                                             <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                                                 <rect x="0" y="0" width="24" height="24"></rect>
@@ -94,6 +110,7 @@
                                                         </svg>
                                                     </span>
                                                 </a>
+                                        </td>
                                     </tr>
                                     @endforeach
                                 </tbody>

@@ -34,14 +34,6 @@
                                     <div class="col-lg-9 col-xl-8">
                                         <div class="row align-items-center">
                                             <div class="col-md-4 my-2 my-md-0">
-                                                <div class="input-icon">
-                                                    <input type="text" class="form-control form-control-solid" placeholder="Search..." id="kt_datatable_search_query" />
-                                                    <span>
-                                                        <i class="flaticon2-search-1 text-muted"></i>
-                                                    </span>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4 my-2 my-md-0">
                                                 <select class="form-control form-control-solid" id="kt_datatable_search_status">
                                                     <option value="">Jenis Transaksi</option>
                                                     <option value="1">Offline</option>
@@ -84,7 +76,7 @@
                                                         </div>
                                                     </div>
                                                 </span></td>
-                                            <td data-field="kd_order" aria-label="64616-103" class="datatable-cell"><span style="width: 114px;"></span></td>
+                                            <td data-field="kd_order" aria-label="64616-103" class="datatable-cell"><span style="width: 114px;">{{ $p->status }}</span></td>
                                             <td data-field="status" data-autohide-disabled="false" aria-label="1" class="datatable-cell"><span style="width: 114px;"><span class="font-weight-bold">{{ $p->jenis_pemesanan }}</span></span>
                                             </td>
                                             <td data-field="tgl_berkunjung" aria-label="64616-103" class="datatable-cell"><span style="width: 114px;">{{ $p->tgl_kunjungan }}</span>

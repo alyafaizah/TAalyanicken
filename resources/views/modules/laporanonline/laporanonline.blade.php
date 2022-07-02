@@ -17,7 +17,7 @@
                         <div class="card-body p-0">
                             <!-- begin: Invoice-->
                             <!-- begin: Invoice header-->
-                            <div class="row justify-content-center bgi-size-cover bgi-no-repeat py-8 px-8 px-md-0" style="background-image: url(assets/media/bg/bg-6.jpg);">
+                            <div class="row justify-content-center bgi-size-cover bgi-no-repeat py-8 px-8 px-md-0" style="background: linear-gradient(#000046, #6b5b95);">
                                 <div class="col-md-9">
                                     <div class="d-flex justify-content-between pb-10 pb-md-20 flex-column flex-md-row">
                                         <h2 class="display-4 text-white font-weight-boldest mb-10">LAPORAN PEMESANAN</h2>
@@ -30,38 +30,31 @@
                                         </div>
                                     </div>
                                     <div class="border-bottom opacity-20"></div>
-                                    
+
                                 </div>
                             </div>
                             <!-- end: Invoice header-->
                             <!-- begin: Invoice body-->
                             <div class="row justify-content-center py-8 px-8 py-md-10 px-md-0">
                                 <div class="col-md-9">
-                                    <form class="form-inline" method="get" action="/filterlaporanonline">
-                                        <div class="form-group mb-2">
-                                            <label class="mr-3" for="email">Tanggal Awal:</label>
-                                            <input type="date" class="form-control" name="tanggal_akhir" placeholder="Tanggal Akhir">
+                                    <div class="row">
+                                        <div class="col-md-9 mb-3" style="float:right"><a href="#" id="btn-filter-offline" class="btn btn-sm btn-flat btn-primary"><i class="fa fa-filter"></i> Filter Berdasarkan Tanggal Berkunjung</a></div>
+                                        <div class="col-md-9 mb-3">Laporan Pemesanan Tiket Online mulai (tgl awal) sampai (tgl akhir):</div>
+                                    </div>
 
-                                        </div>
-                                        <div class="form-group mx-sm-5 mb-2">
-                                            <label class="mr-3" for="email">Tanggal Akhir:</label>
-                                            <input type="date" class="form-control sm-3" name="tanggal_akhir" placeholder="Tanggal Akhir">
-                                        </div>
-                                        <button type="submit" class="btn btn-primary mb-2">filter</button>
-                                    </form>
                                     @php
                                     $pemasukan=0
                                     @endphp
                                     <div class="table-responsive">
-                                        <table class="table">
+                                        <table class="table table-bordered table-hover table-checkable" id="kt_datatable" style="margin-top: 13px !important">
                                             <thead>
                                                 <tr>
-                                                    <th class="pl-0 font-weight-bold text-muted text-uppercase">Order Id</th>
-                                                    <th class="text-right font-weight-bold text-muted text-uppercase">Jenis Tiket</th>
-                                                    <th class="text-right font-weight-bold text-muted text-uppercase">Tanggal Kunjungan</th>
-                                                    <th class="text-right font-weight-bold text-muted text-uppercase">Tanggal Pemesanan</th>
-                                                    <th class="text-right pr-0 font-weight-bold text-muted text-uppercase">Jumlah</th>
-                                                    <th class="text-right pr-0 font-weight-bold text-muted text-uppercase">Total</th>
+                                                    <th>Order Id</th>
+                                                    <th>Jenis Tiket</th>
+                                                    <th>Tanggal Kunjungan</th>
+                                                    <th>Tanggal Pemesanan</th>
+                                                    <th>Jumlah Tiket</th>
+                                                    <th>Total</th>
                                                 </tr>
                                             </thead>
                                             @foreach ( $pemesanan AS $e => $p )
@@ -69,17 +62,29 @@
                                             $pemasukan+=$p->total;
                                             @endphp
                                             <tbody>
-                                                <tr class="font-weight-boldest font-size-lg">
-                                                    <td class="pl-0 pt-7">{{$p->order_id}}</td>
-                                                    <td class="text-right pt-7">{{$p->jenis_tiket}}</td>
-                                                    <td class="text-right pt-7">{{date('d M Y', strtotime($p->tgl_kunjungan))}}</td>
-                                                    <td class="text-right pt-7">{{date('d M Y', strtotime($p->created_at))}}</td>
-                                                    <td class="text-danger pr-0 pt-7 text-right">{{$p->jumlah}}</td>
-                                                    <td class="text-danger pr-0 pt-7 text-right">{{number_format($p->total)}}</td>
-                                                </tr>
-                                            </tbody>
+                                                <tr>
+                                                    <td>{{ $p->order_id }}</td>
+                                                    <td>@php
 
-                                            @endforeach
+                                                        if ( $p->jenis_tiket == "weekday" ) {
+
+                                                        $color = "light-primary";
+                                                        $text = "weekday";
+                                                        }else{
+                                                        $color = "light-danger";
+                                                        $text = "weekend";
+                                                        }
+
+                                                        @endphp
+                                                        <span class="label label-{{ $color }} label-pill label-inline mr-2">{{ $text }}</span>
+                                                    </td>
+                                                    <td>{{date('d M Y', strtotime($p->tgl_kunjungan))}}</td>
+                                                    <td>{{date('d M Y', strtotime($p->created_at))}}</td>
+                                                    <td>{{ $p->jumlah }}</td>
+                                                    <td style="color:red;">Rp {{ number_format ($p->total, 0, ',','.') }}</td>
+                                                </tr>
+                                                @endforeach
+                                            </tbody>
                                         </table>
                                     </div>
                                 </div>
@@ -106,7 +111,7 @@
                             <div class="row justify-content-center py-8 px-8 py-md-10 px-md-0">
                                 <div class="col-md-9">
                                     <div class="d-flex justify-content-between">
-                                        <a href="/cetakpdfonline" class="btn btn-light-primary font-weight-bolder" aria-haspopup="true" aria-expanded="false">
+                                        <a href="{{url('cetakpdfonline?dari='.$dari.'&sampai='.$sampai)}}" class="btn btn-light-primary font-weight-bolder" aria-haspopup="true" aria-expanded="false">
                                             <span class="svg-icon svg-icon-md">
                                                 <!--begin::Svg Icon | path:/metronic/theme/html/demo4/dist/assets/media/svg/icons/Design/PenAndRuller.svg-->
                                                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -133,4 +138,48 @@
     </div>
 </div>
 
+<div class="modal fade" id="modal-filter" tabindex="-1" role="dialog" aria-labelledby="modal-notification" aria-hidden="true">
+    <div class="modal-dialog modal-default modal-dialog-centered modal-" role="document">
+        <div class="modal-content bg-gradient-danger">
+
+            <div class="modal-header">
+                <h6 class="modal-title" id="modal-title-notification">Filter Laporan Berdasarkan Tanggal Berkunjung</h6>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+
+                <form role="form" action="/laporanonline/periode" method="get">
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Mulai Tanggal</label>
+                            <input type="date" name="dari" class="form-control datepicker" id="exampleInputEmail1" placeholder="Dari tanggal" value="{{date('d-m-Y')}}" autocomplete="off">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Sampai Tanggal</label>
+                            <input type="date" name="sampai" class="form-control datepicker" id="exampleInputPassword1" placeholder="Sampai tanggal" value="{{date('d-m-Y')}}" autocomplete="off">
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $('#btn-filter').click(function(e) {
+        e.preventDefault(); //mencegah menjalankan proses apapun
+
+        $('#modal-filter').modal();
+    })
+</script>
 @endsection

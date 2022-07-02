@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\SendEmail;
+use App\Mail\SendMailMarkdown;
 use App\Models\Profile;
 use Illuminate\Support\Facades\DB;
 

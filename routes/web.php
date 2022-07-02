@@ -54,6 +54,10 @@ Route::post('/logout', [LoginController::class, 'logout']);
 
 
 Route::get('/forgotpass', [EmailController::class, 'forgotpass']);
+Route::get('/markdown', [EmailController::class, 'markdown']);
+Route::get('/aturulangpassword', function(){
+    return view('aturulangpassword');
+});
 
 //email
 Route::get('/email', [EmailController::class, 'index']);
@@ -113,10 +117,11 @@ Route::group(['middleware' => 'usersession'], function () {
     Route::get('/cetakpdfcust',  [LaporanController::class, 'cetakpdfcust']);
 
     Route::get('/laporanoffline',  [LaporanController::class, 'laporanoffline']);
+    Route::get('/laporanoffline/periode', [LaporanController::class, 'periodeoffline']);
     Route::get('/cetakpdfoffline',  [LaporanController::class, 'cetakpdflaporanoffline']);
 
     Route::get('/laporanonline',  [LaporanController::class, 'laporanonline']);
-    Route::get('/filterlaporanonline', [LaporanController::class, 'periode']);
+    Route::get('/laporanonline/periode', [LaporanController::class, 'periode']);
     Route::get('/cetakpdfonline',  [LaporanController::class, 'cetakpdflaporanonline']);
 
     Route::get('/download',  [ProfileController::class, 'savepdf']);
@@ -126,12 +131,12 @@ Route::group(['middleware' => 'usersession'], function () {
     Route::get('/check-qr', [DashboardController::class, 'checkQR']);
 
     //modules transaksi pemesanan offline (petugas)
-    Route::get('petugas/order', [PemesananController::class, 'form_orderoffline']);
+    Route::get('petugas/order', [PemesananController::class, 'form_orderoffline'])->name('view-order');
     Route::get('petugas/payment', [PemesananController::class, 'form_orderoffline_pembayaran']);
 
     // proses pemesanan tiket online (pengunjung)
     Route::post('proses-pemesanan', [PemesananController::class, 'proses_pemesanan']);
-    Route::get('transaction-success/{kd_order}', [PemesananController::class, 'pemesanan_berhasil']);
+    Route::get('transaction-success/{order_id}', [PemesananController::class, 'pemesanan_berhasil']);
 
     //modules data petugas (admin)
     Route::get('/petugas', [PetugasController::class, 'index'])->name('view-petugas');
@@ -155,6 +160,8 @@ Route::group(['middleware' => 'usersession'], function () {
     Route::get('/checkout', [CheckoutController::class, 'checkout']);
     Route::get('/request-date', [CheckoutController::class, 'request_date']);
     Route::get('/check-radeem-coupon', [CheckoutController::class, 'check_coupon']);
+    Route::get('checkout-success/{order_id}', [CheckoutController::class, 'pemesanan_berhasil']);
+
 
     Route::post('/pengunjung/proses-pemesanan', [CheckoutController::class, 'proses_pemesanan']);
 

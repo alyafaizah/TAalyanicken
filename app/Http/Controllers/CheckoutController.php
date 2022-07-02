@@ -130,7 +130,7 @@ class CheckoutController extends Controller
         $dt_pemesanan = array(
 
             
-            'kd_order'      => $request->input('kd_order'),
+            'order_id'      => $request->input('order_id'),
             'id_profile'    => session('id'),
             'tgl_kunjungan' => date('Y-m-d H:i:s', strtotime($request->input('tanggal'))),
             'jumlah'        => $request->input('jumlah'),
@@ -300,5 +300,7 @@ class CheckoutController extends Controller
             'pesan'     => $pesan,
             'data'      => $data
         ]);
+    public function pemesanan_berhasil(){
+        return view('modules.checkout.view_success_cust');
     }
 }
