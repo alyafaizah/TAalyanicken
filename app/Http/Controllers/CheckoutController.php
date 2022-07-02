@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Models\Diskon;
 use Illuminate\Http\Request;
 use App\Models\PemesananTiket;
 use App\Models\Ticket;
@@ -124,6 +125,7 @@ class CheckoutController extends Controller
     // proses pemesanan untuk pelanggan 
     public function proses_pemesanan( Request $request ) {
 
+        $kupon = $request->input('radeem');
         
         $dt_pemesanan = array(
 
@@ -137,12 +139,48 @@ class CheckoutController extends Controller
             'status'        => "diproses",
             'jenis_tiket'   => strtolower($request->input('jenis_tiket')),
             'jenis_pemesanan' => "online",
+            'coupon'    => $kupon
         );
 
-        // insert
-        DB::table('pemesanan')->insert($dt_pemesanan);
-        echo "Oke berhasil";
-        // return redirect('transaction-success/'. $dt_pemesanan['kd_order']);
+
+        if ( $kupon ) {
+
+            // cek apakah kode kupon tidak berubah
+            $cek_kupon = DB::table('diskon')->where('kode_diskon', $request->input('discount'));
+            if ( $cek_kupon->count() > 0 ) {
+
+
+                $id_diskon = $cek_kupon->first()->id_diskon;
+                // insert
+                $id_pemesanan = DB::table('pemesanan')->insertGetId($dt_pemesanan);
+
+                $data_history_diskon = array(
+
+                    'id_diskon'     => $id_diskon,
+                    'id_profile'    => session('id'),
+                    'id_pemesanan'  => $id_pemesanan
+                );
+
+                DB::table('diskon_history')->insert( $data_history_diskon );
+                return redirect('transaction-success/'. $dt_pemesanan['kd_order']);
+
+            } else {
+
+
+                echo "Kode diskon berubah, kode tidak valid";
+            }
+        } else {
+
+            // insert
+            DB::table('pemesanan')->insert($dt_pemesanan);
+            return redirect('transaction-success/'. $dt_pemesanan['kd_order']);
+        }
+
+        
+
+       
+        
+        // 
     }
 
     public function payment(Request $request)
@@ -196,5 +234,71 @@ class CheckoutController extends Controller
     //Qr-Code
     public function qrcode(){
         return view('modules.checkout.qr-code');
+    }
+
+
+
+    // check coopon
+    public function check_coupon( Request $request ) {
+
+        $id_profile = session('id');
+        $kupon = $request->input('kupon');
+
+
+        $cek = Diskon::where('kode_diskon', $kupon);
+
+        $status = false; 
+        $pesan = "";
+        $data = [];
+        
+        // kode valid ? 
+        if ( $cek->count() == 1 ){
+
+            // cek apakah diskon belum kadaluarsa ? 
+            $dt_diskon = $cek->first();
+
+            $now = strtotime("now");
+            $start = strtotime( $dt_diskon->tgl_awal );
+            $end = strtotime( $dt_diskon->tgl_akhir );
+
+
+            // cek
+            if ( ($start <= $now) && ($now <= $end) ) {
+
+                // masih berjalan
+                
+                // cek apakah user sudah pernah menggunakan diskon ?
+                $where = array(
+
+                    'id_profile'    => $id_profile,
+                    'id_diskon'     => $dt_diskon->id_diskon
+                ); 
+                $cek_user = DB::table('diskon_history')->where($where);
+
+                if ( $cek_user->count() == 0 ) {
+
+
+                    $data = $dt_diskon;
+                    $pesan = "Oke kode digunakan";
+                    $status = true;
+                } else {
+
+                    $pesan = "Kode sudah digunakan";
+                }
+
+            } else {
+
+                $pesan = "Kode diskon telah kadaluarsa";
+            }
+        } else {
+
+            $pesan = "Kode tidak ditemukan";
+        }
+
+        echo json_encode([
+            'status'    => $status,
+            'pesan'     => $pesan,
+            'data'      => $data
+        ]);
     }
 }

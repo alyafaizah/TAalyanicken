@@ -186,10 +186,22 @@
 
                                                                             <div class="row">
                                                                                 <div class="col-md-6">
-                                                                                <div class="form-group">
-                                                                                        <label>Kode Diskon</label>
-                                                                                        <input type="text" class="form-control " value="" name="" placeholder="Masukkan kode diskon" />
+                                                                                    <div class="form-group">
+                                                                                        <h4 id="pesan" style="display: none">HHolaaa</h4>
+                                                                                        <div class="input-group has-error">
+                                                                                            <input type="text"
+                                                                                                name="discount"
+                                                                                                class="form-control"
+                                                                                                placeholder="Kode Diskon..." />
+                                                                                            <div
+                                                                                                class="input-group-append">
+                                                                                                <button id="radeem-coupon"
+                                                                                                    class="btn btn-primary"
+                                                                                                    type="button">Gunakan Kode</button>
+                                                                                            </div>
+                                                                                        </div>
                                                                                         <span class="form-text text-muted">Masukkan kode diskon anda</span>
+                                                                                       
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
@@ -199,6 +211,7 @@
                                                                                 <div class="col-md-12">
                                                                                     <div class="form-group">
                                                                                         <small>Total Biaya</small>
+                                                                                        <input type="hidden" name="total">
                                                                                         <h2 id="total"></h2>
                                                                                     </div>
                                                                                 </div>
@@ -224,6 +237,7 @@
                                                                                 $kd_order = strtoupper(uniqid());
                                                                                 @endphp
                                                                                 <input type="hidden" name="kd_order" value="{{ $kd_order }}">
+                                                                                <input type="hidden" name="radeem">
 
                                                                                 <div>#{{ $kd_order }}</div>
                                                                             </div>
@@ -258,7 +272,7 @@
                                                                                         </thead>
                                                                                         <tbody>
                                                                                             <tr class="font-weight">
-                                                                                                <td id="table-jenis" class="border-0 pl-0 pt-7 d-flex align-items-center">
+                                                                                                <td id="table-jenis" class="border-0 pl-0 pt-7 align-middle">
                                                                                                     weekend
                                                                                                 </td>
                                                                                                 <td id="table-jumlah" class="text-right pt-7 align-middle">
@@ -291,7 +305,7 @@
                                                                                 <button type="button" class="btn btn-light-primary font-weight-bolder text-uppercase px-9 py-4" data-wizard-type="action-prev">Batal</button>
                                                                             </div>
                                                                             <div>
-                                                                                <button id="pay-button" type="submit" class="btn btn-success font-weight-bolder text-uppercase px-9 py-4" data-wizard-type="action-submit">Bayar</button>
+                                                                                <button type="submit" class="btn btn-success font-weight-bolder text-uppercase px-9 py-4" data-wizard-type="action-submit">Bayar</button>
                                                                                 <button type="button" class="btn btn-primary font-weight-bolder text-uppercase px-9 py-4" data-wizard-type="action-next">Lanjutkan</button>
                                                                             </div>
                                                                         </div>
@@ -439,11 +453,97 @@
                 let total = jumlah * nominal;
 
                 $('#total').text(total);
+                $('input[name="total"]').val(total);
 
 
                 // form 2 :: table
                 $('#table-jumlah').text(jumlah);
                 $('#table-subtotal').text(total);
+
+            });
+
+
+
+
+
+            // radeem coupon
+            $('#radeem-coupon').click(function() {
+
+                var input = $('input[name="discount"]').val();
+                var pesan = $('#pesan');
+
+                if ( input.length > 0 ) {
+
+                    if ( input.length > 5 ) {
+
+                        $.ajax({
+
+                            type : "GET",
+                            url : "{{ url('/check-radeem-coupon') }}",
+                            data : "kupon=" + input,
+                            dataType: "json",
+                            success: function( response ) {
+
+                                if ( response.status ) {
+
+                                
+
+                                    var total = $('input[name="total"]').val();
+                                    // diskon 
+                                    let nilai = response.data.nilai_diskon;
+                                    let potongan = total * (nilai / 100);
+
+                                    $('input[name="total"]').val(total - potongan);
+
+
+                                    // output
+                                    var html = `<small>${total} dengan potongan diskon ${nilai}%</small><br><br>
+                                        
+                                    <small style="font-size: 10px">Sehingga menjadi</small><h2>${(total - potongan)}</h2>`;
+                                    $('#total').html(html);
+
+
+                                    var html_potongan = `
+
+                                        <s>${total}</s> diskon ${nilai}% <br>
+                                        <b>${(total - potongan)}</b>
+                                    `;
+                                    $('#table-subtotal').html(html);
+
+
+
+                                    // apply discount
+                                    $('input[name="radeem"]').val( input );
+
+
+                                    
+                                } else {
+
+
+                                    pesan.text(response.pesan).hide().fadeIn(1000, function() {
+
+                                        $(this).fadeOut(1000);
+                                    });
+                                }
+                                // console.log( response );
+                            }
+                        })
+
+                    } else {
+
+                        pesan.text("Masukkan kode kupon yang valid").hide().fadeIn(1000, function() {
+
+                            $(this).fadeOut(1000);
+                        });
+                    }
+
+                } else {
+
+                    pesan.text("Masukkan kode anda").hide().fadeIn(1000, function() {
+
+                        $(this).fadeOut(1000);
+                    });
+                }
 
             });
         });
