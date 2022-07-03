@@ -55,9 +55,8 @@ Route::post('/logout', [LoginController::class, 'logout']);
 
 Route::get('/forgotpass', [EmailController::class, 'forgotpass']);
 Route::get('/markdown', [EmailController::class, 'markdown']);
-Route::get('/aturulangpassword', function(){
-    return view('aturulangpassword');
-});
+Route::get('/aturulangpassword', [ProfileController::class, 'view_ubahpassword']);
+Route::post('/updatenewpassword', [ProfileController::class, 'proses_ubahpassword']);
 
 //email
 Route::get('/email', [EmailController::class, 'index']);

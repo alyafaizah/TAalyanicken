@@ -7,8 +7,9 @@ use App\Models\Profile;
 use Illuminate\Http\Request;
 use Elibyy\TCPDF\Facades\TCPDF;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
-
+use Illuminate\Support\Facades\Validator;
 
 class ProfileController extends Controller
 {
@@ -60,6 +61,53 @@ class ProfileController extends Controller
             "title" => "Ubah Informasi Pribadi"
         ]);
     }
+
+
+
+    // ubah kata sandi
+    public function view_ubahpassword(Request $request)
+    {
+
+        $email = $request->email;
+        // cek email 
+        $cek = DB::table('profile')->where('email', '=', $email);
+        if ($cek->count() == 1) {
+
+            return view('aturulangpassword', compact('email'));
+        } else {
+
+            echo "Invalid Email " . $email;
+        }
+    }
+
+
+    public function proses_ubahpassword(Request $request)
+    {
+
+        $email = $request->input('email');
+
+        $validator = Validator::make($request->all(), [
+            'password'  => 'required|min:6|same:cpassword',
+            'cpassword' => 'required'
+        ]);
+
+        if ($validator->fails()) {
+
+            return redirect('aturulangpassword?email=' . $email)
+                ->withErrors($validator)
+                ->withInput();
+        } else {
+
+            $data = array(
+
+                'password'  => Hash::make($request->password)
+            );
+            
+            DB::table('profile')->where('email', '=', $email)->update( $data );
+            return redirect('login');
+        }
+    }
+
 
 
     function update(Request $request)
@@ -122,5 +170,4 @@ class ProfileController extends Controller
             echo "invalid kd " . $id_profile;
         }
     }
-
 }
