@@ -182,6 +182,9 @@ Route::group(['middleware' => 'usersession'], function () {
     Route::get('/dashboard', [DashboardController::class, 'dashboard']);
 
 
+    Route::get('dummy', [RiwayatController::class, 'payment']);
+
+
 
 
 

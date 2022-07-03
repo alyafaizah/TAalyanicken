@@ -108,7 +108,7 @@
                                         <hr>
 
                                         <b>TOTAL</b>
-                                        <h4>{{ number_format(100000, 0, ',','.') }}</h4>
+                                        <h4>{{ number_format($pemesanan->total, 0, ',','.') }}</h4>
 
                                         @php
                                             
@@ -141,10 +141,16 @@
                                         echo "<br>Lampirkan atau Tunjukan kode QR ini ke petugas";
                                     } else {
 
-                                        echo svg();
-                                        echo "<br>Harap selesaikan Pembayaran Anda";
-                                    }
+                                    echo svg();
+                                    echo "<br>Harap selesaikan Pembayaran Anda";
                                 @endphp
+                                    
+
+                                <button id="pay-button" class="btn btn-primary btn-sm">Tambahkan Pembayaran</button>
+                                <br><small>Klik untuk menyelesaikan pembayaran anda</small>
+                                        
+                                    
+                                @php } @endphp
                             </div>
 
                         </div>
@@ -191,6 +197,39 @@
 <!--end::Entry-->
 </div>
 <!--end::Content-->
+
+<script type="text/javascript" src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="SB-Mid-client-wKAF6jye0ktTBz4a"></script>
+
+<script>
+    $(function() {
+
+
+        $('#pay-button').click(function() {
+
+            window.snap.pay('{{$snap_token}}', {
+                onSuccess: function(result) {
+                    /* You may add your own implementation here */
+                    console.log(result);
+                    // send_response_to_form(result);
+                },
+                onPending: function(result) {
+                    /* You may add your own implementation here */
+                    console.log(result);
+                    // send_response_to_form(result);
+                },
+                onError: function(result) {
+                    /* You may add your own implementation here */
+                    console.log(result);
+                    // send_response_to_form(result);
+                },
+                onClose: function() {
+                    /* You may add your own implementation here */
+                    alert('you closed the popup without finishing the payment');
+                }
+            })
+        })
+    })
+</script>
 
 
 
