@@ -28,6 +28,7 @@ class EmailController extends Controller
         Mail::to( $email )->send(new SendEmail( $email ));
         
         
+        
         echo json_encode([
 
             'status'    => $pesan,
