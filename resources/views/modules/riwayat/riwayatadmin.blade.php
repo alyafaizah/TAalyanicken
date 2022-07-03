@@ -72,7 +72,7 @@
                                 <tbody>
                                     @foreach ($pemesanan as $p)
                                     <tr>
-                                        <td>{{ $p->order_id }}</td>
+                                        <td>{{ $p->kd_order }}</td>
                                         <td>@php
 
                                             if ( $p->status == "berhasil" ) {

@@ -19,8 +19,7 @@
                     <h1 style="position: relative; margin-top: 200px; margin-bottom: 75px">Transaksi Berhasil</h1>
                     <p>Silahkan Kembali untuk mengecek hasil transaksi</p>
 
-                    <a href="" class="btn btn-secondary">Cetak Struk</a>
-                    <a href="{{ url('petugas/order') }}" class="btn btn-success">Transaksi Baru</a>
+                    <a href="{{ url('/checkout') }}" class="btn btn-success">Transaksi Baru</a>
 
                 </div>
             </div>

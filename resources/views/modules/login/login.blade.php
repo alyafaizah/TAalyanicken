@@ -430,7 +430,9 @@ License: You must have a valid license purchased only from themeforest(the above
             });
 
             $('#btn-submit-forgot').click(function( aksi ){
-            
+                
+                var email = $('input[name="email-forgot"]').val();
+
                 data_input = {
                     "email-forgot": email,
                 }

@@ -14,7 +14,7 @@
 
         <div class="card">
             <div class="card-body">
-                {!! QrCode::size(300)->format('svg')->generate('nicken', '../public/assets/qrcodes/img-' .time() . '.svg'); !!}
+                {{ QrCode::size(300)->format('svg')->generate('alya', '../public/assets/qrcodes/img-' .time() . '.svg'); }}
             </div>
         </div>
 

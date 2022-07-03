@@ -32,6 +32,7 @@ class SendEmail extends Mailable
     public function build()
     {
         $data['email'] = $this->email;
-        return $this->view('email', $data);
+        // return $this->view('email', $data);
+        return $this->markdown('emails.markdown', $data);
     }
 }

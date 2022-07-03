@@ -130,7 +130,7 @@ class CheckoutController extends Controller
         $dt_pemesanan = array(
 
             
-            'order_id'      => $request->input('order_id'),
+            'kd_order'      => $request->input('kd_order'),
             'id_profile'    => session('id'),
             'tgl_kunjungan' => date('Y-m-d H:i:s', strtotime($request->input('tanggal'))),
             'jumlah'        => $request->input('jumlah'),
@@ -141,6 +141,9 @@ class CheckoutController extends Controller
             'jenis_pemesanan' => "online",
             'coupon'    => $kupon
         );
+
+        // generate new QR by kd_order
+        QrCode::size(300)->format('svg')->generate($dt_pemesanan['kd_order'], '../public/assets/qrcodes/' .$dt_pemesanan['kd_order']. '.svg');
 
 
         if ( $kupon ) {
@@ -162,7 +165,7 @@ class CheckoutController extends Controller
                 );
 
                 DB::table('diskon_history')->insert( $data_history_diskon );
-                return redirect('transaction-success/'. $dt_pemesanan['kd_order']);
+                return redirect('checkout-success/'. $dt_pemesanan['kd_order']);
 
             } else {
 
@@ -173,7 +176,7 @@ class CheckoutController extends Controller
 
             // insert
             DB::table('pemesanan')->insert($dt_pemesanan);
-            return redirect('transaction-success/'. $dt_pemesanan['kd_order']);
+            return redirect('checkout-success/'. $dt_pemesanan['kd_order']);
         }
 
         
@@ -300,6 +303,8 @@ class CheckoutController extends Controller
             'pesan'     => $pesan,
             'data'      => $data
         ]);
+
+    }
     public function pemesanan_berhasil(){
         return view('modules.checkout.view_success_cust');
     }

@@ -46,15 +46,26 @@ class RiwayatController extends Controller
         ]);
     }
 
-    public function riwayatById($order_id)
+    public function riwayatById($kd_order)
     {
-        $pemesanan = PemesananTiket::where('order_id', $order_id)->get();
-        $jenis_tiket = Ticket::all();
-        $pembayaran = Pembayaran::where('order_id', $order_id)->get();
+        $pemesanan = PemesananTiket::where('kd_order', $kd_order)->first();
+        $pembayaran = Pembayaran::where('kd_order', $kd_order)->get();
+
+        $status_kupon = $pemesanan->coupon;
+        $potongan = 0;
+
+        if ( !empty($status_kupon) ) {
+
+            // ambil data diskon
+            $diskon = DB::table('diskon')->where('kode_diskon', $status_kupon)->first();
+            $potongan = $diskon->nilai_diskon;
+        }
+
+
         $data = array(
-            'jenis_tiket' => $jenis_tiket,
             'pemesanan' => $pemesanan,
-            'pembayaran' => $pembayaran
+            'pembayaran' => $pembayaran,
+            'potongan'   => $potongan
         );
         return view('modules.riwayat.detailriwayat', $data);
     }

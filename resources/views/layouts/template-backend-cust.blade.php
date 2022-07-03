@@ -38,6 +38,12 @@ License: You must have a valid license purchased only from themeforest(the above
     <!--begin::Layout Themes(used by all pages)-->
     <!--end::Layout Themes-->
     <link rel="shortcut icon" href="{{ asset('/demo7/distpengunjung/assets/media/logos/favicon.ico') }}" />
+
+     <!--begin::Global Theme Bundle(used by all pages)-->
+     <script src="{{ asset('/demo7/distpengunjung/assets/plugins/global/plugins.bundle.js') }}"></script>
+     <script src="{{ asset('/demo7/distpengunjung/assets/plugins/custom/prismjs/prismjs.bundle.js') }}"></script>
+     <script src="{{ asset('/demo7/distpengunjung/assets/js/scripts.bundle.js') }}"></script>
+     <!--end::Global Theme Bundle-->
 </head>
 <!--end::Head-->
 
@@ -124,7 +130,7 @@ License: You must have a valid license purchased only from themeforest(the above
             <!--begin::Header-->
             <div class="d-flex align-items-center mt-5">
                 <div class="symbol symbol-100 mr-5">
-                    <div class="symbol-label" style="background-image:url('assets/media/users/300_21.jpg')"></div>
+                    <div class="symbol-label" style="background-image:url('https://i.pinimg.com/originals/7c/a2/52/7ca25224848822ec24b3c6c8351481cd.gif')"></div>
                     <i class="symbol-badge bg-success"></i>
                 </div>
                 <div class="d-flex flex-column">
@@ -297,11 +303,7 @@ License: You must have a valid license purchased only from themeforest(the above
         };
     </script>
     <!--end::Global Config-->
-    <!--begin::Global Theme Bundle(used by all pages)-->
-    <script src="{{ asset('/demo7/distpengunjung/assets/plugins/global/plugins.bundle.js') }}"></script>
-    <script src="{{ asset('/demo7/distpengunjung/assets/plugins/custom/prismjs/prismjs.bundle.js') }}"></script>
-    <script src="{{ asset('/demo7/distpengunjung/assets/js/scripts.bundle.js') }}"></script>
-    <!--end::Global Theme Bundle-->
+   
     <!--begin::Page Vendors(used by this page)-->
     <script src="{{ asset('/demo7/distpengunjung/assets/plugins/custom/fullcalendar/fullcalendar.bundle.js') }}"></script>
     <!--end::Page Vendors-->

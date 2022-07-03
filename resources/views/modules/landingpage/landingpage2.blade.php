@@ -70,7 +70,12 @@
             <div class="header-nav__content">
                 <h3>Navigasi</h3>
                 <ul class="header-nav__list">
-                    <li class="current"><a class="smoothscroll" href="#" title="home">Home</a></li>
+                    @if ( session('id') ) 
+                        <li class="current"><a class="" href="{{ url('/checkout') }}" title="home">Home</a></li>
+                    @else 
+                        <li class="current"><a class="" href="{{ url('/login') }}" title="login">Login</a></li>
+                    @endif
+                    
                     <li><a class="smoothscroll" href="#promo" title="promo">Promo</a></li>
                     <li><a class="smoothscroll" href="#about" title="about">Tentang Kansa</a></li>
                     <li><a class="smoothscroll" href="#fasilitas" title="fasilitas">Fasilitas Kansa</a></li>

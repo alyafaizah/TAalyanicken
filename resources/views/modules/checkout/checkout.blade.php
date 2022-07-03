@@ -235,12 +235,12 @@
                                                                             <div class="text-dark-50 line-height-lg mb-7">
                                                                                 @php
 
-                                                                                $order_id = strtoupper(uniqid());
+                                                                                $kd_order = strtoupper(uniqid());
                                                                                 @endphp
                                                                                 <input type="hidden" name="kd_order" value="{{ $kd_order }}">
                                                                                 <input type="hidden" name="radeem">
 
-                                                                                <div>#{{ $order_id }}</div>
+                                                                                <div>#{{ $kd_order }}</div>
                                                                             </div>
 
                                                                             <h6 class="font-weight-bolder">Tanggal
@@ -442,7 +442,7 @@
 
                         // form 2  :: table
                         $('#table-jenis').text(response[0]);
-                        $('#table-harga').text(response[1]);
+                        $('#table-harga').text(formatMoney(response[1]));
 
                     }
                 });
@@ -460,7 +460,7 @@
 
                 // form 2 :: table
                 $('#table-jumlah').text(jumlah);
-                $('#table-subtotal').text(total);
+                $('#table-subtotal').text(formatMoney(total));
 
             });
 
@@ -499,16 +499,16 @@
 
 
                                     // output
-                                    var html = `<small>${total} dengan potongan diskon ${nilai}%</small><br><br>
+                                    var html = `<small>${formatMoney(total)} dengan potongan diskon ${nilai}%</small><br><br>
                                         
-                                    <small style="font-size: 10px">Sehingga menjadi</small><h2>${(total - potongan)}</h2>`;
+                                    <small style="font-size: 10px">Sehingga menjadi</small><h2>${formatMoney(total - potongan)}</h2>`;
                                     $('#total').html(html);
 
 
                                     var html_potongan = `
 
-                                        <s>${total}</s> diskon ${nilai}% <br>
-                                        <b>${(total - potongan)}</b>
+                                        <s>${formatMoney(total)}</s> diskon ${nilai}% <br>
+                                        <b>${formatMoney(total - potongan)}</b>
                                     `;
                                     $('#table-subtotal').html(html);
 

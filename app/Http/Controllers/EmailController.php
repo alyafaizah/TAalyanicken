@@ -18,14 +18,14 @@ class EmailController extends Controller
     public function forgotpass(Request $request)
     {
 
-        Mail::to('octaviananicken@gmail.com')->send(new SendEmail);
+        // Mail::to('octaviananicken@gmail.com')->send(new SendEmail);
 
         $pesan = "success";
         $email = $request->input('email-forgot');
         $url = url('/login');
 
     
-        Mail::to( $email )->send(new SendEmail);
+        Mail::to( $email )->send(new SendEmail( $email ));
         
         
         echo json_encode([
