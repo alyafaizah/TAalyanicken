@@ -41,14 +41,14 @@
                                         <div class="col-md-9 mb-3" style="float:right"><a href="#" id="btn-filter" class="btn btn-sm btn-flat btn-primary"><i class="fa fa-filter"></i> Filter Berdasarkan Tanggal Berkunjung</a></div>
 
                                         @php
-                                            $start = "-";
-                                            $end = "-";
+                                        $start = "-";
+                                        $end = "-";
 
-                                            if ( $dari ) {
+                                        if ( $dari ) {
 
-                                                $start = date('d M Y', strtotime($dari));
-                                                $end = date('d M Y', strtotime($sampai));
-                                            }
+                                        $start = date('d M Y', strtotime($dari));
+                                        $end = date('d M Y', strtotime($sampai));
+                                        }
                                         @endphp
                                         <div class="col-md-9 mb-3">Laporan Pemesanan Tiket Online mulai ({{ $start }}) sampai ({{ $end }}):</div>
                                     </div>
@@ -60,7 +60,8 @@
                                         <table class="table table-bordered table-hover table-checkable" id="kt_datatable" style="margin-top: 13px !important">
                                             <thead>
                                                 <tr>
-                                                    <th>Order Id</th>
+                                                    <th>Nama Pengunjung</th>
+                                                    <th>Kode Order</th>
                                                     <th>Jenis Tiket</th>
                                                     <th>Tanggal Kunjungan</th>
                                                     <th>Tanggal Pemesanan</th>
@@ -74,8 +75,11 @@
                                             @endphp
                                             <tbody>
                                                 <tr>
-                                                    <td>{{ $p->order_id }}</td>
+                                                    <td>Nama Pengunjung</td>
+                                                    <td>{{ $p->kd_order }}</td>
                                                     <td>@php
+                                                        $color="";
+                                                        $text="";
 
                                                         if ( $p->jenis_tiket == "weekday" ) {
 
@@ -110,7 +114,7 @@
                                         </div>
                                         <div class="d-flex flex-column text-md-right">
                                             <span class="font-size-lg font-weight-bolder mb-1">TOTAL PEMASUKAN</span>
-                                            <span class="font-size-h2 font-weight-boldest text-danger mb-1">{{number_format($pemasukan)}}</span>
+                                            <span class="font-size-h2 font-weight-boldest text-danger mb-1">{{number_format($pemasukan, 0, ',','.')}}</span>
                                         </div>
                                     </div>
                                 </div>

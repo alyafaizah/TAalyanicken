@@ -51,39 +51,52 @@
                             <!--end: Search Form-->
                             <!--begin: Datatable-->
                             <div class="datatable datatable-bordered datatable-head-custom datatable-default datatable-primary datatable-loaded" id="kt_datatable">
-                                <table class="datatable-table" style="display: block;">
-                                    <thead class="datatable-head">
-                                        <tr class="datatable-row" style="left: 0px;">
-                                            <th class="datatable-cell datatable-toggle-detail datatable-cell-sort">
-                                                <span></span>
-                                            </th>
-                                            <th data-field="Product" class="datatable-cell datatable-cell-sort datatable-cell-sorted" data-sort="desc"><span style="width: 160px;">Kode Order</span></th>
-                                            <th data-field="OrderID" class="datatable-cell datatable-cell-sort"><span style="width: 114px;">Status Pembayaran</span></th>
-                                            <th data-field="tgl_kunjungan" data-autohide-disabled="false" class="datatable-cell datatable-cell-sort"><span style="width: 114px;">Tanggal Berkunjung</span></th>
-                                            <th data-field="Status" data-autohide-disabled="false" class="datatable-cell datatable-cell-sort"><span style="width: 114px;">Jenis Tiket</span></th>
-                                            <th data-field="tgl_kunjungan" data-autohide-disabled="false" class="datatable-cell datatable-cell-sort"><span style="width: 114px;">Jumlah Tiket</span></th>
-                                            <th data-field="tgl_kunjungan" data-autohide-disabled="false" class="datatable-cell datatable-cell-sort"><span style="width: 114px;">Total</span></th>
+                                <table class="table table-bordered table-hover table-checkable" id="kt_datatable" style="margin-top: 13px !important">
+                                    <thead>
+                                        <tr>
+                                            
+                                            <th>Kode Order</th>
+                                            <th>Status</th>
+                                            <th>Tanggal Kunjungan</th>
+                                            <th>Jumlah Tiket</th>
+                                            <th>Total</th>
                                         </tr>
                                     </thead>
-                                    <tbody class="datatable-body">
-                                        @foreach ($pemesanan as $p)
-                                        <tr data-row="0" class="datatable-row" style="left: 0px;">
-                                            <td class="datatable-cell datatable-toggle-detail"><a class="datatable-toggle-detail" href=""><i class="fa fa-caret-right"></i></a></td>
-                                            <td class="datatable-cell-sorted datatable-cell" data-field="Product" aria-label="null"><span style="width: 160px;">
-                                                    <div class="d-flex align-items-center">
-                                                        <div class="ml-4">
-                                                            <a href="#" class="text-dark-75 font-weight-bolder font-size-lg mb-0">{{ $p->kd_order }}</a>
-                                                        </div>
-                                                    </div>
-                                                </span></td>
-                                            <td data-field="kd_order" aria-label="64616-103" class="datatable-cell"><span style="width: 114px;">{{ $p->status }}</span></td>
-                                            <td data-field="status" data-autohide-disabled="false" aria-label="1" class="datatable-cell"><span style="width: 114px;"><span class="font-weight-bold">{{ $p->jenis_pemesanan }}</span></span>
+                                    @foreach ( $pemesanan AS $e => $p )
+                                    <tbody>
+                                        <tr>
+                                            <td>{{ $p->kd_order }}</td>
+                                            <td>@php
+
+                                                $color="";
+                                                $text="";
+
+                                                if ( $p->status == "diproses" ) {
+
+                                                $color = "warning";
+                                                $text="diproses";
+                                                } else if ( $p->status == "diterima" ) {
+
+                                                $color = "success";
+                                                $text="diterima";
+
+                                                } else if ( $p->status == "dibatalkan" ) {
+
+                                                $color = "danger";
+                                                $text="dibatalkan";
+
+                                                } else if ( $p->status == "berhasil" ) {
+
+                                                $color = "primary";
+                                                $text="berhasil";
+                                                }
+
+                                                @endphp
+                                                <span class="label label-light-{{ $color }} label-pill label-inline mr-2">{{ $text }}</span>
                                             </td>
-                                            <td data-field="tgl_berkunjung" aria-label="64616-103" class="datatable-cell"><span style="width: 114px;">{{ $p->tgl_kunjungan }}</span>
-                                            </td>
-                                            <td data-field="jumlah" aria-label="64616-103" class="datatable-cell"><span style="width: 114px;">{{ $p->jumlah }}</span></td>
-                                            <td data-field="tgl_berkunjung" aria-label="64616-103" class="datatable-cell"><span style="width: 114px;">{{ $p->total }}</span>
-                                            </td>
+                                            <td>{{date('d M Y', strtotime($p->tgl_kunjungan))}}</td>
+                                            <td>{{ $p->jumlah }}</td>
+                                            <td style="color:red;">Rp {{ number_format ($p->total, 0, ',','.') }}</td>
                                         </tr>
                                         @endforeach
                                     </tbody>

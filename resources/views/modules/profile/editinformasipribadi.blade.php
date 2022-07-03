@@ -20,17 +20,7 @@
 					<h5 class="text-dark font-weight-bold my-1 mr-5">Profile</h5>
 					<!--end::Page Title-->
 					<!--begin::Breadcrumb-->
-					<ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
-						<li class="breadcrumb-item text-muted">
-							<a href="" class="text-muted">Apps</a>
-						</li>
-						<li class="breadcrumb-item text-muted">
-							<a href="" class="text-muted">Profile</a>
-						</li>
-						<li class="breadcrumb-item text-muted">
-							<a href="" class="text-muted">Edit Informasi Pribadi</a>
-						</li>
-					</ul>
+					
 					<!--end::Breadcrumb-->
 				</div>
 				<!--end::Page Heading-->
@@ -54,8 +44,9 @@
 							<!--begin::User-->
 							<div class="d-flex align-items-center">
 								<div class="symbol symbol-60 symbol-xxl-100 mr-5 align-self-start align-self-xxl-center">
-									<div class="symbol-label" style="background-image:url('/demo7/distpengunjung/assets/media/users/300_21.jpg')"></div>
-									<i class="symbol-badge bg-success"></i>
+									<div class="symbol-label" style="max-height:350px;overflow:hidden;">
+										<img src="{{{asset('storage/'. $identitas->image) }}}" class="img-circle" style="width:150px;height:150px;" alt="" srcset="">
+									</div>
 								</div>
 								<div>
 									<a href="#" class="font-weight-bolder font-size-h5 text-dark-75 text-hover-primary">{{$identitas->nama_lengkap}}</a>

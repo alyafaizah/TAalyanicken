@@ -21,17 +21,7 @@
                     <h5 class="text-dark font-weight-bold my-1 mr-5">Profile</h5>
                     <!--end::Page Title-->
                     <!--begin::Breadcrumb-->
-                    <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
-                        <li class="breadcrumb-item text-muted">
-                            <a href="" class="text-muted">Apps</a>
-                        </li>
-                        <li class="breadcrumb-item text-muted">
-                            <a href="" class="text-muted">Profile</a>
-                        </li>
-                        <li class="breadcrumb-item text-muted">
-                            <a href="" class="text-muted">Dashboard</a>
-                        </li>
-                    </ul>
+                    
                     <!--end::Breadcrumb-->
                 </div>
                 <!--end::Page Heading-->

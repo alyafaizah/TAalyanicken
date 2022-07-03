@@ -59,7 +59,7 @@
                                         <table class="table table-bordered table-hover table-checkable" id="kt_datatable" style="margin-top: 13px !important">
                                             <thead>
                                                 <tr>
-                                                    <th>Order Id</th>
+                                                    <th>Kode Order</th>
                                                     <th>Jenis Tiket</th>
                                                     <th>Tanggal Kunjungan</th>
                                                     <th>Tanggal Pemesanan</th>
@@ -73,7 +73,7 @@
                                             @endphp
                                             <tbody>
                                                 <tr>
-                                                    <td>{{ $p->order_id }}</td>
+                                                    <td>{{ $p->kd_order }}</td>
                                                     <td>@php
 
                                                         if ( $p->jenis_tiket == "weekday" ) {

@@ -143,7 +143,7 @@
                         <!--pemesanan-->
 
                         <div class="col-md-5">
-                            <div class="card card-custom card-stretch" style="background-color: #4169E1; color: white">
+                            <div class="card card-custom card-stretch" style="background-color: #9fa9a3; color: white;">
                                 <div class="card-header">
                                     <div class="card-title">
                                         <h3 class="card-label">Form Pemesanan Tiket</h3>
@@ -155,18 +155,18 @@
                                             <label for="">Nama Pengunjung / Pemesan</label>
                                             <input type="text" name="nama_pengunjung" class="form-control"
                                                 placeholder="Masukkan nama pengunjung">
-                                            <small>Masukkan jumlah pemesanan tiket</small>
+                                            <medium>Masukkan nama Anda</medium>
                                         </div>
 
                                         <div class="form-group">
                                             <label for="">Jumlah Pemesanan</label>
                                             <input type="number" name="jumlah" class="form-control"
                                                 placeholder="Masukkan jumlah tiket yang dipesan">
-                                            <small>Masukkan jumlah pemesanan tiket</small>
+                                            <medium>Masukkan jumlah pemesanan tiket</medium>
                                         </div>
                                         {{-- Button Submit --}}
                                         <div class="form-group text-right">
-                                            <button class="btn btn-success">Lanjut Pembayaran</button>
+                                            <button class="btn btn-success" style="background-color: #484f4f;">Lanjut Pembayaran</button>
                                         </div>
                                     </form>
                                 </div>

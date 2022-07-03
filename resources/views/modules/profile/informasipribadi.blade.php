@@ -52,18 +52,18 @@
 						<!--begin::Body-->
 						<div class="card-body pt-4">
 							<!--begin::User-->
-                            <div class="d-flex align-items-center">
-                                <div class="symbol symbol-60 symbol-xxl-100 mr-5 align-self-start align-self-xxl-center">
-                                    <div class="symbol-label" style="max-height:350px;overflow:hidden;">
-                                        <img src="{{{asset('storage/'. $identitas->image) }}}" class="img-circle" style="width:150px;height:150px;" alt="" srcset="">
-                                    </div>
-                                </div>
+							<div class="d-flex align-items-center">
+								<div class="symbol symbol-60 symbol-xxl-100 mr-5 align-self-start align-self-xxl-center">
+									<div class="symbol-label" style="max-height:350px;overflow:hidden;">
+										<img src="{{{asset('storage/'. $identitas->image) }}}" class="img-circle" style="width:150px;height:150px;" alt="" srcset="">
+									</div>
+								</div>
 
-                            </div>
-                            <div class="mt-3">
-                                <a href="#" class="font-weight-bolder font-size-h5 text-dark-75 text-hover-primary">{{ $identitas->nama_lengkap }}</a>
-                            </div>
-                            <!--end::User-->
+							</div>
+							<div class="mt-3">
+								<a href="#" class="font-weight-bolder font-size-h5 text-dark-75 text-hover-primary">{{ $identitas->nama_lengkap }}</a>
+							</div>
+							<!--end::User-->
 							<!--begin::Contact-->
 							<!--begin::Contact-->
 							<div class="py-9">
@@ -169,110 +169,113 @@
 									<div class="col-lg-9 col-xl-6">
 										<div class="d-flex align-items-center">
 											<div class="symbol symbol-60 symbol-xxl-100 mr-5 align-self-start align-self-xxl-center">
-												<div class="" >
+												<div class="">
 													@if($identitas->image)
-													<img class="img-fluid mb-1 col-sm-4" src="{{{asset('storage/'. $identitas->image) }}}" >
+													<img class="img-fluid mb-1 col-sm-4" src="{{{asset('storage/'. $identitas->image) }}}">
 
 													@else
 													<div style="">
-														<img src="{{ asset('/demo7/distpengunjung/assets/media/users/blank.png') }}" alt="">
+
+														<img src="{{{asset('storage/'. $identitas->image) }}}" class="img-circle" style="width:150px;height:150px;" alt="" srcset="">
+
 													</div>
-													@endif
-
 												</div>
-												<span class="form-text text-muted">Jenis file yang diizinkan: png, jpg, jpeg.</span>
-											</div>
+												@endif
 
+											</div>
+											<span class="form-text text-muted">Jenis file yang diizinkan: png, jpg, jpeg.</span>
 										</div>
-									</div>
-								</div>
 
-
-								<div class="form-group row">
-									<label class="col-xl-3 col-lg-3 col-form-label">Nama Lengkap</label>
-									<div class="col-lg-9 col-xl-6">
-										<div class="form-control form-control-lg form-control-solid">
-											{{ $identitas->nama_lengkap }}
-										</div>
 									</div>
 								</div>
-								<div class="form-group row">
-									<label class="col-xl-3 col-lg-3 col-form-label">Email</label>
-									<div class="col-lg-9 col-xl-6">
-										<div class="input-group input-group-lg input-group-solid">
-											<div class="form-control form-control-lg form-control-solid">
-												{{ $profile->email }}
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="form-group row">
-									<label class="col-xl-3 col-lg-3 col-form-label">Nomor Telepon</label>
-									<div class="col-lg-9 col-xl-6">
-										<div class="input-group input-group-lg input-group-solid">
-											<div class="input-group-prepend">
-												<span class="input-group-text">
-													<i class="la la-phone"></i>
-												</span>
-											</div>
-											<div class="form-control form-control-lg form-control-solid">
-												{{ $identitas->telepon }}
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="form-group row">
-									<label class="col-xl-3 col-lg-3 col-form-label">Alamat</label>
-									<div class="col-lg-9 col-xl-6">
-										<div class="input-group input-group-lg input-group-solid">
-											<div class="form-control form-control-lg form-control-solid">
-												{{ $identitas->alamat }}
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="form-group row">
-									<label class="col-xl-3 col-lg-3 col-form-label">Tempat Lahir</label>
-									<div class="col-lg-9 col-xl-6">
-										<div class="input-group input-group-lg input-group-solid">
-											<div class="form-control form-control-lg form-control-solid">
-												{{ $identitas->tempat_lahir}}
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="form-group row">
-									<label class="col-xl-3 col-lg-3 col-form-label">Tanggal Lahir</label>
-									<div class="col-lg-9 col-xl-6">
-										<div class="input-group date input-group-lg input-group-solid">
-											<div class="input-group-append">
-												<span class="input-group-text">
-													<i class="la la-calendar-check-o"></i>
-												</span>
-											</div>
-											<div class="form-control form-control-lg form-control-solid">
-												{{date('d M Y', strtotime($identitas->tgl_lahir))}}
-											</div>
-										</div>
-										<span class="form-text text-muted">Kami tidak akan pernah membagikan informasi Anda kepada orang lain.</span>
-									</div>
-								</div>
-
 							</div>
-							<!--end::Body-->
-						</form>
-						<!--end::Form-->
 
+
+							<div class="form-group row">
+								<label class="col-xl-3 col-lg-3 col-form-label">Nama Lengkap</label>
+								<div class="col-lg-9 col-xl-6">
+									<div class="form-control form-control-lg form-control-solid">
+										{{ $identitas->nama_lengkap }}
+									</div>
+								</div>
+							</div>
+							<div class="form-group row">
+								<label class="col-xl-3 col-lg-3 col-form-label">Email</label>
+								<div class="col-lg-9 col-xl-6">
+									<div class="input-group input-group-lg input-group-solid">
+										<div class="form-control form-control-lg form-control-solid">
+											{{ $profile->email }}
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="form-group row">
+								<label class="col-xl-3 col-lg-3 col-form-label">Nomor Telepon</label>
+								<div class="col-lg-9 col-xl-6">
+									<div class="input-group input-group-lg input-group-solid">
+										<div class="input-group-prepend">
+											<span class="input-group-text">
+												<i class="la la-phone"></i>
+											</span>
+										</div>
+										<div class="form-control form-control-lg form-control-solid">
+											{{ $identitas->telepon }}
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="form-group row">
+								<label class="col-xl-3 col-lg-3 col-form-label">Alamat</label>
+								<div class="col-lg-9 col-xl-6">
+									<div class="input-group input-group-lg input-group-solid">
+										<div class="form-control form-control-lg form-control-solid">
+											{{ $identitas->alamat }}
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="form-group row">
+								<label class="col-xl-3 col-lg-3 col-form-label">Tempat Lahir</label>
+								<div class="col-lg-9 col-xl-6">
+									<div class="input-group input-group-lg input-group-solid">
+										<div class="form-control form-control-lg form-control-solid">
+											{{ $identitas->tempat_lahir}}
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="form-group row">
+								<label class="col-xl-3 col-lg-3 col-form-label">Tanggal Lahir</label>
+								<div class="col-lg-9 col-xl-6">
+									<div class="input-group date input-group-lg input-group-solid">
+										<div class="input-group-append">
+											<span class="input-group-text">
+												<i class="la la-calendar-check-o"></i>
+											</span>
+										</div>
+										<div class="form-control form-control-lg form-control-solid">
+											{{date('d M Y', strtotime($identitas->tgl_lahir))}}
+										</div>
+									</div>
+									<span class="form-text text-muted">Kami tidak akan pernah membagikan informasi Anda kepada orang lain.</span>
+								</div>
+							</div>
 
 					</div>
+					<!--end::Body-->
+					</form>
+					<!--end::Form-->
+
+
 				</div>
-				<!--end::Content-->
 			</div>
-			<!--end::Profile Personal Information-->
+			<!--end::Content-->
 		</div>
-		<!--end::Container-->
+		<!--end::Profile Personal Information-->
 	</div>
-	<!--end::Entry-->
+	<!--end::Container-->
+</div>
+<!--end::Entry-->
 </div>
 <!--end::Content-->
 

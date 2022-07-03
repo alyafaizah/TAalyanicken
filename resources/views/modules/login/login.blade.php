@@ -36,7 +36,7 @@ License: You must have a valid license purchased only from themeforest(the above
     <!--end::Global Theme Styles-->
     <!--begin::Layout Themes(used by all pages)-->
     <!--end::Layout Themes-->
-    <link rel="shortcut icon" href="{{ asset('/demo7/distpengunjung/assets/media/logos/favicon.ico') }}" />
+    <link rel="shortcut icon" href="" />
 </head>
 <!--end::Head-->
 <!--begin::Body-->
@@ -59,7 +59,7 @@ License: You must have a valid license purchased only from themeforest(the above
                     <div class="d-flex flex-column-fluid flex-column flex-center mt-5 mt-lg-0">
                         <a href="#" class="mb-15 text-center">
                             <!-- logo -->
-                            <!-- <img src="{{ asset('/demo7/distpengunjung/assets/media/logos/logo-letter-1.png') }}" class="max-h-75px" alt="" /> -->
+                            
                         </a>
                         <!--begin::Signin-->
                         <div class="login-form login-signin">

@@ -17,8 +17,8 @@ License: You must have a valid license purchased only from themeforest(the above
 <head>
     <base href="">
     <meta charset="utf-8" />
-    <title>Kandang Sapi </title>
-    <title>Kandang Sapi | </title>
+    <title>Wisata Kandang Sapi </title>
+    <title>Wisata Kandang Sapi | </title>
     <meta name="description" content="Bootstrap datepicker examples" />
     <meta name="description" content="Updates and statistics" />
     <meta name="description" content="Bootstrap datepicker examples" />
@@ -37,13 +37,13 @@ License: You must have a valid license purchased only from themeforest(the above
     <!--end::Global Theme Styles-->
     <!--begin::Layout Themes(used by all pages)-->
     <!--end::Layout Themes-->
-    <link rel="shortcut icon" href="{{ asset('/demo7/distpengunjung/assets/media/logos/favicon.ico') }}" />
+    <link rel="shortcut icon" href="/metronic/theme/html/demo4/dist/assets/media/logos/favicon.ico" />
 
-     <!--begin::Global Theme Bundle(used by all pages)-->
-     <script src="{{ asset('/demo7/distpengunjung/assets/plugins/global/plugins.bundle.js') }}"></script>
-     <script src="{{ asset('/demo7/distpengunjung/assets/plugins/custom/prismjs/prismjs.bundle.js') }}"></script>
-     <script src="{{ asset('/demo7/distpengunjung/assets/js/scripts.bundle.js') }}"></script>
-     <!--end::Global Theme Bundle-->
+    <!--begin::Global Theme Bundle(used by all pages)-->
+    <script src="{{ asset('/demo7/distpengunjung/assets/plugins/global/plugins.bundle.js') }}"></script>
+    <script src="{{ asset('/demo7/distpengunjung/assets/plugins/custom/prismjs/prismjs.bundle.js') }}"></script>
+    <script src="{{ asset('/demo7/distpengunjung/assets/js/scripts.bundle.js') }}"></script>
+    <!--end::Global Theme Bundle-->
 </head>
 <!--end::Head-->
 
@@ -55,7 +55,7 @@ License: You must have a valid license purchased only from themeforest(the above
     <div id="kt_header_mobile" class="header-mobile bg-primary header-mobile-fixed">
         <!--begin::Logo-->
         <a href="index.html">
-            <img alt="Logo" src="{{ asset('/demo7/distpengunjung/assets/media/logos/logo-letter-9.png') }}" class="max-h-30px" />
+            <img alt="Logo" src="" class="max-h-30px" />
         </a>
         <!--end::Logo-->
         <!--begin::Toolbar-->
@@ -97,17 +97,10 @@ License: You must have a valid license purchased only from themeforest(the above
                     <div class="container d-flex flex-column flex-md-row align-items-center justify-content-between">
                         <!--begin::Copyright-->
                         <div class="text-dark order-2 order-md-1">
-                            <span class="text-muted font-weight-bold mr-2">2021©</span>
-                            <a href="http://keenthemes.com/metronic" target="_blank" class="text-dark-75 text-hover-primary">Keenthemes</a>
+                            <span class="text-muted font-weight-bold mr-2">2022©</span>
+                            <a href="http://keenthemes.com/metronic" target="_blank" class="text-dark-75 text-hover-primary">Wisata Kandang Sapi</a>
                         </div>
                         <!--end::Copyright-->
-                        <!--begin::Nav-->
-                        <div class="nav nav-dark order-1 order-md-2">
-                            <a href="http://keenthemes.com/metronic" target="_blank" class="nav-link pr-3 pl-0">About</a>
-                            <a href="http://keenthemes.com/metronic" target="_blank" class="nav-link px-3">Team</a>
-                            <a href="http://keenthemes.com/metronic" target="_blank" class="nav-link pl-3 pr-0">Contact</a>
-                        </div>
-                        <!--end::Nav-->
                     </div>
                     <!--end::Container-->
                 </div>
@@ -130,7 +123,8 @@ License: You must have a valid license purchased only from themeforest(the above
             <!--begin::Header-->
             <div class="d-flex align-items-center mt-5">
                 <div class="symbol symbol-100 mr-5">
-                    <div class="symbol-label" style="background-image:url('https://i.pinimg.com/originals/7c/a2/52/7ca25224848822ec24b3c6c8351481cd.gif')"></div>
+                    <div class="symbol-label" style="background-image:url('https://i.pinimg.com/originals/7c/a2/52/7ca25224848822ec24b3c6c8351481cd.gif')">
+                    </div>
                     <i class="symbol-badge bg-success"></i>
                 </div>
                 <div class="d-flex flex-column">
@@ -182,7 +176,7 @@ License: You must have a valid license purchased only from themeforest(the above
                 <!--end:Item-->
 
                 <!--begin::Item-->
-                <a href="/riwayatpembayaran" class="navi-item">
+                <a href="/riwayattransaksi" class="navi-item">
                     <div class="navi-link">
                         <div class="symbol symbol-40 bg-light mr-3">
                             <div class="symbol-label">
@@ -303,7 +297,7 @@ License: You must have a valid license purchased only from themeforest(the above
         };
     </script>
     <!--end::Global Config-->
-   
+
     <!--begin::Page Vendors(used by this page)-->
     <script src="{{ asset('/demo7/distpengunjung/assets/plugins/custom/fullcalendar/fullcalendar.bundle.js') }}"></script>
     <!--end::Page Vendors-->

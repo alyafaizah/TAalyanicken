@@ -46,14 +46,6 @@
                                     <div class="col-lg-9 col-xl-8">
                                         <div class="row align-items-center">
                                             <div class="col-md-4 my-2 my-md-0">
-                                                <div class="input-icon">
-                                                    <input type="text" class="form-control form-control-solid" placeholder="Search..." id="kt_datatable_search_query" />
-                                                    <span>
-                                                        <i class="flaticon2-search-1 text-muted"></i>
-                                                    </span>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4 my-2 my-md-0">
                                                 <select class="form-control form-control-solid" id="kt_datatable_search_status">
                                                     <option value="">Status</option>
                                                     <option value="1">Diproses</option>
@@ -72,33 +64,55 @@
                             <!--end: Search Form-->
                             <!--begin: Datatable-->
                             <div class="datatable datatable-bordered datatable-head-custom datatable-default datatable-primary datatable-loaded" id="kt_datatable">
-                                <table class="datatable-table" style="display: block;">
-                                    <thead class="datatable-head">
-                                        <tr class="datatable-row" style="left: 0px;">
-                                            <th class="datatable-cell datatable-toggle-detail datatable-cell-sort">
-                                                <span></span>
-                                            </th>
-                                            <th data-field="OrderID" class="datatable-cell datatable-cell-sort"><span style="width: 114px;">Kode Order</span></th>
-                                            <th data-field="Status" data-autohide-disabled="false" class="datatable-cell datatable-cell-sort"><span style="width: 114px;">Status</span></th>
-                                            <th data-field="tgl_kunjungan" data-autohide-disabled="false" class="datatable-cell datatable-cell-sort"><span style="width: 114px;">Tanggal Berkunjung</span></th>
-                                            <th data-field="tgl_kunjungan" data-autohide-disabled="false" class="datatable-cell datatable-cell-sort"><span style="width: 114px;">Jumlah Tiket</span></th>
-                                            <th data-field="tgl_kunjungan" data-autohide-disabled="false" class="datatable-cell datatable-cell-sort"><span style="width: 114px;">Total</span></th>
+                                <table class="table table-bordered table-hover table-checkable" id="kt_datatable" style="margin-top: 13px !important">
+                                    <thead>
+                                        <tr>
+                                            <th><span></span></th>
+                                            <th>Kode Order</th>
+                                            <th>Status</th>
+                                            <th>Tanggal Kunjungan</th>
+                                            <th>Jumlah Tiket</th>
+                                            <th>Total</th>
                                         </tr>
                                     </thead>
-                                    <tbody class="datatable-body">
-                                        @foreach ($pemesanan as $p)
+                                    @foreach ( $pemesanan AS $e => $p )
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <a class="datatable-toggle-detail" href="/detailriwayat/{{ $p->kd_order }}"><i class="fa fa-caret-right"></i></a>
+                                            </td>
+                                            <td>{{ $p->kd_order }}</td>
+                                            <td>@php
 
-                                        <tr data-row="0" class="datatable-row" style="left: 0px;">
-                                            <td class="datatable-cell datatable-toggle-detail"><a class="datatable-toggle-detail" href="/detailriwayat/{{ $p->kd_order }}"><i class="fa fa-caret-right"></i></a></td>
-                                            
-                                            <td data-field="kd_order" aria-label="64616-103" class="datatable-cell"><span style="width: 114px;">{{ $p->kd_order }}</span></td>
-                                            <td data-field="status" data-autohide-disabled="false" aria-label="1" class="datatable-cell"><span style="width: 114px;"><span class="label label-danger label-dot mr-2"></span><span class="font-weight-bold text-danger">{{ $p->status }}</span></span>
+                                                $color="";
+                                                $text="";
+
+                                                if ( $p->status == "diproses" ) {
+
+                                                $color = "warning";
+                                                $text="diproses";
+                                                } else if ( $p->status == "diterima" ) {
+
+                                                $color = "success";
+                                                $text="diterima";
+
+                                                } else if ( $p->status == "dibatalkan" ) {
+
+                                                $color = "danger";
+                                                $text="dibatalkan";
+
+                                                } else if ( $p->status == "berhasil" ) {
+
+                                                $color = "primary";
+                                                $text="berhasil";
+                                                }
+
+                                                @endphp
+                                                <span class="label label-light-{{ $color }} label-pill label-inline mr-2">{{ $text }}</span>
                                             </td>
-                                            <td data-field="tgl_berkunjung" aria-label="64616-103" class="datatable-cell"><span style="width: 114px;">{{ $p->tgl_kunjungan }}</span>
-                                            </td>
-                                            <td data-field="jumlah" aria-label="64616-103" class="datatable-cell"><span style="width: 114px;">{{ $p->jumlah }}</span></td>
-                                            <td data-field="tgl_berkunjung" aria-label="64616-103" class="datatable-cell"><span style="width: 114px;">{{ $p->jumlah * $p->harga }}</span>
-                                            </td>
+                                            <td>{{date('d M Y', strtotime($p->tgl_kunjungan))}}</td>
+                                            <td>{{ $p->jumlah }}</td>
+                                            <td style="color:red;">Rp {{ number_format ($p->total, 0, ',','.') }}</td>
                                         </tr>
                                         @endforeach
                                     </tbody>
