@@ -59,11 +59,33 @@ class RiwayatController extends Controller
         $status_kupon = $pemesanan->coupon;
         $potongan = 0;
 
+
+        $item_details = array([
+            'id' => $pemesanan->id_pemesanan,
+            'price' => $pemesanan->harga,
+            'quantity' => $pemesanan->jumlah,
+            'name' => "Tiket ". $pemesanan->jenis_tiket
+        ]);
+
         if ( !empty($status_kupon) ) {
 
             // ambil data diskon
             $diskon = DB::table('diskon')->where('kode_diskon', $status_kupon)->first();
-            $potongan = $diskon->nilai_diskon;
+            // $potongan = $diskon->nilai_diskon;
+
+            $total = $pemesanan->total;
+            $diskon = $pemesanan->total * ($diskon->nilai_diskon / 100);
+
+            $total_keseluruhan = $total - $diskon;
+
+
+            array_push( $item_details, array(
+
+                'id'    => "D1",
+                'price' => -($diskon),
+                'quantity'  => 1,
+                'name'      => "Voucher ". $pemesanan->coupon
+            ) );
         }
 
 
@@ -83,30 +105,19 @@ class RiwayatController extends Controller
         
 
 
-        $item_details = array([
-            'id' => $pemesanan->id_pemesanan,
-            'price' => $pemesanan->harga,
-            'quantity' => $pemesanan->jumlah,
-            'name' => "Tiket ". $pemesanan->jenis_tiket
-        ]);
+        
 
 
         $total_keseluruhan = $pemesanan->total;
-        if ( $diskon->nilai_diskon > 0 ) {
+        // if ( $diskon->nilai_diskon > 0 ) {
 
-            $total = $pemesanan->total;
-            $diskon = $pemesanan->total * ($diskon->nilai_diskon / 100);
+        //     $total = $pemesanan->total;
+        //     $diskon = $pemesanan->total * ($diskon->nilai_diskon / 100);
 
-            $total_keseluruhan = $total - $diskon;
+        //     $total_keseluruhan = $total - $diskon;
 
-            array_push( $item_details, array(
-
-                'id'    => "D1",
-                'price' => -($diskon),
-                'quantity'  => 1,
-                'name'      => "Voucher ". $pemesanan->coupon
-            ) );
-        }
+            
+        // }
 
 
 
@@ -114,7 +125,7 @@ class RiwayatController extends Controller
 
         $params = array(
             'transaction_details' => array(
-                'order_id' => "3",
+                'order_id' => strtoupper(uniqid()), // sementara
                 'gross_amount' => $total_keseluruhan,
             ),
             'item_details' => $item_details,

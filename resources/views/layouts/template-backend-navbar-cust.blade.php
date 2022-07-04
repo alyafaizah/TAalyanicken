@@ -124,13 +124,6 @@
                                             <span class="menu-text">Pemesanan</span>
                                         </a>
                                 </li>
-                                <li class="menu-item" data-menu-toggle="click" aria-haspopup="true">
-                                    <a href="javascript:;" class="menu-link menu-toggle">
-                                        <span class="menu-text">Pembayaran</span>
-                                        <span class="menu-desc"></span>
-                                        <i class="menu-arrow"></i>
-                                    </a>
-                                </li>
                                 <li class="menu-item" garia-haspopup="true">
                                         <a href="/riwayattransaksi" class="menu-link ">
                                             <span class="menu-text">Riwayat Transaksi</span>

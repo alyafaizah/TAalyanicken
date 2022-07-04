@@ -53,7 +53,6 @@ class LaporanController extends Controller
         $pdf = new TCPDF;
 
         $pdf::SetTitle("Laporan Pemesanan Tiket Online");
-        $pdf->setPaper('A4', 'landscape');
         $pdf::AddPage();
         $pdf::writeHTML($html_content, true, false, true, false, '');
         // D is the change of these two functions. Including D parameter will avoid 

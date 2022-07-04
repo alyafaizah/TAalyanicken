@@ -60,7 +60,7 @@
                                         <table class="table table-bordered table-hover table-checkable" id="kt_datatable" style="margin-top: 13px !important">
                                             <thead>
                                                 <tr>
-                                                    <th>Nama Pengunjung</th>
+                                                    
                                                     <th>Kode Order</th>
                                                     <th>Jenis Tiket</th>
                                                     <th>Tanggal Kunjungan</th>
@@ -75,7 +75,7 @@
                                             @endphp
                                             <tbody>
                                                 <tr>
-                                                    <td>Nama Pengunjung</td>
+                                                    
                                                     <td>{{ $p->kd_order }}</td>
                                                     <td>@php
                                                         $color="";

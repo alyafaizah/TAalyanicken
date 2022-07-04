@@ -23,7 +23,11 @@
                             <h1 style="position: relative; margin-top: 250px; margin-bottom: 30px">Pemesanan Tiket Berhasil Dibuat</h1>
                             <p>Silahkan ke menu pembayaran untuk menyelesaikan pemesanan</p>
 
-                            <a href="{{url ('/checkout')}}'" class="btn btn-success">Transaksi Baru</a>
+                            <br>
+                            <br>
+                            <br>
+                            <a href="{{ url('/checkout') }}" class="btn btn-success">Transaksi Baru</a>
+                            
 
                         </div>
                     </div>
