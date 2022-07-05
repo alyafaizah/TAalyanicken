@@ -159,22 +159,27 @@ class RiwayatController extends Controller
     {
 
         $dt_pemesanan = array();
-
+        $searchParam = request("search");
+        $pemesanan = PemesananTiket::where([
+            ["kd_order", "LIKE", "%" . $searchParam . "%"],
+        ])->orderBy('created_at', 'desc')->get();
 
         // ambil data 
         $pemesanan = DB::table('pemesanan')->orderBy('created_at', 'desc')->get();
-        $pemesanan = DB::table('pemesanan')->get();
 
         // print_r($data);
-        return view('modules.riwayat.riwayatadmin', compact('pemesanan'));
+        return view('modules.riwayat.riwayatadmin', [
+            "pemesanan" => $pemesanan,
+            "search" => $searchParam,
+        ]);
     }
 
     public function riwayatpetugas()
     {
         $searchParam = request("search");
-        $pemesanan=PemesananTiket::where([
+        $pemesanan = PemesananTiket::where([
             ["kd_order", "LIKE", "%" . $searchParam . "%"],
-        ])->get();
+        ])->orderBy('created_at', 'desc')->get();
         // $dt_pemesanan = array();
         // $pemesanan = DB::table('pemesanan')->get();
 
