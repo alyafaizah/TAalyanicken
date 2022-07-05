@@ -239,6 +239,7 @@
                                                                                 @endphp
                                                                                 <input type="hidden" name="kd_order" value="{{ $kd_order }}">
                                                                                 <input type="hidden" name="radeem">
+                                                                                <input type="hidden" name="data-json" />
 
                                                                                 <div>#{{ $kd_order }}</div>
                                                                             </div>
@@ -306,7 +307,7 @@
                                                                                 <button type="button" class="btn btn-light-primary font-weight-bolder text-uppercase px-9 py-4" data-wizard-type="action-prev">Batal</button>
                                                                             </div>
                                                                             <div>
-                                                                                <button type="submit" class="btn btn-success font-weight-bolder text-uppercase px-9 py-4" data-wizard-type="action-submit">Bayar</button>
+                                                                                <button id="btn-pay" type="button" class="btn btn-success font-weight-bolder text-uppercase px-9 py-4" data-wizard-type="action-submit">Bayar</button>
                                                                                 <button type="button" class="btn btn-primary font-weight-bolder text-uppercase px-9 py-4" data-wizard-type="action-next">Lanjutkan</button>
                                                                             </div>
                                                                         </div>
@@ -557,6 +558,7 @@
         });
     </script>
 
+
     <script>
         "use strict";
 
@@ -631,7 +633,55 @@
                     }).then(function(result) {
                         if (result.value) {
 
-                            $('#my-form').submit();
+                            
+                             // ambil data input
+                            var kd_order = $('input[name="kd_order"]').val();
+                            var radeem = $('input[name="radeem"]').val();
+                            var harga = $('input[name="harga"]').val();
+                            var jenis_tiket = $('input[name="jenis_tiket"]').val();
+                            var jumlah = $('input[name="jumlah"]').val();
+
+                            $.ajax({
+
+                                type: "GET", 
+                                url : "{{ url('create-snap') }}",
+                                data : "kd_order=" + kd_order + "&radeem=" + radeem + "&harga=" + harga + "&jenis_tiket=" + jenis_tiket + "&jumlah=" + jumlah,
+                                dataType: "json",
+                                success: function( response ) {
+
+                                    // console.log( response );
+
+                                    window.snap.pay(response, {
+                                        onSuccess: function(result) {
+                                            /* You may add your own implementation here */
+                                            console.log(result);
+                                            // $('input[name="data-json"]').val( JSON.stringify(result) );
+
+                                            // $('#my-form').submit();
+                                            // send_response_to_form(result);
+                                        },
+                                        onPending: function(result) {
+                                            /* You may add your own implementation here */
+                                            // console.log(result);
+                                            $('input[name="data-json"]').val( JSON.stringify( result ) );
+                                            $('#my-form').submit();
+                                            // send_response_to_form(result);
+                                        },
+                                        onError: function(result) {
+                                            /* You may add your own implementation here */
+                                            console.log(result);
+                                            alert("Whoopss error");
+                                            // send_response_to_form(result);
+                                        },
+                                        onClose: function() {
+                                            /* You may add your own implementation here */
+                                            alert('you closed the popup without finishing the payment');
+                                        }
+                                    })
+                                }
+                            });
+
+
 
                         } else if (result.dismiss === 'cancel') {
                             Swal.fire({
@@ -699,39 +749,6 @@
         });
     </script>
 
-    <script type="text/javascript">
-        // For example trigger on button clicked, or any time you need
-        var payButton = document.getElementById('pay-button');
-        payButton.addEventListener('click', function() {
-            // Trigger snap popup. @TODO: Replace TRANSACTION_TOKEN_HERE with your transaction token
-            window.snap.pay('{{$snap_token}}', {
-                onSuccess: function(result) {
-                    /* You may add your own implementation here */
-                    console.log(result);
-                    send_response_to_form(result);
-                },
-                onPending: function(result) {
-                    /* You may add your own implementation here */
-                    console.log(result);
-                    send_response_to_form(result);
-                },
-                onError: function(result) {
-                    /* You may add your own implementation here */
-                    console.log(result);
-                    send_response_to_form(result);
-                },
-                onClose: function() {
-                    /* You may add your own implementation here */
-                    alert('you closed the popup without finishing the payment');
-                }
-            })
-        });
-
-        function send_response_to_form(result) {
-            document.getElementById('json_callback').value = JSON.stringify(result);
-            $('#submit_form').submit();
-        }
-    </script>
 
     @php
 

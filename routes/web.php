@@ -157,6 +157,7 @@ Route::group(['middleware' => 'usersession'], function () {
 
     //purchase pengunjung atau pemesanan tiket online (pengunjung)
     Route::get('/checkout', [CheckoutController::class, 'checkout']);
+    Route::get('/create-snap', [CheckoutController::class, 'createSnap']);
     Route::get('/request-date', [CheckoutController::class, 'request_date']);
     Route::get('/check-radeem-coupon', [CheckoutController::class, 'check_coupon']);
     Route::get('checkout-success/{kd_order}', [CheckoutController::class, 'pemesanan_berhasil']);

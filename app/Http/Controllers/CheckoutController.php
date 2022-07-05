@@ -13,6 +13,67 @@ class CheckoutController extends Controller
     
     public function checkout( Request $request ){
         
+        
+
+        $tiket = Ticket::first();
+
+        $data = array(
+
+            "title" => "Pemesanan",
+            'tiket' => $tiket,
+        );
+        return view('modules.checkout.checkout', $data);
+    }
+
+
+
+
+    // ambil data input 
+    public function createSnap( Request $request ) {
+
+
+        $id_profile = session('id');
+        $identitas = DB::table('identitas')->where('id_profile', $id_profile)->first();
+
+        $kd_order = $request->kd_order;
+        $radeem = $request->radeem;
+        $harga = $request->harga;
+        $jenis_tiket = $request->jenis_tiket;
+        $jumlah = $request->jumlah;
+
+        $total_keseluruhan = $harga * $jumlah;
+
+
+
+        // item detail 
+        $item_details = array([
+            'id' => 1, //id produk
+            'price' => $harga,
+            'quantity' => $jumlah,
+            'name' => "Tiket ". $jenis_tiket
+        ]);
+        
+        
+        if ( $radeem ) {
+
+            // ambil data discount by code
+            $dt_diskon = DB::table('diskon')->where('kode_diskon', $radeem)->first();
+            $diskon = $dt_diskon->nilai_diskon / 100;
+
+            $potongan = ($harga * $jumlah) * $diskon;
+            $total_keseluruhan = $potongan;
+            
+            array_push( $item_details, array(
+
+                'id'    => 2,
+                'price'     => -($potongan),
+                'quantity'  => 1,
+                'name'      => "Kode Unik ". $radeem.' dengan potongan '. $dt_diskon->nilai_diskon.'%'
+            ) );
+
+
+        }
+
         // Set your Merchant Server Key
         \Midtrans\Config::$serverKey = env('MIDTRANS_SERVER_KEY');
         // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
@@ -24,46 +85,27 @@ class CheckoutController extends Controller
 
         $params = array(
             'transaction_details' => array(
-                'order_id' => rand(),
-                'gross_amount' => 10000, //total pembelian
+                'order_id' => $kd_order,
+                'gross_amount' => $total_keseluruhan, //total pembelian
             ),
-
-            'item_details' => array(
-                [
-                    'id' => 'a1', //id produk
-                    'price' => '10000',
-                    'quantity' => 1,
-                    'name' => 'Apel'
-                ],
-
-                [
-                    'id' => 'b1', //id produk
-                    'price' => '12000',
-                    'quantity' => 1,
-                    'name' => 'Jeruk'
-                ],
-            ),
+            'item_details' => $item_details,
 
             'customer_details' => array(
-                'first_name' => $request->get('nama_lengkap'),
+                'first_name' => $identitas->nama_lengkap,
                 'last_name' => 'pratama',
-                'email' => $request->get('email'),
-                'phone' => $request->get('nomor'),
+                'email' => session('email'),
+                'phone' => $identitas->telepon,
             ),
         );
 
         $snapToken = \Midtrans\Snap::getSnapToken($params);
 
-        $tiket = Ticket::first();
 
-        $data = array(
-
-            "title" => "Pemesanan",
-            'tiket' => $tiket,
-            'snap_token' => $snapToken,
-        );
-        return view('modules.checkout.checkout', $data);
+        echo json_encode($snapToken);
     }
+
+
+
 
     function process( Request $request ) {
 
@@ -126,6 +168,7 @@ class CheckoutController extends Controller
     public function proses_pemesanan( Request $request ) {
 
         $kupon = $request->input('radeem');
+        $data_transaksi = $request->input('data-json');
         
         $dt_pemesanan = array(
 
@@ -142,6 +185,18 @@ class CheckoutController extends Controller
             'coupon'    => $kupon
         );
 
+
+        $json = json_decode($data_transaksi);
+        $dt_pembayaran = array(
+
+            'status'         => $json->transaction_status,
+            'transaction_id' => $json->transaction_id,
+            'kd_order'       => $json->order_id,
+            'gross_amount'   => $json->gross_amount,
+            'payment_type'  => $json->payment_type,
+            'payment_code'  => $json->status_code,
+            'pdf_url'       => ""
+        );
         // generate new QR by kd_order
         QrCode::size(300)->format('svg')->generate($dt_pemesanan['kd_order'], '../public/assets/qrcodes/' .$dt_pemesanan['kd_order']. '.svg');
 
@@ -156,6 +211,7 @@ class CheckoutController extends Controller
                 $id_diskon = $cek_kupon->first()->id_diskon;
                 // insert
                 $id_pemesanan = DB::table('pemesanan')->insertGetId($dt_pemesanan);
+                DB::table('pembayaran')->insert( $dt_pembayaran );
 
                 $data_history_diskon = array(
 
@@ -176,6 +232,7 @@ class CheckoutController extends Controller
 
             // insert
             DB::table('pemesanan')->insert($dt_pemesanan);
+            DB::table('pembayaran')->insert( $dt_pembayaran );
             return redirect('checkout-success/'. $dt_pemesanan['kd_order']);
         }
 
