@@ -33,16 +33,21 @@
                                 <div class="row align-items-center">
                                     <div class="col-lg-9 col-xl-8">
                                         <div class="row align-items-center">
-                                            <div class="col-md-4 my-2 my-md-0">
-                                                <select class="form-control form-control-solid" id="kt_datatable_search_status">
-                                                    <option value="">Jenis Transaksi</option>
-                                                    <option value="1">Offline</option>
-                                                    <option value="2">Online</option>
-                                                </select>
+                                            <div class="col-md-5 my-2 my-md-0">
+                                                <form action="/riwayatpetugas" method="GET">
+                                                    <div class="input-icon">
+                                                        <input type="text" name="search" class="form-control" placeholder="Cari berdasarkan kode order" id="" />
+                                                        <span>
+                                                            <i class="flaticon2-search-1 text-muted"></i>
+                                                        </span>
+                                                    </div>
+
+
                                             </div>
-                                            <div class="col-md-4 my-2 my-md-0">
-                                                <a href="#" class="btn btn-light-primary px-6 font-weight-bold">Search</a>
-                                            </div>
+                                            <button class="btn btn-light-primary px-6 font-weight-bold" type="submit">
+                                                Cari
+                                            </button>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
@@ -54,10 +59,11 @@
                                 <table class="table table-bordered table-hover table-checkable" id="kt_datatable" style="margin-top: 13px !important">
                                     <thead>
                                         <tr>
-                                            
+
                                             <th>Kode Order</th>
                                             <th>Status</th>
                                             <th>Tanggal Kunjungan</th>
+                                            <th>Jenis Pemesanan</th>
                                             <th>Jumlah Tiket</th>
                                             <th>Total</th>
                                         </tr>
@@ -95,6 +101,25 @@
                                                 <span class="label label-light-{{ $color }} label-pill label-inline mr-2">{{ $text }}</span>
                                             </td>
                                             <td>{{date('d M Y', strtotime($p->tgl_kunjungan))}}</td>
+                                            <td>
+                                                @php
+
+                                                if ( $p->jenis_pemesanan == "online" ) {
+
+                                                $dot = "danger";
+                                                $color = "danger";
+                                                $text = "online";
+                                                }
+                                                else{
+                                                $dot = "primary";
+                                                $color = "primary";
+                                                $text = "offline";
+                                                }
+
+                                                @endphp
+                                                <span class="label label-{{ $dot }} label-dot mr-2"></span>
+                                                <span class="font-weight-bold text-{{ $color }}">{{ $text }}</span>
+                                            </td>
                                             <td>{{ $p->jumlah }}</td>
                                             <td style="color:red;">Rp {{ number_format ($p->total, 0, ',','.') }}</td>
                                         </tr>
@@ -108,7 +133,7 @@
                     </div>
                     <!--end::Card-->
                 </div>
-                <!--end::Content-->
+                <!--end::SearchContent-->
             </div>
             <!--end::Teachers-->
         </div>
@@ -117,5 +142,11 @@
     <!--end::Entry-->
 </div>
 
+
+<script type="text/javascript">
+    $(".filter").on('change', function() {
+        jenis_pemesanan = $("#filter-jenis-pemesanan").val()
+    })
+</script>
 <!--end::Content-->
 @endsection

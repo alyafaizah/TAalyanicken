@@ -64,10 +64,10 @@ class RiwayatController extends Controller
             'id' => $pemesanan->id_pemesanan,
             'price' => $pemesanan->harga,
             'quantity' => $pemesanan->jumlah,
-            'name' => "Tiket ". $pemesanan->jenis_tiket
+            'name' => "Tiket " . $pemesanan->jenis_tiket
         ]);
 
-        if ( !empty($status_kupon) ) {
+        if (!empty($status_kupon)) {
 
             // ambil data diskon
             $diskon = DB::table('diskon')->where('kode_diskon', $status_kupon)->first();
@@ -79,13 +79,13 @@ class RiwayatController extends Controller
             $total_keseluruhan = $total - $diskon;
 
 
-            array_push( $item_details, array(
+            array_push($item_details, array(
 
                 'id'    => "D1",
-                'price' => -($diskon),
+                'price' => - ($diskon),
                 'quantity'  => 1,
-                'name'      => "Voucher ". $pemesanan->coupon
-            ) );
+                'name'      => "Voucher " . $pemesanan->coupon
+            ));
         }
 
 
@@ -102,10 +102,10 @@ class RiwayatController extends Controller
         \Midtrans\Config::$is3ds = true;
 
 
-        
 
 
-        
+
+
 
 
         $total_keseluruhan = $pemesanan->total;
@@ -116,7 +116,7 @@ class RiwayatController extends Controller
 
         //     $total_keseluruhan = $total - $diskon;
 
-            
+
         // }
 
 
@@ -136,7 +136,7 @@ class RiwayatController extends Controller
                 'phone' => $identitas->telepon,
             ),
         );
-        
+
         $snapToken = \Midtrans\Snap::getSnapToken($params);
         /** End Section */
 
@@ -157,13 +157,13 @@ class RiwayatController extends Controller
 
     public function riwayatadmin()
     {
-        
+
         $dt_pemesanan = array();
 
 
         // ambil data 
-        $pemesanan = DB::table('pemesanan')->orderBy('created_at','desc')->get();
-        $pemesanan = DB::table('pemesanan')->get(); 
+        $pemesanan = DB::table('pemesanan')->orderBy('created_at', 'desc')->get();
+        $pemesanan = DB::table('pemesanan')->get();
 
         // print_r($data);
         return view('modules.riwayat.riwayatadmin', compact('pemesanan'));
@@ -171,25 +171,27 @@ class RiwayatController extends Controller
 
     public function riwayatpetugas()
     {
-        
-        $dt_pemesanan = array();
-
+        $searchParam = request("search");
+        $pemesanan=PemesananTiket::where([
+            ["kd_order", "LIKE", "%" . $searchParam . "%"],
+        ])->get();
+        // $dt_pemesanan = array();
+        // $pemesanan = DB::table('pemesanan')->get();
 
         // ambil data 
-        $pemesanan = DB::table('pemesanan')->get();
+        // $pemesanan = $pemesanan->paginate(10);
+
 
         // print_r($data);
-        return view('modules.riwayat.riwayatpetugas', compact('pemesanan'));
+        return view('modules.riwayat.riwayatpetugas', [
+            "pemesanan" => $pemesanan,
+            "search" => $searchParam,
+        ]);
     }
 
 
-
-
-
-
-
-
-    public function payment(Request $request){
+    public function payment(Request $request)
+    {
         // Set your Merchant Server Key
         \Midtrans\Config::$serverKey = env('MIDTRANS_SERVER_KEY');
         // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
@@ -198,7 +200,7 @@ class RiwayatController extends Controller
         \Midtrans\Config::$isSanitized = true;
         // Set 3DS transaction for credit card to true
         \Midtrans\Config::$is3ds = true;
-        
+
         $params = array(
             'transaction_details' => array(
                 'order_id' => rand(),
@@ -210,7 +212,7 @@ class RiwayatController extends Controller
                     'price' => '10000',
                     'quantity' => 1,
                     'name' => 'Apel'
-                ],[
+                ], [
                     'id' => 'b1',
                     'price' => '8000',
                     'quantity' => 1,
@@ -224,9 +226,9 @@ class RiwayatController extends Controller
                 'phone' => $request->get('number'),
             ),
         );
-        
+
         $snapToken = \Midtrans\Snap::getSnapToken($params);
 
-        return view('modules.riwayat.dummy-payment', ['snap_token'=>$snapToken]);
+        return view('modules.riwayat.dummy-payment', ['snap_token' => $snapToken]);
     }
 }
