@@ -141,4 +141,19 @@ class LaporanController extends Controller
             return redirect()->back();
         }
     }
+    
+    public function test(){
+        $id_profile = session("id");
+        $pemesanan  = Profile::where('id_profile', $id_profile)->get();
+        $pemesanan  = Identitas::where('nama_lengkap', $id_profile)->get();
+        $pemesanan  = PemesananTiket::where('jenis_pemesanan', 'online')->get();
+
+        $data = array(
+            'pemesanan' => $pemesanan
+        );
+
+        // echo $id_profile;
+
+        return view('modules.test', $data);
+    }
 }

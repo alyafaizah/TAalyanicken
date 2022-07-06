@@ -39,8 +39,8 @@ class ProfileController extends Controller
 
 
         $id_profile = session("id");
-        $data['identitas'] = Identitas::where('id_profile', $id_profile)->first();
-        $data['profile'] = Profile::where('id_profile', $id_profile)->first();
+        $data['identitas'] = Identitas::where('id_profile', $id_profile)->first(); //foreign
+        $data['profile'] = Profile::where('id_profile', $id_profile)->first(); //primar
 
         // echo $id_profile;
         return view('modules.profile.informasipribadi', $data, [
