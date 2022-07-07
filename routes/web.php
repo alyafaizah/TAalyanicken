@@ -202,5 +202,6 @@ Route::get('pw', function () {
     // echo Hash::make("456");
 });
 
+Route::get('/test',  [LaporanController::class, 'test']);
 
 Route::post('payments/midtrans-notification', [PaymentCallbackController::class, 'receive']);

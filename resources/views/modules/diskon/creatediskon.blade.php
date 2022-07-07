@@ -35,15 +35,6 @@
                                 <input type="number" name="nilai_diskon" class="form-control" value="" placeholder="" />
                             </div>
                             <div class="form-group">
-                                <label for="image" class="form-label">Foto</label>
-                                <input class="form-control  @error('image') is-invalid @enderror"  type="file" id="image" name="image">
-                                @error('image')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-                            <div class="form-group">
                                 <label>Keterangan
                                     <span class="text-danger">*</span></label>
                                 <input type="text" name="keterangan_diskon" class="form-control" placeholder="" />

@@ -29,17 +29,17 @@ class DiskonController extends Controller
     // proses tambah
     function process(Request $request)
     {
-        $validatedData = $request->validate([
-            'image' => 'image|file|max:1024'
-        ]);
+        // $validatedData = $request->validate([
+        //     'image' => 'image|file|max:1024'
+        // ]);
 
-        $file_name = $request->image->getClientOriginalName();
+        // $file_name = $request->image->getClientOriginalName();
 
-        $upload_image = $request->image->storeAs('diskon-images', $file_name);
+        // $upload_image = $request->image->storeAs('diskon-images', $file_name);
 
         $ambilKode     = $request->input('kode_diskon');
         $ambilNama  = $request->input('nama_diskon');
-        $ambilImage  = $upload_image;
+        // $ambilImage  = $upload_image;
         $ambilNilai  = $request->input('nilai_diskon');
         $ambilKeterangan  = $request->input('keterangan_diskon');
         $ambilTglawal  = $request->input('tgl_awal');
@@ -53,7 +53,7 @@ class DiskonController extends Controller
         $data = array(
             'kode_diskon'           => $ambilKode,
             'nama_diskon'           => $ambilNama,
-            'image'                 => $ambilImage,
+            // 'image'                 => $ambilImage,
             'nilai_diskon'          => $ambilNilai,
             'keterangan_diskon'     => $ambilKeterangan,
             'tgl_awal'              => $ambilTglawal,
@@ -83,25 +83,24 @@ class DiskonController extends Controller
     function update(Request $request, $kd)
     {
 
-        $request->validate([
-            'image' => 'image|file|max:1024'
-        ]);
+        // $request->validate([
+        //     'image' => 'image|file|max:1024'
+        // ]);
 
         
-        $file_name = $request->image->getClientOriginalName();
-        if ($request->file('image')) {
-            if ($request->oldImage) {
-                Storage::delete($request->oldImage);
-            }
-        }
-        $upload_image = $request->image->storeAs('diskon-images', $file_name);
+        // $file_name = $request->image->getClientOriginalName();
+        // if ($request->file('image')) {
+        //     if ($request->oldImage) {
+        //         Storage::delete($request->oldImage);
+        //     }
+        // }
+        // $upload_image = $request->image->storeAs('diskon-images', $file_name);
 
         $diskon = Diskon::where('id_diskon', $kd);
 
         if ($diskon) {
             $ambilKode          = $request->input('kode_diskon');
             $ambilNama          = $request->input('nama_diskon');
-            $ambilImage         = $upload_image;
             $ambilNilai         = $request->input('nilai_diskon');
             $ambilKeterangan    = $request->input('keterangan_diskon');
             $ambilStatus        = $request->input('status');
@@ -116,7 +115,6 @@ class DiskonController extends Controller
             $data = array(
                 'kode_diskon'           => $ambilKode,
                 'nama_diskon'           => $ambilNama,
-                'image'                 => $ambilImage,
                 'nilai_diskon'          => $ambilNilai,
                 'keterangan_diskon'     => $ambilKeterangan,
                 'tgl_awal'              => $ambilTglawal,
@@ -127,9 +125,10 @@ class DiskonController extends Controller
             $diskon->update($data);
             return redirect('diskon');
 
-        } else {
-            echo "invalid kd " . $kd;
-        }
+        } 
+        // else {
+        //     echo "invalid kd " . $kd;
+        // }
     }
 
     // fungsi hapus

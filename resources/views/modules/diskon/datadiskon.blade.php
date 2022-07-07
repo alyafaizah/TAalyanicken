@@ -44,7 +44,6 @@
                                         <th>Kode Diskon</th>
                                         <th>Nama</th>
                                         <th>Nilai (%)</th>
-                                        <th>Foto</th>
                                         <th>Keterangan</th>
                                         <th>Tanggal Awal</th>
                                         <th>Tanggal Akhir</th>
@@ -59,9 +58,6 @@
                                         <td>{{ $d->kode_diskon }}</td>
                                         <td>{{ $d->nama_diskon }}</td>
                                         <td>{{ $d->nilai_diskon }}</td>
-                                        <td>
-                                            <img class="img-preview" style="width:200px;height:100px;" src="{{{asset('storage/'. $d->image) }}}" alt="">
-                                        </td>
                                         <td>{{ $d->keterangan_diskon }}</td>
                                         <td>{{date('d M Y', strtotime($d->tgl_awal))}}</td>
                                         <td>{{date('d M Y', strtotime($d->tgl_akhir))}}</td>
