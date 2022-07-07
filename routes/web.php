@@ -128,6 +128,8 @@ Route::group(['middleware' => 'usersession'], function () {
     //modules dashboard (petugas)
     Route::get('/dashboardpetugas', [DashboardController::class, 'dashboardpetugas']);
     Route::get('/check-qr', [DashboardController::class, 'checkQR']);
+    // cek secara konvensional
+    Route::get('/manual-check', [DashboardController::class, 'manualCheckCode']);
 
     //modules transaksi pemesanan offline (petugas)
     Route::get('petugas/order', [PemesananController::class, 'form_orderoffline'])->name('view-order');
