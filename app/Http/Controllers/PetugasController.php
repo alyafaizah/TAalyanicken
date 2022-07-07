@@ -85,11 +85,6 @@ class PetugasController extends Controller
     function update(Request $request, $kd)
     {
 
-        $request->validate([
-            'email' => 'required|email|unique:profile',
-            'password' => 'required|min:5|max:255'
-        ]);
-
         $petugas = Petugas::where('id_profile', $kd);
 
         if ($petugas) {
