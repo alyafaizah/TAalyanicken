@@ -108,29 +108,36 @@ class LoginController extends Controller
                 );
 
 
+                if ( $profile->status_akun == "aktif" ) {
 
+                    if ($profile->level == "admin") {
 
-                if ($profile->level == "admin") {
+                        // return redirect('/dashboard');
+                        $pesan = "success";
+                        $url = url('/dashboard');
+                    } else if ($profile->level == "petugas tiket") {
 
-                    // return redirect('/dashboard');
-                    $pesan = "success";
-                    $url = url('/dashboard');
-                } else if ($profile->level == "petugas tiket") {
+                        $pesan = "success";
+                        $url = url('/dashboardpetugas');
+                    } else if ($profile->level == "pengunjung") {
 
-                    $pesan = "success";
-                    $url = url('/dashboardpetugas');
-                } else if ($profile->level == "pengunjung") {
+                        $identitas = Identitas::where('id_profile', $profile->id_profile)->first();
 
-                    $identitas = Identitas::where('id_profile', $profile->id_profile)->first();
+                        $sess['nama_lengkap'] = $identitas->nama_lengkap;
 
-                    $sess['nama_lengkap'] = $identitas->nama_lengkap;
+                        $pesan = "success";
+                        $url = url('/checkout');
+                    }
 
-                    $pesan = "success";
-                    $url = url('/checkout');
+                    session($sess);
+
+                } else {
+
+                    $pesan = "Maaf akun anda telah dinonaktifkan";
                 }
 
 
-                session($sess);
+                
             } else {
 
                 // return redirect('/login')->with('pesan', 'Kata sandi salah');
