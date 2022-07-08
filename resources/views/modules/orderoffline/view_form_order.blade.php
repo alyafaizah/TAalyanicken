@@ -35,9 +35,17 @@
                                             </div>
                                             <div class="col-md-6">
                                                 <small>Petugas Tiket</small>
-                                                <h2>Rania</h2>
+                                                <h2>
+                                                    @php 
+                                                        $username = session('email');
+                                                        $split = explode('@', $username);
+    
+                                                        echo $split[0];
+                                                    @endphp
+                                                </h2>
                                             </div>
                                         </div>
+                                       
 
                                         <hr>
 

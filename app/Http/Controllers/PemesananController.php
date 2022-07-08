@@ -47,14 +47,13 @@ class PemesananController extends Controller
 
                 'kd_order'     => strtoupper(uniqid()),
                 'kd_tiket'     => $ambilKodeTiket,
-                'tgl_kunjungan'=> $ambilTgl,
+                'tgl_kunjungan' => $ambilTgl,
                 'status'       => $ambilStatus
             );
 
 
             $dtpemesanan->update($data);
             return redirect('dtpemesanantiket');
-
         } else {
 
 
@@ -94,26 +93,28 @@ class PemesananController extends Controller
      *  Pemesanan Tiket 
      * 
      */
-    
+
     // view form order
-    public function form_orderoffline() {
-            
+    public function form_orderoffline()
+    {
+
         $data['tiket'] = DB::table('data_tiket')->get();
 
         return view('modules.orderoffline.view_form_order', $data);
     }
-    
 
 
 
 
-    public function form_orderoffline_pembayaran( Request $request ) {
-    
+
+    public function form_orderoffline_pembayaran(Request $request)
+    {
+
         $input = array(
-            
+
             'kode_order'    => $request->input('kode_order'),
             'nama_pengunjung'       => $request->input('nama_pengunjung'),
-            'id_profile'    => 1,// session
+            'id_profile'    => 1, // session
             'tgl_kunjungan' => strtotime("now"),
             'jumlah'        => $request->input('jumlah'),
             'status'        => "berhasil",
@@ -130,7 +131,7 @@ class PemesananController extends Controller
             'input' => $input,
             'tiket' => $dt_tiket
         );
-    
+
         return view('modules.orderoffline.view_form_orderpembayaran', $data);
     }
 
@@ -139,11 +140,12 @@ class PemesananController extends Controller
 
 
     /** Proses pemesanan */
-    public function proses_pemesanan( Request $request ) {
+    public function proses_pemesanan(Request $request)
+    {
 
         $dt_pemesanan = array(
 
-            
+
             'kd_order'      => $request->input('kode_order'),
             'id_profile'    => session('id'),
             'tgl_kunjungan' => date('Y-m-d H:i:s'),
@@ -156,10 +158,10 @@ class PemesananController extends Controller
 
         $dt_pembayaran = array(
             'kd_order'      => $request->input('kode_order'),
-            'total_bayar'   => $request->input('bayar'),
-            'type'      => "",
-            'tanggal'   => date('Y-m-d H:i:s'),
-            'file'      => ""
+            'gross_amount'   => $request->input('bayar'),
+            // 'type'      => "",
+            'created_at'   => date('Y-m-d H:i:s'),
+            // 'file'      => ""
         );
 
 
@@ -167,17 +169,14 @@ class PemesananController extends Controller
         DB::table('pemesanan')->insert($dt_pemesanan);
         DB::table('pembayaran')->insert($dt_pembayaran);
 
-        return redirect('transaction-success/'. $dt_pemesanan['kd_order']);
-        
+        return redirect('transaction-success/' . $dt_pemesanan['kd_order']);
     }
 
 
 
-    public function pemesanan_berhasil( $kd_order ) {
+    public function pemesanan_berhasil($kd_order)
+    {
 
         return view('modules.orderoffline.view_success');
     }
-
-
-
 }

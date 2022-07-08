@@ -237,9 +237,18 @@
                     <small>Hasil preview dari scanning dari pembeli</small>
                     <div>
                         <label class=" col-form-label" style="font-weight: bold;">Silahkan masukkan kode pemesanan</label>
-                        <div class="">
-                            <input class="form-control" type="text" value="Masukkan kode pemesanan" id="kd_order" />
+                        
+                        <form id="cek-manual-kode">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <input class="form-control" type="text" placeholder="Masukkan kode pemesanan" id="manual-kd_order" />
+                            </div>
+                            <div class="col-md-4">
+                                <button class="btn btn-primary">Cek</button>
+                            </div>
                         </div>
+                        </form>
+
                     </div>
 
                     <audio id="accept">
@@ -435,6 +444,56 @@
         }
 
         // html5QrcodeScanner.render(onScanSuccess); 
+
+
+
+        // cek manual kode
+        $('#cek-manual-kode').submit(function( e ) {
+
+            var input_konvensional = $('#manual-kd_order').val();
+
+            
+            $.ajax({
+
+                type: "GET",
+                url: "{{ url('check-qr') }}",
+                data: "qr=" + input_konvensional,
+                dataType: "json",
+                success: function(response) {
+
+                    if (response.status == true) {
+
+                        soundAccept[0].play();
+
+                        $('#start').hide();
+                        $('#accept-reporting').show();
+                        $('#invalid').hide();
+
+
+                        $('#kd_tiket').text(response.data.kd_order);
+                        $('#tgl').text(response.data.tgl_kunjungan);
+                        $('#nama').text(response.data.nama_lengkap);
+                        $('#jenis_tiket').text(response.data.jenis_tiket);
+                        $('#jumlah').text(response.data.jumlah);
+                        $('#harga').text(response.data.harga);
+                        $('#total').text(response.data.total);
+
+                    } else {
+
+                        $('#start').hide();
+                        $('#accept-reporting').hide();
+                        $('#invalid').fadeIn();
+
+                        soundDecline[0].play();
+
+                        $('#text-res-failed').text(response.pesan);
+                    }
+                }
+            });
+
+            // alert(input_konvensional);
+            e.preventDefault();
+        });
 
 
     });
