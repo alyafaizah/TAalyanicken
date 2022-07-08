@@ -12,11 +12,14 @@ class DashboardController extends Controller
     {
         $transaksionline = PemesananTiket::get();
         $transaksioffline = PemesananTiket::get();
+        $tanggal = date('Y-m-d');
         $transaksioffline = DB::table('pemesanan')->select(
             DB::Raw('count(*) as banyaktransaksioffline'),
             DB::raw('sum(total) as pendapatanoffline')
         )
             ->where("jenis_pemesanan", 'offline')
+            ->where("status", 'berhasil')
+            ->where("tgl_kunjungan", $tanggal)
             ->first();
 
         $transaksionline = DB::table('pemesanan')->select(
@@ -24,20 +27,25 @@ class DashboardController extends Controller
             DB::raw('sum(total) as pendapatanonline')
         )
             ->where("jenis_pemesanan", 'online')
+            ->where("status", 'diterima')
+            ->where("tgl_kunjungan", $tanggal)
             ->first();
 
-        return view('modules.dashboard.index', compact('transaksionline', 'transaksioffline'));
+        return view('modules.dashboard.index', compact('transaksioffline', 'transaksionline'));
     }
 
     public function dashboardpetugas()
     {
         $transaksionline = PemesananTiket::get();
         $transaksioffline = PemesananTiket::get();
+        $tanggal = date('Y-m-d');
         $transaksioffline = DB::table('pemesanan')->select(
             DB::Raw('count(*) as banyaktransaksioffline'),
             DB::raw('sum(total) as pendapatanoffline')
         )
             ->where("jenis_pemesanan", 'offline')
+            ->where("status", 'berhasil')
+            ->where("tgl_kunjungan", $tanggal)
             ->first();
 
         $transaksionline = DB::table('pemesanan')->select(
@@ -45,6 +53,8 @@ class DashboardController extends Controller
             DB::raw('sum(total) as pendapatanonline')
         )
             ->where("jenis_pemesanan", 'online')
+            ->where("status", 'diterima')
+            ->where("tgl_kunjungan", $tanggal)
             ->first();
 
         return view('modules.dashboard.dashboardpetugas', compact('transaksionline', 'transaksioffline'));
