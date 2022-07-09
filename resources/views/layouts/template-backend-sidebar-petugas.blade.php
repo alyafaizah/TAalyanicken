@@ -14,14 +14,14 @@
                 <!--begin::Item-->
                 <li class="nav-item mb-5" data-toggle="tooltip" data-placement="right" data-container="body"
                     data-boundary="window" title="Dashboard">
-                    <a href="/dashboardpetugas" class="nav-link btn btn-icon btn-clean btn-icon-white btn-lg active">
+                    <a href="/dashboardpetugas" class="nav-link btn btn-icon btn-clean btn-icon-white btn-lg">
                         <i class="flaticon2-protection icon-lg"></i>
                     </a>
                 </li>
                 <!--end::Item-->
 				<!--begin::Item-->
 			<li class="nav-item mb-5" data-toggle="tooltip" data-placement="right" data-container="body" data-boundary="window" title="Order Tiket">
-				<a href="/petugas/order" class="nav-link btn btn-icon btn-icon-white btn-lg" role="tab">
+				<a href="/petugas/order" class="nav-link btn btn-icon btn-clean btn-icon-white btn-lg" role="tab">
 					<i class="icon-l fas fa-cash-register"></i>
 				</a>
 			</li>
@@ -30,7 +30,7 @@
                 <li class="nav-item mb-5" data-toggle="tooltip" data-placement="right" data-container="body"
                     data-boundary="window" title="Konfirmasi Kedatangan">
 
-				<a href="#" class="nav-link btn btn-icon btn-icon-white btn-lg" role="tab">
+				<a href="#" class="nav-link btn btn-icon btn-clean btn-icon-white btn-lg" role="tab">
 					<i class="icon-l fas fa-laptop-medical"></i>
 				</a>
 			</li>
@@ -38,7 +38,7 @@
 			
 			<!--begin::Item-->
 			<li class="nav-item mb-5" data-toggle="tooltip" data-placement="right" data-container="body" data-boundary="window" title="Riwayat">
-				<a href="/riwayatpetugas" class="nav-link btn btn-icon btn-icon-white btn-lg" role="tab">
+				<a href="/riwayatpetugas" class="nav-link btn btn-icon btn-clean btn-icon-white btn-lg" role="tab">
 					<i class="icon-l fas fa-file-invoice-dollar"></i>
 				</a>
 			</li>
