@@ -60,9 +60,10 @@
                                         <table class="table table-bordered table-hover table-checkable" id="kt_datatable" style="margin-top: 13px !important">
                                             <thead>
                                                 <tr>
-                                                    
+                                                    <th>Nama Pengunjung</th>
                                                     <th>Kode Order</th>
                                                     <th>Jenis Tiket</th>
+                                                    <th>Status</th>
                                                     <th>Tanggal Kunjungan</th>
                                                     <th>Tanggal Pemesanan</th>
                                                     <th>Jumlah Tiket</th>
@@ -75,7 +76,7 @@
                                             @endphp
                                             <tbody>
                                                 <tr>
-                                                    
+                                                    <td>{{$p->nama_lengkap}}</td>
                                                     <td>{{ $p->kd_order }}</td>
                                                     <td>@php
                                                         $color="";
@@ -92,6 +93,8 @@
 
                                                         @endphp
                                                         <span class="label label-{{ $color }} label-pill label-inline mr-2">{{ $text }}</span>
+                                                    </td>
+                                                    <td>{{$p->status}}
                                                     </td>
                                                     <td>{{date('d M Y', strtotime($p->tgl_kunjungan))}}</td>
                                                     <td>{{date('d M Y', strtotime($p->created_at))}}</td>

@@ -14,7 +14,7 @@
                 <!--begin::Item-->
                 <li class="nav-item mb-5" data-toggle="tooltip" data-placement="right" data-container="body"
                     data-boundary="window" title="Dashboard">
-                    <a href="/dashboard" class="nav-link btn btn-icon btn-clean btn-icon-white btn-lg active">
+                    <a href="/dashboard" class="nav-link btn btn-icon btn-clean btn-icon-white btn-lg">
                         <i class="flaticon2-protection icon-lg"></i>
                     </a>
                 </li>
@@ -23,34 +23,34 @@
                 <li class="nav-item mb-5" data-toggle="tooltip" data-placement="right" data-container="body"
                     data-boundary="window" title="Data Tiket">
 
-				<a href="/tiket" class="nav-link btn btn-icon btn-icon-white btn-lg" role="tab">
+				<a href="/tiket" class="nav-link btn btn-icon btn-clean btn-icon-white btn-lg" role="tab">
 					<i class="icon-l fas fa-ticket-alt"></i>
 				</a>
 			</li>
 			<!--end::Item-->
 			<!--begin::Item-->
 			<li class="nav-item mb-5" data-toggle="tooltip" data-placement="right" data-container="body" data-boundary="window" title="Data Petugas">
-				<a href="/petugas" class="nav-link btn btn-icon btn-icon-white btn-lg" role="tab">
+				<a href="/petugas" class="nav-link btn btn-icon btn-clean btn-icon-white btn-lg" role="tab">
 					<i class="icon-l fas fa-user-plus"></i>
 				</a>
 			</li>
 			<!--end::Item-->
 			<!--begin::Item-->
 			<li class="nav-item mb-5" data-toggle="tooltip" data-placement="right" data-container="body" data-boundary="window" title="Riwayat">
-				<a href="/riwayatadmin" class="nav-link btn btn-icon btn-icon-white btn-lg" role="tab">
+				<a href="/riwayatadmin" class="nav-link btn btn-icon btn-clean btn-icon-white btn-lg" role="tab">
 					<i class="icon-l fas fa-file-invoice-dollar"></i>
 				</a>
 			</li>
 			<!--end::Item-->
 			<!--begin::Item-->
 			<li class="nav-item mb-5" data-toggle="tooltip" data-placement="right" data-container="body" data-boundary="window" title="Laporan Penjualan">
-				<a href="/laporan" class="nnav-link btn btn-icon btn-icon-white btn-lg" role="tab">
+				<a href="/laporan" class="nnav-link btn btn-icon btn-clean btn-icon-white btn-lg" role="tab">
 					<i class="icon-xl fas fa-chart-line"></i>
 				</a>
 			</li>
 			<!--end::Item-->
 			<li class="nav-item mb-5" data-toggle="tooltip" data-placement="right" data-container="body" data-boundary="window" title="Data Diskon">
-				<a href="/diskon" class="nnav-link btn btn-icon btn-icon-white btn-lg" role="tab">
+				<a href="/diskon" class="nnav-link btn btn-icon btn-clean btn-icon-white btn-lg" role="tab">
 					<i class="icon-xl fas fa-donate"></i>
 				</a>
 			</li>

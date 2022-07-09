@@ -23,16 +23,26 @@ class LaporanController extends Controller
         // dd($request->all());
         $dari = $request->dari;
         $sampai = $request->sampai;
+        $id_profile = session("id");
         if ($dari) {
-            $pemesanan = PemesananTiket::where('jenis_pemesanan', 'online')->where('tgl_kunjungan', '>=', $dari)->where('tgl_kunjungan', '<=', $sampai)->orderBy('created_at', 'asc')->get();
+            $pemesanan = PemesananTiket::where('jenis_pemesanan', 'online')->where('status', 'diterima')->orWhere('status', 'berhasil')->where('tgl_kunjungan', '>=', $dari)->where('tgl_kunjungan', '<=', $sampai)->orderBy('created_at', 'asc')->get();
+            $identitas = Identitas::where('id_profile', $id_profile)->get();
         } else {
-            $pemesanan = PemesananTiket::where('jenis_pemesanan', 'online')->get();
+            $pemesanan = PemesananTiket::where('jenis_pemesanan', 'online')->where('status', 'diterima')->orWhere('status', 'berhasil')->get();
+            $identitas = Identitas::where('id_profile', $id_profile)->get();
         }
 
 
+        // $pemesanan = PemesananTiket::paginate(30);
 
 
-        return view('modules.laporanonline.laporanonline', compact('pemesanan', 'dari', 'sampai'));
+        // return view('modules.laporanonline.laporanonline', compact('data', 'dari', 'sampai'));
+        return view('modules.laporanonline.laporanonline', [
+            "pemesanan" => $pemesanan,
+            "identitas" => $identitas,
+            "dari" => $dari,
+            "sampai" => $sampai
+        ]);
     }
 
     public function cetakpdflaporanonline(Request $request)
@@ -50,10 +60,18 @@ class LaporanController extends Controller
         $html_content = $view->render();
 
 
-        $pdf = new TCPDF;
+        $pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+
+        $pdf::Cell(0, 0, 'A4 LANDSCAPE', 1, 1, 'C');
+
 
         $pdf::SetTitle("Laporan Pemesanan Tiket Online");
-        $pdf::AddPage();
+        $pdf::AddPage('L', 'A4');
+        $pdf::SetAuthor('Wisata Kandang Sapi');
+        // set margins
+        $pdf::SetMargins(10, PDF_MARGIN_TOP, 10);
+        // set auto page breaks
+        $pdf::SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
         $pdf::writeHTML($html_content, true, false, true, false, '');
         // D is the change of these two functions. Including D parameter will avoid 
         // loading PDF in browser and allows downloading directly
@@ -94,10 +112,18 @@ class LaporanController extends Controller
         $html_content = $view->render();
 
 
-        $pdf = new TCPDF;
+        $pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 
-        $pdf::SetTitle("Laporan Pemesanan Tiket Offline");
-        $pdf::AddPage();
+        $pdf::Cell(0, 0, 'A4 LANDSCAPE', 1, 1, 'C');
+
+
+        $pdf::SetTitle("Laporan Pemesanan Tiket Online");
+        $pdf::AddPage('L', 'A4');
+        $pdf::SetAuthor('Wisata Kandang Sapi');
+        // set margins
+        $pdf::SetMargins(10, PDF_MARGIN_TOP, 10);
+        // set auto page breaks
+        $pdf::SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
         $pdf::writeHTML($html_content, true, false, true, false, '');
         // D is the change of these two functions. Including D parameter will avoid 
         // loading PDF in browser and allows downloading directly
@@ -141,8 +167,9 @@ class LaporanController extends Controller
             return redirect()->back();
         }
     }
-    
-    public function test(){
+
+    public function test()
+    {
         $id_profile = session("id");
         $pemesanan  = Profile::where('id_profile', $id_profile)->get();
         $pemesanan  = Identitas::where('nama_lengkap', $id_profile)->get();
