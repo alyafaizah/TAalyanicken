@@ -654,7 +654,9 @@
                                     window.snap.pay(response, {
                                         onSuccess: function(result) {
                                             /* You may add your own implementation here */
-                                            console.log(result);
+                                            
+                                            $('input[name="data-json"]').val( JSON.stringify( result ) );
+                                            $('#my-form').submit();
                                             // $('input[name="data-json"]').val( JSON.stringify(result) );
 
                                             // $('#my-form').submit();
@@ -669,8 +671,9 @@
                                         },
                                         onError: function(result) {
                                             /* You may add your own implementation here */
-                                            console.log(result);
-                                            alert("Whoopss error");
+                                            // console.log(result);
+                                            $('input[name="data-json"]').val( JSON.stringify( result ) );
+                                            $('#my-form').submit();
                                             // send_response_to_form(result);
                                         },
                                         onClose: function() {
