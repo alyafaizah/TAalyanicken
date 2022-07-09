@@ -150,6 +150,8 @@ class PemesananController extends Controller
             'id_profile'    => session('id'),
             'tgl_kunjungan' => date('Y-m-d H:i:s'),
             'jumlah'        => $request->input('jumlah'),
+            'harga'        => $request->input('harga'),
+            'total'        => $request->input('total'),
             'status'        => "berhasil",
             'jenis_tiket'   => $request->input('jenis_tiket'),
             'jenis_pemesanan' => "offline",

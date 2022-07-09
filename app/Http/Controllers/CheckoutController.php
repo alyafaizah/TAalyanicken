@@ -197,6 +197,14 @@ class CheckoutController extends Controller
             'payment_code'  => $json->status_code,
             'pdf_url'       => ""
         );
+
+
+        if ( $json->transaction_status == "settlement" ) {
+
+            $dt_pemesanan["status"] = "diterima";
+        }
+
+
         // generate new QR by kd_order
         QrCode::size(300)->format('svg')->generate($dt_pemesanan['kd_order'], '../public/assets/qrcodes/' .$dt_pemesanan['kd_order']. '.svg');
 

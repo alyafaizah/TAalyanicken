@@ -158,13 +158,13 @@
 
                                         <div class="form-group">
                                             <label for="">Nama Pengunjung / Pemesan</label>
-                                            <input type="text" name="nama_pengunjung" class="form-control" placeholder="Masukkan nama pengunjung">
+                                            <input type="text" name="nama_pengunjung" class="form-control" placeholder="Masukkan nama pengunjung" required="">
                                             <medium>Masukkan nama Anda</medium>
                                         </div>
 
                                         <div class="form-group">
                                             <label for="">Jumlah Pemesanan</label>
-                                            <input type="number" name="jumlah" class="form-control" placeholder="Masukkan jumlah tiket yang dipesan">
+                                            <input type="number" name="jumlah" class="form-control" placeholder="Masukkan jumlah tiket yang dipesan" required="">
                                             <medium>Masukkan jumlah pemesanan tiket</medium>
                                         </div>
                                         {{-- Button Submit --}}
