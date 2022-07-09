@@ -71,7 +71,7 @@
                 <h3>Navigasi</h3>
                 <ul class="header-nav__list">
                     @if ( session('id') ) 
-                        <li class="current"><a class="" href="{{ url('/checkout') }}" title="home">Home</a></li>
+                        <li class="current"><a class="" href="{{ url('/checkout') }}" title="dashboard">Dashboard</a></li>
                     @else 
                         <li class="current"><a class="" href="{{ url('/login') }}" title="login">Login</a></li>
                     @endif
