@@ -53,7 +53,14 @@
 
                                 <div class="col-md-9">
                                     <small>Nama Petugas Tiket</small><br>
-                                    <b>Rania</b>
+                                    <b>
+                                    @php 
+                                                        $username = session('email');
+                                                        $split = explode('@', $username);
+    
+                                                        echo $split[0];
+                                                    @endphp
+                                    </b>
                                 </div>
                                 <div class="col-md-3">
                                     <small>Tanggal Pemesanan</small><br>
