@@ -147,7 +147,7 @@
                                         <input type="hidden" name="nama_pengunjung" value="{{ $input['nama_pengunjung'] }}">
                                         <input type="hidden" name="jumlah" value="{{ $input['jumlah'] }}">
                                         <input type="hidden" name="harga" value="{{ $harga }}">
-                                        <input type="text" name="total" value="{{ $total }}">
+                                        <input type="hidden" name="total" value="{{ $total }}">
 
                                         <input type="number" name="bayar" data-tagihan="{{ $total }}" class="form-control" placeholder="Jumlah Pembayaran" id="">
                                     </div>
