@@ -79,9 +79,40 @@ class LaporanController extends Controller
         $sampai = $request->sampai;
 
         if ($dari) {
-            $pemesanan = PemesananTiket::where('jenis_pemesanan', 'online')->where('tgl_kunjungan', '>=', $dari)->where('tgl_kunjungan', '<=', $sampai)->orderBy('created_at', 'asc')->get();
+
+            $status = array("diterima", "berhasil");
+            $pemesanan = DB::table('pemesanan')->select('pemesanan.*', 'nama_lengkap')
+                                                ->join('identitas', 'pemesanan.id_profile', '=', 'identitas.id_profile')
+                                                ->where('tgl_kunjungan', '>=', $dari)
+                                                ->where('tgl_kunjungan', '<=', $sampai)
+                                                ->where('jenis_pemesanan', 'online')
+                                                // ->where('status', 'diterima')
+                                                // ->orWhere('status', 'berhasil')
+                                                ->whereIn('status', $status)
+                                                ->orderBy('created_at', 'asc')
+                                                ->get();
+
+            // $pemesanan = DB::table('pemesanan')->select('pemesanan.*', 'nama_lengkap')
+            //                                     ->join('identitas', 'pemesanan.id_profile', '=', 'identitas.id_profile')
+            //                                     ->where('jenis_pemesanan', 'online')
+            //                                     ->where('status', 'diterima')
+            //                                     ->orWhere('status', 'berhasil')
+            //                                     ->orderBy('created_at', 'asc')
+            //                                     ->get();
+
+            // $pemesanan = PemesananTiket::where('jenis_pemesanan', 'online')->where('status', 'diterima')->orWhere('status', 'berhasil')->where('tgl_kunjungan', '>=', $dari)->where('tgl_kunjungan', '<=', $sampai)->orderBy('created_at', 'asc')->get();
+            // $identitas = Identitas::where('id_profile', $id_profile)->get();
         } else {
-            $pemesanan = PemesananTiket::where('jenis_pemesanan', 'online')->get();
+            // $pemesanan = PemesananTiket::where('jenis_pemesanan', 'online')->where('status', 'diterima')->orWhere('status', 'berhasil')->get();
+            // $identitas = Identitas::where('id_profile', $id_profile)->get();
+
+            $pemesanan = DB::table('pemesanan')->select('pemesanan.*', 'nama_lengkap')
+                                                ->join('identitas', 'pemesanan.id_profile', '=', 'identitas.id_profile')
+                                                ->where('jenis_pemesanan', 'online')
+                                                ->where('status', 'diterima')
+                                                ->orWhere('status', 'berhasil')
+                                                ->orderBy('created_at', 'asc')
+                                                ->get();
         }
 
         $view = \View::make('modules.laporanonline.cetaklaporanonline', compact('pemesanan', 'dari', 'sampai'));
