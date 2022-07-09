@@ -13,7 +13,10 @@
                 <ul class="header-tabs nav align-self-end font-size-lg" role="tablist">
                     <!--begin::Item-->
                     <li class="nav-item">
-                        <a href="#" class="nav-link py-4 px-6 active" data-toggle="tab" data-target="#kt_header_tab_1" role="tab">Home</a>
+                        <a href="/" class="nav-link py-4 px-6">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link py-4 px-6 active" >Dashboard</a>
                     </li>
                     <!--end::Item-->
                 </ul>
