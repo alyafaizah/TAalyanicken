@@ -169,7 +169,7 @@
 
             <div class="modal-body">
 
-                <form role="form" action="/laporanonline/periode" method="get">
+                <form role="form" action="/laporanonline" method="get">
                     <div class="box-body">
                         <div class="form-group">
                             <label for="exampleInputEmail1">Mulai Tanggal</label>
