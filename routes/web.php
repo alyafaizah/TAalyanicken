@@ -38,15 +38,6 @@ Route::get('/', [LandingPage::class, 'index']);
 
 
 
-
-// Route::get('/laporanoffline', function () {
-
-//     return view('modules.laporanoffline.laporanoffline');
-// });
-
-
-
-
 // module login
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::get('/login/proses', [LoginController::class, 'proses']);
@@ -111,9 +102,6 @@ Route::group(['middleware' => 'usersession'], function () {
 
     // modules laporan (admin)
     Route::get('/laporan', [LaporanController::class, 'index']);
-
-    Route::get('/laporanpengunjung',  [LaporanController::class, 'laporanpengunjung']);
-    Route::get('/cetakpdfcust',  [LaporanController::class, 'cetakpdfcust']);
 
     Route::get('/laporanoffline',  [LaporanController::class, 'laporanoffline']);
     Route::get('/laporanoffline/periode', [LaporanController::class, 'periodeoffline']);

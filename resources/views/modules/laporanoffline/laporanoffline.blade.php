@@ -19,8 +19,9 @@
                             <!-- begin: Invoice header-->
                             <div class="row justify-content-center bgi-size-cover bgi-no-repeat py-8 px-8 px-md-0" style="background: linear-gradient(#000046, #6b5b95);">
                                 <div class="col-md-9">
-                                    <div class="d-flex justify-content-between pb-10 pb-md-20 flex-column flex-md-row">
-                                        <h2 class="display-4 text-white font-weight-boldest mb-10">LAPORAN PEMESANAN</h2>
+                                    <div class="d-flex justify-content-between flex-column flex-md-row">
+                                        <h2 class="display-4 text-white font-weight-boldest">LAPORAN PEMESANAN</h2>
+
                                         <div class="d-flex flex-column align-items-md-end px-0">
                                             <span class="text-white d-flex flex-column align-items-md-end opacity-70">
                                                 <h3 class="display-4 text-white font-weight-boldest mb-10">Wisata Kandang Sapi</h3>
@@ -28,6 +29,9 @@
                                                 <span>Kec. Wonosalam, Kabupaten Jombang, Jawa Timur 61476</span>
                                             </span>
                                         </div>
+                                    </div>
+                                    <div class="flex-md-row">
+                                    <h2 class="display-4 text-white font-weight-boldest">OFFLINE</h2>
                                     </div>
                                     <div class="border-bottom opacity-20"></div>
 
@@ -38,20 +42,20 @@
                             <div class="row justify-content-center py-8 px-8 py-md-10 px-md-0">
                                 <div class="col-md-9">
                                     <div class="row">
-                                        <div class="col-md-9 mb-3" style="float:right"><a href="#" id="btn-filter-offline" class="btn btn-sm btn-flat btn-primary" ><i class="fa fa-filter"></i> Filter Berdasarkan Tanggal Berkunjung</a></div>
+                                        <div class="col-md-9 mb-3" style="float:right"><a href="#" id="btn-filter-offline" class="btn btn-sm btn-flat btn-primary"><i class="fa fa-filter"></i> Filter Berdasarkan Tanggal Berkunjung</a></div>
                                         @php
-                                            $start = "-";
-                                            $end = "-";
+                                        $start = "-";
+                                        $end = "-";
 
-                                            if ( $dari ) {
+                                        if ( $dari ) {
 
-                                                $start = date('d M Y', strtotime($dari));
-                                                $end = date('d M Y', strtotime($sampai));
-                                            }
+                                        $start = date('d M Y', strtotime($dari));
+                                        $end = date('d M Y', strtotime($sampai));
+                                        }
                                         @endphp
                                         <div class="col-md-9 mb-3">Laporan Pemesanan Tiket Offline mulai ({{ $start }}) sampai ({{ $end }}):</div>
                                     </div>
-                                    
+
                                     @php
                                     $pemasukan=0
                                     @endphp

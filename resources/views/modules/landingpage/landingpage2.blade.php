@@ -127,7 +127,6 @@
                 @foreach ( $diskon AS $e => $d )
                     
                     <div class="testimonials__slide">
-                        <img src="{{{asset('storage/'. $d->image) }}}" alt="Diskon Kandang Sapi" class="" style="border-radius: 25px;">
                         <p>Nikmati promo {{ $d->nama_diskon }} dengan kode {{ $d->kode_diskon }} untuk mendapatkan potongan {{ $d->nilai_diskon }}%. Promo ini
                            berlaku mulai tanggal {{date('d M Y', strtotime($d->tgl_awal))}} sampai {{date('d M Y', strtotime($d->tgl_akhir))}}. Jangan sampai terlewat!</p>
                     </div>
