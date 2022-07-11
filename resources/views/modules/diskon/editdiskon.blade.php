@@ -70,7 +70,7 @@
                                     </label>
 
                                 </div>
-                                <span class="form-text text-muted">Status akun pegawai</span>
+                                <span class="form-text text-muted">Status diskon</span>
                             </div>
                         </div>
                         <div class="card-footer">
