@@ -34,7 +34,7 @@
                                     <div class="col-lg-9 col-xl-8">
                                         <div class="row align-items-center">
                                             <div class="col-md-5 my-2 my-md-0">
-                                                <form action="/riwayatpetugas" method="GET">
+                                                <form action="/riwayatadmin" method="GET">
                                                     <div class="input-icon">
                                                         <input type="text" name="search" class="form-control" placeholder="Cari berdasarkan kode order" id="" />
                                                         <span>

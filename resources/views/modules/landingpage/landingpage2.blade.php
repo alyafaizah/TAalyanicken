@@ -99,7 +99,7 @@
                 <h3>(KANSA)</h3>
                 <div class="home-content__buttons">
                     <a href="#informasitiket" class="smoothscroll btn btn--stroke">Mulai Pemesanan</a>
-                    <a href="" class="btn btn--stroke"> Daftar Sekarang </a>
+                    <a href="#about" class="smoothscroll btn btn--stroke"> Tentang Kansa </a>
                 </div>
 
             </div>
