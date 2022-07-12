@@ -13,10 +13,8 @@ class DashboardController extends Controller
         $transaksionline = PemesananTiket::get();
         $transaksioffline = PemesananTiket::get();
         $tanggal = date('Y-m-d');
-        $transaksioffline = DB::table('pemesanan')->select(
-            DB::Raw('count(*) as banyaktransaksioffline'),
-            DB::raw('sum(total) as pendapatanoffline')
-        )
+        $transaksioffline = DB::table('pemesanan')
+            ->select(DB::Raw('count(*) as banyaktransaksioffline'), DB::raw('sum(total) as pendapatanoffline'))
             ->where("jenis_pemesanan", 'offline')
             ->where("status", 'berhasil')
             ->where("tgl_kunjungan", $tanggal)
